@@ -2,3 +2,4 @@ format: jb-book
 root: README
 chapters:
   - file: resources
+  - file: notation
