@@ -24,6 +24,8 @@ parse:
     - substitution
     - tasklist
 
+exclude_patterns: [intro_ML/*]
+
 sphinx:
   extra_extensions:
     - sphinx_proof

@@ -1,5 +1,16 @@
 format: jb-book
 root: README
-chapters:
-  - file: resources
-  - file: notation
+parts:
+  - caption: Introduction
+    chapters:
+      - file: intro/resources
+      - file: intro/notation
+      - file: intro/intro_to_ML
+
+  - caption: Math for ML
+    chapters:
+      - file: math/linear_algebra
+      - file: math/calculus
+      - file: math/probability
+      - file: math/statistics
+      - file: math/optimization
