@@ -29,3 +29,7 @@
 2. A magnificent [NLP Course for You](https://lena-voita.github.io/nlp_course.html) from Lena Voita.
 
 3. Courses from [Hugging Face](https://huggingface.co/learn): NLP, Deep RL, Audio.
+
+## Other
+
+- [Machine Learning Glossary](https://developers.google.com/machine-learning/glossary?hl=en)
