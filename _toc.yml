@@ -9,8 +9,7 @@ parts:
           - file: intro/applications
           - file: intro/data
           - file: intro/ml_types
-          - file: intro/resources
-          - file: intro/notation
+          - file: intro/overfitting
 
   - caption: Math for ML
     chapters:
@@ -19,3 +18,9 @@ parts:
       - file: math/probability
       - file: math/statistics
       - file: math/optimization
+
+  - caption: References
+    chapters:
+      - file: notation
+      - file: bibliography
+      - file: resources

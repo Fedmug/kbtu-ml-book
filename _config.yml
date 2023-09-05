@@ -24,7 +24,7 @@ parse:
     - substitution
     - tasklist
 
-exclude_patterns: [intro_ML/*]
+exclude_patterns: ["*/tasks.ipynb"]
 
 sphinx:
   extra_extensions:
