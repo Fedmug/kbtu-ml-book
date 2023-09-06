@@ -10,6 +10,7 @@ parts:
           - file: intro/data
           - file: intro/ml_types
           - file: intro/overfitting
+          - file: intro/knn
 
   - caption: Math for ML
     chapters:

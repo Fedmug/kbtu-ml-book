@@ -8,7 +8,7 @@ We are drowning in information and starving for knowledge.
 
 The amount of information is enormous nowadays and it is continuously growing. See [resources](./resources.md) to observe only a tiny fraction of machine learning content available on the Web. Isn't it enough? Why should we create one more piece of content?
 
-There are a lot of Holy Wars about education and all around it. Leaving it aside, I personally formulate the main purpose of education as follows:
+There were a lot of Holy Wars about education and all around it. Leaving them aside, I personally formulate the main purpose of education as follows:
 
 ```{admonition} The Fundamental Goal of Education
 Create conditions allowing students to acquire knowldedge and skills at the desired level in the shortest possible period of time.
@@ -27,11 +27,11 @@ To introduce the capabilities of Jupyter book along with some methodological ide
 The main features:
 
 - interactive quizzes (taken "as is" from [here](https://github.com/jmshea/jupyterquiz));
-- mix of narrative and executional content as it is usually done via markdown and code cells in Jupyter notebook;
+- mix of narrative and executable content as it is usually done via markdown and code cells in Jupyter notebook;
 - pictures and visualizations (sometimes interactive);
 - available online on any device.
 
-Hopefuly, during this course we'll write something similar about machine learning.
+Hopefully, during this course we'll write something similar about machine learning.
 
 ## Course assessment
 
@@ -86,7 +86,7 @@ The goal of every team is to create a nicely looking section in the ML book.
 - checks for consistency of all types of content, notations and cross-references to other parts of the book
 - searches for different sources of information
 - communicates with PMs of teams which work on related topics
-- communitates with [BDFL](https://en.wikipedia.org/wiki/Benevolent_dictator_for_life)
+- communicates with [BDFL](https://en.wikipedia.org/wiki/Benevolent_dictator_for_life)
 
 ## The main tool
 
