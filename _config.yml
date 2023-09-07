@@ -2,7 +2,7 @@ title: ML book
 author: KBTU
 logo: logo.png
 execute:
-  execute_notebooks: force
+  execute_notebooks: cache
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
@@ -25,6 +25,9 @@ parse:
     - tasklist
 
 exclude_patterns: ["*/tasks.ipynb"]
+
+execute:
+  timeout: 100
 
 sphinx:
   extra_extensions:
