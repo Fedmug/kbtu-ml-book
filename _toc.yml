@@ -12,9 +12,23 @@ parts:
           - file: intro/overfitting
           - file: intro/knn
 
+  - caption: Python for ML
+    chapters:
+      - file: python/python_basics
+        sections:
+          - file: python/basics/basic_types
+          - file: python/basics/variables
+          - file: python/basics/control_flow
+          - file: python/basics/functions_strings
+          - file: python/basics/classes
+          - file: python/basics/ISLP_lab
+
   - caption: Math for ML
     chapters:
       - file: math/linear_algebra
+        sections:
+          - file: math/lin_alg/vectors
+          - file: math/lin_alg/matrices
       - file: math/calculus
       - file: math/probability
       - file: math/statistics

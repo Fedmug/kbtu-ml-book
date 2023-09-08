@@ -28,6 +28,9 @@ exclude_patterns: ["*/tasks.ipynb"]
 
 execute:
   timeout: 100
+  allow_errors: true
+  exclude_patterns:
+    - 'python/basics/*'
 
 sphinx:
   extra_extensions:
