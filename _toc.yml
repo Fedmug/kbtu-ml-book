@@ -11,6 +11,7 @@ parts:
           - file: intro/ml_types
           - file: intro/overfitting
           - file: intro/knn
+      - file: lin_reg/linear_regression
 
   - caption: Python for ML
     chapters:
@@ -29,6 +30,11 @@ parts:
         sections:
           - file: math/lin_alg/vectors
           - file: math/lin_alg/matrices
+          - file: math/lin_alg/linear_systems
+          - file: math/lin_alg/inverse
+          - file: math/lin_alg/rank
+          - file: math/lin_alg/determinant
+          - file: math/lin_alg/eig
       - file: math/calculus
       - file: math/probability
       - file: math/statistics
