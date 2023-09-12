@@ -8,7 +8,7 @@ Linear regression is a fundamental statistical and machine learning technique us
 
 ```{math}
 :label: dataset
-\mathcal D = \{(\boldsymbol x_i, y_i)\}_{i=1}^n, \quad \boldsymbol x_i \in \mathbb R^n$.
+\mathcal D = \{(\boldsymbol x_i, y_i)\}_{i=1}^n, \quad \boldsymbol x_i \in \mathbb R^d.
 ```
 
 More precisely, the linear regression is called
