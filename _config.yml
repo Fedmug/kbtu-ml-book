@@ -35,6 +35,7 @@ execute:
 sphinx:
   extra_extensions:
     - sphinx_proof
+    - sphinx_jupyterbook_latex
   config:
     bibtex_reference_style: author_year
     html_js_files:
