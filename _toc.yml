@@ -38,8 +38,11 @@ parts:
           - file: math/lin_alg/linear_systems
           - file: math/lin_alg/inverse
           - file: math/lin_alg/rank
+          - file: math/lin_alg/orthogonality
+          - file: math/lin_alg/projections
           - file: math/lin_alg/determinant
           - file: math/lin_alg/eig
+          - file: math/lin_alg/diagonalize
           - file: math/lin_alg/matrix_norms
       - file: math/calculus
       - file: math/probability
