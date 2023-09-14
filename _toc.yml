@@ -17,6 +17,8 @@ parts:
           - file: lin_reg/polynomial
           - file: lin_reg/multiple
           - file: lin_reg/regularization
+          - file: lin_reg/GD
+          - file: lin_reg/general
 
   - caption: Python for ML
     chapters:

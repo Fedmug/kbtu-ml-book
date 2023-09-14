@@ -38,4 +38,6 @@
 
 - Materials from [Alex Avdyushenko](https://avalur.github.io/teaching.html)
 
+- Lectures from [Skoltech's Machine Learning course ](https://github.com/adasegroup/ML2023_lectures/tree/main)
+
 - [ChatGPT Prompt Engineering for Developers](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/)
