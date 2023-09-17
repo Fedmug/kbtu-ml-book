@@ -30,6 +30,8 @@ parts:
           - file: python/basics/functions_strings
           - file: python/basics/classes
           - file: python/basics/ISLP_lab
+      - file: python/numpy
+      - file: python/pandas
 
   - caption: Math for ML
     chapters:
@@ -47,6 +49,10 @@ parts:
           - file: math/lin_alg/diagonalize
           - file: math/lin_alg/matrix_norms
       - file: math/calculus
+        sections:
+          - file: math/calculus/1-d
+          - file: math/calculus/multivariate
+          - file: math/calculus/matrix_diff
       - file: math/probability
       - file: math/statistics
       - file: math/optimization
