@@ -19,6 +19,11 @@ parts:
           - file: lin_reg/regularization
           - file: lin_reg/GD
           - file: lin_reg/general
+      - file: linear_classification/classification
+        sections:
+          - file: linear_classification/log_reg
+          - file: linear_classification/multi_log_reg
+          - file: linear_classification/gradients
 
   - caption: Python for ML
     chapters:

@@ -31,6 +31,7 @@ execute:
   allow_errors: true
   exclude_patterns:
     - 'python/basics/*'
+    - 'linear_classificaton/multi_log_reg.ipynb'
 
 sphinx:
   extra_extensions:
