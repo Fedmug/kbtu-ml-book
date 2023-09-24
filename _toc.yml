@@ -11,6 +11,7 @@ parts:
           - file: intro/ml_types
           - file: intro/overfitting
           - file: intro/knn
+          
       - file: lin_reg/linear_regression
         sections:
           - file: lin_reg/simple
@@ -19,12 +20,72 @@ parts:
           - file: lin_reg/regularization
           - file: lin_reg/GD
           - file: lin_reg/general
+          
       - file: linear_classification/classification
         sections:
           - file: linear_classification/log_reg
           - file: linear_classification/multi_log_reg
           - file: linear_classification/gradients
-
+          
+      - file: eval_metrics/Evaluation_metrics
+        sections:
+          - file: eval_metrics/Classification_metrics
+          - file: eval_metrics/ROC-AUC
+          - file: eval_metrics/Regression_metrics
+          - file: eval_metrics/Cross-validation
+          
+      - file: probabilistic_models/Probabilistic
+        sections:
+          - file: probabilistic_models/Bayesian_inference
+          - file: probabilistic_models/Linear_probabilistic_models
+          - file: probabilistic_models/Logistic_probabilistic_models
+          - file: probabilistic_models/Naive_bayes_classifier 
+          
+      - file: decision_trees/Decision_trees
+        sections:
+          - file: decision_trees/Regression_trees
+          - file: decision_trees/Classification_trees
+          - file: decision_trees/Information_criteria_and_splitting
+          - file: decision_trees/Tree_pruning
+          
+      - file: ensembling/Ensemble
+        sections:
+          - file: ensembling/Bias-Variance_decomposition
+          - file: ensembling/Boosting_stacking_blending
+          - file: ensembling/Bagging_random_forests
+                
+      - file: CNN/Understand_conv_operations
+        sections:
+          - file: CNN/Conv_of_matrices_n_tensors
+          - file: CNN/Pooling
+          - file: CNN/Back_propagaiton
+          - file: CNN/Architectures
+          - file: CNN/Data_augment_n_regulariz
+          - file: CNN/Applications       
+          
+      - file: RNN/Sequential_Data_Processing
+        sections:
+          - file: RNN/Vanilla_RNN
+          - file: RNN/LSTM
+          - file: RNN/GRU
+          - file: RNN/Attention
+          - file: RNN/Transformers
+          - file: RNN/Application  
+          
+      - file: GM/VAE_and_GAN
+        sections:
+          - file: GM/VAE
+          - file: GM/GAN
+          
+      - file: RL/Basics
+        sections:
+          - file: RL/Basic_RL_notions
+          - file: RL/Multiarmed_bandits
+          - file: RL/MDP
+          - file: RL/Q_learning   
+      
+      
+      
   - caption: Python for ML
     chapters:
       - file: python/python_basics
@@ -37,6 +98,8 @@ parts:
           - file: python/basics/ISLP_lab
       - file: python/numpy
       - file: python/pandas
+
+
 
   - caption: Math for ML
     chapters:
@@ -62,49 +125,8 @@ parts:
       - file: math/statistics
       - file: math/optimization
       
-                
-  - caption: Convolutional neural networks (CNN)
-    chapters:
-      - file: CNN/Understanding_Convolutional_Operations
-        sections:
-          - file: CNN/Convolution_of_matrices_and_tensors
-          - file: CNN/Pooling
-          - file: CNN/Back_propagaiton_in_CNN
-          - file: CNN/Architectures_of_CNN
-          - file: CNN/Data_augmentation_and_regularization
-          - file: CNN/Applications_of_CNN
-          
-          
-  - caption: Recurrent Neural Networks (RNN)
-    chapters:
-    - file: RNN/Sequential_Data_Processing
-      sections:
-      - file: RNN/Vanilla_RNN
-      - file: RNN/LSTM
-      - file: RNN/GRU
-      - file: RNN/Attention
-      - file: RNN/Transformers
-      - file: RNN/Application_of_RNN      
-          
-          
-  - caption: Generative Models
-    chapters:
-    - file: RNN/VAE_and_GAN
-      sections:
-      - file: RNN/Variaonal_autoencoders_(VAE)
-      - file: RNN/Ganerative_adversarial_networks_(GAN)
       
-      
-  - caption: Reinforcement learning (RL)
-    chapters:
-    - file: RNN/Basics
-      sections:
-      - file: RNN/Basic_RL_notions
-      - file: RNN/Multiarmed_bandits
-      - file: RNN/Markov_decision_process_(MDP)
-      - file: RNN/Q_learning   
-      
-
+              
   - caption: References
     chapters:
       - file: notation
