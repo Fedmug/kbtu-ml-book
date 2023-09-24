@@ -54,35 +54,40 @@ parts:
           - file: ensembling/Boosting_stacking_blending
           - file: ensembling/Bagging_random_forests
                 
-      - file: CNN/Understand_conv_operations
+      - file: cnn/cnn
         sections:
-          - file: CNN/Conv_of_matrices_n_tensors
-          - file: CNN/Pooling
-          - file: CNN/Back_propagaiton
-          - file: CNN/Architectures
-          - file: CNN/Data_augment_n_regulariz
-          - file: CNN/Applications       
+          - file: cnn/architectures
+          - file: cnn/applications
+          - file: cnn/conv_of_matrices
+          - file: cnn/pooling
+          - file: cnn/back_prop
+          - file: cnn/augmentation
+          - file: cnn/regularisation                
           
-      - file: RNN/Sequential_Data_Processing
+      - file: rnn/sequential
         sections:
-          - file: RNN/Vanilla_RNN
-          - file: RNN/LSTM
-          - file: RNN/GRU
-          - file: RNN/Attention
-          - file: RNN/Transformers
-          - file: RNN/Application  
+          - file: rnn/vanilla_rnn
+          - file: rnn/lstm
+          - file: rnn/gru
+          - file: rnn/attention
+          - file: rnn/transformers
+          - file: rnn/application  
           
-      - file: GM/VAE_and_GAN
+      - file: gm/generative
         sections:
-          - file: GM/VAE
-          - file: GM/GAN
+          - file: gm/types_of_autoencoders
+          - file: gm/encoder_decoder
+          - file: gm/dimension_reduction
+          - file: gm/pca
+          - file: gm/vae
+          - file: gm/gan
           
-      - file: RL/Basics
+      - file: rl/basics
         sections:
-          - file: RL/Basic_RL_notions
-          - file: RL/Multiarmed_bandits
-          - file: RL/MDP
-          - file: RL/Q_learning   
+          - file: rl/basic_notions
+          - file: rl/multiarmed_bandits
+          - file: rl/mdp
+          - file: rl/q_learning   
       
       
       
