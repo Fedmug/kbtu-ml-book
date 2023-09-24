@@ -26,28 +26,28 @@ parts:
           - file: linear_classification/log_reg
           - file: linear_classification/multi_log_reg
           - file: linear_classification/gradients
-          
+
       - file: eval_metrics/Evaluation_metrics
         sections:
           - file: eval_metrics/Classification_metrics
           - file: eval_metrics/ROC-AUC
           - file: eval_metrics/Regression_metrics
           - file: eval_metrics/Cross-validation
-          
+
       - file: probabilistic_models/Probabilistic
         sections:
           - file: probabilistic_models/Bayesian_inference
           - file: probabilistic_models/Linear_probabilistic_models
           - file: probabilistic_models/Logistic_probabilistic_models
-          - file: probabilistic_models/Naive_bayes_classifier 
-          
+          - file: probabilistic_models/Naive_bayes_classifier
+
       - file: decision_trees/Decision_trees
         sections:
           - file: decision_trees/Regression_trees
           - file: decision_trees/Classification_trees
           - file: decision_trees/Information_criteria_and_splitting
           - file: decision_trees/Tree_pruning
-          
+
       - file: ensembling/Ensemble
         sections:
           - file: ensembling/Bias-Variance_decomposition
@@ -88,8 +88,6 @@ parts:
           - file: rl/multiarmed_bandits
           - file: rl/mdp
           - file: rl/q_learning   
-      
-      
       
   - caption: Python for ML
     chapters:
