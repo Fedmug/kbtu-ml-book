@@ -25,6 +25,44 @@ parts:
           - file: linear_classification/multi_log_reg
           - file: linear_classification/gradients
 
+
+  - caption: Evaluation metrics
+    chapters: 
+      - file: eval_metrics/evaluation_metrics
+        sections:
+          - file: eval_metrics/classification_metrics
+          - file: eval_metrics/roc-auc
+          - file: eval_metrics/regression_metrics
+          - file: eval_metrics/cross-validation
+
+  - caption: Probabilistic models
+    chapters:
+      - file: probabilistic_models/probabilistics
+        sections:
+          - file: probabilistic_models/bayesian_inference
+          - file: probabilistic_models/linear_probabilistic_models
+          - file: probabilistic_models/logistic_probabilistic_models
+          - file: probabilistic_models/naive_bayes_classifier
+
+  - caption: Decision trees
+    chapters:
+      - file: decision_trees/decision_trees
+        sections:
+          - file: decision_trees/regression_trees
+          - file: decision_trees/classification_trees
+          - file: decision_trees/information_criteria_and_splitting
+          - file: decision_trees/tree_pruning
+
+  - caption: Ensembling
+    chapters:
+      - file: ensembling/ensemble
+        sections:
+          - file: ensembling/bias-variance_decomposition
+          - file: ensembling/boosting_stacking_blending
+          - file: ensembling/bagging_random_forests
+
+
+
   - caption: Python for ML
     chapters:
       - file: python/python_basics
