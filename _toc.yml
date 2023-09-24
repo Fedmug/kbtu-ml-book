@@ -62,7 +62,7 @@ parts:
           - file: cnn/pooling
           - file: cnn/back_prop
           - file: cnn/augmentation
-          - file: cnn/regularisation                
+          - file: cnn/regularization                
           
       - file: rnn/sequential
         sections:
@@ -75,7 +75,7 @@ parts:
           
       - file: gm/generative
         sections:
-          - file: gm/types_of_autoencoders
+          - file: gm/types
           - file: gm/encoder_decoder
           - file: gm/dimension_reduction
           - file: gm/pca
