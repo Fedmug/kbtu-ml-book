@@ -99,6 +99,49 @@ parts:
       - file: math/probability
       - file: math/statistics
       - file: math/optimization
+      
+                
+  - caption: Convolutional neural networks (CNN)
+    chapters:
+      - file: CNN/Understanding_Convolutional_Operations
+        sections:
+          - file: CNN/Convolution_of_matrices_and_tensors
+          - file: CNN/Pooling
+          - file: CNN/Back_propagaiton_in_CNN
+          - file: CNN/Architectures_of_CNN
+          - file: CNN/Data_augmentation_and_regularization
+          - file: CNN/Applications_of_CNN
+          
+          
+  - caption: Recurrent Neural Networks (RNN)
+    chapters:
+    - file: RNN/Sequential_Data_Processing
+      sections:
+      - file: RNN/Vanilla_RNN
+      - file: RNN/LSTM
+      - file: RNN/GRU
+      - file: RNN/Attention
+      - file: RNN/Transformers
+      - file: RNN/Application_of_RNN      
+          
+          
+  - caption: Generative Models
+    chapters:
+    - file: RNN/VAE_and_GAN
+      sections:
+      - file: RNN/Variaonal_autoencoders_(VAE)
+      - file: RNN/Ganerative_adversarial_networks_(GAN)
+      
+      
+  - caption: Reinforcement learning (RL)
+    chapters:
+    - file: RNN/Basics
+      sections:
+      - file: RNN/Basic_RL_notions
+      - file: RNN/Multiarmed_bandits
+      - file: RNN/Markov_decision_process_(MDP)
+      - file: RNN/Q_learning   
+      
 
   - caption: References
     chapters:
