@@ -5,8 +5,8 @@ Decision Trees (DTs) are a non-parametric supervised learning method used for cl
 For instance, in the example below, decision trees learn from data to approximate a sine curve with a set of if-then-else decision rules. The deeper the tree, the more complex the decision rules and the fitter the model.
 
 
-<img src="https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html" width="128"/>
-
+<!-- <img src="https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html" width="128"/>
+ -->
 
 ## Some advantages of decision trees are:
 

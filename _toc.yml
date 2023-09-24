@@ -28,38 +28,38 @@ parts:
 
   - caption: Evaluation metrics
     chapters: 
-      - file: eval_metrics/evaluation_metrics
+      - file: eval_metrics/Evaluation_metrics
         sections:
-          - file: eval_metrics/classification_metrics
-          - file: eval_metrics/roc-auc
-          - file: eval_metrics/regression_metrics
-          - file: eval_metrics/cross-validation
+          - file: eval_metrics/Classification_metrics
+          - file: eval_metrics/ROC-AUC
+          - file: eval_metrics/Regression_metrics
+          - file: eval_metrics/Cross-validation
 
   - caption: Probabilistic models
     chapters:
-      - file: probabilistic_models/probabilistics
+      - file: probabilistic_models/Probabilistic
         sections:
-          - file: probabilistic_models/bayesian_inference
-          - file: probabilistic_models/linear_probabilistic_models
-          - file: probabilistic_models/logistic_probabilistic_models
-          - file: probabilistic_models/naive_bayes_classifier
+          - file: probabilistic_models/Bayesian_inference
+          - file: probabilistic_models/Linear_probabilistic_models
+          - file: probabilistic_models/Logistic_probabilistic_models
+          - file: probabilistic_models/Naive_bayes_classifier
 
   - caption: Decision trees
     chapters:
-      - file: decision_trees/decision_trees
+      - file: decision_trees/Decision_trees
         sections:
-          - file: decision_trees/regression_trees
-          - file: decision_trees/classification_trees
-          - file: decision_trees/information_criteria_and_splitting
-          - file: decision_trees/tree_pruning
+          - file: decision_trees/Regression_trees
+          - file: decision_trees/Classification_trees
+          - file: decision_trees/Information_criteria_and_splitting
+          - file: decision_trees/Tree_pruning
 
   - caption: Ensembling
     chapters:
-      - file: ensembling/ensemble
+      - file: ensembling/Ensemble
         sections:
-          - file: ensembling/bias-variance_decomposition
-          - file: ensembling/boosting_stacking_blending
-          - file: ensembling/bagging_random_forests
+          - file: ensembling/Bias-Variance_decomposition
+          - file: ensembling/Boosting_stacking_blending
+          - file: ensembling/Bagging_random_forests
 
 
 
