@@ -11,6 +11,7 @@ parts:
           - file: intro/ml_types
           - file: intro/overfitting
           - file: intro/knn
+          
       - file: lin_reg/linear_regression
         sections:
           - file: lin_reg/simple
@@ -19,35 +20,75 @@ parts:
           - file: lin_reg/regularization
           - file: lin_reg/GD
           - file: lin_reg/general
+          
       - file: linear_classification/classification
         sections:
           - file: linear_classification/log_reg
           - file: linear_classification/multi_log_reg
           - file: linear_classification/gradients
+
       - file: eval_metrics/Evaluation_metrics
         sections:
           - file: eval_metrics/Classification_metrics
           - file: eval_metrics/ROC-AUC
           - file: eval_metrics/Regression_metrics
           - file: eval_metrics/Cross-validation
+
       - file: probabilistic_models/Probabilistic
         sections:
           - file: probabilistic_models/Bayesian_inference
           - file: probabilistic_models/Linear_probabilistic_models
           - file: probabilistic_models/Logistic_probabilistic_models
           - file: probabilistic_models/Naive_bayes_classifier
+
       - file: decision_trees/Decision_trees
         sections:
           - file: decision_trees/Regression_trees
           - file: decision_trees/Classification_trees
           - file: decision_trees/Information_criteria_and_splitting
           - file: decision_trees/Tree_pruning
+
       - file: ensembling/Ensemble
         sections:
           - file: ensembling/Bias-Variance_decomposition
           - file: ensembling/Boosting_stacking_blending
           - file: ensembling/Bagging_random_forests
-
+                
+      - file: cnn/cnn
+        sections:
+          - file: cnn/architectures
+          - file: cnn/applications
+          - file: cnn/conv_of_matrices
+          - file: cnn/pooling
+          - file: cnn/back_prop
+          - file: cnn/augmentation
+          - file: cnn/regularization                
+          
+      - file: rnn/sequential
+        sections:
+          - file: rnn/vanilla_rnn
+          - file: rnn/lstm
+          - file: rnn/gru
+          - file: rnn/attention
+          - file: rnn/transformers
+          - file: rnn/application  
+          
+      - file: gm/generative
+        sections:
+          - file: gm/types
+          - file: gm/encoder_decoder
+          - file: gm/dimension_reduction
+          - file: gm/pca
+          - file: gm/vae
+          - file: gm/gan
+          
+      - file: rl/basics
+        sections:
+          - file: rl/basic_notions
+          - file: rl/multiarmed_bandits
+          - file: rl/mdp
+          - file: rl/q_learning   
+      
   - caption: Python for ML
     chapters:
       - file: python/python_basics
@@ -60,6 +101,8 @@ parts:
           - file: python/basics/ISLP_lab
       - file: python/numpy
       - file: python/pandas
+
+
 
   - caption: Math for ML
     chapters:
@@ -84,7 +127,9 @@ parts:
       - file: math/probability
       - file: math/statistics
       - file: math/optimization
-
+      
+      
+              
   - caption: References
     chapters:
       - file: notation
