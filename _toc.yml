@@ -29,9 +29,9 @@ parts:
 
       - file: eval_metrics/Evaluation_metrics
         sections:
-          - file: eval_metrics/Classification_metrics
+          - file: eval_metrics/classification
           - file: eval_metrics/ROC-AUC
-          - file: eval_metrics/Regression_metrics
+          - file: eval_metrics/regression
           - file: eval_metrics/Cross-validation
 
       - file: probabilistic_models/Probabilistic
