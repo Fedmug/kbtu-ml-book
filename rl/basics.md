@@ -1,1 +1,1 @@
-# RL basics
+# Reinforcement Learning

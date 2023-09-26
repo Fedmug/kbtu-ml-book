@@ -32,7 +32,7 @@ parts:
           - file: eval_metrics/classification
           - file: eval_metrics/ROC-AUC
           - file: eval_metrics/regression
-          - file: eval_metrics/Cross-validation
+          - file: eval_metrics/cross_val
 
       - file: probabilistic_models/Probabilistic
         sections:
@@ -54,6 +54,8 @@ parts:
           - file: ensembling/Boosting_stacking_blending
           - file: ensembling/Bagging_random_forests
 
+  - caption: Deep Learning
+    chapters:
       - file: cnn/cnn
         sections:
           - file: cnn/architectures
