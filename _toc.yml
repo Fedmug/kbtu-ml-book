@@ -26,27 +26,31 @@ parts:
           - file: linear_classification/log_reg
           - file: linear_classification/multi_log_reg
           - file: linear_classification/gradients
+          - file: linear_classification/svm
 
-      - file: eval_metrics/Evaluation_metrics
+      - file: eval_metrics/metrics
         sections:
           - file: eval_metrics/classification
           - file: eval_metrics/ROC-AUC
           - file: eval_metrics/regression
           - file: eval_metrics/cross_val
+          - file: eval_metrics/hyperparameters
 
-      - file: probabilistic_models/Probabilistic
+      - file: probabilistic_models/probabilistic
         sections:
-          - file: probabilistic_models/Bayesian_inference
-          - file: probabilistic_models/Linear_probabilistic_models
-          - file: probabilistic_models/Logistic_probabilistic_models
-          - file: probabilistic_models/Naive_bayes_classifier
+          - file: probabilistic_models/bayesian_inference
+          - file: probabilistic_models/linear_regression
+          - file: probabilistic_models/logistic_regression
+          - file: probabilistic_models/LDA
+          - file: probabilistic_models/QDA
+          - file: probabilistic_models/naive_bayes
 
-      - file: decision_trees/Decision_trees
+      - file: decision_trees/decision_tree
         sections:
-          - file: decision_trees/Regression_trees
-          - file: decision_trees/Classification_trees
-          - file: decision_trees/Information_criteria_and_splitting
-          - file: decision_trees/Tree_pruning
+          - file: decision_trees/classification
+          - file: decision_trees/regression
+          - file: decision_trees/impurity
+          - file: decision_trees/pruning
 
       - file: ensembling/Ensemble
         sections:
@@ -119,6 +123,7 @@ parts:
           - file: math/lin_alg/eig
           - file: math/lin_alg/diagonalize
           - file: math/lin_alg/matrix_norms
+          - file: math/lin_alg/SVD
       - file: math/calculus
         sections:
           - file: math/calculus/1-d
@@ -126,6 +131,8 @@ parts:
           - file: math/calculus/matrix_diff
       - file: math/probability
       - file: math/statistics
+        sections:
+          - file: math/stats/MLE
       - file: math/optimization
 
   - caption: References
