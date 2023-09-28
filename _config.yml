@@ -24,7 +24,7 @@ parse:
     - substitution
     - tasklist
 
-exclude_patterns: ["*/tasks.ipynb"]
+exclude_patterns: ["*/tasks.ipynb", "plotly_html.ipynb"]
 
 execute:
   timeout: 100
