@@ -52,23 +52,23 @@ parts:
           - file: decision_trees/impurity
           - file: decision_trees/pruning
 
-      - file: ensembling/Ensemble
+      - file: ensembling/ensemble
         sections:
-          - file: ensembling/Bias-Variance_decomposition
-          - file: ensembling/Boosting_stacking_blending
-          - file: ensembling/Bagging_random_forests
+          - file: ensembling/bias_variance
+          - file: ensembling/voting_stacking_blending
+          - file: ensembling/bagging
+          - file: ensembling/random_forest
 
   - caption: Deep Learning
     chapters:
       - file: cnn/cnn
         sections:
-          - file: cnn/architectures
-          - file: cnn/applications
-          - file: cnn/conv_of_matrices
+          - file: cnn/convolutions_2d
+          - file: cnn/convolutions_3d
           - file: cnn/pooling
           - file: cnn/back_prop
           - file: cnn/augmentation
-          - file: cnn/regularization
+          - file: cnn/architectures
 
       - file: rnn/sequential
         sections:
