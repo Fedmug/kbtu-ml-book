@@ -58,8 +58,35 @@ parts:
           - file: ensembling/Boosting_stacking_blending
           - file: ensembling/Bagging_random_forests
 
+      - file: gradient_boosting/grad_boosting
+        sections:
+          - file: gradient_boosting/general_form
+          - file: gradient_boosting/stochastic_gb
+          - file: gradient_boosting/adaboost
+          - file: gradient_boosting/xgboost
+          - file: gradient_boosting/catboost
+
+      - file: unsupervised_learning/unsupervised_learning
+        sections:
+          - file: unsupervised_learning/pca
+          - file: unsupervised_learning/dimension_reduction
+          - file: unsupervised_learning/clustering_metrics
+          - file: unsupervised_learning/k_means
+          - file: unsupervised_learning/hierarchic_clustering
+
   - caption: Deep Learning
     chapters:
+
+      - file: mlp/mlp
+        sections:
+          - file: mlp/mlp_layers
+          - file: mlp/forward_backward_pass
+          - file: mlp/activation_functions
+          - file: mlp/backprop
+          - file: mlp/weight_init
+          - file: mlp/regularization
+          - file: mlp/optimization_in_dl
+
       - file: cnn/cnn
         sections:
           - file: cnn/architectures
