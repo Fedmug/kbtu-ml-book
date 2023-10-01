@@ -9,8 +9,8 @@ parts:
           - file: intro/applications
           - file: intro/data
           - file: intro/ml_types
-          - file: intro/overfitting
           - file: intro/knn
+          - file: intro/model_selection
 
       - file: lin_reg/linear_regression
         sections:
@@ -18,14 +18,14 @@ parts:
           - file: lin_reg/polynomial
           - file: lin_reg/multiple
           - file: lin_reg/regularization
-          - file: lin_reg/GD
+          - file: lin_reg/numeric_opt
           - file: lin_reg/general
 
       - file: linear_classification/classification
         sections:
           - file: linear_classification/log_reg
           - file: linear_classification/multi_log_reg
-          - file: linear_classification/gradients
+          - file: linear_classification/num_opt_log_reg
           - file: linear_classification/svm
 
       - file: eval_metrics/metrics
@@ -59,34 +59,32 @@ parts:
           - file: ensembling/bagging
           - file: ensembling/random_forest
 
-      - file: gradient_boosting/grad_boosting
+      - file: gradient_boosting/gradient_boosting
         sections:
-          - file: gradient_boosting/general_form
-          - file: gradient_boosting/stochastic_gb
+          - file: gradient_boosting/boosting
+          - file: gradient_boosting/generic_gb
           - file: gradient_boosting/adaboost
           - file: gradient_boosting/xgboost
           - file: gradient_boosting/catboost
 
-      - file: unsupervised_learning/unsupervised_learning
+      - file: unsupervised_learning/unsupervised
         sections:
           - file: unsupervised_learning/pca
-          - file: unsupervised_learning/dimension_reduction
           - file: unsupervised_learning/clustering_metrics
           - file: unsupervised_learning/k_means
           - file: unsupervised_learning/hierarchic_clustering
 
   - caption: Deep Learning
     chapters:
-
       - file: mlp/mlp
         sections:
-          - file: mlp/mlp_layers
+          - file: mlp/layers
           - file: mlp/forward_backward_pass
-          - file: mlp/activation_functions
+          - file: mlp/activations
           - file: mlp/backprop
           - file: mlp/weight_init
           - file: mlp/regularization
-          - file: mlp/optimization_in_dl
+          - file: mlp/optimization_dl
 
       - file: cnn/cnn
         sections:
@@ -104,20 +102,16 @@ parts:
           - file: rnn/gru
           - file: rnn/attention
           - file: rnn/transformers
-          - file: rnn/application
 
       - file: gm/generative
         sections:
-          - file: gm/types
-          - file: gm/encoder_decoder
-          - file: gm/dimension_reduction
-          - file: gm/pca
+          - file: gm/autoencoders
           - file: gm/vae
           - file: gm/gan
 
-      - file: rl/basics
+      - file: rl/RL
         sections:
-          - file: rl/basic_notions
+          - file: rl/basics
           - file: rl/multiarmed_bandits
           - file: rl/mdp
           - file: rl/q_learning
@@ -161,6 +155,10 @@ parts:
         sections:
           - file: math/stats/MLE
       - file: math/optimization
+        sections:
+          - file: math/optimization/GD.ipynb
+          - file: math/optimization/SGD.ipynb
+          - file: math/optimization/newton.ipynb
 
   - caption: References
     chapters:
