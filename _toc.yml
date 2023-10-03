@@ -39,8 +39,8 @@ parts:
       - file: probabilistic_models/probabilistic
         sections:
           - file: probabilistic_models/bayesian_inference
-          - file: probabilistic_models/linear_regression
-          - file: probabilistic_models/logistic_regression
+          - file: probabilistic_models/lin_reg_prob
+          - file: probabilistic_models/log_reg_prob
           - file: probabilistic_models/LDA
           - file: probabilistic_models/QDA
           - file: probabilistic_models/naive_bayes
