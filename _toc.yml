@@ -151,6 +151,8 @@ parts:
           - file: math/calculus/multivariate
           - file: math/calculus/matrix_diff
       - file: math/probability
+        sections:
+          - file: math/proba/entropy
       - file: math/statistics
         sections:
           - file: math/stats/MLE
