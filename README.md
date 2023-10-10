@@ -104,4 +104,4 @@ The goal of every team is to create a nicely looking section in the ML book.
 - Think about links between parts of your section or to some other sections and chapters
 - Keep in mind that you are creating content for newbies
 - Clone only one branch of [ML book repo](https://github.com/Fedmug/kbtu-ml-book) which corresponds to your section:
-  `git clone -b BRANCH_NAME --single-branch https://github.com/Fedmug/kbtu-ml-book.git`
+  `git clone -b BRANCH_NAME --single-branch https://github.com/Fedmug/kbtu-ml-book.git BRANCH_NAME`
