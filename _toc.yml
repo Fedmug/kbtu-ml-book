@@ -128,6 +128,7 @@ parts:
           - file: python/basics/ISLP_lab
       - file: python/numpy
       - file: python/pandas
+      - file: python/visual
 
   - caption: Math for ML
     chapters:
