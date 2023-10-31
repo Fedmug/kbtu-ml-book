@@ -24,7 +24,7 @@ parse:
     - substitution
     - tasklist
 
-exclude_patterns: ["*/tasks.ipynb", "plotly_html.ipynb", "ISLP_datasets/*.ipynb"]
+exclude_patterns: ["*/tasks.ipynb", "plotly_html.ipynb", "ISLP_datasets/*.ipynb", "ensembling/bias_variance_handbook.ipynb"]
 
 execute:
   timeout: 100
