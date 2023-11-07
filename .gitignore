@@ -2,3 +2,5 @@
 _build/*
 *tasks.ipynb
 .DS_STORE
+notMNIST_small notMNIST_small.tar.gz
+notMNIST_small/A notMNIST_small/B notMNIST_small/C notMNIST_small/D notMNIST_small/E notMNIST_small/F notMNIST_small/G notMNIST_small/H notMNIST_small/I notMNIST_small/J

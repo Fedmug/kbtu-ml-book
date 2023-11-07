@@ -163,6 +163,10 @@ parts:
           - file: math/optimization/SGD.ipynb
           - file: math/optimization/newton.ipynb
 
+  - caption: HW
+    chapters:
+      - file: not_mnist_student
+
   - caption: References
     chapters:
       - file: notation
