@@ -26,7 +26,7 @@ parse:
 
 exclude_patterns: ["*/tasks.ipynb", "plotly_html.ipynb", "ISLP_datasets/*.ipynb",
                    "ensembling/bias_variance_handbook.ipynb", "notMNIST_small/*",
-                   "mlp/MLP_notebook.ipynb", "mlp/keras.ipynb"]
+                   "mlp/MLP_notebook.ipynb", "mlp/keras.ipynb", "cnn/fashion-mnist-kaggle.ipynb"]
 
 execute:
   timeout: 100
