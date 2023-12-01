@@ -1,0 +1,102 @@
+[
+    {
+        "question": "1. What is Multinomial Logistic Regression primarily used for?",
+        "options": [
+            "Predicting continuous outcomes",
+            "Classifying outcomes into one of two categories",
+            "Estimating the relationships between continuous variables",
+            "Classifying outcomes into one of three or more categories"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "question": "2. Which function does Multinomial Logistic Regression use to model probabilities?",
+        "options": [
+            "Linear function",
+            "Sigmoid function",
+            "Softmax function",
+            "Tangent function"
+        ],
+        "correctIndex": 2
+    },
+    {
+        "question": "3. In Multinomial Logistic Regression, the outcome variable should be:",
+        "options": [
+            "Continuous",
+            "Ordinal",
+            "Nominal with two categories",
+            "Nominal with more than two categories"
+        ],
+        "correctIndex": 3
+    },
+    {
+        "question": "4. What is the main difference between Multinomial and Binary Logistic Regression?",
+        "options": [
+            "The number of predictor variables",
+            "The number of outcome categories",
+            "The type of algorithms used for optimization",
+            "The type of data used for the model"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "question": "5. Which of the following is an assumption of Multinomial Logistic Regression?",
+        "options": [
+            "There must be a linear relationship between independent variables and the log odds",
+            "Observations should be independent of each other",
+            "Residuals need to be normally distributed",
+            "The model requires a large number of predictor variables"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "question": "6. What does the 'multinomial' in Multinomial Logistic Regression refer to?",
+        "options": [
+            "Multiple linear relationships",
+            "Multiple predictor variables",
+            "Multiple outcome categories",
+            "Multiple regression analyses performed simultaneously"
+        ],
+        "correctIndex": 2
+    },
+    {
+        "question": "7. Which method is commonly used to estimate the model parameters in Multinomial Logistic Regression?",
+        "options": [
+            "Ordinary Least Squares",
+            "Maximum Likelihood Estimation",
+            "Bayesian Inference",
+            "Ridge Regression"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "question": "8. In the context of Multinomial Logistic Regression, what does 'overfitting' refer to?",
+        "options": [
+            "When the model is too simple to capture the patterns in the data",
+            "When the model captures the noise along with the underlying pattern in the data",
+            "When there are too few predictor variables in the model",
+            "When the model is trained on a very large dataset"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "question": "9. Which of the following metrics can be used to evaluate the performance of a Multinomial Logistic Regression model?",
+        "options": [
+            "R-squared value",
+            "Mean Squared Error",
+            "Accuracy and Confusion Matrix",
+            "P-value of the F-test"
+        ],
+        "correctIndex": 2
+    },
+    {
+        "question": "10. Can Multinomial Logistic Regression be used for binary classification problems?",
+        "options": [
+            "Yes, but it is not recommended",
+            "No, it can only be used for multiclass problems",
+            "Yes, it is the same as binary logistic regression",
+            "No, because the algorithms are fundamentally different"
+        ],
+        "correctIndex": 0
+    }
+]
