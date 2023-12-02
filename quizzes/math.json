@@ -1,262 +1,52 @@
 [
     {
         "question": "1. What function is used in Multinomial Logistic Regression to model the probabilities of each class?",
-        "type": "single_choice",
-        "answers": [
-            {
-                "answer": "Linear Function",
-                "correct": false,
-                "feedback": "Incorrect. A Linear Function is not used to model probabilities in Multinomial Logistic Regression."
-            },
-            {
-                "answer": "Sigmoid Function",
-                "correct": false,
-                "feedback": "Incorrect. The Sigmoid Function is more characteristic of binary logistic regression."
-            },
-            {
-                "answer": "Softmax Function",
-                "correct": true,
-                "feedback": "Correct. The Softmax Function is used in Multinomial Logistic Regression to model the probabilities of each class."
-            },
-            {
-                "answer": "ReLU Function",
-                "correct": false,
-                "feedback": "Incorrect. The ReLU Function is not used in this context."
-            }
-        ]
+        "options": ["Linear Function", "Sigmoid Function", "Softmax Function", "ReLU Function"],
+        "correctIndex": 2
     },
     {
         "question": "2. Which method is typically used to estimate the model parameters in Multinomial Logistic Regression?",
-        "type": "single_choice",
-        "answers": [
-            {
-                "answer": "Ordinary Least Squares",
-                "correct": false,
-                "feedback": "Incorrect. Ordinary Least Squares is not typically used for parameter estimation in Multinomial Logistic Regression."
-            },
-            {
-                "answer": "Maximum Likelihood Estimation",
-                "correct": true,
-                "feedback": "Correct. Maximum Likelihood Estimation is the method typically used to estimate model parameters in Multinomial Logistic Regression."
-            },
-            {
-                "answer": "Gradient Descent",
-                "correct": false,
-                "feedback": "Incorrect. Gradient Descent is a general optimization method, but not the primary method for estimating parameters in this context."
-            },
-            {
-                "answer": "Ridge Regression",
-                "correct": false,
-                "feedback": "Incorrect. Ridge Regression is not typically used for parameter estimation in Multinomial Logistic Regression."
-            }
-        ]
+        "options": ["Ordinary Least Squares", "Maximum Likelihood Estimation", "Gradient Descent", "Ridge Regression"],
+        "correctIndex": 1
     },
     {
         "question": "3. What does the 'logit' function in logistic regression refer to?",
-        "type": "single_choice",
-        "answers": [
-            {
-                "answer": "The natural logarithm of odds",
-                "correct": true,
-                "feedback": "Correct. In logistic regression, the 'logit' function refers to the natural logarithm of odds."
-            },
-            {
-                "answer": "The logarithm of probabilities",
-                "correct": false,
-                "feedback": "Incorrect. The 'logit' function does not directly refer to the logarithm of probabilities."
-            },
-            {
-                "answer": "The exponential function of probabilities",
-                "correct": false,
-                "feedback": "Incorrect. The 'logit' function is not an exponential function of probabilities."
-            },
-            {
-                "answer": "The inverse of the sigmoid function",
-                "correct": false,
-                "feedback": "Incorrect. While related, the 'logit' function specifically refers to the natural logarithm of odds."
-            }
-        ]
+        "options": ["The natural logarithm of odds", "The logarithm of probabilities", "The exponential function of probabilities", "The inverse of the sigmoid function"],
+        "correctIndex": 0
     },
     {
         "question": "4. In the context of Multinomial Logistic Regression, what does 'multicollinearity' refer to?",
-        "type": "single_choice",
-        "answers": [
-            {
-                "answer": "Correlation between multiple dependent variables",
-                "correct": false,
-                "feedback": "Incorrect. 'Multicollinearity' does not refer to the correlation between multiple dependent variables."
-            },
-            {
-                "answer": "Correlation between multiple independent variables",
-                "correct": true,
-                "feedback": "Correct. In the context of Multinomial Logistic Regression, 'multicollinearity' refers to the correlation between multiple independent variables."
-            },
-            {
-                "answer": "Multiple logistic functions used in parallel",
-                "correct": false,
-                "feedback": "Incorrect. 'Multicollinearity' does not refer to the use of multiple logistic functions in parallel."
-            },
-            {
-                "answer": "The use of multiple datasets",
-                "correct": false,
-                "feedback": "Incorrect. 'Multicollinearity' does not concern the use of multiple datasets."
-            }
-        ]
+        "options": ["Correlation between multiple dependent variables", "Correlation between multiple independent variables", "Multiple logistic functions used in parallel", "The use of multiple datasets"],
+        "correctIndex": 1
     },
     {
         "question": "5. What role does the softmax function play in Multinomial Logistic Regression?",
-        "type": "single_choice",
-        "answers": [
-            {
-                "answer": "It normalizes the output to a probability distribution",
-                "correct": true,
-                "feedback": "Correct. In Multinomial Logistic Regression, the softmax function normalizes the output to a probability distribution."
-            },
-            {
-                "answer": "It converts logits to probabilities",
-                "correct": false,
-                "feedback": "Incorrect. While the softmax function is related to probability, it specifically normalizes output to a probability distribution, rather than converting logits directly."
-            },
-            {
-                "answer": "It enhances non-linear relationships in the data",
-                "correct": false,
-                "feedback": "Incorrect. The softmax function's role is not to enhance non-linear relationships but to provide a probabilistic output."
-            },
-            {
-                "answer": "It computes the log likelihood",
-                "correct": false,
-                "feedback": "Incorrect. The softmax function is used for normalization to a probability distribution, not for computing log likelihood."
-            }
-        ]
+        "options": ["It normalizes the output to a probability distribution", "It converts logits to probabilities", "It enhances non-linear relationships in the data", "It computes the log likelihood"],
+        "correctIndex": 0
     },
     {
         "question": "6. Which of the following is a limitation of using 'Maximum Likelihood Estimation' in Multinomial Logistic Regression?",
-        "type": "single_choice",
-        "answers": [
-            {
-                "answer": "Inability to handle binary outcomes",
-                "correct": false,
-                "feedback": "Incorrect. Maximum Likelihood Estimation can handle binary outcomes; this is not a limitation."
-            },
-            {
-                "answer": "Inability to process large datasets",
-                "correct": false,
-                "feedback": "Incorrect. The limitation of Maximum Likelihood Estimation in this context is not related to the size of datasets."
-            },
-            {
-                "answer": "Potential for overfitting in high-dimensional spaces",
-                "correct": true,
-                "feedback": "Correct. One limitation of using Maximum Likelihood Estimation in Multinomial Logistic Regression is the potential for overfitting, especially in high-dimensional spaces."
-            },
-            {
-                "answer": "Inaccuracy in estimating probabilities",
-                "correct": false,
-                "feedback": "Incorrect. Maximum Likelihood Estimation does not inherently lead to inaccuracy in estimating probabilities."
-            }
-        ]
+        "options": ["Inability to handle binary outcomes", "Inability to process large datasets", "Potential for overfitting in high-dimensional spaces", "Inaccuracy in estimating probabilities"],
+        "correctIndex": 2
     },
     {
         "question": "7. In Multinomial Logistic Regression, the 'independence of irrelevant alternatives' (IIA) assumption implies what?",
-        "type": "single_choice",
-        "answers": [
-            {
-                "answer": "The presence of irrelevant features does not affect model performance",
-                "correct": false,
-                "feedback": "Incorrect. The IIA assumption does not suggest that irrelevant features have no effect on model performance."
-            },
-            {
-                "answer": "The probability ratio between any two outcomes is independent of other alternatives",
-                "correct": true,
-                "feedback": "Correct. The IIA assumption in Multinomial Logistic Regression implies that the probability ratio between any two outcomes is independent of other alternatives."
-            },
-            {
-                "answer": "Outcomes are mutually exclusive and exhaustive",
-                "correct": false,
-                "feedback": "Incorrect. While this is a feature of the outcomes, it is not what the IIA assumption specifically implies."
-            },
-            {
-                "answer": "Each predictor variable is independent of others",
-                "correct": false,
-                "feedback": "Incorrect. The IIA assumption does not imply independence among predictor variables."
-            }
-        ]
+        "options": ["The presence of irrelevant features does not affect model performance", "The probability ratio between any two outcomes is independent of other alternatives", "Outcomes are mutually exclusive and exhaustive", "Each predictor variable is independent of others"],
+        "correctIndex": 1
     },
     {
         "question": "8. How does the cross-entropy loss function in Multinomial Logistic Regression differ from the mean squared error in linear regression?",
-        "type": "single_choice",
-        "answers": [
-            {
-                "answer": "Cross-entropy measures the error in terms of probability distributions",
-                "correct": true,
-                "feedback": "Correct. The cross-entropy loss function in Multinomial Logistic Regression measures the error in terms of probability distributions, which is different from the mean squared error in linear regression."
-            },
-            {
-                "answer": "Cross-entropy can only be used for binary classification",
-                "correct": false,
-                "feedback": "Incorrect. Cross-entropy is not limited to binary classification; it can also be used in multinomial contexts."
-            },
-            {
-                "answer": "Mean squared error is more robust to outliers",
-                "correct": false,
-                "feedback": "Incorrect. This statement does not correctly highlight the difference between the two types of error measures."
-            },
-            {
-                "answer": "Mean squared error is used for probability predictions",
-                "correct": false,
-                "feedback": "Incorrect. Mean squared error is generally not used for probability predictions in the context of logistic regression."
-            }
-        ]
+        "options":  ["Cross-entropy measures the error in terms of probability distributions", "Cross-entropy can only be used for binary classification", "Mean squared error is more robust to outliers", "Mean squared error is used for probability predictions"],
+        "correctIndex": 0
     },
     {
         "question": "9. What is the impact of the 'learning rate' in the context of optimizing a Multinomial Logistic Regression model using gradient descent?",
-        "type": "single_choice",
-        "answers": [
-            {
-                "answer": "Determines the speed of convergence to the global minimum",
-                "correct": true,
-                "feedback": "Correct. The learning rate in gradient descent optimization for Multinomial Logistic Regression determines the speed of convergence to the global minimum."
-            },
-            {
-                "answer": "Adjusts the weight of regularization",
-                "correct": false,
-                "feedback": "Incorrect. The learning rate primarily affects convergence speed, not the weight of regularization."
-            },
-            {
-                "answer": "Controls the number of iterations for model training",
-                "correct": false,
-                "feedback": "Incorrect. While the learning rate can indirectly affect the number of iterations, it primarily influences the speed of convergence."
-            },
-            {
-                "answer": "Modifies the bias-variance tradeoff",
-                "correct": false,
-                "feedback": "Incorrect. The learning rate does not directly modify the bias-variance tradeoff."
-            }
-        ]
+        "options": ["Determines the speed of convergence to the global minimum", "Adjusts the weight of regularization", "Controls the number of iterations for model training", "Modifies the bias-variance tradeoff"],
+        "correctIndex": 0
     },
     {
         "question": "10. What does the term 'regularization' in logistic regression aim to address?",
-        "type": "single_choice",
-        "answers": [
-            {
-                "answer": "Underfitting due to insufficient model complexity",
-                "correct": false,
-                "feedback": "Incorrect. Regularization typically addresses issues other than underfitting due to insufficient model complexity."
-            },
-            {
-                "answer": "Overfitting due to too many features",
-                "correct": true,
-                "feedback": "Correct. Regularization in logistic regression aims to address overfitting, which can occur due to having too many features."
-            },
-            {
-                "answer": "Non-linearity in the feature space",
-                "correct": false,
-                "feedback": "Incorrect. Regularization does not directly address non-linearity in the feature space."
-            },
-            {
-                "answer": "Imbalance in the class distribution",
-                "correct": false,
-                "feedback": "Incorrect. Regularization is not specifically aimed at addressing imbalance in class distribution."
-            }
-        ]
+        "options": ["Underfitting due to insufficient model complexity", "Overfitting due to too many features", "Non-linearity in the feature space", "Imbalance in the class distribution"],
+        "correctIndex": 1
     }
 ]
