@@ -1,102 +1,262 @@
 [
     {
         "question": "1. What is Multinomial Logistic Regression primarily used for?",
-        "options": [
-            "Predicting continuous outcomes",
-            "Classifying outcomes into one of two categories",
-            "Estimating the relationships between continuous variables",
-            "Classifying outcomes into one of three or more categories"
-        ],
-        "correctIndex": 1
+        "type": "single_choice",
+        "answers": [
+            {
+                "answer": "Predicting continuous outcomes",
+                "correct": false,
+                "feedback": "Incorrect. Multinomial Logistic Regression is not primarily used for predicting continuous outcomes."
+            },
+            {
+                "answer": "Classifying outcomes into one of three or more categories",
+                "correct": true,
+                "feedback": "Correct. Multinomial Logistic Regression is primarily used for classifying outcomes into one of three or more categories."
+            },
+            {
+                "answer": "Classifying outcomes into one of two categories",
+                "correct": false,
+                "feedback": "Incorrect. This is more characteristic of Binary Logistic Regression."
+            },
+            {
+                "answer": "Estimating the relationships between continuous variables",
+                "correct": false,
+                "feedback": "Incorrect. Multinomial Logistic Regression is used for classification, not for estimating relationships between continuous variables."
+            }
+        ]
     },
     {
         "question": "2. Which function does Multinomial Logistic Regression use to model probabilities?",
-        "options": [
-            "Linear function",
-            "Sigmoid function",
-            "Softmax function",
-            "Tangent function"
-        ],
-        "correctIndex": 2
+        "type": "single_choice",
+        "answers": [
+            {
+                "answer": "Linear function",
+                "correct": false,
+                "feedback": "Incorrect. A linear function is not used in Multinomial Logistic Regression for modeling probabilities."
+            },
+            {
+                "answer": "Sigmoid function",
+                "correct": false,
+                "feedback": "Incorrect. The sigmoid function is typically used in Binary Logistic Regression."
+            },
+            {
+                "answer": "Softmax function",
+                "correct": true,
+                "feedback": "Correct. The Softmax function is used in Multinomial Logistic Regression to model probabilities."
+            },
+            {
+                "answer": "Tangent function",
+                "correct": false,
+                "feedback": "Incorrect. The tangent function is not used in this context."
+            }
+        ]
     },
     {
         "question": "3. In Multinomial Logistic Regression, the outcome variable should be:",
-        "options": [
-            "Continuous",
-            "Ordinal",
-            "Nominal with two categories",
-            "Nominal with more than two categories"
-        ],
-        "correctIndex": 3
+        "type": "single_choice",
+        "answers": [
+            {
+                "answer": "Continuous",
+                "correct": false,
+                "feedback": "Incorrect. The outcome variable in Multinomial Logistic Regression is not continuous."
+            },
+            {
+                "answer": "Ordinal",
+                "correct": false,
+                "feedback": "Incorrect. The outcome variable is not ordinal but nominal in Multinomial Logistic Regression."
+            },
+            {
+                "answer": "Nominal with two categories",
+                "correct": false,
+                "feedback": "Incorrect. This would be more characteristic of Binary Logistic Regression."
+            },
+            {
+                "answer": "Nominal with more than two categories",
+                "correct": true,
+                "feedback": "Correct. Multinomial Logistic Regression is used when the outcome variable is nominal with more than two categories."
+            }
+        ]
     },
     {
         "question": "4. What is the main difference between Multinomial and Binary Logistic Regression?",
-        "options": [
-            "The number of predictor variables",
-            "The number of outcome categories",
-            "The type of algorithms used for optimization",
-            "The type of data used for the model"
-        ],
-        "correctIndex": 1
+        "type": "single_choice",
+        "answers": [
+            {
+                "answer": "The number of predictor variables",
+                "correct": false,
+                "feedback": "Incorrect. The main difference is not in the number of predictor variables."
+            },
+            {
+                "answer": "The number of outcome categories",
+                "correct": true,
+                "feedback": "Correct. The main difference lies in the number of outcome categories."
+            },
+            {
+                "answer": "The type of algorithms used for optimization",
+                "correct": false,
+                "feedback": "Incorrect. The main difference is not the type of algorithms used for optimization."
+            },
+            {
+                "answer": "The type of data used for the model",
+                "correct": false,
+                "feedback": "Incorrect. The type of data used is not the main distinguishing factor."
+            }
+        ]
     },
     {
         "question": "5. Which of the following is an assumption of Multinomial Logistic Regression?",
-        "options": [
-            "There must be a linear relationship between independent variables and the log odds",
-            "Observations should be independent of each other",
-            "Residuals need to be normally distributed",
-            "The model requires a large number of predictor variables"
-        ],
-        "correctIndex": 1
+        "type": "single_choice",
+        "answers": [
+            {
+                "answer": "There must be a linear relationship between independent variables and the log odds",
+                "correct": true,
+                "feedback": "Correct. This is one of the assumptions of Multinomial Logistic Regression."
+            },
+            {
+                "answer": "Observations should be independent of each other",
+                "correct": false,
+                "feedback": "Incorrect. While independence of observations is important, it is not the highlighted assumption here."
+            },
+            {
+                "answer": "Residuals need to be normally distributed",
+                "correct": false,
+                "feedback": "Incorrect. This assumption is not applicable to Multinomial Logistic Regression."
+            },
+            {
+                "answer": "The model requires a large number of predictor variables",
+                "correct": false,
+                "feedback": "Incorrect. The necessity of a large number of predictor variables is not a specific assumption of this model."
+            }
+        ]
     },
     {
         "question": "6. What does the 'multinomial' in Multinomial Logistic Regression refer to?",
-        "options": [
-            "Multiple linear relationships",
-            "Multiple predictor variables",
-            "Multiple outcome categories",
-            "Multiple regression analyses performed simultaneously"
-        ],
-        "correctIndex": 2
+        "type": "single_choice",
+        "answers": [
+            {
+                "answer": "Multiple linear relationships",
+                "correct": false,
+                "feedback": "Incorrect. 'Multinomial' does not refer to multiple linear relationships."
+            },
+            {
+                "answer": "Multiple predictor variables",
+                "correct": false,
+                "feedback": "Incorrect. While multiple predictors can be used, 'multinomial' specifically refers to something else."
+            },
+            {
+                "answer": "Multiple outcome categories",
+                "correct": true,
+                "feedback": "Correct. 'Multinomial' in Multinomial Logistic Regression refers to the model dealing with multiple outcome categories."
+            },
+            {
+                "answer": "Multiple regression analyses performed simultaneously",
+                "correct": false,
+                "feedback": "Incorrect. The term 'multinomial' does not imply multiple regression analyses performed simultaneously."
+            }
+        ]
     },
     {
         "question": "7. Which method is commonly used to estimate the model parameters in Multinomial Logistic Regression?",
-        "options": [
-            "Ordinary Least Squares",
-            "Maximum Likelihood Estimation",
-            "Bayesian Inference",
-            "Ridge Regression"
-        ],
-        "correctIndex": 1
+        "type": "single_choice",
+        "answers": [
+            {
+                "answer": "Ordinary Least Squares",
+                "correct": false,
+                "feedback": "Incorrect. Ordinary Least Squares is not typically used for parameter estimation in Multinomial Logistic Regression."
+            },
+            {
+                "answer": "Maximum Likelihood Estimation",
+                "correct": true,
+                "feedback": "Correct. Maximum Likelihood Estimation is commonly used to estimate the model parameters in Multinomial Logistic Regression."
+            },
+            {
+                "answer": "Bayesian Inference",
+                "correct": false,
+                "feedback": "Incorrect. Bayesian Inference is not the common method for this purpose in Multinomial Logistic Regression."
+            },
+            {
+                "answer": "Ridge Regression",
+                "correct": false,
+                "feedback": "Incorrect. Ridge Regression is not the method typically used for estimating parameters in this context."
+            }
+        ]
     },
     {
         "question": "8. In the context of Multinomial Logistic Regression, what does 'overfitting' refer to?",
-        "options": [
-            "When the model is too simple to capture the patterns in the data",
-            "When the model captures the noise along with the underlying pattern in the data",
-            "When there are too few predictor variables in the model",
-            "When the model is trained on a very large dataset"
-        ],
-        "correctIndex": 1
+        "type": "single_choice",
+        "answers": [
+            {
+                "answer": "When the model is too simple to capture the patterns in the data",
+                "correct": false,
+                "feedback": "Incorrect. Overfitting does not refer to the model being too simple."
+            },
+            {
+                "answer": "When the model captures the noise along with the underlying pattern in the data",
+                "correct": true,
+                "feedback": "Correct. Overfitting occurs when the model captures not just the underlying pattern but also the noise in the data."
+            },
+            {
+                "answer": "When there are too few predictor variables in the model",
+                "correct": false,
+                "feedback": "Incorrect. Overfitting is not about having too few predictor variables."
+            },
+            {
+                "answer": "When the model is trained on a very large dataset",
+                "correct": false,
+                "feedback": "Incorrect. Overfitting is not directly related to the size of the training dataset."
+            }
+        ]
     },
     {
         "question": "9. Which of the following metrics can be used to evaluate the performance of a Multinomial Logistic Regression model?",
-        "options": [
-            "R-squared value",
-            "Mean Squared Error",
-            "Accuracy and Confusion Matrix",
-            "P-value of the F-test"
-        ],
-        "correctIndex": 2
+        "type": "single_choice",
+        "answers": [
+            {
+                "answer": "R-squared value",
+                "correct": false,
+                "feedback": "Incorrect. R-squared value is not typically used to evaluate Multinomial Logistic Regression models."
+            },
+            {
+                "answer": "Mean Squared Error",
+                "correct": false,
+                "feedback": "Incorrect. Mean Squared Error is not a standard metric for evaluating these types of models."
+            },
+            {
+                "answer": "Accuracy and Confusion Matrix",
+                "correct": true,
+                "feedback": "Correct. Accuracy and Confusion Matrix are commonly used metrics for evaluating the performance of Multinomial Logistic Regression models."
+            },
+            {
+                "answer": "P-value of the F-test",
+                "correct": false,
+                "feedback": "Incorrect. The P-value of the F-test is not typically used for this purpose."
+            }
+        ]
     },
     {
         "question": "10. Can Multinomial Logistic Regression be used for binary classification problems?",
-        "options": [
-            "Yes, but it is not recommended",
-            "No, it can only be used for multiclass problems",
-            "Yes, it is the same as binary logistic regression",
-            "No, because the algorithms are fundamentally different"
-        ],
-        "correctIndex": 0
+        "type": "single_choice",
+        "answers": [
+            {
+                "answer": "Yes, but it is not recommended",
+                "correct": true,
+                "feedback": "Correct. Multinomial Logistic Regression can be used for binary classification, but it's generally not recommended as it's designed for multiple categories."
+            },
+            {
+                "answer": "No, it can only be used for multiclass problems",
+                "correct": false,
+                "feedback": "Incorrect. While it is primarily used for multiclass problems, it technically can be applied to binary classification."
+            },
+            {
+                "answer": "Yes, it is the same as binary logistic regression",
+                "correct": false,
+                "feedback": "Incorrect. Multinomial Logistic Regression is different from binary logistic regression, though it can be adapted for binary classification."
+            },
+            {
+                "answer": "No, because the algorithms are fundamentally different",
+                "correct": false,
+                "feedback": "Incorrect. Despite differences, Multinomial Logistic Regression can still be applied to binary classification problems."
+            }
+        ]
     }
 ]
