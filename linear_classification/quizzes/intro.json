@@ -1,7 +1,7 @@
 [
     {
         "question": "1. What is Multinomial Logistic Regression primarily used for?",
-        "type": "single_choice",
+        "type": "multiple_choice",
         "answers": [
             {
                 "answer": "Predicting continuous outcomes",
@@ -27,7 +27,7 @@
     },
     {
         "question": "2. Which function does Multinomial Logistic Regression use to model probabilities?",
-        "type": "single_choice",
+        "type": "multiple_choice",
         "answers": [
             {
                 "answer": "Linear function",
@@ -53,7 +53,7 @@
     },
     {
         "question": "3. In Multinomial Logistic Regression, the outcome variable should be:",
-        "type": "single_choice",
+        "type": "multiple_choice",
         "answers": [
             {
                 "answer": "Continuous",
@@ -79,7 +79,7 @@
     },
     {
         "question": "4. What is the main difference between Multinomial and Binary Logistic Regression?",
-        "type": "single_choice",
+        "type": "multiple_choice",
         "answers": [
             {
                 "answer": "The number of predictor variables",
@@ -105,7 +105,7 @@
     },
     {
         "question": "5. Which of the following is an assumption of Multinomial Logistic Regression?",
-        "type": "single_choice",
+        "type": "multiple_choice",
         "answers": [
             {
                 "answer": "There must be a linear relationship between independent variables and the log odds",
@@ -131,7 +131,7 @@
     },
     {
         "question": "6. What does the 'multinomial' in Multinomial Logistic Regression refer to?",
-        "type": "single_choice",
+        "type": "multiple_choice",
         "answers": [
             {
                 "answer": "Multiple linear relationships",
@@ -157,7 +157,7 @@
     },
     {
         "question": "7. Which method is commonly used to estimate the model parameters in Multinomial Logistic Regression?",
-        "type": "single_choice",
+        "type": "multiple_choice",
         "answers": [
             {
                 "answer": "Ordinary Least Squares",
@@ -183,7 +183,7 @@
     },
     {
         "question": "8. In the context of Multinomial Logistic Regression, what does 'overfitting' refer to?",
-        "type": "single_choice",
+        "type": "multiple_choice",
         "answers": [
             {
                 "answer": "When the model is too simple to capture the patterns in the data",
@@ -209,7 +209,7 @@
     },
     {
         "question": "9. Which of the following metrics can be used to evaluate the performance of a Multinomial Logistic Regression model?",
-        "type": "single_choice",
+        "type": "multiple_choice",
         "answers": [
             {
                 "answer": "R-squared value",
@@ -235,7 +235,7 @@
     },
     {
         "question": "10. Can Multinomial Logistic Regression be used for binary classification problems?",
-        "type": "single_choice",
+        "type": "multiple_choice",
         "answers": [
             {
                 "answer": "Yes, but it is not recommended",
