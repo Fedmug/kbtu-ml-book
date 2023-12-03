@@ -1,0 +1,106 @@
+[
+    {
+        "question": "1. What is the primary purpose of customer segmentation in marketing?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Credit risk assessment",
+                "correct": false,
+                "feedback": "Incorrect."
+            },
+            {
+                "answer": "Targeted advertising",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Predicting student performance",
+                "correct": false,
+                "feedback": "Incorrect."
+            }
+        ]
+    },
+    {
+        "question": "2. Which data is least likely to be used in customer segmentation?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Browsing history",
+                "correct": false,
+                "feedback": "Incorrect."
+            },
+            {
+                "answer": "Income levels",
+                "correct": false,
+                "feedback": "Incorrect."
+            },
+            {
+                "answer": "Favorite color",
+                "correct": true,
+                "feedback": "Correct."
+            }
+        ]
+    },
+    {
+        "question": "3. What is a common method to handle multiple categories in data?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Decision Trees",
+                "correct": false,
+                "feedback": "Incorrect. The outcome variable in Multinomial Logistic Regression is not continuous."
+            },
+            {
+                "answer": "Linear Regression",
+                "correct": false,
+                "feedback": "Incorrect."
+            },
+            {
+                "answer": "Multinomial Logistic Regression",
+                "correct": true,
+                "feedback": "Correct."
+            }
+        ]
+    },
+        "question":, "4. How important is data analysis in modern marketing strategies?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Not important",
+                "correct": false,
+                "feedback": "Incorrect."
+            },
+            {
+                "answer": "Very important",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Somehow important",
+                "correct": false,
+                "feedback": "Incorrect."
+            }
+        ]
+    },
+    {
+        "question": "5. In financial services, what is a common use of Multinomial Logistic Regression?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Credit risk assessment",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Predicting stock prices",
+                "correct": false,
+                "feedback": "Incorrect."
+            },
+            {
+                "answer": "Calculating interest rates",
+                "correct": false,
+                "feedback": "Incorrect."
+            }
+        ]
+    }
+]
