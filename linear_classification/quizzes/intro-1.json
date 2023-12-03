@@ -1,0 +1,28 @@
+[
+    {
+        "question": "1. What is Multinomial Logistic Regression primarily used for?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Predicting continuous outcomes",
+                "correct": false,
+                "feedback": "Incorrect. Multinomial Logistic Regression is not primarily used for predicting continuous outcomes."
+            },
+            {
+                "answer": "Classifying outcomes into one of three or more categories",
+                "correct": true,
+                "feedback": "Correct. Multinomial Logistic Regression is primarily used for classifying outcomes into one of three or more categories."
+            },
+            {
+                "answer": "Classifying outcomes into one of two categories",
+                "correct": false,
+                "feedback": "Incorrect. This is more characteristic of Binary Logistic Regression."
+            },
+            {
+                "answer": "Estimating the relationships between continuous variables",
+                "correct": false,
+                "feedback": "Incorrect. Multinomial Logistic Regression is used for classification, not for estimating relationships between continuous variables."
+            }
+        ]
+    }
+]

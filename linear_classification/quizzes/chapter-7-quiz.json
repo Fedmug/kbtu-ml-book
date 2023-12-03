@@ -1,0 +1,132 @@
+[
+    {
+        "question": "Which of the following best describes overfitting in the context of MLR?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "The model is too simplistic and cannot capture the complexity of the data.",
+                "correct": false,
+                "feedback": "Incorrect. This describes underfitting."
+            },
+            {
+                "answer": "The model is too complex and captures random noise in the data.",
+                "correct": true,
+                "feedback": "Correct. Overfitting occurs when the model captures noise instead of the underlying pattern."
+            },
+            {
+                "answer": "The model’s independent variables are highly correlated with each other.",
+                "correct": false,
+                "feedback": "Incorrect. This is a sign of multicollinearity."
+            },
+            {
+                "answer": "The model shows constant variance of errors across all levels of independent variables.",
+                "correct": false,
+                "feedback": "Incorrect. This is related to homoscedasticity, not overfitting."
+            }
+        ]
+    },
+    {
+        "question": "What is a common sign of multicollinearity in an MLR model?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Large changes in the estimated regression coefficients when a predictor variable is added or removed.",
+                "correct": true,
+                "feedback": "Correct. This is a key sign of multicollinearity."
+            },
+            {
+                "answer": "The residuals of the model are equally spread across all values of independent variables.",
+                "correct": false,
+                "feedback": "Incorrect. This describes a well-behaved residual pattern."
+            },
+            {
+                "answer": "The model performs equally well on both training and test data.",
+                "correct": false,
+                "feedback": "Incorrect. This would typically be a sign of a well-fitted model."
+            },
+            {
+                "answer": "The regression coefficients are all close to zero.",
+                "correct": false,
+                "feedback": "Incorrect. This doesn't specifically indicate multicollinearity."
+            }
+        ]
+    },
+    {
+        "question": "Heteroscedasticity in MLR refers to which of the following?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Constant variance in the residuals across the range of independent variables.",
+                "correct": false,
+                "feedback": "Incorrect. This describes homoscedasticity, not heteroscedasticity."
+            },
+            {
+                "answer": "Variable variance in the residuals across the range of independent variables.",
+                "correct": true,
+                "feedback": "Correct. Heteroscedasticity refers to the non-constant variance in residuals."
+            },
+            {
+                "answer": "A linear relationship between the independent and dependent variables.",
+                "correct": false,
+                "feedback": "Incorrect. This is a basic assumption of linear regression."
+            },
+            {
+                "answer": "High correlation between two or more independent variables.",
+                "correct": false,
+                "feedback": "Incorrect. This refers to multicollinearity."
+            }
+        ]
+    },
+    {
+        "question": "Which technique is NOT typically used to address overfitting in MLR?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Cross-validation",
+                "correct": false,
+                "feedback": "Incorrect. Cross-validation is a common method to combat overfitting."
+            },
+            {
+                "answer": "Adding more predictor variables",
+                "correct": true,
+                "feedback": "Correct. Adding more variables can actually lead to overfitting."
+            },
+            {
+                "answer": "Regularization",
+                "correct": false,
+                "feedback": "Incorrect. Regularization is a technique used to prevent overfitting."
+            },
+            {
+                "answer": "Reducing model complexity",
+                "correct": false,
+                "feedback": "Incorrect. Reducing model complexity is a way to avoid overfitting."
+            }
+        ]
+    },
+    {
+        "question": "What is a best practice for ensuring data quality in MLR?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Ignoring outlier values as they have minimal impact",
+                "correct": false,
+                "feedback": "Incorrect. Outliers can significantly impact an MLR model."
+            },
+            {
+                "answer": "Ensuring that the independent variables are not correlated",
+                "correct": false,
+                "feedback": "Incorrect. While important, this is more related to avoiding multicollinearity."
+            },
+            {
+                "answer": "Performing thorough data cleaning and preprocessing",
+                "correct": true,
+                "feedback": "Correct. Data quality is crucial for an effective MLR model."
+            },
+            {
+                "answer": "Using as many predictor variables as possible to capture more variability",
+                "correct": false,
+                "feedback": "Incorrect. Using too many variables can lead to overfitting."
+            }
+        ]
+    }
+]

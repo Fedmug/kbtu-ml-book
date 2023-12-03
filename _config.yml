@@ -24,14 +24,16 @@ parse:
     - substitution
     - tasklist
 
-exclude_patterns: ["*/tasks.ipynb", "plotly_html.ipynb"]
+exclude_patterns: ["*/tasks.ipynb", "plotly_html.ipynb", "ISLP_datasets/*.ipynb",
+                   "ensembling/bias_variance_handbook.ipynb", "notMNIST_small/*",
+                   "mlp/MLP_notebook.ipynb", "mlp/keras.ipynb", "cnn/fashion-mnist-kaggle.ipynb"]
 
 execute:
   timeout: 100
   allow_errors: true
   exclude_patterns:
     - 'python/basics/*'
-    - 'linear_classificaton/multi_log_reg.ipynb'
+    # - 'linear_classificaton/multi_log_reg.ipynb'
 
 sphinx:
   extra_extensions:
