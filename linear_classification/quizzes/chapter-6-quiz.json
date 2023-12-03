@@ -62,7 +62,7 @@
             }
         ]
     },
-        "question":, "4. How important is data analysis in modern marketing strategies?",
+    { "question": "4. How important is data analysis in modern marketing strategies?",
         "type": "multiple_choice",
         "answers": [
             {
