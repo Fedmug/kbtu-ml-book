@@ -17,6 +17,11 @@
                 "answer": "Predicting student performance",
                 "correct": false,
                 "feedback": "Incorrect."
+            },
+            {
+                "answer": "To calculate risk",
+                "correct": false,
+                "feedback": "Incorrect."
             }
         ]
     },
@@ -38,6 +43,11 @@
                 "answer": "Favorite color",
                 "correct": true,
                 "feedback": "Correct."
+            },
+            {
+                "answer": "Outcome levels",
+                "correct": true,
+                "feedback": "Incorrect."
             }
         ]
     },
@@ -59,6 +69,11 @@
                 "answer": "Multinomial Logistic Regression",
                 "correct": true,
                 "feedback": "Correct."
+            },
+             {
+                "answer": "Classification",
+                "correct": false,
+                "feedback": "Incorrect."
             }
         ]
     },
@@ -77,6 +92,11 @@
             },
             {
                 "answer": "Somehow important",
+                "correct": false,
+                "feedback": "Incorrect."
+            },
+            {
+                "answer": "It depends",
                 "correct": false,
                 "feedback": "Incorrect."
             }
@@ -98,6 +118,11 @@
             },
             {
                 "answer": "Calculating interest rates",
+                "correct": false,
+                "feedback": "Incorrect."
+            },
+            {
+                "answer": "Marketing",
                 "correct": false,
                 "feedback": "Incorrect."
             }
