@@ -62,15 +62,15 @@
         "answers": [
             {
                 "type": "value",
-                "value": 4,
+                "value": 2,
                 "correct": true,
                 "feedback": "Correct."
             },
             {
                 "type": "range",
                 "range": [
-                    4.0,
-                    4.00
+                    2.0,
+                    2.00
                 ],
                 "correct": true,
                 "feedback": "True to 2 decimal places, but you know $\\pi$ is not really 22/7, right?"
