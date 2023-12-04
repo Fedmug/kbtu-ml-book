@@ -1,22 +1,18 @@
 [
     {
-        "front": "termin 1",
-        "back": "answer to termin 2"
+        "front": "Conjugate distributions",
+        "back": "If the prior and the posterior belong to the same parametric family (set of probability distributions that share a common mathematical form or structure characterized by a set of parameters), then the prior is considered conjugate for the likelihood."
     },
     {
-        "front": "termin 2",
-        "back": "answer to termin 2"
+        "front": "Bayes inference",
+        "back": "The prior distribution of a parameter and the likelihood of the observed data are combined to obtain the posterior distribution of the parameter."
     },
     {
-        "front": "termin 3",
-        "back": "answer to termin 3"
+        "front": "Parametric family of distributions",
+        "back": "A parameter of a distribution is a number or a vector of numbers describing some characteristic of that distribution."
     },
     {
-        "front": "termin 4",
-        "back": "answer to termin 4"
-    },
-    {
-        "front": "termin 5",
-        "back": "answer to termin 5"
+        "front": "PDF",
+        "back": "The probability density function (pdf) is a function that completely characterizes the distribution of a continuous random variable."
     }
 ]
