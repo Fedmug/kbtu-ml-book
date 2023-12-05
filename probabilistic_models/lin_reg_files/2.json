@@ -1,0 +1,12 @@
+[
+         {
+        "question": "What do the probabilistic linear regression formula's parameters stand for?",
+        "type": "multiple_choice",
+        "answers": [
+            {"code": "b0 - slope, b1 - intercept", "correct": false},
+            {"code": "b0 - intercept, b1 - slope", "correct": true},
+            {"code": "e - slope, x - intercept", "correct": false},
+            {"code": "x - slope, e - intercept", "correct": false}
+        ]
+    }  
+       ]

@@ -1,0 +1,11 @@
+[
+    {
+        "question": "How will the linear regression model change if errors are set to zero?",
+        "type": "multiple_choice",
+        "answers": [
+            {"code": "The estimate for β will remain unchanged", "correct": false},
+            {"code": "The estimate for σ^2 will become zero", "correct": false},
+            {"code": "The equation becomes deterministic(y=xβ)", "correct": true},
+            {"code": "No correct answer", "correct": false}
+        ]
+    }]
