@@ -1,0 +1,18 @@
+[
+    {
+        "front": "Conjugate distributions",
+        "back": "If the prior and the posterior belong to the same parametric family, then the prior is considered conjugate for the likelihood."
+    },
+    {
+        "front": "Bayes inference",
+        "back": "Bayesian inference is a way of making statistical inferences in which the statistician assigns subjective probabilities to the distributions that could generate the data."
+    },
+    {
+        "front": "Parametric family of distributions",
+        "back": "Set of probability distributions that share a common mathematical form or structure characterized by a set of parameters"
+    },
+    {
+        "front": "PDF",
+        "back": "The probability density function (pdf) is a function that completely characterizes the distribution of a continuous random variable."
+    }
+]

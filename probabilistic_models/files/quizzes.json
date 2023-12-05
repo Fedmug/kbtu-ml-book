@@ -1,0 +1,143 @@
+[
+    {
+        "question": "quiestion with many choice",
+        "type": "many_choice",
+        "answers": [
+            {
+                "answer": "Answer 1",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Answer 2",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Answer 3",
+                "correct": false,
+                "feedback": "False. Look at the statement about prior belief"
+            },
+            {
+                "answer": "Answer 4",
+                "correct": true,
+                "feedback": "Correct. This value is true"
+            },
+            {
+                "answer": "Answer 5",
+                "correct": false,
+                "feedback": "Think again. Look at the quation 1"
+            }
+        ]
+    },
+    {
+        "question": "One answer question",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Answer 1",
+                "correct": false,
+                "feedback": "False. sample text can be here"
+            },
+            {
+                "answer": "Answer 2",
+                "correct": false,
+                "feedback": "False. sample text can be here"
+            },
+            {
+                "answer": "Answer 3",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Answer 4",
+                "correct": false,
+                "feedback": "False. sample text can be here"
+            }
+        ]
+    },
+    {
+        "question": "Enter the answer 1 + 1 ?",
+        "type": "numeric",
+        "answers": [
+            {
+                "type": "value",
+                "value": 2,
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "type": "range",
+                "range": [
+                    2.0,
+                    2.00
+                ],
+                "correct": true,
+                "feedback": "True to 2 decimal places, but you know $\\pi$ is not really 22/7, right?"
+            },
+            {
+                "type": "range",
+                "range": [
+                    -100000000,
+                    0
+                ],
+                "correct": false,
+                "feedback": "Calculate correctly. Try again."
+            },
+            {
+                "type": "default",
+                "feedback": "Calculate correctly. Try again."
+            }
+        ]
+    },
+    {
+        "question": "Question with a code sample",
+        "code": "a=\"1\"\nb=\"2\"\nprint(a+b)",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "1",
+                "correct": false,
+                "feedback": "No. When strings are operated on by +, they are concatenated."
+            },
+            {
+                "answer": "2",
+                "correct": false,
+                "feedback": "No. When strings are operated on by +, they are concatenated."
+            },
+            {
+                "answer": "3",
+                "correct": false,
+                "feedback": "No. When strings are operated on by +, they are concatenated."
+            },
+            {
+                "answer": "12",
+                "correct": true,
+                "feedback": "Yes. The + operator will concatenate the strings \"1\" and \"2\"."
+            },
+            {
+                "answer": "error",
+                "correct": false,
+                "feedback": "No. The + operator for strings performs string concatenation."
+            }
+        ]
+    },
+    {
+        "question": "Question with the code answers",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "code": "mylist+=3",
+                "correct": false
+            },
+            {
+                "code": "mylist+=[3]",
+                "correct": true
+            },
+            {
+                "code": "mylist+={3}",
+                "correct": false
+            }
+        ]
+    }
+]
