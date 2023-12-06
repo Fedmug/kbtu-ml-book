@@ -21,8 +21,8 @@ parts:
            - file: lin_reg/numeric_opt
            - file: lin_reg/general
 
-        - file: linear_classification/classification
-          sections:
+       - file: linear_classification/classification
+         sections:
             - file: linear_classification/log_reg
             - file: linear_classification/multi_log_reg
             - file: linear_classification/num_opt_log_reg
