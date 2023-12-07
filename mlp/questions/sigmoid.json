@@ -1,0 +1,28 @@
+[
+    {
+        "question": "What is related to sigmoid function?",
+        "type": "many_choice",
+        "answers": [
+            {
+                "answer": "Gives a clear prediction(classification) with 1 & 0",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Not a zero-centric function",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Normally used as the output of a binary probabilistic function.",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Non-normalized function",
+                "correct": false,
+                "feedback": "Incorrect, this is one of the best normalized function."
+            }
+        ]
+    }
+]

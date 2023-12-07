@@ -1,0 +1,28 @@
+[
+    {
+        "question": "What is advantages of tanh function?",
+        "type": "many_choice",
+        "answers": [
+            {
+                "answer": "Like a sigmoid, it has a limited range of values",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Computationally inexpensive function",
+                "correct": false,
+                "feedback": "No, because it is exponential in nature."
+            },
+            {
+                "answer": "Unlike the sigmoid, the range of values is symmetrical",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Zero-centric function",
+                "correct": true,
+                "feedback": "Correct."
+            }
+        ]
+    }
+]

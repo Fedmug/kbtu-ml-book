@@ -1,0 +1,23 @@
+[
+    {
+        "question": "What are some limitations of using a linear activation function?",
+        "type": "many_choice",
+        "answers": [
+            {
+                "answer": "It’s not possible to use backpropagation",
+                "correct": true,
+                "feedback": "Correct. The derivative of the function is a constant and has no relation to the input x"
+            },
+            {
+                "answer": "No matter the number of layers in the neural network, the last layer will still be a linear function of the first layer",
+                "correct": true,
+                "feedback": "Correct. So, essentially, a linear activation function turns the neural network into just one layer."
+            },
+            {
+                "answer": "The function doesn't do anything to the weighted sum of the input, it simply spits out the value it was given.",
+                "correct": true,
+                "feedback": "Correct."
+            }
+        ]
+    }
+]
