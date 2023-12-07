@@ -27,6 +27,15 @@ parts:
           - file: linear_classification/multi_log_reg
           - file: linear_classification/num_opt_log_reg
           - file: linear_classification/svm
+      
+      - file: numeric_optimization_for_log_reg/numeric
+        sections:
+          - file: numeric_optimization_for_log_reg/Introduction
+          - file: numeric_optimization_for_log_reg/Cost_Function
+          - file: numeric_optimization_for_log_reg/Gradient_Descent
+          - file: numeric_optimization_for_log_reg/Newton's_Method
+          - file: numeric_optimization_for_log_reg/Evaluation_and_Comparison_of_Logistic_Regression_Models
+          - file: numeric_optimization_for_log_reg/Quizz
 
       - file: eval_metrics/metrics
         sections:
