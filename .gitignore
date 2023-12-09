@@ -2,3 +2,5 @@
 _build/*
 *tasks.ipynb
 .DS_STORE
+venv/
+.idea
