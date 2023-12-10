@@ -1,0 +1,185 @@
+[
+    {
+        "question": "Assume that we have the following covariance matrix $$XX^T$$, please calculate the first principal component.\n\n$$XX^T=\\begin{bmatrix}1 & 0 & 0, & 0 & 2 & 0, & 0 & 0 & 3\\end{bmatrix}$$",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "$[1,0,0]^T$",
+                "correct": false,
+                "feedback": "Incorrect.. Try again."
+            },
+            {
+                "answer": "$[0, 1, 0]^T$",
+                "correct": false,
+                "feedback": "Incorrect.. Try again."
+            },
+            {
+                "answer": "$[0,0,1]^T$",
+                "correct": true,
+                "feedback": "Correct. As we can see XX is already a diagonal matrix, and its largest eigenvalue is 3. The corresponding eigenvector is $e_{3}=[0,0,1]^{T}$."
+            },
+            {
+                "answer": "$[1,2,3]^T$",
+                "correct": false,
+                "feedback": "Incorrect.. Try again."
+            }
+        ]
+    },
+    {
+        "question": "If the element $c_{1, 2}$ of the covariance matrix C is 114, what is the value of $c_{2, 1}$?",
+        "type": "numeric",
+        "answers": [
+            {
+                "type": "value",
+                "value": 114,
+                "correct": true,
+                "feedback": "It is correct!"
+            },
+            {
+                "type": "value",
+                "value": -114,
+                "correct": false,
+                "feedback": "Incorrect.. Try again."
+            },
+            {
+                "type": "default",
+                "feedback": "can't predict, covariance?"
+            }
+        ]
+    },
+    {
+        "question": "Which of the following is a reasonable way to select the number of principal components \\k\n (Recall that n is the dimensionality of the input data and m is the number of input examples.)",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Choose \\k to be the smallest value so that at least 99% of the variance is retained.",
+                "correct": true,
+                "feedback": "Correct, this maintatins the structure of the data while maximally reducing its dimension."
+            },
+            {
+                "answer": "Choose \\k to be 99% of m (i.e, \\k = 0.99 * \\m, rounded to the nearest integer).",
+                "correct": false,
+                "feedback": "Incorrect.. Try again."
+            },
+            {
+                "answer": "Choose \\k to be the largest value so that at least 99% of the variance is retained",
+                "correct": false,
+                "feedback": "Incorrect.. Try again."
+            },
+            {
+                "answer": "Use the elbow method",
+                "correct": false,
+                "feedback": "Incorrect.. Try again."
+            }
+        ]
+    },
+    {
+        "question": "What are the benefits of Principal Component Analysis (PCA)?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Reduces high-dimensional data complexity",
+                "correct": true,
+                "feedback": "Correct. PCA effectively reduces high-dimensional data complexity."
+            },
+            {
+                "answer": "Enables clear visualization by transforming data",
+                "correct": true,
+                "feedback": "Correct. PCA enables clear visualization by transforming high-dimensional data."
+            },
+            {
+                "answer": "Enhances the signal-to-noise ratio for improved clarity",
+                "correct": true,
+                "feedback": "Correct. PCA emphasizes principal components with high variance for noise reduction."
+            },
+            {
+                "answer": "Identifies outliers in the dataset",
+                "correct": false,
+                "feedback": "Incorrect. PCA is not primarily used for identifying outliers."
+            },
+            {
+                "answer": "Generates 3D visualizations",
+                "correct": false,
+                "feedback": "Incorrect. While PCA can be used for visualization, its primary purpose is dimensionality reduction, not specifically 3D visualizations."
+            }
+        ]
+    },
+    {
+        "question": "Which of the following statements are true? Check all that apply",
+        "type": "multiple_choice",
+        "answers": [
+            {
+              "answer": "PCa is susceptible to local optima; trying multiple random initializations may help.",
+              "correct": false,
+                "feedback": "Incorrect.. Try again."
+            },
+            {
+              "answer": "Given only z(i) and Ureduce, there is no way to reconstruct any reasonable approximation to x(i).",
+              "correct": false,
+              "feedback": "Incorrect.. Try again."
+            },
+            {
+              "answer": "Even if all the input features are on very similar scales, we should still perform mean normalization (so that each feature has zero mean) before running PCA.",
+              "correct": true,
+              "feedback": "If you do not perform mean normalization, PCA will rotate the data in a possibly undesired way."
+            },
+            {
+              "answer": "Given input data $x \\in \\mathbb{R}^n$, it makes sense to run PCA only with values of k that satisfy $k \\leq n$. (In particular, running it with k = n is possible but not helpful, and k > n does not make sense.)",
+              "correct": true,
+              "feedback": "It is correct!"
+            }
+        ]
+    },
+    {
+        "question": "Suppose someone tells you that they ran PCA in such a way that 95% of the variance was retained. What is an equivalent statement to this?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+              "answer": "$\frac{\frac{1}{m} \\sum_{i=1}^m\\left\\|x^{(i)}-x_{\text {approx }}^{(i)}\right\\|^2}{\frac{1}{m} \\sum_{i=1}^m\\left\\|x^{(i)}\right\\|^2} \\leq 0.95$ ",
+              "correct": false,
+                "feedback": "Incorrect.. Try again."
+            },
+            {
+              "answer": "$\frac{\frac{1}{m} \\sum_{i=1}^m\\left\\|x^{(i)}-x_{\text {approx }}^{(i)}\right\\|^2}{\frac{1}{m} \\sum_{i=1}^m\\left\\|x^{(i)}\right\\|^2} \\leq 0.05$",
+              "correct": true,
+              "feedback": "It is correct!"
+            },
+            {
+              "answer": "$\frac{\frac{1}{m} \\sum_{i=1}^m\\left\\|x^{(i)}-x_{\text {approx }}^{(i)}\right\\|^2}{\frac{1}{m} \\sum_{i=1}^m\\left\\|x^{(i)}\right\\|^2} \\geq 0.95$ ",
+              "correct": false,
+                "feedback": "Incorrect.. Try again."
+            },
+            {
+              "answer": "$\frac{\frac{1}{m} \\sum_{i=1}^m\\left\\|x^{(i)}-x_{\text {approx }}^{(i)}\right\\|^2}{\frac{1}{m} \\sum_{i=1}^m\\left\\|x^{(i)}\right\\|^2} \\geq 0.05$",
+              "correct": false,
+             "feedback": "Incorrect.. Try again."
+            }
+        ]
+    },
+     {
+        "question": "Which of the following are recommended applications of PCA? Select all that apply.",
+        "type": "multiple_choice",
+        "answers": [
+            {
+              "answer": "Data visualization To take 2D data, and find a different way of plotting it in 2D (using $\\mathrm{k}=2$ ).",
+              "correct": false,
+             "feedback": "Incorrect.. Try again."
+            },
+            {
+              "answer": "As a replacement for (or alternative to) linear regression: For most learning applications, PCA and linear regression give substantially similar results.",
+              "correct": false,
+            "feedback": "Incorrect.. Try again."
+            },
+            {
+              "answer": "Data compression: Reduce the dimension of your input data $x^{(i)}$, which will be used in a supervised learning algorithm",
+              "correct": true,
+                "feedback": "If your learning algorithm is too slow because the input dimension is too high, then using PCA to speed it up is a reasonable choice."
+            },
+            {
+              "answer": "Data compression: Reduce the dimension of your data, so that it takes up less memory / disk space.",
+              "correct": true,
+             "feedback": "If memory or disk space is limited, PCA allows you to save space in exchange for losing a little of the data's information. This can be a reasonable tradeoff."
+            }
+        ]
+    }
+]
