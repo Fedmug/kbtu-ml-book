@@ -1,0 +1,28 @@
+[
+    {
+        "question": "Which statement correctly describes the characteristics of the loss function used in multi-class classification?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "The loss function is minimized when the classifier perfectly separates the classes without any regularization.",
+                "correct": false,
+                "feedback": "Incorrect. The loss function for multi-class classification, especially with logistic regression, is maximized, not minimized; and regularization is typically used to prevent overfitting."
+            },
+            {
+                "answer": "The loss function is the sum of the logarithms of the probabilities of the correct classes, multiplied by their respective weights.",
+                "correct": false,
+                "feedback": "Incorrect. While the loss function does involve logarithms of probabilities, they are not directly multiplied by the weights; instead, the log probabilities are used to calculate the loss."
+            },
+            {
+                "answer": "The regularized version of the loss function includes a penalty for large weights and is maximized to train the model parameters.",
+                "correct": true,
+                "feedback": "Correct. Regularization is applied in the loss function to penalize large weight values, helping to prevent overfitting and ensuring a more generalized model."
+            },
+            {
+                "answer": "The loss function decreases as the differences between the predicted and true classes increase for each observation.",
+                "correct": false,
+                "feedback": "Incorrect. The loss function actually increases as the difference between the predicted probabilities and the actual class labels increases, reflecting poorer model performance."
+            }
+        ]
+    }
+]
