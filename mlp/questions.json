@@ -1,0 +1,155 @@
+[
+        {
+            "question": "The number of parameters in a Dense layer is calculated as (input_neurons + 1) * output_neurons. What is the total number of parameters for a Dense layer with 50 input neurons and 30 output neurons?",
+            "type": "numeric",
+            "answers": [
+                {
+                    "type": "value",
+                    "value": 1530,
+                    "correct": true,
+                    "feedback": "Correct! This is the correct calculation for the number of parameters in a Dense layer."
+                },
+                {
+                    "type": "default",
+                    "feedback": "Incorrect. Try again. Hint: Consider the formula (input_neurons + 1) * output_neurons."
+                }
+            ]
+        },
+        {
+            "question": "The Sigmoid function output is in the range (0, 1). Given that the ReLU output is -2.5, what would be the approximate output of the Sigmoid function?",
+            "type": "numeric",
+            "answers": [
+                {
+                    "type": "range",
+                    "range": [0, 0.1],
+                    "correct": true,
+                    "feedback": "Correct! The Sigmoid function maps values to the range (0, 1), and the ReLU output being -2.5 would result in a Sigmoid output close to 0."
+                },
+                {
+                    "type": "default",
+                    "feedback": "Incorrect. Try again. Hint: Consider the Sigmoid function output range."
+                }
+            ]
+        },
+        {
+            "question": "Which of the following are true regarding the Dense layer in a Multilayer Perceptron (MLP)?",
+            "type": "multiple_choice",
+            "answers": [
+                {
+                    "answer": "It performs matrix multiplication on input data.",
+                    "correct": true,
+                    "feedback": "Correct! Dense layer performs matrix multiplication."
+                },
+                {
+                    "answer": "It applies regularization to the network.",
+                    "correct": false,
+                    "feedback": "Incorrect. The Dense layer does not apply regularization."
+                },
+                {
+                    "answer": "It connects every neuron from one layer to every neuron in the next layer.",
+                    "correct": true,
+                    "feedback": "Correct! Dense layer connects every neuron."
+                },
+                {
+                    "answer": "It introduces non-linearity into the network.",
+                    "correct": false,
+                    "feedback": "Incorrect. The Dense layer does not introduce non-linearity."
+                },
+                {
+                    "answer": "It normalizes input features.",
+                    "correct": false,
+                    "feedback": "Incorrect. The Dense layer does not normalize input features."
+                },
+                {
+                    "answer": "It prevents overfitting by dropping out random neurons during training.",
+                    "correct": true,
+                    "feedback": "Correct! Dense layer prevents overfitting through dropout."
+                }
+            ],
+            "feedback": {
+                "correct": "Correct! The Dense layer performs matrix multiplication (a), connects every neuron (c), and prevents overfitting through dropout (f).",
+                "incorrect": "Incorrect. Review the feedback for each option. The correct options are a, c, and f. Hint: Think about matrix multiplication, connectivity, and dropout."
+            }
+        },
+        {
+            "question": "Consider the role of the Activation layer in a neural network. Identify the true statements.",
+            "type": "multiple_choice",
+            "answers": [
+                {
+                    "answer": "It introduces non-linearity into the network.",
+                    "correct": true,
+                    "feedback": "Correct! The Activation layer introduces non-linearity."
+                },
+                {
+                    "answer": "It is responsible for adjusting the learning rate dynamically.",
+                    "correct": false,
+                    "feedback": "Incorrect. Adjusting the learning rate is typically done by optimization algorithms."
+                },
+                {
+                    "answer": "It helps in normalizing input features.",
+                    "correct": false,
+                    "feedback": "Incorrect. Normalizing input features is not the responsibility of the Activation layer."
+                },
+                {
+                    "answer": "It transforms the raw input data to image format.",
+                    "correct": false,
+                    "feedback": "Incorrect. Transforming raw input data to an image format is not the role of the Activation layer."
+                },
+                {
+                    "answer": "It is unnecessary in shallow networks.",
+                    "correct": false,
+                    "feedback": "Incorrect. The Activation layer is still important in shallow networks."
+                },
+                {
+                    "answer": "It is crucial for capturing complex relationships in data.",
+                    "correct": true,
+                    "feedback": "Correct! The Activation layer is crucial for capturing complex relationships."
+                }
+            ],
+            "feedback": {
+                "correct": "Correct! The Activation layer introduces non-linearity (a), is crucial for complex relationships (f), and doesn't normalize input (c).",
+                "incorrect": "Incorrect. Review the feedback for each option. The correct options are a, f, and c. Hint: Think about non-linearity, role in complexity, and normalization."
+            }
+        },
+        {
+            "question": "Identify the true statements about the Sigmoid activation function:",
+            "type": "multiple_choice",
+            "answers": [
+                {
+                    "answer": "It is often used in the output layer for binary classification.",
+                    "correct": true,
+                    "feedback": "Correct! Sigmoid is commonly used for binary classification."
+                },
+                {
+                    "answer": "It maps input values to the range (0, 1).",
+                    "correct": true,
+                    "feedback": "Correct! Sigmoid maps input to the range (0, 1)."
+                },
+                {
+                    "answer": "It helps mitigate the vanishing gradient problem.",
+                    "correct": true,
+                    "feedback": "Correct! Sigmoid helps mitigate vanishing gradients."
+                },
+                {
+                    "answer": "It can cause the exploding gradient problem.",
+                    "correct": false,
+                    "feedback": "Incorrect. Sigmoid does not cause the exploding gradient problem."
+                },
+                {
+                    "answer": "It is a piecewise linear function.",
+                    "correct": false,
+                    "feedback": "Incorrect. Sigmoid is not a piecewise linear function."
+                },
+                {
+                    "answer": "It is suitable for all types of neural networks.",
+                    "correct": false,
+                    "feedback": "Incorrect. Sigmoid may not be suitable for all types of neural networks."
+                }
+            ],
+            "feedback": {
+                "correct": "Correct! The Sigmoid function is used in binary classification (a), maps to (0, 1) (b), and mitigates vanishing gradients (c).",
+                "incorrect": "Incorrect. Review the feedback for each option. The correct options are a, b, and c. Hint: Consider the use, mapping, and gradient properties of Sigmoid."
+            }
+        }
+        
+]
