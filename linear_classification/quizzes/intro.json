@@ -1,0 +1,29 @@
+[
+    {
+        "question": "Which function does Multinomial Logistic Regression use to model probabilities?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Linear function",
+                "correct": false,
+                "feedback": "Incorrect. A linear function is not used in Multinomial Logistic Regression for modeling probabilities."
+            },
+            {
+                "answer": "Sigmoid function",
+                "correct": false,
+                "feedback": "Incorrect. The sigmoid function is typically used in Binary Logistic Regression."
+            },
+            {
+                "answer": "Softmax function",
+                "correct": true,
+                "feedback": "Correct. The Softmax function is used in Multinomial Logistic Regression to model probabilities."
+            },
+            {
+                "answer": "Tangent function",
+                "correct": false,
+                "feedback": "Incorrect. The tangent function is not used in this context."
+            }
+        ]
+    }
+]
+

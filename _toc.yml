@@ -3,165 +3,172 @@ root: README
 parts:
   - caption: Introduction to ML
     chapters:
-      - file: intro/intro_to_ML
-        sections:
-          - file: intro/definition
-          - file: intro/applications
-          - file: intro/data
-          - file: intro/ml_types
-          - file: intro/knn
-          - file: intro/model_selection
+       - file: intro/intro_to_ML
+         sections:
+           - file: intro/definition
+           - file: intro/applications
+           - file: intro/data
+           - file: intro/ml_types
+           - file: intro/knn
+           - file: intro/model_selection
 
-      - file: lin_reg/linear_regression
-        sections:
-          - file: lin_reg/simple
-          - file: lin_reg/polynomial
-          - file: lin_reg/multiple
-          - file: lin_reg/regularization
-          - file: lin_reg/numeric_opt
-          - file: lin_reg/general
+       - file: lin_reg/linear_regression
+         sections:
+           - file: lin_reg/simple
+           - file: lin_reg/polynomial
+           - file: lin_reg/multiple
+           - file: lin_reg/regularization
+           - file: lin_reg/numeric_opt
+           - file: lin_reg/general
 
-      - file: linear_classification/classification
-        sections:
-          - file: linear_classification/log_reg
-          - file: linear_classification/multi_log_reg
-          - file: linear_classification/num_opt_log_reg
-          - file: linear_classification/svm
+       - file: linear_classification/classification
+         sections:
+            - file: linear_classification/log_reg
+            - file: linear_classification/multi_log_reg
+            - file: linear_classification/num_opt_log_reg
+            - file: linear_classification/svm
 
-      - file: eval_metrics/metrics
-        sections:
-          - file: eval_metrics/classification
-          - file: eval_metrics/ROC-AUC
-          - file: eval_metrics/regression
-          - file: eval_metrics/cross_val
-          - file: eval_metrics/hyperparameters
+       - file: eval_metrics/metrics
+         sections:
+           - file: eval_metrics/classification
+           - file: eval_metrics/ROC-AUC
+           - file: eval_metrics/regression
+           - file: eval_metrics/cross_val
+           - file: eval_metrics/hyperparameters
 
-      - file: probabilistic_models/probabilistic
-        sections:
-          - file: probabilistic_models/bayesian_inference
-          - file: probabilistic_models/lin_reg_prob
-          - file: probabilistic_models/log_reg_prob
-          - file: probabilistic_models/LDA
-          - file: probabilistic_models/QDA
-          - file: probabilistic_models/naive_bayes
+       - file: probabilistic_models/probabilistic
+         sections:
+           - file: probabilistic_models/bayesian_inference
+           - file: probabilistic_models/lin_reg_prob
+           - file: probabilistic_models/log_reg_prob
+           - file: probabilistic_models/LDA
+           - file: probabilistic_models/QDA
+           - file: probabilistic_models/naive_bayes
 
-      - file: decision_trees/decision_tree
-        sections:
-          - file: decision_trees/classification
-          - file: decision_trees/regression
-          - file: decision_trees/impurity
-          - file: decision_trees/pruning
+       - file: decision_trees/decision_tree
+         sections:
+           - file: decision_trees/classification
+           - file: decision_trees/regression
+           - file: decision_trees/impurity
+           - file: decision_trees/pruning
 
-      - file: ensembling/ensemble
-        sections:
-          - file: ensembling/bias_variance
-          - file: ensembling/voting_stacking_blending
-          - file: ensembling/bagging
-          - file: ensembling/random_forest
+       - file: ensembling/ensemble
+         sections:
+           - file: ensembling/bias_variance
+           - file: ensembling/voting_stacking_blending
+           - file: ensembling/bagging
+           - file: ensembling/random_forest
 
-      - file: gradient_boosting/gradient_boosting
-        sections:
-          - file: gradient_boosting/boosting
-          - file: gradient_boosting/generic_gb
-          - file: gradient_boosting/adaboost
-          - file: gradient_boosting/xgboost
-          - file: gradient_boosting/catboost
+       - file: gradient_boosting/gradient_boosting
+         sections:
+           - file: gradient_boosting/boosting
+           - file: gradient_boosting/generic_gb
+           - file: gradient_boosting/adaboost
+           - file: gradient_boosting/xgboost
+           - file: gradient_boosting/catboost
 
-      - file: unsupervised_learning/unsupervised
-        sections:
-          - file: unsupervised_learning/pca
-          - file: unsupervised_learning/clustering_metrics
-          - file: unsupervised_learning/k_means
-          - file: unsupervised_learning/hierarchic_clustering
+       - file: unsupervised_learning/unsupervised
+         sections:
+           - file: unsupervised_learning/pca
+           - file: unsupervised_learning/clustering_metrics
+           - file: unsupervised_learning/k_means
+           - file: unsupervised_learning/hierarchic_clustering
 
   - caption: Deep Learning
     chapters:
-      - file: mlp/mlp
-        sections:
-          - file: mlp/layers
-          - file: mlp/forward_backward_pass
-          - file: mlp/activations
-          - file: mlp/backprop
-          - file: mlp/weight_init
-          - file: mlp/regularization
-          - file: mlp/optimization_dl
+       - file: mlp/mlp
+         sections:
+           - file: mlp/layers
+           - file: mlp/forward_backward_pass
+           - file: mlp/activations
+           - file: mlp/backprop
+           - file: mlp/weight_init
+           - file: mlp/regularization
+           - file: mlp/optimization_dl
 
-      - file: cnn/cnn
-        sections:
-          - file: cnn/convolutions_2d
-          - file: cnn/convolutions_3d
-          - file: cnn/pooling
-          - file: cnn/back_prop
-          - file: cnn/augmentation
-          - file: cnn/architectures
+       - file: cnn/cnn
+         sections:
+           - file: cnn/convolutions_2d
+           - file: cnn/convolutions_3d
+           - file: cnn/pooling
+           - file: cnn/back_prop
+           - file: cnn/augmentation
+           - file: cnn/architectures
 
-      - file: rnn/sequential
-        sections:
-          - file: rnn/vanilla_rnn
-          - file: rnn/lstm
-          - file: rnn/gru
-          - file: rnn/attention
-          - file: rnn/transformers
+       - file: rnn/sequential
+         sections:
+           - file: rnn/vanilla_rnn
+           - file: rnn/lstm
+           - file: rnn/gru
+           - file: rnn/attention
+           - file: rnn/transformers
 
-      - file: gm/generative
-        sections:
-          - file: gm/autoencoders
-          - file: gm/vae
-          - file: gm/gan
+       - file: gm/generative
+         sections:
+           - file: gm/autoencoders
+           - file: gm/vae
+           - file: gm/gan
 
-      - file: rl/RL
-        sections:
-          - file: rl/basics
-          - file: rl/multiarmed_bandits
-          - file: rl/mdp
-          - file: rl/q_learning
+       - file: rl/RL
+         sections:
+           - file: rl/basics
+           - file: rl/multiarmed_bandits
+           - file: rl/mdp
+           - file: rl/q_learning
 
   - caption: Python for ML
     chapters:
-      - file: python/python_basics
-        sections:
-          - file: python/basics/basic_types
-          - file: python/basics/variables
-          - file: python/basics/control_flow
-          - file: python/basics/functions_strings
-          - file: python/basics/classes
-          - file: python/basics/ISLP_lab
-      - file: python/numpy
-      - file: python/pandas
+       - file: python/python_basics
+         sections:
+           - file: python/basics/basic_types
+           - file: python/basics/variables
+           - file: python/basics/control_flow
+           - file: python/basics/functions_strings
+           - file: python/basics/classes
+           - file: python/basics/ISLP_lab
+       - file: python/numpy
+       - file: python/pandas
+       - file: python/visual
 
   - caption: Math for ML
     chapters:
-      - file: math/linear_algebra
-        sections:
-          - file: math/lin_alg/vectors
-          - file: math/lin_alg/matrices
-          - file: math/lin_alg/linear_systems
-          - file: math/lin_alg/inverse
-          - file: math/lin_alg/rank
-          - file: math/lin_alg/orthogonality
-          - file: math/lin_alg/projections
-          - file: math/lin_alg/determinant
-          - file: math/lin_alg/eig
-          - file: math/lin_alg/diagonalize
-          - file: math/lin_alg/matrix_norms
-          - file: math/lin_alg/SVD
-      - file: math/calculus
-        sections:
-          - file: math/calculus/1-d
-          - file: math/calculus/multivariate
-          - file: math/calculus/matrix_diff
-      - file: math/probability
-      - file: math/statistics
-        sections:
-          - file: math/stats/MLE
-      - file: math/optimization
-        sections:
-          - file: math/optimization/GD.ipynb
-          - file: math/optimization/SGD.ipynb
-          - file: math/optimization/newton.ipynb
+       - file: math/linear_algebra
+         sections:
+           - file: math/lin_alg/vectors
+           - file: math/lin_alg/matrices
+           - file: math/lin_alg/linear_systems
+           - file: math/lin_alg/inverse
+           - file: math/lin_alg/rank
+           - file: math/lin_alg/orthogonality
+           - file: math/lin_alg/projections
+           - file: math/lin_alg/determinant
+           - file: math/lin_alg/eig
+           - file: math/lin_alg/diagonalize
+           - file: math/lin_alg/matrix_norms
+           - file: math/lin_alg/SVD
+       - file: math/calculus
+         sections:
+           - file: math/calculus/1-d
+           - file: math/calculus/multivariate
+           - file: math/calculus/matrix_diff
+       - file: math/probability
+         sections:
+           - file: math/proba/entropy
+       - file: math/statistics
+         sections:
+           - file: math/stats/MLE
+       - file: math/optimization
+         sections:
+           - file: math/optimization/GD.ipynb
+           - file: math/optimization/SGD.ipynb
+           - file: math/optimization/newton.ipynb
+
+  - caption: HW
+    chapters:
+       - file: not_mnist_student
 
   - caption: References
     chapters:
-      - file: notation
-      - file: bibliography
-      - file: resources
+       - file: notation
+       - file: bibliography
+       - file: resources

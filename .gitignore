@@ -2,4 +2,5 @@
 _build/*
 *tasks.ipynb
 .DS_STORE
-dummy_change
+notMNIST_small
+notMNIST_small/*
