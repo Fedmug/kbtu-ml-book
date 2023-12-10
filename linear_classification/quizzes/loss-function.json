@@ -24,5 +24,31 @@
                 "feedback": "Incorrect. The loss function actually increases as the difference between the predicted probabilities and the actual class labels increases, reflecting poorer model performance."
             }
         ]
+    },
+    {
+        "question": "In the context of multi-class logistic regression, what is the effect of increasing the regularization parameter C on the loss function?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "It increases the weight of the regularization term, leading to less complex models.",
+                "correct": false,
+                "feedback": "Incorrect. Increasing C actually decreases the effect of the regularization term, potentially leading to more complex models."
+            },
+            {
+                "answer": "It decreases the weight of the regularization term, potentially leading to more complex models.",
+                "correct": true,
+                "feedback": "Correct. A larger value of C means that the regularization term has less influence, which can allow the model to become more complex."
+            },
+            {
+                "answer": "It causes the loss function to focus more on correctly classifying data points.",
+                "correct": false,
+                "feedback": "Incorrect. While a lower weight on the regularization term does allow the model to fit the data more closely, C itself does not directly affect the classification focus."
+            },
+            {
+                "answer": "It has no effect on the loss function as C is only used in binary logistic regression.",
+                "correct": false,
+                "feedback": "Incorrect. The regularization parameter C is also used in multi-class logistic regression and influences the complexity of the model."
+            }
+        ]
     }
 ]
