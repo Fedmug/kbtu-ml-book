@@ -27,7 +27,7 @@ parse:
 exclude_patterns: ["*/tasks.ipynb", "plotly_html.ipynb", "ISLP_datasets/*.ipynb"]
 
 execute:
-  timeout: 100
+  timeout: 2000
   allow_errors: true
   exclude_patterns:
     - 'python/basics/*'
