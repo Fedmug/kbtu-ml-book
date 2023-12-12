@@ -79,8 +79,8 @@ parts:
       - file: mlp/mlp
         sections:
           - file: mlp/layers
-          - file: mlp/forward_backward_pass
           - file: mlp/activations
+          - file: mlp/forward_backward_pass
           - file: mlp/backprop
           - file: mlp/weight_init
           - file: mlp/regularization
@@ -128,6 +128,7 @@ parts:
           - file: python/basics/ISLP_lab
       - file: python/numpy
       - file: python/pandas
+      - file: python/visual
 
   - caption: Math for ML
     chapters:
@@ -151,6 +152,8 @@ parts:
           - file: math/calculus/multivariate
           - file: math/calculus/matrix_diff
       - file: math/probability
+        sections:
+          - file: math/proba/entropy
       - file: math/statistics
         sections:
           - file: math/stats/MLE
@@ -159,6 +162,10 @@ parts:
           - file: math/optimization/GD.ipynb
           - file: math/optimization/SGD.ipynb
           - file: math/optimization/newton.ipynb
+
+  - caption: HW
+    chapters:
+      - file: not_mnist_student
 
   - caption: References
     chapters:
