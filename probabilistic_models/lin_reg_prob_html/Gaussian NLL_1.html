@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>&lt;no title&gt; &#8212; Probabilistic models for linear regression</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Gaussian NLL_1';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Probabilistic models for linear regression - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Probabilistic models for linear regression - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to Chapter about Probabilistic models for linear regression
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Probabilistic models for linear regression</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FGaussian NLL_1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Gaussian NLL_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">mpld3</span>
+<span class="n">mpld3</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">4.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.5</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span>
+
+<span class="c1">#   let&#39;s add noise to the data</span>
+<span class="c1">#   np.random.normal(mean, standardDeviation, num)</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="n">noise</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#   Here we can see the placement of the data present in our synthetic datatset</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Data&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+
+<style>
+
+</style>
+
+<div id="fig_el167002076556035504126699219"></div>
+<script>
+function mpld3_load_lib(url, callback){
+  var s = document.createElement('script');
+  s.src = url;
+  s.async = true;
+  s.onreadystatechange = s.onload = callback;
+  s.onerror = function(){console.warn("failed to load library " + url);};
+  document.getElementsByTagName("head")[0].appendChild(s);
+}
+
+if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
+   // already loaded: just create the figure
+   !function(mpld3){
+       
+       mpld3.draw_figure("fig_el167002076556035504126699219", {"width": 640.0, "height": 480.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [-0.5, 10.5], "ylim": [-37.30362445616341, 382.60072623851374], "xdomain": [-0.5, 10.5], "ydomain": [-37.30362445616341, 382.60072623851374], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 8, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 10, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el167002074959882240", "lines": [], "paths": [{"data": "data03", "xindex": 0, "yindex": 1, "coordinates": "axes", "pathcodes": ["M", "L", "S", "L", "S", "L", "S", "L", "S", "Z"], "id": "el167002074959889120", "dasharray": "none", "alpha": 0.8, "facecolor": "rgba(255, 255, 255, 0.8)", "edgecolor": "rgba(204, 204, 204, 0.8)", "edgewidth": 1.0, "zorder": 1000000.0}], "markers": [], "texts": [{"text": "Data", "position": [0.10360663082437274, 0.9364177489177489], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el167002074959765104"}], "collections": [{"offsets": "data01", "xindex": 0, "yindex": 1, "paths": [[[[0.0, -0.5], [0.13260155, -0.5], [0.25978993539242673, -0.44731684579412084], [0.3535533905932738, -0.3535533905932738], [0.44731684579412084, -0.25978993539242673], [0.5, -0.13260155], [0.5, 0.0], [0.5, 0.13260155], [0.44731684579412084, 0.25978993539242673], [0.3535533905932738, 0.3535533905932738], [0.25978993539242673, 0.44731684579412084], [0.13260155, 0.5], [0.0, 0.5], [-0.13260155, 0.5], [-0.25978993539242673, 0.44731684579412084], [-0.3535533905932738, 0.3535533905932738], [-0.44731684579412084, 0.25978993539242673], [-0.5, 0.13260155], [-0.5, 0.0], [-0.5, -0.13260155], [-0.44731684579412084, -0.25978993539242673], [-0.3535533905932738, -0.3535533905932738], [-0.25978993539242673, -0.44731684579412084], [-0.13260155, -0.5], [0.0, -0.5]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]], "pathtransforms": [[8.333333333333334, 0.0, 0.0, 8.333333333333334, 0.0, 0.0]], "alphas": [0.8], "edgecolors": ["rgba(255, 255, 255, 0.8)"], "facecolors": ["rgba(0, 0, 255, 0.8)"], "edgewidths": [0.48], "offsetcoordinates": "data", "pathcoordinates": "display", "zorder": 1, "id": "el167002074959768368"}, {"offsets": "data02", "xindex": 0, "yindex": 1, "paths": [[[[0.0, -0.5], [0.13260155, -0.5], [0.25978993539242673, -0.44731684579412084], [0.3535533905932738, -0.3535533905932738], [0.44731684579412084, -0.25978993539242673], [0.5, -0.13260155], [0.5, 0.0], [0.5, 0.13260155], [0.44731684579412084, 0.25978993539242673], [0.3535533905932738, 0.3535533905932738], [0.25978993539242673, 0.44731684579412084], [0.13260155, 0.5], [0.0, 0.5], [-0.13260155, 0.5], [-0.25978993539242673, 0.44731684579412084], [-0.3535533905932738, 0.3535533905932738], [-0.44731684579412084, 0.25978993539242673], [-0.5, 0.13260155], [-0.5, 0.0], [-0.5, -0.13260155], [-0.44731684579412084, -0.25978993539242673], [-0.3535533905932738, -0.3535533905932738], [-0.25978993539242673, -0.44731684579412084], [-0.13260155, -0.5], [0.0, -0.5]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]], "pathtransforms": [[8.333333333333334, 0.0, 0.0, 8.333333333333334, 0.0, 0.0]], "alphas": [0.8], "edgecolors": ["rgba(255, 255, 255, 0.8)"], "facecolors": ["rgba(0, 0, 255, 0.8)"], "edgewidths": [0.48], "offsetcoordinates": "axes", "pathcoordinates": "display", "zorder": 1000001.0, "id": "el167002074959764480"}], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[0.0, -1.3781879804155115], [0.10101010101010101, 19.14189589137338], [0.20202020202020202, -0.9966278800161783], [0.30303030303030304, -7.785611473399808], [0.40404040404040403, 2.9951718910374625], [0.5050505050505051, -0.5053307483920533], [0.6060606060606061, -10.271594640606802], [0.7070707070707071, -2.8887257935734425], [0.8080808080808081, 17.04839893139297], [0.9090909090909091, -18.217063060950814], [1.0101010101010102, 7.056618731911911], [1.1111111111111112, -0.7199754361934598], [1.2121212121212122, 15.787997378464482], [1.3131313131313131, -0.5410113214563665], [1.4141414141414141, 7.162217640460463], [1.5151515151515151, 9.309817292144764], [1.6161616161616161, 9.347275789570922], [1.7171717171717171, 2.331388781602554], [1.8181818181818181, -6.400348851604791], [1.9191919191919191, 3.039756562723394], [2.0202020202020203, -14.66893522502785], [2.121212121212121, 24.57522561217434], [2.2222222222222223, 7.653752384779804], [2.323232323232323, 23.623473832537858], [2.4242424242424243, 32.54391312049711], [2.525252525252525, 32.318779813330266], [2.6262626262626263, 25.357011841430786], [2.727272727272727, 27.217068914419514], [2.8282828282828283, 31.09420858946212], [2.929292929292929, 20.235250556684125], [3.0303030303030303, 21.801437296324977], [3.131313131313131, 30.812012003693134], [3.2323232323232323, 29.44616292028631], [3.3333333333333335, 39.7549664939165], [3.4343434343434343, 29.898431867101085], [3.5353535353535355, 15.08844785924122], [3.6363636363636362, 46.38023282559794], [3.7373737373737375, 49.27222030543496], [3.8383838383838382, 33.52305198783767], [3.9393939393939394, 41.35976764337991], [4.040404040404041, 53.99953340185259], [4.141414141414141, 47.44509465510715], [4.242424242424242, 53.72258690347955], [4.343434343434343, 67.62343893388639], [4.444444444444445, 63.784831625171], [4.545454545454545, 64.82792437547492], [4.646464646464646, 71.72597743971943], [4.747474747474747, 68.0067447290535], [4.848484848484849, 66.55706088082525], [4.94949494949495, 79.86475542586128], [5.05050505050505, 69.56844267000609], [5.151515151515151, 88.08631664412854], [5.252525252525253, 100.23486640844565], [5.353535353535354, 115.77570895467716], [5.454545454545454, 100.25070563288406], [5.555555555555555, 86.13148047101602], [5.656565656565657, 105.55238573688383], [5.757575757575758, 113.53892206386942], [5.858585858585858, 134.1209770333713], [5.959595959595959, 107.15295281993563], [6.0606060606060606, 137.18030613094416], [6.161616161616162, 130.3877265731893], [6.262626262626262, 130.8335212082564], [6.363636363636363, 139.53187414111116], [6.4646464646464645, 150.71875703113224], [6.565656565656566, 163.280004184816], [6.666666666666667, 162.26083599105598], [6.767676767676767, 149.9660174169581], [6.8686868686868685, 165.90356378671328], [6.96969696969697, 167.76379174336404], [7.070707070707071, 171.0802794235425], [7.171717171717171, 184.6273301915641], [7.2727272727272725, 187.07152931015005], [7.373737373737374, 194.62721193337242], [7.474747474747475, 190.8326501934509], [7.575757575757575, 205.17715819311522], [7.6767676767676765, 195.43708614422502], [7.777777777777778, 222.45020573931436], [7.878787878787879, 210.7060929369713], [7.979797979797979, 223.1461816121926], [8.080808080808081, 229.39970707247554], [8.181818181818182, 237.67308670512966], [8.282828282828282, 242.90725613789127], [8.383838383838384, 256.49852662713806], [8.484848484848484, 257.19153323776726], [8.585858585858587, 267.7642769617935], [8.686868686868687, 268.96366839309087], [8.787878787878787, 296.9765322925839], [8.88888888888889, 288.37072963887505], [8.98989898989899, 306.0927065962513], [9.09090909090909, 290.0689139807035], [9.191919191919192, 298.4669531011058], [9.292929292929292, 302.38614541109035], [9.393939393939394, 315.7907686604041], [9.494949494949495, 322.79735982842567], [9.595959595959595, 317.0054554540029], [9.696969696969697, 344.4935212373587], [9.797979797979798, 350.49036627670034], [9.8989898989899, 363.51416484330116], [10.0, 358.7335292040014]], "data02": [[0.05320340501792115, 0.9462820165945165]], "data03": [[0.01960125448028671, 0.9132696007696007], [0.17674731182795703, 0.9132696007696007], [0.18234767025089607, 0.9132696007696007], [0.18234767025089607, 0.9207852332852334], [0.18234767025089607, 0.9736952861952862], [0.18234767025089607, 0.9812109187109187], [0.17674731182795703, 0.9812109187109187], [0.01960125448028671, 0.9812109187109187], [0.014000896057347667, 0.9812109187109187], [0.014000896057347667, 0.9736952861952862], [0.014000896057347667, 0.9207852332852334], [0.014000896057347667, 0.9132696007696007], [0.01960125448028671, 0.9132696007696007]]}, "id": "el167002076556035504", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}]});
+   }(mpld3);
+}else if(typeof define === "function" && define.amd){
+   // require.js is available: use it to load d3/mpld3
+   require.config({paths: {d3: "https://d3js.org/d3.v5"}});
+   require(["d3"], function(d3){
+      window.d3 = d3;
+      mpld3_load_lib("https://mpld3.github.io/js/mpld3.v0.5.9.js", function(){
+         
+         mpld3.draw_figure("fig_el167002076556035504126699219", {"width": 640.0, "height": 480.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [-0.5, 10.5], "ylim": [-37.30362445616341, 382.60072623851374], "xdomain": [-0.5, 10.5], "ydomain": [-37.30362445616341, 382.60072623851374], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 8, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 10, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el167002074959882240", "lines": [], "paths": [{"data": "data03", "xindex": 0, "yindex": 1, "coordinates": "axes", "pathcodes": ["M", "L", "S", "L", "S", "L", "S", "L", "S", "Z"], "id": "el167002074959889120", "dasharray": "none", "alpha": 0.8, "facecolor": "rgba(255, 255, 255, 0.8)", "edgecolor": "rgba(204, 204, 204, 0.8)", "edgewidth": 1.0, "zorder": 1000000.0}], "markers": [], "texts": [{"text": "Data", "position": [0.10360663082437274, 0.9364177489177489], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el167002074959765104"}], "collections": [{"offsets": "data01", "xindex": 0, "yindex": 1, "paths": [[[[0.0, -0.5], [0.13260155, -0.5], [0.25978993539242673, -0.44731684579412084], [0.3535533905932738, -0.3535533905932738], [0.44731684579412084, -0.25978993539242673], [0.5, -0.13260155], [0.5, 0.0], [0.5, 0.13260155], [0.44731684579412084, 0.25978993539242673], [0.3535533905932738, 0.3535533905932738], [0.25978993539242673, 0.44731684579412084], [0.13260155, 0.5], [0.0, 0.5], [-0.13260155, 0.5], [-0.25978993539242673, 0.44731684579412084], [-0.3535533905932738, 0.3535533905932738], [-0.44731684579412084, 0.25978993539242673], [-0.5, 0.13260155], [-0.5, 0.0], [-0.5, -0.13260155], [-0.44731684579412084, -0.25978993539242673], [-0.3535533905932738, -0.3535533905932738], [-0.25978993539242673, -0.44731684579412084], [-0.13260155, -0.5], [0.0, -0.5]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]], "pathtransforms": [[8.333333333333334, 0.0, 0.0, 8.333333333333334, 0.0, 0.0]], "alphas": [0.8], "edgecolors": ["rgba(255, 255, 255, 0.8)"], "facecolors": ["rgba(0, 0, 255, 0.8)"], "edgewidths": [0.48], "offsetcoordinates": "data", "pathcoordinates": "display", "zorder": 1, "id": "el167002074959768368"}, {"offsets": "data02", "xindex": 0, "yindex": 1, "paths": [[[[0.0, -0.5], [0.13260155, -0.5], [0.25978993539242673, -0.44731684579412084], [0.3535533905932738, -0.3535533905932738], [0.44731684579412084, -0.25978993539242673], [0.5, -0.13260155], [0.5, 0.0], [0.5, 0.13260155], [0.44731684579412084, 0.25978993539242673], [0.3535533905932738, 0.3535533905932738], [0.25978993539242673, 0.44731684579412084], [0.13260155, 0.5], [0.0, 0.5], [-0.13260155, 0.5], [-0.25978993539242673, 0.44731684579412084], [-0.3535533905932738, 0.3535533905932738], [-0.44731684579412084, 0.25978993539242673], [-0.5, 0.13260155], [-0.5, 0.0], [-0.5, -0.13260155], [-0.44731684579412084, -0.25978993539242673], [-0.3535533905932738, -0.3535533905932738], [-0.25978993539242673, -0.44731684579412084], [-0.13260155, -0.5], [0.0, -0.5]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]], "pathtransforms": [[8.333333333333334, 0.0, 0.0, 8.333333333333334, 0.0, 0.0]], "alphas": [0.8], "edgecolors": ["rgba(255, 255, 255, 0.8)"], "facecolors": ["rgba(0, 0, 255, 0.8)"], "edgewidths": [0.48], "offsetcoordinates": "axes", "pathcoordinates": "display", "zorder": 1000001.0, "id": "el167002074959764480"}], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[0.0, -1.3781879804155115], [0.10101010101010101, 19.14189589137338], [0.20202020202020202, -0.9966278800161783], [0.30303030303030304, -7.785611473399808], [0.40404040404040403, 2.9951718910374625], [0.5050505050505051, -0.5053307483920533], [0.6060606060606061, -10.271594640606802], [0.7070707070707071, -2.8887257935734425], [0.8080808080808081, 17.04839893139297], [0.9090909090909091, -18.217063060950814], [1.0101010101010102, 7.056618731911911], [1.1111111111111112, -0.7199754361934598], [1.2121212121212122, 15.787997378464482], [1.3131313131313131, -0.5410113214563665], [1.4141414141414141, 7.162217640460463], [1.5151515151515151, 9.309817292144764], [1.6161616161616161, 9.347275789570922], [1.7171717171717171, 2.331388781602554], [1.8181818181818181, -6.400348851604791], [1.9191919191919191, 3.039756562723394], [2.0202020202020203, -14.66893522502785], [2.121212121212121, 24.57522561217434], [2.2222222222222223, 7.653752384779804], [2.323232323232323, 23.623473832537858], [2.4242424242424243, 32.54391312049711], [2.525252525252525, 32.318779813330266], [2.6262626262626263, 25.357011841430786], [2.727272727272727, 27.217068914419514], [2.8282828282828283, 31.09420858946212], [2.929292929292929, 20.235250556684125], [3.0303030303030303, 21.801437296324977], [3.131313131313131, 30.812012003693134], [3.2323232323232323, 29.44616292028631], [3.3333333333333335, 39.7549664939165], [3.4343434343434343, 29.898431867101085], [3.5353535353535355, 15.08844785924122], [3.6363636363636362, 46.38023282559794], [3.7373737373737375, 49.27222030543496], [3.8383838383838382, 33.52305198783767], [3.9393939393939394, 41.35976764337991], [4.040404040404041, 53.99953340185259], [4.141414141414141, 47.44509465510715], [4.242424242424242, 53.72258690347955], [4.343434343434343, 67.62343893388639], [4.444444444444445, 63.784831625171], [4.545454545454545, 64.82792437547492], [4.646464646464646, 71.72597743971943], [4.747474747474747, 68.0067447290535], [4.848484848484849, 66.55706088082525], [4.94949494949495, 79.86475542586128], [5.05050505050505, 69.56844267000609], [5.151515151515151, 88.08631664412854], [5.252525252525253, 100.23486640844565], [5.353535353535354, 115.77570895467716], [5.454545454545454, 100.25070563288406], [5.555555555555555, 86.13148047101602], [5.656565656565657, 105.55238573688383], [5.757575757575758, 113.53892206386942], [5.858585858585858, 134.1209770333713], [5.959595959595959, 107.15295281993563], [6.0606060606060606, 137.18030613094416], [6.161616161616162, 130.3877265731893], [6.262626262626262, 130.8335212082564], [6.363636363636363, 139.53187414111116], [6.4646464646464645, 150.71875703113224], [6.565656565656566, 163.280004184816], [6.666666666666667, 162.26083599105598], [6.767676767676767, 149.9660174169581], [6.8686868686868685, 165.90356378671328], [6.96969696969697, 167.76379174336404], [7.070707070707071, 171.0802794235425], [7.171717171717171, 184.6273301915641], [7.2727272727272725, 187.07152931015005], [7.373737373737374, 194.62721193337242], [7.474747474747475, 190.8326501934509], [7.575757575757575, 205.17715819311522], [7.6767676767676765, 195.43708614422502], [7.777777777777778, 222.45020573931436], [7.878787878787879, 210.7060929369713], [7.979797979797979, 223.1461816121926], [8.080808080808081, 229.39970707247554], [8.181818181818182, 237.67308670512966], [8.282828282828282, 242.90725613789127], [8.383838383838384, 256.49852662713806], [8.484848484848484, 257.19153323776726], [8.585858585858587, 267.7642769617935], [8.686868686868687, 268.96366839309087], [8.787878787878787, 296.9765322925839], [8.88888888888889, 288.37072963887505], [8.98989898989899, 306.0927065962513], [9.09090909090909, 290.0689139807035], [9.191919191919192, 298.4669531011058], [9.292929292929292, 302.38614541109035], [9.393939393939394, 315.7907686604041], [9.494949494949495, 322.79735982842567], [9.595959595959595, 317.0054554540029], [9.696969696969697, 344.4935212373587], [9.797979797979798, 350.49036627670034], [9.8989898989899, 363.51416484330116], [10.0, 358.7335292040014]], "data02": [[0.05320340501792115, 0.9462820165945165]], "data03": [[0.01960125448028671, 0.9132696007696007], [0.17674731182795703, 0.9132696007696007], [0.18234767025089607, 0.9132696007696007], [0.18234767025089607, 0.9207852332852334], [0.18234767025089607, 0.9736952861952862], [0.18234767025089607, 0.9812109187109187], [0.17674731182795703, 0.9812109187109187], [0.01960125448028671, 0.9812109187109187], [0.014000896057347667, 0.9812109187109187], [0.014000896057347667, 0.9736952861952862], [0.014000896057347667, 0.9207852332852334], [0.014000896057347667, 0.9132696007696007], [0.01960125448028671, 0.9132696007696007]]}, "id": "el167002076556035504", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}]});
+      });
+    });
+}else{
+    // require.js not available: dynamically load d3 & mpld3
+    mpld3_load_lib("https://d3js.org/d3.v5.js", function(){
+         mpld3_load_lib("https://mpld3.github.io/js/mpld3.v0.5.9.js", function(){
+                 
+                 mpld3.draw_figure("fig_el167002076556035504126699219", {"width": 640.0, "height": 480.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [-0.5, 10.5], "ylim": [-37.30362445616341, 382.60072623851374], "xdomain": [-0.5, 10.5], "ydomain": [-37.30362445616341, 382.60072623851374], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 8, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 10, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el167002074959882240", "lines": [], "paths": [{"data": "data03", "xindex": 0, "yindex": 1, "coordinates": "axes", "pathcodes": ["M", "L", "S", "L", "S", "L", "S", "L", "S", "Z"], "id": "el167002074959889120", "dasharray": "none", "alpha": 0.8, "facecolor": "rgba(255, 255, 255, 0.8)", "edgecolor": "rgba(204, 204, 204, 0.8)", "edgewidth": 1.0, "zorder": 1000000.0}], "markers": [], "texts": [{"text": "Data", "position": [0.10360663082437274, 0.9364177489177489], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el167002074959765104"}], "collections": [{"offsets": "data01", "xindex": 0, "yindex": 1, "paths": [[[[0.0, -0.5], [0.13260155, -0.5], [0.25978993539242673, -0.44731684579412084], [0.3535533905932738, -0.3535533905932738], [0.44731684579412084, -0.25978993539242673], [0.5, -0.13260155], [0.5, 0.0], [0.5, 0.13260155], [0.44731684579412084, 0.25978993539242673], [0.3535533905932738, 0.3535533905932738], [0.25978993539242673, 0.44731684579412084], [0.13260155, 0.5], [0.0, 0.5], [-0.13260155, 0.5], [-0.25978993539242673, 0.44731684579412084], [-0.3535533905932738, 0.3535533905932738], [-0.44731684579412084, 0.25978993539242673], [-0.5, 0.13260155], [-0.5, 0.0], [-0.5, -0.13260155], [-0.44731684579412084, -0.25978993539242673], [-0.3535533905932738, -0.3535533905932738], [-0.25978993539242673, -0.44731684579412084], [-0.13260155, -0.5], [0.0, -0.5]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]], "pathtransforms": [[8.333333333333334, 0.0, 0.0, 8.333333333333334, 0.0, 0.0]], "alphas": [0.8], "edgecolors": ["rgba(255, 255, 255, 0.8)"], "facecolors": ["rgba(0, 0, 255, 0.8)"], "edgewidths": [0.48], "offsetcoordinates": "data", "pathcoordinates": "display", "zorder": 1, "id": "el167002074959768368"}, {"offsets": "data02", "xindex": 0, "yindex": 1, "paths": [[[[0.0, -0.5], [0.13260155, -0.5], [0.25978993539242673, -0.44731684579412084], [0.3535533905932738, -0.3535533905932738], [0.44731684579412084, -0.25978993539242673], [0.5, -0.13260155], [0.5, 0.0], [0.5, 0.13260155], [0.44731684579412084, 0.25978993539242673], [0.3535533905932738, 0.3535533905932738], [0.25978993539242673, 0.44731684579412084], [0.13260155, 0.5], [0.0, 0.5], [-0.13260155, 0.5], [-0.25978993539242673, 0.44731684579412084], [-0.3535533905932738, 0.3535533905932738], [-0.44731684579412084, 0.25978993539242673], [-0.5, 0.13260155], [-0.5, 0.0], [-0.5, -0.13260155], [-0.44731684579412084, -0.25978993539242673], [-0.3535533905932738, -0.3535533905932738], [-0.25978993539242673, -0.44731684579412084], [-0.13260155, -0.5], [0.0, -0.5]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]], "pathtransforms": [[8.333333333333334, 0.0, 0.0, 8.333333333333334, 0.0, 0.0]], "alphas": [0.8], "edgecolors": ["rgba(255, 255, 255, 0.8)"], "facecolors": ["rgba(0, 0, 255, 0.8)"], "edgewidths": [0.48], "offsetcoordinates": "axes", "pathcoordinates": "display", "zorder": 1000001.0, "id": "el167002074959764480"}], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[0.0, -1.3781879804155115], [0.10101010101010101, 19.14189589137338], [0.20202020202020202, -0.9966278800161783], [0.30303030303030304, -7.785611473399808], [0.40404040404040403, 2.9951718910374625], [0.5050505050505051, -0.5053307483920533], [0.6060606060606061, -10.271594640606802], [0.7070707070707071, -2.8887257935734425], [0.8080808080808081, 17.04839893139297], [0.9090909090909091, -18.217063060950814], [1.0101010101010102, 7.056618731911911], [1.1111111111111112, -0.7199754361934598], [1.2121212121212122, 15.787997378464482], [1.3131313131313131, -0.5410113214563665], [1.4141414141414141, 7.162217640460463], [1.5151515151515151, 9.309817292144764], [1.6161616161616161, 9.347275789570922], [1.7171717171717171, 2.331388781602554], [1.8181818181818181, -6.400348851604791], [1.9191919191919191, 3.039756562723394], [2.0202020202020203, -14.66893522502785], [2.121212121212121, 24.57522561217434], [2.2222222222222223, 7.653752384779804], [2.323232323232323, 23.623473832537858], [2.4242424242424243, 32.54391312049711], [2.525252525252525, 32.318779813330266], [2.6262626262626263, 25.357011841430786], [2.727272727272727, 27.217068914419514], [2.8282828282828283, 31.09420858946212], [2.929292929292929, 20.235250556684125], [3.0303030303030303, 21.801437296324977], [3.131313131313131, 30.812012003693134], [3.2323232323232323, 29.44616292028631], [3.3333333333333335, 39.7549664939165], [3.4343434343434343, 29.898431867101085], [3.5353535353535355, 15.08844785924122], [3.6363636363636362, 46.38023282559794], [3.7373737373737375, 49.27222030543496], [3.8383838383838382, 33.52305198783767], [3.9393939393939394, 41.35976764337991], [4.040404040404041, 53.99953340185259], [4.141414141414141, 47.44509465510715], [4.242424242424242, 53.72258690347955], [4.343434343434343, 67.62343893388639], [4.444444444444445, 63.784831625171], [4.545454545454545, 64.82792437547492], [4.646464646464646, 71.72597743971943], [4.747474747474747, 68.0067447290535], [4.848484848484849, 66.55706088082525], [4.94949494949495, 79.86475542586128], [5.05050505050505, 69.56844267000609], [5.151515151515151, 88.08631664412854], [5.252525252525253, 100.23486640844565], [5.353535353535354, 115.77570895467716], [5.454545454545454, 100.25070563288406], [5.555555555555555, 86.13148047101602], [5.656565656565657, 105.55238573688383], [5.757575757575758, 113.53892206386942], [5.858585858585858, 134.1209770333713], [5.959595959595959, 107.15295281993563], [6.0606060606060606, 137.18030613094416], [6.161616161616162, 130.3877265731893], [6.262626262626262, 130.8335212082564], [6.363636363636363, 139.53187414111116], [6.4646464646464645, 150.71875703113224], [6.565656565656566, 163.280004184816], [6.666666666666667, 162.26083599105598], [6.767676767676767, 149.9660174169581], [6.8686868686868685, 165.90356378671328], [6.96969696969697, 167.76379174336404], [7.070707070707071, 171.0802794235425], [7.171717171717171, 184.6273301915641], [7.2727272727272725, 187.07152931015005], [7.373737373737374, 194.62721193337242], [7.474747474747475, 190.8326501934509], [7.575757575757575, 205.17715819311522], [7.6767676767676765, 195.43708614422502], [7.777777777777778, 222.45020573931436], [7.878787878787879, 210.7060929369713], [7.979797979797979, 223.1461816121926], [8.080808080808081, 229.39970707247554], [8.181818181818182, 237.67308670512966], [8.282828282828282, 242.90725613789127], [8.383838383838384, 256.49852662713806], [8.484848484848484, 257.19153323776726], [8.585858585858587, 267.7642769617935], [8.686868686868687, 268.96366839309087], [8.787878787878787, 296.9765322925839], [8.88888888888889, 288.37072963887505], [8.98989898989899, 306.0927065962513], [9.09090909090909, 290.0689139807035], [9.191919191919192, 298.4669531011058], [9.292929292929292, 302.38614541109035], [9.393939393939394, 315.7907686604041], [9.494949494949495, 322.79735982842567], [9.595959595959595, 317.0054554540029], [9.696969696969697, 344.4935212373587], [9.797979797979798, 350.49036627670034], [9.8989898989899, 363.51416484330116], [10.0, 358.7335292040014]], "data02": [[0.05320340501792115, 0.9462820165945165]], "data03": [[0.01960125448028671, 0.9132696007696007], [0.17674731182795703, 0.9132696007696007], [0.18234767025089607, 0.9132696007696007], [0.18234767025089607, 0.9207852332852334], [0.18234767025089607, 0.9736952861952862], [0.18234767025089607, 0.9812109187109187], [0.17674731182795703, 0.9812109187109187], [0.01960125448028671, 0.9812109187109187], [0.014000896057347667, 0.9812109187109187], [0.014000896057347667, 0.9736952861952862], [0.014000896057347667, 0.9207852332852334], [0.014000896057347667, 0.9132696007696007], [0.01960125448028671, 0.9132696007696007]]}, "id": "el167002076556035504", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}]});
+            })
+         });
+}
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#   Define a function to calculate the log likelihood required for the Guassian aproach</span>
+
+<span class="k">def</span> <span class="nf">calcLogLikelihood</span><span class="p">(</span><span class="n">guess</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">true</span><span class="o">-</span><span class="n">guess</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="p">((</span><span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigma</span><span class="o">*</span><span class="n">sigma</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span> \
+        <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">error</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">*</span><span class="n">sigma</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#   Define my function which will return the objective function to be minimized</span>
+
+<span class="k">def</span> <span class="nf">myFunction</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+    <span class="c1">#   load my  data</span>
+<span class="c1">#     [x, y] = np.load(&#39;myData.npy&#39;)</span>
+    <span class="p">[</span><span class="n">x_</span><span class="p">,</span> <span class="n">y_</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span>
+    <span class="n">yGuess</span> <span class="o">=</span> <span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">x_</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x_</span><span class="p">)</span> <span class="o">+</span> <span class="n">var</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">calcLogLikelihood</span><span class="p">(</span><span class="n">yGuess</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">yGuess</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
+<span class="c1">#   The line above required to omit unnecessary outputs</span>
+<span class="c1">#   Let&#39;s pick some random starting points for the initial &#39;guesstimate&#39; of the function required for optimization    </span>
+
+<span class="n">nvar</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nvar</span><span class="p">)</span>
+<span class="n">var</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">15.5</span>
+<span class="n">var</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">19.5</span>
+<span class="n">var</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+
+<span class="c1">#   let&#39;s maximize the likelihood (minimize -1*max(likelihood)</span>
+
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">myFunction</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;BFGS&#39;</span><span class="p">,</span>
+                <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#   perform least squares fit using scikitlearn</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;poly&#39;</span><span class="p">,</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">))])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">coefs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#   let&#39;s see the metrics for train data</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;r-score:&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train
+r-score: 0.9932373469845849
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#   And the same thing for test data</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;r-score:&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span><span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE:&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test
+r-score: 1.0
+MSE: 82.2207766322886
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#   Let&#39;s see how our predicted values from the model above correspond to the predictions made by simple regression</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="n">line_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">),</span><span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_pred</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;lime&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span><span class="s1">&#39;Least Square&#39;</span><span class="p">,</span><span class="s1">&#39;Negative Log Likelihood&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+
+<style>
+
+</style>
+
+<div id="fig_el1670020765560343043618299955"></div>
+<script>
+function mpld3_load_lib(url, callback){
+  var s = document.createElement('script');
+  s.src = url;
+  s.async = true;
+  s.onreadystatechange = s.onload = callback;
+  s.onerror = function(){console.warn("failed to load library " + url);};
+  document.getElementsByTagName("head")[0].appendChild(s);
+}
+
+if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
+   // already loaded: just create the figure
+   !function(mpld3){
+       
+       mpld3.draw_figure("fig_el1670020765560343043618299955", {"width": 640.0, "height": 480.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [-0.5, 10.5], "ylim": [-37.30362445616341, 382.60072623851374], "xdomain": [-0.5, 10.5], "ydomain": [-37.30362445616341, 382.60072623851374], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 8, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 10, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el167002075002932240", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el167002075003216864", "color": "#FF0000", "linewidth": 2.25, "dasharray": "none", "alpha": 1, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 2, "coordinates": "data", "id": "el167002075003217440", "color": "#00FF00", "linewidth": 1.5, "dasharray": "6,6", "alpha": 1, "zorder": 2, "drawstyle": "default"}, {"data": "data03", "xindex": 0, "yindex": 1, "coordinates": "axes", "id": "el167002075003219888", "color": "#FF0000", "linewidth": 2.25, "dasharray": "none", "alpha": 1, "zorder": 1000002.0, "drawstyle": "default"}, {"data": "data03", "xindex": 0, "yindex": 2, "coordinates": "axes", "id": "el167002075003221376", "color": "#00FF00", "linewidth": 1.5, "dasharray": "6,6", "alpha": 1, "zorder": 1000002.0, "drawstyle": "default"}], "paths": [{"data": "data04", "xindex": 0, "yindex": 1, "coordinates": "axes", "pathcodes": ["M", "L", "S", "L", "S", "L", "S", "L", "S", "Z"], "id": "el167002075003217776", "dasharray": "none", "alpha": 0.8, "facecolor": "rgba(255, 255, 255, 0.8)", "edgecolor": "rgba(204, 204, 204, 0.8)", "edgewidth": 1.0, "zorder": 1000000.0}], "markers": [], "texts": [{"text": "Data", "position": [0.10360663082437274, 0.9364177489177489], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el167002075003218112"}, {"text": "Least Square", "position": [0.10360663082437274, 0.8797498797498798], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el167002075003219120"}, {"text": "Negative Log Likelihood", "position": [0.10360663082437274, 0.8230820105820105], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el167002075003220656"}], "collections": [{"offsets": "data01", "xindex": 0, "yindex": 3, "paths": [[[[0.0, -0.5], [0.13260155, -0.5], [0.25978993539242673, -0.44731684579412084], [0.3535533905932738, -0.3535533905932738], [0.44731684579412084, -0.25978993539242673], [0.5, -0.13260155], [0.5, 0.0], [0.5, 0.13260155], [0.44731684579412084, 0.25978993539242673], [0.3535533905932738, 0.3535533905932738], [0.25978993539242673, 0.44731684579412084], [0.13260155, 0.5], [0.0, 0.5], [-0.13260155, 0.5], [-0.25978993539242673, 0.44731684579412084], [-0.3535533905932738, 0.3535533905932738], [-0.44731684579412084, 0.25978993539242673], [-0.5, 0.13260155], [-0.5, 0.0], [-0.5, -0.13260155], [-0.44731684579412084, -0.25978993539242673], [-0.3535533905932738, -0.3535533905932738], [-0.25978993539242673, -0.44731684579412084], [-0.13260155, -0.5], [0.0, -0.5]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]], "pathtransforms": [[8.333333333333334, 0.0, 0.0, 8.333333333333334, 0.0, 0.0]], "alphas": [0.8], "edgecolors": ["rgba(0, 0, 255, 0.8)"], "facecolors": ["rgba(0, 0, 255, 0.8)"], "edgewidths": [1.0], "offsetcoordinates": "data", "pathcoordinates": "display", "zorder": 1, "id": "el167002075003215568"}, {"offsets": "data02", "xindex": 0, "yindex": 1, "paths": [[[[0.0, -0.5], [0.13260155, -0.5], [0.25978993539242673, -0.44731684579412084], [0.3535533905932738, -0.3535533905932738], [0.44731684579412084, -0.25978993539242673], [0.5, -0.13260155], [0.5, 0.0], [0.5, 0.13260155], [0.44731684579412084, 0.25978993539242673], [0.3535533905932738, 0.3535533905932738], [0.25978993539242673, 0.44731684579412084], [0.13260155, 0.5], [0.0, 0.5], [-0.13260155, 0.5], [-0.25978993539242673, 0.44731684579412084], [-0.3535533905932738, 0.3535533905932738], [-0.44731684579412084, 0.25978993539242673], [-0.5, 0.13260155], [-0.5, 0.0], [-0.5, -0.13260155], [-0.44731684579412084, -0.25978993539242673], [-0.3535533905932738, -0.3535533905932738], [-0.25978993539242673, -0.44731684579412084], [-0.13260155, -0.5], [0.0, -0.5]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]], "pathtransforms": [[8.333333333333334, 0.0, 0.0, 8.333333333333334, 0.0, 0.0]], "alphas": [0.8], "edgecolors": ["rgba(0, 0, 255, 0.8)"], "facecolors": ["rgba(0, 0, 255, 0.8)"], "edgewidths": [1.0], "offsetcoordinates": "axes", "pathcoordinates": "display", "zorder": 1000001.0, "id": "el167002075003218832"}], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[0.0, 1.3210717272480792, 1.3210717272479626, -1.3781879804155115], [0.10101010101010101, 0.9831037033316543, 0.9831037033315426, 19.14189589137338], [0.20202020202020202, 0.7266952039690938, 0.7266952039689866, -0.9966278800161783], [0.30303030303030304, 0.5518462291603975, 0.5518462291602948, -7.785611473399808], [0.40404040404040403, 0.45855677890556545, 0.45855677890546725, 2.9951718910374625], [0.5050505050505051, 0.4468268532045976, 0.4468268532045039, -0.5053307483920533], [0.6060606060606061, 0.5166564520574942, 0.5166564520574047, -10.271594640606802], [0.7070707070707071, 0.6680455754642549, 0.6680455754641698, -2.8887257935734425], [0.8080808080808081, 0.9009942234248798, 0.9009942234247986, 17.04839893139297], [0.9090909090909091, 1.2155023959393694, 1.215502395939292, -18.217063060950814], [1.0101010101010102, 1.6115700930077228, 1.61157009300765, 7.056618731911911], [1.1111111111111112, 2.089197314629941, 2.0891973146298715, -0.7199754361934598], [1.2121212121212122, 2.6483840608060234, 2.6483840608059577, 15.787997378464482], [1.3131313131313131, 3.2891303315359695, 3.2891303315359077, -0.5410113214563665], [1.4141414141414141, 4.01143612681978, 4.011436126819722, 7.162217640460463], [1.5151515151515151, 4.815301446657455, 4.815301446657399, 9.309817292144764], [1.6161616161616161, 5.700726291048993, 5.700726291048942, 9.347275789570922], [1.7171717171717171, 6.6677106599943965, 6.6677106599943485, 2.331388781602554], [1.8181818181818181, 7.716254553493665, 7.716254553493619, -6.400348851604791], [1.9191919191919191, 8.846357971546796, 8.846357971546755, 3.039756562723394], [2.0202020202020203, 10.058020914153794, 10.058020914153756, -14.66893522502785], [2.121212121212121, 11.351243381314653, 11.351243381314616, 24.57522561217434], [2.2222222222222223, 12.726025373029382, 12.726025373029348, 7.653752384779804], [2.323232323232323, 14.182366889297965, 14.182366889297937, 23.623473832537858], [2.4242424242424243, 15.720267930120423, 15.720267930120396, 32.54391312049711], [2.525252525252525, 17.339728495496736, 17.33972849549671, 32.318779813330266], [2.6262626262626263, 19.040748585426922, 19.0407485854269, 25.357011841430786], [2.727272727272727, 20.82332819991096, 20.823328199910947, 27.217068914419514], [2.8282828282828283, 22.687467338948878, 22.68746733894886, 31.09420858946212], [2.929292929292929, 24.633166002540648, 24.633166002540637, 20.235250556684125], [3.0303030303030303, 26.66042419068629, 26.660424190686275, 21.801437296324977], [3.131313131313131, 28.76924190338579, 28.769241903385776, 30.812012003693134], [3.2323232323232323, 30.95961914063916, 30.959619140639152, 29.44616292028631], [3.3333333333333335, 33.2315559024464, 33.23155590244639, 39.7549664939165], [3.4343434343434343, 35.58505218880749, 35.58505218880748, 29.898431867101085], [3.5353535353535355, 38.020107999722455, 38.02010799972245, 15.08844785924122], [3.6363636363636362, 40.536723335191276, 40.53672333519127, 46.38023282559794], [3.7373737373737375, 43.13489819521397, 43.13489819521397, 49.27222030543496], [3.8383838383838382, 45.81463257979052, 45.81463257979052, 33.52305198783767], [3.9393939393939394, 48.575926488920935, 48.575926488920935, 41.35976764337991], [4.040404040404041, 51.41877992260522, 51.418779922605225, 53.99953340185259], [4.141414141414141, 54.343192880843354, 54.34319288084335, 47.44509465510715], [4.242424242424242, 57.34916536363537, 57.34916536363537, 53.72258690347955], [4.343434343434343, 60.43669737098124, 60.43669737098125, 67.62343893388639], [4.444444444444445, 63.605788902881, 63.605788902881, 63.784831625171], [4.545454545454545, 66.85643995933458, 66.85643995933458, 64.82792437547492], [4.646464646464646, 70.18865054034205, 70.18865054034205, 71.72597743971943], [4.747474747474747, 73.60242064590338, 73.6024206459034, 68.0067447290535], [4.848484848484849, 77.0977502760186, 77.0977502760186, 66.55706088082525], [4.94949494949495, 80.67463943068766, 80.67463943068766, 79.86475542586128], [5.05050505050505, 84.33308810991055, 84.33308810991056, 69.56844267000609], [5.151515151515151, 88.07309631368736, 88.07309631368736, 88.08631664412854], [5.252525252525253, 91.89466404201802, 91.89466404201802, 100.23486640844565], [5.353535353535354, 95.79779129490254, 95.79779129490255, 115.77570895467716], [5.454545454545454, 99.7824780723409, 99.78247807234091, 100.25070563288406], [5.555555555555555, 103.84872437433316, 103.84872437433316, 86.13148047101602], [5.656565656565657, 107.99653020087926, 107.99653020087926, 105.55238573688383], [5.757575757575758, 112.22589555197925, 112.22589555197926, 113.53892206386942], [5.858585858585858, 116.53682042763307, 116.53682042763307, 134.1209770333713], [5.959595959595959, 120.92930482784078, 120.92930482784077, 107.15295281993563], [6.0606060606060606, 125.40334875260234, 125.40334875260234, 137.18030613094416], [6.161616161616162, 129.95895220191775, 129.95895220191778, 130.3877265731893], [6.262626262626262, 134.59611517578705, 134.59611517578705, 130.8335212082564], [6.363636363636363, 139.3148376742102, 139.31483767421022, 139.53187414111116], [6.4646464646464645, 144.11511969718723, 144.11511969718725, 150.71875703113224], [6.565656565656566, 148.99696124471816, 148.99696124471816, 163.280004184816], [6.666666666666667, 153.9603623168029, 153.96036231680293, 162.26083599105598], [6.767676767676767, 159.0053229134415, 159.0053229134415, 149.9660174169581], [6.8686868686868685, 164.13184303463396, 164.131843034634, 165.90356378671328], [6.96969696969697, 169.33992268038034, 169.33992268038034, 167.76379174336404], [7.070707070707071, 174.62956185068055, 174.62956185068055, 171.0802794235425], [7.171717171717171, 180.00076054553458, 180.00076054553458, 184.6273301915641], [7.2727272727272725, 185.45351876494254, 185.45351876494254, 187.07152931015005], [7.373737373737374, 190.98783650890437, 190.98783650890434, 194.62721193337242], [7.474747474747475, 196.60371377742004, 196.60371377742004, 190.8326501934509], [7.575757575757575, 202.3011505704895, 202.3011505704895, 205.17715819311522], [7.6767676767676765, 208.08014688811295, 208.08014688811295, 195.43708614422502], [7.777777777777778, 213.9407027302902, 213.94070273029018, 222.45020573931436], [7.878787878787879, 219.88281809702133, 219.88281809702133, 210.7060929369713], [7.979797979797979, 225.9064929883063, 225.90649298830627, 223.1461816121926], [8.080808080808081, 232.01172740414518, 232.0117274041452, 229.39970707247554], [8.181818181818182, 238.1985213445379, 238.19852134453788, 237.67308670512966], [8.282828282828282, 244.46687480948444, 244.46687480948438, 242.90725613789127], [8.383838383838384, 250.81678779898493, 250.8167877989849, 256.49852662713806], [8.484848484848484, 257.2482603130392, 257.24826031303917, 257.19153323776726], [8.585858585858587, 263.76129235164746, 263.7612923516474, 267.7642769617935], [8.686868686868687, 270.3558839148094, 270.3558839148094, 268.96366839309087], [8.787878787878787, 277.0320350025253, 277.0320350025252, 296.9765322925839], [8.88888888888889, 283.78974561479515, 283.7897456147951, 288.37072963887505], [8.98989898989899, 290.62901575161874, 290.6290157516187, 306.0927065962513], [9.09090909090909, 297.5498454129962, 297.5498454129961, 290.0689139807035], [9.191919191919192, 304.5522345989276, 304.55223459892755, 298.4669531011058], [9.292929292929292, 311.6361833094128, 311.63618330941273, 302.38614541109035], [9.393939393939394, 318.80169154445196, 318.8016915444519, 315.7907686604041], [9.494949494949495, 326.04875930404484, 326.0487593040448, 322.79735982842567], [9.595959595959595, 333.37738658819165, 333.3773865881916, 317.0054554540029], [9.696969696969697, 340.7875733968924, 340.7875733968923, 344.4935212373587], [9.797979797979798, 348.2793197301469, 348.2793197301468, 350.49036627670034], [9.8989898989899, 355.85262558795534, 355.8526255879553, 363.51416484330116], [10.0, 363.5074909703176, 363.5074909703175, 358.7335292040014]], "data02": [[0.05320340501792115, 0.9462820165945165]], "data03": [[0.025201612903225812, 0.8929022366522368, 0.8362343674843674], [0.05320340501792115, 0.8929022366522368, 0.8362343674843674], [0.0812051971326165, 0.8929022366522368, 0.8362343674843674]], "data04": [[0.01960125448028671, 0.7999338624338624], [0.4443884408602151, 0.7999338624338624], [0.44998879928315416, 0.7999338624338624], [0.44998879928315416, 0.8074494949494949], [0.44998879928315416, 0.9736952861952862], [0.44998879928315416, 0.9812109187109187], [0.4443884408602151, 0.9812109187109187], [0.01960125448028671, 0.9812109187109187], [0.014000896057347667, 0.9812109187109187], [0.014000896057347667, 0.9736952861952862], [0.014000896057347667, 0.8074494949494949], [0.014000896057347667, 0.7999338624338624], [0.01960125448028671, 0.7999338624338624]]}, "id": "el167002076556034304", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}]});
+   }(mpld3);
+}else if(typeof define === "function" && define.amd){
+   // require.js is available: use it to load d3/mpld3
+   require.config({paths: {d3: "https://d3js.org/d3.v5"}});
+   require(["d3"], function(d3){
+      window.d3 = d3;
+      mpld3_load_lib("https://mpld3.github.io/js/mpld3.v0.5.9.js", function(){
+         
+         mpld3.draw_figure("fig_el1670020765560343043618299955", {"width": 640.0, "height": 480.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [-0.5, 10.5], "ylim": [-37.30362445616341, 382.60072623851374], "xdomain": [-0.5, 10.5], "ydomain": [-37.30362445616341, 382.60072623851374], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 8, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 10, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el167002075002932240", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el167002075003216864", "color": "#FF0000", "linewidth": 2.25, "dasharray": "none", "alpha": 1, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 2, "coordinates": "data", "id": "el167002075003217440", "color": "#00FF00", "linewidth": 1.5, "dasharray": "6,6", "alpha": 1, "zorder": 2, "drawstyle": "default"}, {"data": "data03", "xindex": 0, "yindex": 1, "coordinates": "axes", "id": "el167002075003219888", "color": "#FF0000", "linewidth": 2.25, "dasharray": "none", "alpha": 1, "zorder": 1000002.0, "drawstyle": "default"}, {"data": "data03", "xindex": 0, "yindex": 2, "coordinates": "axes", "id": "el167002075003221376", "color": "#00FF00", "linewidth": 1.5, "dasharray": "6,6", "alpha": 1, "zorder": 1000002.0, "drawstyle": "default"}], "paths": [{"data": "data04", "xindex": 0, "yindex": 1, "coordinates": "axes", "pathcodes": ["M", "L", "S", "L", "S", "L", "S", "L", "S", "Z"], "id": "el167002075003217776", "dasharray": "none", "alpha": 0.8, "facecolor": "rgba(255, 255, 255, 0.8)", "edgecolor": "rgba(204, 204, 204, 0.8)", "edgewidth": 1.0, "zorder": 1000000.0}], "markers": [], "texts": [{"text": "Data", "position": [0.10360663082437274, 0.9364177489177489], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el167002075003218112"}, {"text": "Least Square", "position": [0.10360663082437274, 0.8797498797498798], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el167002075003219120"}, {"text": "Negative Log Likelihood", "position": [0.10360663082437274, 0.8230820105820105], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el167002075003220656"}], "collections": [{"offsets": "data01", "xindex": 0, "yindex": 3, "paths": [[[[0.0, -0.5], [0.13260155, -0.5], [0.25978993539242673, -0.44731684579412084], [0.3535533905932738, -0.3535533905932738], [0.44731684579412084, -0.25978993539242673], [0.5, -0.13260155], [0.5, 0.0], [0.5, 0.13260155], [0.44731684579412084, 0.25978993539242673], [0.3535533905932738, 0.3535533905932738], [0.25978993539242673, 0.44731684579412084], [0.13260155, 0.5], [0.0, 0.5], [-0.13260155, 0.5], [-0.25978993539242673, 0.44731684579412084], [-0.3535533905932738, 0.3535533905932738], [-0.44731684579412084, 0.25978993539242673], [-0.5, 0.13260155], [-0.5, 0.0], [-0.5, -0.13260155], [-0.44731684579412084, -0.25978993539242673], [-0.3535533905932738, -0.3535533905932738], [-0.25978993539242673, -0.44731684579412084], [-0.13260155, -0.5], [0.0, -0.5]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]], "pathtransforms": [[8.333333333333334, 0.0, 0.0, 8.333333333333334, 0.0, 0.0]], "alphas": [0.8], "edgecolors": ["rgba(0, 0, 255, 0.8)"], "facecolors": ["rgba(0, 0, 255, 0.8)"], "edgewidths": [1.0], "offsetcoordinates": "data", "pathcoordinates": "display", "zorder": 1, "id": "el167002075003215568"}, {"offsets": "data02", "xindex": 0, "yindex": 1, "paths": [[[[0.0, -0.5], [0.13260155, -0.5], [0.25978993539242673, -0.44731684579412084], [0.3535533905932738, -0.3535533905932738], [0.44731684579412084, -0.25978993539242673], [0.5, -0.13260155], [0.5, 0.0], [0.5, 0.13260155], [0.44731684579412084, 0.25978993539242673], [0.3535533905932738, 0.3535533905932738], [0.25978993539242673, 0.44731684579412084], [0.13260155, 0.5], [0.0, 0.5], [-0.13260155, 0.5], [-0.25978993539242673, 0.44731684579412084], [-0.3535533905932738, 0.3535533905932738], [-0.44731684579412084, 0.25978993539242673], [-0.5, 0.13260155], [-0.5, 0.0], [-0.5, -0.13260155], [-0.44731684579412084, -0.25978993539242673], [-0.3535533905932738, -0.3535533905932738], [-0.25978993539242673, -0.44731684579412084], [-0.13260155, -0.5], [0.0, -0.5]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]], "pathtransforms": [[8.333333333333334, 0.0, 0.0, 8.333333333333334, 0.0, 0.0]], "alphas": [0.8], "edgecolors": ["rgba(0, 0, 255, 0.8)"], "facecolors": ["rgba(0, 0, 255, 0.8)"], "edgewidths": [1.0], "offsetcoordinates": "axes", "pathcoordinates": "display", "zorder": 1000001.0, "id": "el167002075003218832"}], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[0.0, 1.3210717272480792, 1.3210717272479626, -1.3781879804155115], [0.10101010101010101, 0.9831037033316543, 0.9831037033315426, 19.14189589137338], [0.20202020202020202, 0.7266952039690938, 0.7266952039689866, -0.9966278800161783], [0.30303030303030304, 0.5518462291603975, 0.5518462291602948, -7.785611473399808], [0.40404040404040403, 0.45855677890556545, 0.45855677890546725, 2.9951718910374625], [0.5050505050505051, 0.4468268532045976, 0.4468268532045039, -0.5053307483920533], [0.6060606060606061, 0.5166564520574942, 0.5166564520574047, -10.271594640606802], [0.7070707070707071, 0.6680455754642549, 0.6680455754641698, -2.8887257935734425], [0.8080808080808081, 0.9009942234248798, 0.9009942234247986, 17.04839893139297], [0.9090909090909091, 1.2155023959393694, 1.215502395939292, -18.217063060950814], [1.0101010101010102, 1.6115700930077228, 1.61157009300765, 7.056618731911911], [1.1111111111111112, 2.089197314629941, 2.0891973146298715, -0.7199754361934598], [1.2121212121212122, 2.6483840608060234, 2.6483840608059577, 15.787997378464482], [1.3131313131313131, 3.2891303315359695, 3.2891303315359077, -0.5410113214563665], [1.4141414141414141, 4.01143612681978, 4.011436126819722, 7.162217640460463], [1.5151515151515151, 4.815301446657455, 4.815301446657399, 9.309817292144764], [1.6161616161616161, 5.700726291048993, 5.700726291048942, 9.347275789570922], [1.7171717171717171, 6.6677106599943965, 6.6677106599943485, 2.331388781602554], [1.8181818181818181, 7.716254553493665, 7.716254553493619, -6.400348851604791], [1.9191919191919191, 8.846357971546796, 8.846357971546755, 3.039756562723394], [2.0202020202020203, 10.058020914153794, 10.058020914153756, -14.66893522502785], [2.121212121212121, 11.351243381314653, 11.351243381314616, 24.57522561217434], [2.2222222222222223, 12.726025373029382, 12.726025373029348, 7.653752384779804], [2.323232323232323, 14.182366889297965, 14.182366889297937, 23.623473832537858], [2.4242424242424243, 15.720267930120423, 15.720267930120396, 32.54391312049711], [2.525252525252525, 17.339728495496736, 17.33972849549671, 32.318779813330266], [2.6262626262626263, 19.040748585426922, 19.0407485854269, 25.357011841430786], [2.727272727272727, 20.82332819991096, 20.823328199910947, 27.217068914419514], [2.8282828282828283, 22.687467338948878, 22.68746733894886, 31.09420858946212], [2.929292929292929, 24.633166002540648, 24.633166002540637, 20.235250556684125], [3.0303030303030303, 26.66042419068629, 26.660424190686275, 21.801437296324977], [3.131313131313131, 28.76924190338579, 28.769241903385776, 30.812012003693134], [3.2323232323232323, 30.95961914063916, 30.959619140639152, 29.44616292028631], [3.3333333333333335, 33.2315559024464, 33.23155590244639, 39.7549664939165], [3.4343434343434343, 35.58505218880749, 35.58505218880748, 29.898431867101085], [3.5353535353535355, 38.020107999722455, 38.02010799972245, 15.08844785924122], [3.6363636363636362, 40.536723335191276, 40.53672333519127, 46.38023282559794], [3.7373737373737375, 43.13489819521397, 43.13489819521397, 49.27222030543496], [3.8383838383838382, 45.81463257979052, 45.81463257979052, 33.52305198783767], [3.9393939393939394, 48.575926488920935, 48.575926488920935, 41.35976764337991], [4.040404040404041, 51.41877992260522, 51.418779922605225, 53.99953340185259], [4.141414141414141, 54.343192880843354, 54.34319288084335, 47.44509465510715], [4.242424242424242, 57.34916536363537, 57.34916536363537, 53.72258690347955], [4.343434343434343, 60.43669737098124, 60.43669737098125, 67.62343893388639], [4.444444444444445, 63.605788902881, 63.605788902881, 63.784831625171], [4.545454545454545, 66.85643995933458, 66.85643995933458, 64.82792437547492], [4.646464646464646, 70.18865054034205, 70.18865054034205, 71.72597743971943], [4.747474747474747, 73.60242064590338, 73.6024206459034, 68.0067447290535], [4.848484848484849, 77.0977502760186, 77.0977502760186, 66.55706088082525], [4.94949494949495, 80.67463943068766, 80.67463943068766, 79.86475542586128], [5.05050505050505, 84.33308810991055, 84.33308810991056, 69.56844267000609], [5.151515151515151, 88.07309631368736, 88.07309631368736, 88.08631664412854], [5.252525252525253, 91.89466404201802, 91.89466404201802, 100.23486640844565], [5.353535353535354, 95.79779129490254, 95.79779129490255, 115.77570895467716], [5.454545454545454, 99.7824780723409, 99.78247807234091, 100.25070563288406], [5.555555555555555, 103.84872437433316, 103.84872437433316, 86.13148047101602], [5.656565656565657, 107.99653020087926, 107.99653020087926, 105.55238573688383], [5.757575757575758, 112.22589555197925, 112.22589555197926, 113.53892206386942], [5.858585858585858, 116.53682042763307, 116.53682042763307, 134.1209770333713], [5.959595959595959, 120.92930482784078, 120.92930482784077, 107.15295281993563], [6.0606060606060606, 125.40334875260234, 125.40334875260234, 137.18030613094416], [6.161616161616162, 129.95895220191775, 129.95895220191778, 130.3877265731893], [6.262626262626262, 134.59611517578705, 134.59611517578705, 130.8335212082564], [6.363636363636363, 139.3148376742102, 139.31483767421022, 139.53187414111116], [6.4646464646464645, 144.11511969718723, 144.11511969718725, 150.71875703113224], [6.565656565656566, 148.99696124471816, 148.99696124471816, 163.280004184816], [6.666666666666667, 153.9603623168029, 153.96036231680293, 162.26083599105598], [6.767676767676767, 159.0053229134415, 159.0053229134415, 149.9660174169581], [6.8686868686868685, 164.13184303463396, 164.131843034634, 165.90356378671328], [6.96969696969697, 169.33992268038034, 169.33992268038034, 167.76379174336404], [7.070707070707071, 174.62956185068055, 174.62956185068055, 171.0802794235425], [7.171717171717171, 180.00076054553458, 180.00076054553458, 184.6273301915641], [7.2727272727272725, 185.45351876494254, 185.45351876494254, 187.07152931015005], [7.373737373737374, 190.98783650890437, 190.98783650890434, 194.62721193337242], [7.474747474747475, 196.60371377742004, 196.60371377742004, 190.8326501934509], [7.575757575757575, 202.3011505704895, 202.3011505704895, 205.17715819311522], [7.6767676767676765, 208.08014688811295, 208.08014688811295, 195.43708614422502], [7.777777777777778, 213.9407027302902, 213.94070273029018, 222.45020573931436], [7.878787878787879, 219.88281809702133, 219.88281809702133, 210.7060929369713], [7.979797979797979, 225.9064929883063, 225.90649298830627, 223.1461816121926], [8.080808080808081, 232.01172740414518, 232.0117274041452, 229.39970707247554], [8.181818181818182, 238.1985213445379, 238.19852134453788, 237.67308670512966], [8.282828282828282, 244.46687480948444, 244.46687480948438, 242.90725613789127], [8.383838383838384, 250.81678779898493, 250.8167877989849, 256.49852662713806], [8.484848484848484, 257.2482603130392, 257.24826031303917, 257.19153323776726], [8.585858585858587, 263.76129235164746, 263.7612923516474, 267.7642769617935], [8.686868686868687, 270.3558839148094, 270.3558839148094, 268.96366839309087], [8.787878787878787, 277.0320350025253, 277.0320350025252, 296.9765322925839], [8.88888888888889, 283.78974561479515, 283.7897456147951, 288.37072963887505], [8.98989898989899, 290.62901575161874, 290.6290157516187, 306.0927065962513], [9.09090909090909, 297.5498454129962, 297.5498454129961, 290.0689139807035], [9.191919191919192, 304.5522345989276, 304.55223459892755, 298.4669531011058], [9.292929292929292, 311.6361833094128, 311.63618330941273, 302.38614541109035], [9.393939393939394, 318.80169154445196, 318.8016915444519, 315.7907686604041], [9.494949494949495, 326.04875930404484, 326.0487593040448, 322.79735982842567], [9.595959595959595, 333.37738658819165, 333.3773865881916, 317.0054554540029], [9.696969696969697, 340.7875733968924, 340.7875733968923, 344.4935212373587], [9.797979797979798, 348.2793197301469, 348.2793197301468, 350.49036627670034], [9.8989898989899, 355.85262558795534, 355.8526255879553, 363.51416484330116], [10.0, 363.5074909703176, 363.5074909703175, 358.7335292040014]], "data02": [[0.05320340501792115, 0.9462820165945165]], "data03": [[0.025201612903225812, 0.8929022366522368, 0.8362343674843674], [0.05320340501792115, 0.8929022366522368, 0.8362343674843674], [0.0812051971326165, 0.8929022366522368, 0.8362343674843674]], "data04": [[0.01960125448028671, 0.7999338624338624], [0.4443884408602151, 0.7999338624338624], [0.44998879928315416, 0.7999338624338624], [0.44998879928315416, 0.8074494949494949], [0.44998879928315416, 0.9736952861952862], [0.44998879928315416, 0.9812109187109187], [0.4443884408602151, 0.9812109187109187], [0.01960125448028671, 0.9812109187109187], [0.014000896057347667, 0.9812109187109187], [0.014000896057347667, 0.9736952861952862], [0.014000896057347667, 0.8074494949494949], [0.014000896057347667, 0.7999338624338624], [0.01960125448028671, 0.7999338624338624]]}, "id": "el167002076556034304", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}]});
+      });
+    });
+}else{
+    // require.js not available: dynamically load d3 & mpld3
+    mpld3_load_lib("https://d3js.org/d3.v5.js", function(){
+         mpld3_load_lib("https://mpld3.github.io/js/mpld3.v0.5.9.js", function(){
+                 
+                 mpld3.draw_figure("fig_el1670020765560343043618299955", {"width": 640.0, "height": 480.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [-0.5, 10.5], "ylim": [-37.30362445616341, 382.60072623851374], "xdomain": [-0.5, 10.5], "ydomain": [-37.30362445616341, 382.60072623851374], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 8, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 10, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el167002075002932240", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el167002075003216864", "color": "#FF0000", "linewidth": 2.25, "dasharray": "none", "alpha": 1, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 2, "coordinates": "data", "id": "el167002075003217440", "color": "#00FF00", "linewidth": 1.5, "dasharray": "6,6", "alpha": 1, "zorder": 2, "drawstyle": "default"}, {"data": "data03", "xindex": 0, "yindex": 1, "coordinates": "axes", "id": "el167002075003219888", "color": "#FF0000", "linewidth": 2.25, "dasharray": "none", "alpha": 1, "zorder": 1000002.0, "drawstyle": "default"}, {"data": "data03", "xindex": 0, "yindex": 2, "coordinates": "axes", "id": "el167002075003221376", "color": "#00FF00", "linewidth": 1.5, "dasharray": "6,6", "alpha": 1, "zorder": 1000002.0, "drawstyle": "default"}], "paths": [{"data": "data04", "xindex": 0, "yindex": 1, "coordinates": "axes", "pathcodes": ["M", "L", "S", "L", "S", "L", "S", "L", "S", "Z"], "id": "el167002075003217776", "dasharray": "none", "alpha": 0.8, "facecolor": "rgba(255, 255, 255, 0.8)", "edgecolor": "rgba(204, 204, 204, 0.8)", "edgewidth": 1.0, "zorder": 1000000.0}], "markers": [], "texts": [{"text": "Data", "position": [0.10360663082437274, 0.9364177489177489], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el167002075003218112"}, {"text": "Least Square", "position": [0.10360663082437274, 0.8797498797498798], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el167002075003219120"}, {"text": "Negative Log Likelihood", "position": [0.10360663082437274, 0.8230820105820105], "coordinates": "axes", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 1000003.0, "id": "el167002075003220656"}], "collections": [{"offsets": "data01", "xindex": 0, "yindex": 3, "paths": [[[[0.0, -0.5], [0.13260155, -0.5], [0.25978993539242673, -0.44731684579412084], [0.3535533905932738, -0.3535533905932738], [0.44731684579412084, -0.25978993539242673], [0.5, -0.13260155], [0.5, 0.0], [0.5, 0.13260155], [0.44731684579412084, 0.25978993539242673], [0.3535533905932738, 0.3535533905932738], [0.25978993539242673, 0.44731684579412084], [0.13260155, 0.5], [0.0, 0.5], [-0.13260155, 0.5], [-0.25978993539242673, 0.44731684579412084], [-0.3535533905932738, 0.3535533905932738], [-0.44731684579412084, 0.25978993539242673], [-0.5, 0.13260155], [-0.5, 0.0], [-0.5, -0.13260155], [-0.44731684579412084, -0.25978993539242673], [-0.3535533905932738, -0.3535533905932738], [-0.25978993539242673, -0.44731684579412084], [-0.13260155, -0.5], [0.0, -0.5]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]], "pathtransforms": [[8.333333333333334, 0.0, 0.0, 8.333333333333334, 0.0, 0.0]], "alphas": [0.8], "edgecolors": ["rgba(0, 0, 255, 0.8)"], "facecolors": ["rgba(0, 0, 255, 0.8)"], "edgewidths": [1.0], "offsetcoordinates": "data", "pathcoordinates": "display", "zorder": 1, "id": "el167002075003215568"}, {"offsets": "data02", "xindex": 0, "yindex": 1, "paths": [[[[0.0, -0.5], [0.13260155, -0.5], [0.25978993539242673, -0.44731684579412084], [0.3535533905932738, -0.3535533905932738], [0.44731684579412084, -0.25978993539242673], [0.5, -0.13260155], [0.5, 0.0], [0.5, 0.13260155], [0.44731684579412084, 0.25978993539242673], [0.3535533905932738, 0.3535533905932738], [0.25978993539242673, 0.44731684579412084], [0.13260155, 0.5], [0.0, 0.5], [-0.13260155, 0.5], [-0.25978993539242673, 0.44731684579412084], [-0.3535533905932738, 0.3535533905932738], [-0.44731684579412084, 0.25978993539242673], [-0.5, 0.13260155], [-0.5, 0.0], [-0.5, -0.13260155], [-0.44731684579412084, -0.25978993539242673], [-0.3535533905932738, -0.3535533905932738], [-0.25978993539242673, -0.44731684579412084], [-0.13260155, -0.5], [0.0, -0.5]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]], "pathtransforms": [[8.333333333333334, 0.0, 0.0, 8.333333333333334, 0.0, 0.0]], "alphas": [0.8], "edgecolors": ["rgba(0, 0, 255, 0.8)"], "facecolors": ["rgba(0, 0, 255, 0.8)"], "edgewidths": [1.0], "offsetcoordinates": "axes", "pathcoordinates": "display", "zorder": 1000001.0, "id": "el167002075003218832"}], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[0.0, 1.3210717272480792, 1.3210717272479626, -1.3781879804155115], [0.10101010101010101, 0.9831037033316543, 0.9831037033315426, 19.14189589137338], [0.20202020202020202, 0.7266952039690938, 0.7266952039689866, -0.9966278800161783], [0.30303030303030304, 0.5518462291603975, 0.5518462291602948, -7.785611473399808], [0.40404040404040403, 0.45855677890556545, 0.45855677890546725, 2.9951718910374625], [0.5050505050505051, 0.4468268532045976, 0.4468268532045039, -0.5053307483920533], [0.6060606060606061, 0.5166564520574942, 0.5166564520574047, -10.271594640606802], [0.7070707070707071, 0.6680455754642549, 0.6680455754641698, -2.8887257935734425], [0.8080808080808081, 0.9009942234248798, 0.9009942234247986, 17.04839893139297], [0.9090909090909091, 1.2155023959393694, 1.215502395939292, -18.217063060950814], [1.0101010101010102, 1.6115700930077228, 1.61157009300765, 7.056618731911911], [1.1111111111111112, 2.089197314629941, 2.0891973146298715, -0.7199754361934598], [1.2121212121212122, 2.6483840608060234, 2.6483840608059577, 15.787997378464482], [1.3131313131313131, 3.2891303315359695, 3.2891303315359077, -0.5410113214563665], [1.4141414141414141, 4.01143612681978, 4.011436126819722, 7.162217640460463], [1.5151515151515151, 4.815301446657455, 4.815301446657399, 9.309817292144764], [1.6161616161616161, 5.700726291048993, 5.700726291048942, 9.347275789570922], [1.7171717171717171, 6.6677106599943965, 6.6677106599943485, 2.331388781602554], [1.8181818181818181, 7.716254553493665, 7.716254553493619, -6.400348851604791], [1.9191919191919191, 8.846357971546796, 8.846357971546755, 3.039756562723394], [2.0202020202020203, 10.058020914153794, 10.058020914153756, -14.66893522502785], [2.121212121212121, 11.351243381314653, 11.351243381314616, 24.57522561217434], [2.2222222222222223, 12.726025373029382, 12.726025373029348, 7.653752384779804], [2.323232323232323, 14.182366889297965, 14.182366889297937, 23.623473832537858], [2.4242424242424243, 15.720267930120423, 15.720267930120396, 32.54391312049711], [2.525252525252525, 17.339728495496736, 17.33972849549671, 32.318779813330266], [2.6262626262626263, 19.040748585426922, 19.0407485854269, 25.357011841430786], [2.727272727272727, 20.82332819991096, 20.823328199910947, 27.217068914419514], [2.8282828282828283, 22.687467338948878, 22.68746733894886, 31.09420858946212], [2.929292929292929, 24.633166002540648, 24.633166002540637, 20.235250556684125], [3.0303030303030303, 26.66042419068629, 26.660424190686275, 21.801437296324977], [3.131313131313131, 28.76924190338579, 28.769241903385776, 30.812012003693134], [3.2323232323232323, 30.95961914063916, 30.959619140639152, 29.44616292028631], [3.3333333333333335, 33.2315559024464, 33.23155590244639, 39.7549664939165], [3.4343434343434343, 35.58505218880749, 35.58505218880748, 29.898431867101085], [3.5353535353535355, 38.020107999722455, 38.02010799972245, 15.08844785924122], [3.6363636363636362, 40.536723335191276, 40.53672333519127, 46.38023282559794], [3.7373737373737375, 43.13489819521397, 43.13489819521397, 49.27222030543496], [3.8383838383838382, 45.81463257979052, 45.81463257979052, 33.52305198783767], [3.9393939393939394, 48.575926488920935, 48.575926488920935, 41.35976764337991], [4.040404040404041, 51.41877992260522, 51.418779922605225, 53.99953340185259], [4.141414141414141, 54.343192880843354, 54.34319288084335, 47.44509465510715], [4.242424242424242, 57.34916536363537, 57.34916536363537, 53.72258690347955], [4.343434343434343, 60.43669737098124, 60.43669737098125, 67.62343893388639], [4.444444444444445, 63.605788902881, 63.605788902881, 63.784831625171], [4.545454545454545, 66.85643995933458, 66.85643995933458, 64.82792437547492], [4.646464646464646, 70.18865054034205, 70.18865054034205, 71.72597743971943], [4.747474747474747, 73.60242064590338, 73.6024206459034, 68.0067447290535], [4.848484848484849, 77.0977502760186, 77.0977502760186, 66.55706088082525], [4.94949494949495, 80.67463943068766, 80.67463943068766, 79.86475542586128], [5.05050505050505, 84.33308810991055, 84.33308810991056, 69.56844267000609], [5.151515151515151, 88.07309631368736, 88.07309631368736, 88.08631664412854], [5.252525252525253, 91.89466404201802, 91.89466404201802, 100.23486640844565], [5.353535353535354, 95.79779129490254, 95.79779129490255, 115.77570895467716], [5.454545454545454, 99.7824780723409, 99.78247807234091, 100.25070563288406], [5.555555555555555, 103.84872437433316, 103.84872437433316, 86.13148047101602], [5.656565656565657, 107.99653020087926, 107.99653020087926, 105.55238573688383], [5.757575757575758, 112.22589555197925, 112.22589555197926, 113.53892206386942], [5.858585858585858, 116.53682042763307, 116.53682042763307, 134.1209770333713], [5.959595959595959, 120.92930482784078, 120.92930482784077, 107.15295281993563], [6.0606060606060606, 125.40334875260234, 125.40334875260234, 137.18030613094416], [6.161616161616162, 129.95895220191775, 129.95895220191778, 130.3877265731893], [6.262626262626262, 134.59611517578705, 134.59611517578705, 130.8335212082564], [6.363636363636363, 139.3148376742102, 139.31483767421022, 139.53187414111116], [6.4646464646464645, 144.11511969718723, 144.11511969718725, 150.71875703113224], [6.565656565656566, 148.99696124471816, 148.99696124471816, 163.280004184816], [6.666666666666667, 153.9603623168029, 153.96036231680293, 162.26083599105598], [6.767676767676767, 159.0053229134415, 159.0053229134415, 149.9660174169581], [6.8686868686868685, 164.13184303463396, 164.131843034634, 165.90356378671328], [6.96969696969697, 169.33992268038034, 169.33992268038034, 167.76379174336404], [7.070707070707071, 174.62956185068055, 174.62956185068055, 171.0802794235425], [7.171717171717171, 180.00076054553458, 180.00076054553458, 184.6273301915641], [7.2727272727272725, 185.45351876494254, 185.45351876494254, 187.07152931015005], [7.373737373737374, 190.98783650890437, 190.98783650890434, 194.62721193337242], [7.474747474747475, 196.60371377742004, 196.60371377742004, 190.8326501934509], [7.575757575757575, 202.3011505704895, 202.3011505704895, 205.17715819311522], [7.6767676767676765, 208.08014688811295, 208.08014688811295, 195.43708614422502], [7.777777777777778, 213.9407027302902, 213.94070273029018, 222.45020573931436], [7.878787878787879, 219.88281809702133, 219.88281809702133, 210.7060929369713], [7.979797979797979, 225.9064929883063, 225.90649298830627, 223.1461816121926], [8.080808080808081, 232.01172740414518, 232.0117274041452, 229.39970707247554], [8.181818181818182, 238.1985213445379, 238.19852134453788, 237.67308670512966], [8.282828282828282, 244.46687480948444, 244.46687480948438, 242.90725613789127], [8.383838383838384, 250.81678779898493, 250.8167877989849, 256.49852662713806], [8.484848484848484, 257.2482603130392, 257.24826031303917, 257.19153323776726], [8.585858585858587, 263.76129235164746, 263.7612923516474, 267.7642769617935], [8.686868686868687, 270.3558839148094, 270.3558839148094, 268.96366839309087], [8.787878787878787, 277.0320350025253, 277.0320350025252, 296.9765322925839], [8.88888888888889, 283.78974561479515, 283.7897456147951, 288.37072963887505], [8.98989898989899, 290.62901575161874, 290.6290157516187, 306.0927065962513], [9.09090909090909, 297.5498454129962, 297.5498454129961, 290.0689139807035], [9.191919191919192, 304.5522345989276, 304.55223459892755, 298.4669531011058], [9.292929292929292, 311.6361833094128, 311.63618330941273, 302.38614541109035], [9.393939393939394, 318.80169154445196, 318.8016915444519, 315.7907686604041], [9.494949494949495, 326.04875930404484, 326.0487593040448, 322.79735982842567], [9.595959595959595, 333.37738658819165, 333.3773865881916, 317.0054554540029], [9.696969696969697, 340.7875733968924, 340.7875733968923, 344.4935212373587], [9.797979797979798, 348.2793197301469, 348.2793197301468, 350.49036627670034], [9.8989898989899, 355.85262558795534, 355.8526255879553, 363.51416484330116], [10.0, 363.5074909703176, 363.5074909703175, 358.7335292040014]], "data02": [[0.05320340501792115, 0.9462820165945165]], "data03": [[0.025201612903225812, 0.8929022366522368, 0.8362343674843674], [0.05320340501792115, 0.8929022366522368, 0.8362343674843674], [0.0812051971326165, 0.8929022366522368, 0.8362343674843674]], "data04": [[0.01960125448028671, 0.7999338624338624], [0.4443884408602151, 0.7999338624338624], [0.44998879928315416, 0.7999338624338624], [0.44998879928315416, 0.8074494949494949], [0.44998879928315416, 0.9736952861952862], [0.44998879928315416, 0.9812109187109187], [0.4443884408602151, 0.9812109187109187], [0.01960125448028671, 0.9812109187109187], [0.014000896057347667, 0.9812109187109187], [0.014000896057347667, 0.9736952861952862], [0.014000896057347667, 0.8074494949494949], [0.014000896057347667, 0.7999338624338624], [0.01960125448028671, 0.7999338624338624]]}, "id": "el167002076556034304", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}]});
+            })
+         });
+}
+</script></div></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ML Group
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
