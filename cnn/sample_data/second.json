@@ -1,0 +1,20 @@
+[
+    
+    {
+        "question": "In the context of image processing, when applying salt and pepper noise addition, if the probability of adding pepper noise (Ppepper) is set to 0.1 and the probability of adding salt noise (Psalt) is set to 0.2, what is the probability of having no noise added (Pno noise)?",
+        "type": "numeric",
+        "answers": [
+            {
+                "type": "value",
+                "value": 0.7,
+                "correct": true,
+                "feedback": "Given the probabilities Ppepper = 0.1 and Psalt = 0.2, the probability of having no noise added is calculated as Pno noise = 1 − Ppepper − Psalt = 1 − 0.1 − 0.2 = 0.7"
+            },
+            {
+                "type": "default",
+                "feedback": "Try again."
+            }
+        ]
+    }
+          
+]

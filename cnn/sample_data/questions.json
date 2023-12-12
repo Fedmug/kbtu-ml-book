@@ -1,0 +1,46 @@
+[
+    {
+        "question": "When applying data augmentation to a CNN, what is the primary purpose of introducing variations in the training data?",
+        "type": "many_choice",
+        "answer_cols": 4,
+        "answers": [
+            {
+                "answer": "Increase the number of trainable parameters",
+                "correct": false,
+                "feedback": "I hope not."
+            },
+            {
+                "answer": "Improve the model's ability to memorize specific details",
+                "correct": false,
+                "feedback": "I hope not."
+            },
+            {
+                "answer": "Prevent overfitting and enhance generalization",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Speed up the training process",
+                "correct": false,
+                "feedback": "I hope not."
+            }
+        ]
+    },
+    {
+        "question": " If you apply a rotation of 20 degrees during data augmentation, how many unique orientations of an image can be generated in a full rotation (360 degrees)?",
+        "type": "numeric",
+        "answers": [
+            {
+                "type": "value",
+                "value": 18,
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "type": "default",
+                "feedback": "Try again."
+            }
+        ]
+    }
+          
+]
