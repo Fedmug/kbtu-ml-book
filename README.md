@@ -93,15 +93,3 @@ The goal of every team is to create a nicely looking section in the ML book.
 ```{figure} chatGPT.png
 :align: center
 ```
-
-## Tips
-
-- Don't copypaste from chatGPT, it can serve just as a starting point
-- Study carefully the documentation of [Jupyter book](https://jupyterbook.org/en/stable/intro.html) and [jupyterquiz](https://github.com/jmshea/jupyterquiz); pay special attention to the things relevant to your role in the team
-- The Jupyter book ecosystem allows to produce diverse content, make advantage of this as much as you can (see [e_book](https://fedmug.github.io/e_book/intro.html) for a baseline)
-- As a starting point, clone the [ML book repo](https://github.com/Fedmug/kbtu-ml-book) and check that you can build the book locally
-- Clone only one branch of [ML book repo](https://github.com/Fedmug/kbtu-ml-book) which corresponds to your section:
-  `git clone -b BRANCH_NAME --single-branch https://github.com/Fedmug/kbtu-ml-book.git BRANCH_NAME`
-- Try to investigate all possible sources of information about your topic, especially those from [ML resources](./resources.md)
-- Think about links between parts of your section or to some other sections and chapters
-- Keep in mind that you are creating content for newbies
