@@ -1,8 +1,0 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
-
-format: jb-book
-root: vanilla_rnn_new.ipynb
-
-# chapters:
-# - file: vanilla_rnn_new.ipynb
