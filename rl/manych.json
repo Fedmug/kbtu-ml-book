@@ -1,0 +1,30 @@
+[
+    {
+        "question": "What is Q-Learning?",
+        "type": "many_choice",
+        "answers": [
+            {
+                "answer": "The algorithm we use to train our Q-function",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "A value function",
+                "correct": false,
+                "feedback": "Incorrect. It's an action-value function since it determines the value of being at a particular state and taking a specific action at that state"
+            },
+            {
+                "answer": "An algorithm that determines the value of being at a particular state and taking a specific action at that state",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "A table",
+                "correct": false,
+                "feedback": "Incorrect. Q-function is not a Q-table. The Q-function is the algorithm that will feed the Q-table."
+            }
+        ]
+    }
+    
+    
+]
