@@ -1,0 +1,28 @@
+[
+    {
+        "question": "Calculate this matrix multiplication?",
+        "type": "many_choice",
+        "answers": [
+            {
+                "answer": "[-3, 2]",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "[-1, 2]",
+                "correct": false,
+                "feedback": "I hope not."
+            },
+            {
+                "answer": "[-1, 3]",
+                "correct": false,
+                "feedback": "I hope not."
+            },
+            {
+                "answer": "[3, -1]",
+                "correct": false,
+                "feedback": "I hope not."
+            }
+        ]
+    }
+]
