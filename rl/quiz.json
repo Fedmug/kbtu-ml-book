@@ -1,0 +1,113 @@
+[
+  [
+    {
+      "question": "What is a Markov Decision Process (MDP)?",
+      "type": "multiple_choice",
+      "answers": [
+        {
+          "answer": "A mathematical model for decision-making in situations where outcomes are partly random and partly under the control of a decision-maker.",
+          "correct": true,
+          "feedback": "Correct! MDPs are indeed used to model decision-making in stochastic environments."
+        },
+        {
+          "answer": "A programming language specifically designed for machine learning.",
+          "correct": false,
+          "feedback": "Not quite. MDPs are a mathematical concept, not a programming language."
+        },
+        {
+          "answer": "A type of neural network architecture.",
+          "correct": false,
+          "feedback": "No, MDPs are not related to neural network architectures."
+        },
+        {
+          "answer": "A statistical method for data analysis.",
+          "correct": false,
+          "feedback": "MDPs are more focused on decision-making in uncertain environments, not statistical methods for data analysis."
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "question": "What are the main components of an MDP?",
+      "type": "multiple_choice",
+      "answers": [
+        {
+          "answer": "States, Actions, Rewards, Transition Probabilities",
+          "correct": true,
+          "feedback": "Correct! These are the key components of an MDP."
+        },
+        {
+          "answer": "Functions, Variables, Conditions, Loops",
+          "correct": false,
+          "feedback": "Not the correct components of an MDP."
+        },
+        {
+          "answer": "Input, Output, Processing",
+          "correct": false,
+          "feedback": "These terms are not specific to MDPs."
+        },
+        {
+          "answer": "Algorithms, Data Structures, Complexity",
+          "correct": false,
+          "feedback": "These terms are not the main components of an MDP."
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "question": "If the Markov chain has N possible states, what is the size of the transition matrix?",
+      "type": "multiple_choice",
+      "answers": [
+        {
+          "answer": "NxN",
+          "correct": true,
+          "feedback": "Correct! The transition matrix for a Markov chain with N states is an NxN matrix."
+        },
+        {
+          "answer": "2x2",
+          "correct": false,
+          "feedback": "Not correct. The size of the matrix depends on the number of states (N)."
+        },
+        {
+          "answer": "3x3",
+          "correct": false,
+          "feedback": "Not correct. The size of the matrix depends on the number of states (N)."
+        },
+        {
+          "answer": "1xN",
+          "correct": false,
+          "feedback": "Not correct. The matrix is square and has dimensions NxN."
+        }
+      ]
+    },
+
+    {
+      "question": "What does each row of the transition matrix in a Markov chain represent?",
+      "type": "multiple_choice",
+      "answers": [
+        {
+          "answer": "Probabilities of transitioning from one state to another",
+          "correct": true,
+          "feedback": "Correct! Each row represents the probabilities of transitioning from the corresponding state to all other states."
+        },
+        {
+          "answer": "Initial state probabilities",
+          "correct": false,
+          "feedback": "Not correct. The initial state probabilities are typically represented by a vector, not a row in the transition matrix."
+        },
+        {
+          "answer": "Cumulative probabilities",
+          "correct": false,
+          "feedback": "Not correct. Each row represents individual transition probabilities, not cumulative probabilities."
+        },
+        {
+          "answer": "Transition frequencies",
+          "correct": false,
+          "feedback": "Not correct. The matrix represents probabilities, not frequencies."
+        }
+      ]
+    }
+  ]
+]
