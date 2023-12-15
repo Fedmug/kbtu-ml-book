@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "What does Adagrad do differently for each parameter in terms of learning rates?",
+            "options": {
+                "a": "It uses the same learning rate for all parameters",
+                "b": "It increases the learning rate for frequently occurring features",
+                "c": "It performs smaller updates for parameters associated with infrequently occurring features",
+                "d": "It adapts the learning rate to the parameters, performing smaller updates for frequently occurring features"
+            },
+            "answer": "d"
+        }
+    ]
+}

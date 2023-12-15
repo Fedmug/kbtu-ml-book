@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "In which situations is Nadam often used?",
+            "options": {
+                "a": "When large amounts of data and complex deep neural network architectures are involved",
+                "b": "When a simple neural network architecture is used",
+                "c": "When minimal data processing is required",
+                "d": "When the conventional momentum method is preferred"
+            },
+            "answer": "a"
+        }
+    ]
+}

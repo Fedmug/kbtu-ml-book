@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "What is the main purpose of stochastic gradient descent (SGD) in machine learning and deep learning?",
+            "options": {
+                "a": "Maximizing the loss function",
+                "b": "Reducing the learning rate",
+                "c": "Minimizing the loss function",
+                "d": "Increasing the efficiency of model training"
+            },
+            "answer": "c"
+        }
+    ]
+}

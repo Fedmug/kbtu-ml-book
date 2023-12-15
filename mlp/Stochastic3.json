@@ -1,0 +1,14 @@
+{
+    "questions": [
+	{
+            "question": "What techniques are often used to improve the convergence and robustness of the learning process in SGD?",
+            "options": {
+                "a": "Increase in learning rate over time",
+                "b": "Application of stochasticity",
+                "c": "Reducing the learning rate over time and applying momentum",
+                "d": "Using more training examples for each update"
+            },
+            "answer": "c"
+        }
+    ]
+}

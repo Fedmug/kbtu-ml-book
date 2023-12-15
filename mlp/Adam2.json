@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "What does the bias correction mechanism in Adam help with?",
+            "options": {
+                "a": "Adjusting the learning rate for each parameter",
+                "b": "Handling differences between parameters",
+                "c": "Smoothing out the moment estimates during initial training stages",
+                "d": "Minimizing the loss function"
+            },
+            "answer": "c"
+        }
+    ]
+}

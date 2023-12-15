@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "What is the main weakness of Adagrad according to the text?",
+            "options": {
+                "a": "It does not adapt the learning rate to the parameters",
+                "b": "Its accumulated sum of squared gradients causes the learning rate to shrink over time",
+                "c": "It requires a large smoothing term to avoid division by zero",
+                "d": "It performs much worse without the square root operation"
+            },
+            "answer": "b"
+        }
+    ]
+}

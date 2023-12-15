@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "What does Nadam use to adjust the weight update steps?",
+            "options": {
+                "a": "The average of all previous gradients",
+                "b": "The position of the parameters in the future",
+                "c": "The mean square of all previous gradients",
+                "d": "The current learning rate"
+            },
+            "answer": "b"
+        }
+    ]
+}

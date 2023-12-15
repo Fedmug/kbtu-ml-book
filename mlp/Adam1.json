@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "What two well-known algorithms does Adam combine?",
+            "options": {
+                "a": "SGD and Bias Correction",
+                "b": "Momentum and RMSprop",
+                "c": "First-order and Second-order Averages",
+                "d": "Bias Correction and Momentum"
+            },
+            "answer": "b"
+        }
+    ]
+}

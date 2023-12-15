@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "How does Nesterov Accelerated Gradient (NAG) differ from standard momentum in SGD optimization?",
+            "options": {
+                "a": "NAG uses a smaller step size than standard momentum.",
+                "b": "NAG takes a leap in the direction opposite to the accumulated gradient.",
+                "c": "NAG calculates the gradient at the future parameter position and makes an informed update.",
+                "d": "NAG ignores the accumulated gradient for making updates."
+            },
+            "answer": "c"
+        }
+    ]
+}

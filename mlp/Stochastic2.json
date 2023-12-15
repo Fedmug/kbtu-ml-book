@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "What is the key difference between stochastic gradient descent (SGD) and classical gradient descent?",
+            "options": {
+                "a": "SGD calculates the gradient on each data set",
+                "b": "SGD updates the weights using the gradient computed from one or more training examples",
+                "c": "SGD always uses less training data",
+                "d": "SGD is slower than classical gradient descent"
+            },
+            "answer": "b"
+        }
+    ]
+}
