@@ -1,0 +1,109 @@
+Traceback (most recent call last):
+  File "/Users/nataliesheiko/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/nataliesheiko/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nataliesheiko/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nataliesheiko/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nataliesheiko/anaconda3/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/nataliesheiko/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/nataliesheiko/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/nataliesheiko/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+
+import pandas as pd
+credit_df = pd.read_csv("../ISLP_datsets/creditcard.csv.zip")
+y = credit_df['Class']
+X = credit_df.drop("Class", axis=1)
+
+from sklearn.model_selection import train_test_split 
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y)
+y_test.value_counts()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [0;32mIn[4], line 2[0m
+[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[0;32m----> 2[0m credit_df [38;5;241m=[39m pd[38;5;241m.[39mread_csv([38;5;124m"[39m[38;5;124m../ISLP_datsets/creditcard.csv.zip[39m[38;5;124m"[39m)
+[1;32m      3[0m y [38;5;241m=[39m credit_df[[38;5;124m'[39m[38;5;124mClass[39m[38;5;124m'[39m]
+[1;32m      4[0m X [38;5;241m=[39m credit_df[38;5;241m.[39mdrop([38;5;124m"[39m[38;5;124mClass[39m[38;5;124m"[39m, axis[38;5;241m=[39m[38;5;241m1[39m)
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py:912[0m, in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)[0m
+[1;32m    899[0m kwds_defaults [38;5;241m=[39m _refine_defaults_read(
+[1;32m    900[0m     dialect,
+[1;32m    901[0m     delimiter,
+[0;32m   (...)[0m
+[1;32m    908[0m     dtype_backend[38;5;241m=[39mdtype_backend,
+[1;32m    909[0m )
+[1;32m    910[0m kwds[38;5;241m.[39mupdate(kwds_defaults)
+[0;32m--> 912[0m [38;5;28;01mreturn[39;00m _read(filepath_or_buffer, kwds)
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py:577[0m, in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
+[1;32m    574[0m _validate_names(kwds[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mnames[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m))
+[1;32m    576[0m [38;5;66;03m# Create the parser.[39;00m
+[0;32m--> 577[0m parser [38;5;241m=[39m TextFileReader(filepath_or_buffer, [38;5;241m*[39m[38;5;241m*[39mkwds)
+[1;32m    579[0m [38;5;28;01mif[39;00m chunksize [38;5;129;01mor[39;00m iterator:
+[1;32m    580[0m     [38;5;28;01mreturn[39;00m parser
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1407[0m, in [0;36mTextFileReader.__init__[0;34m(self, f, engine, **kwds)[0m
+[1;32m   1404[0m     [38;5;28mself[39m[38;5;241m.[39moptions[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m] [38;5;241m=[39m kwds[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m]
+[1;32m   1406[0m [38;5;28mself[39m[38;5;241m.[39mhandles: IOHandles [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[0;32m-> 1407[0m [38;5;28mself[39m[38;5;241m.[39m_engine [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_make_engine(f, [38;5;28mself[39m[38;5;241m.[39mengine)
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1661[0m, in [0;36mTextFileReader._make_engine[0;34m(self, f, engine)[0m
+[1;32m   1659[0m     [38;5;28;01mif[39;00m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m mode:
+[1;32m   1660[0m         mode [38;5;241m+[39m[38;5;241m=[39m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m
+[0;32m-> 1661[0m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;241m=[39m get_handle(
+[1;32m   1662[0m     f,
+[1;32m   1663[0m     mode,
+[1;32m   1664[0m     encoding[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39moptions[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mencoding[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m   1665[0m     compression[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39moptions[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mcompression[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m   1666[0m     memory_map[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39moptions[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mmemory_map[39m[38;5;124m"[39m, [38;5;28;01mFalse[39;00m),
+[1;32m   1667[0m     is_text[38;5;241m=[39mis_text,
+[1;32m   1668[0m     errors[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39moptions[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mencoding_errors[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mstrict[39m[38;5;124m"[39m),
+[1;32m   1669[0m     storage_options[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39moptions[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mstorage_options[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m   1670[0m )
+[1;32m   1671[0m [38;5;28;01massert[39;00m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m
+[1;32m   1672[0m f [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mhandles[38;5;241m.[39mhandle
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/io/common.py:782[0m, in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
+[1;32m    777[0m [38;5;66;03m# ZIP Compression[39;00m
+[1;32m    778[0m [38;5;28;01melif[39;00m compression [38;5;241m==[39m [38;5;124m"[39m[38;5;124mzip[39m[38;5;124m"[39m:
+[1;32m    779[0m     [38;5;66;03m# error: Argument 1 to "_BytesZipFile" has incompatible type[39;00m
+[1;32m    780[0m     [38;5;66;03m# "Union[str, BaseBuffer]"; expected "Union[Union[str, PathLike[str]],[39;00m
+[1;32m    781[0m     [38;5;66;03m# ReadBuffer[bytes], WriteBuffer[bytes]]"[39;00m
+[0;32m--> 782[0m     handle [38;5;241m=[39m _BytesZipFile(
+[1;32m    783[0m         handle, ioargs[38;5;241m.[39mmode, [38;5;241m*[39m[38;5;241m*[39mcompression_args  [38;5;66;03m# type: ignore[arg-type][39;00m
+[1;32m    784[0m     )
+[1;32m    785[0m     [38;5;28;01mif[39;00m handle[38;5;241m.[39mbuffer[38;5;241m.[39mmode [38;5;241m==[39m [38;5;124m"[39m[38;5;124mr[39m[38;5;124m"[39m:
+[1;32m    786[0m         handles[38;5;241m.[39mappend(handle)
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/io/common.py:1025[0m, in [0;36m_BytesZipFile.__init__[0;34m(self, file, mode, archive_name, **kwargs)[0m
+[1;32m   1021[0m kwargs[38;5;241m.[39msetdefault([38;5;124m"[39m[38;5;124mcompression[39m[38;5;124m"[39m, zipfile[38;5;241m.[39mZIP_DEFLATED)
+[1;32m   1022[0m [38;5;66;03m# error: Argument 1 to "ZipFile" has incompatible type "Union[[39;00m
+[1;32m   1023[0m [38;5;66;03m# Union[str, PathLike[str]], ReadBuffer[bytes], WriteBuffer[bytes]]";[39;00m
+[1;32m   1024[0m [38;5;66;03m# expected "Union[Union[str, PathLike[str]], IO[bytes]]"[39;00m
+[0;32m-> 1025[0m [38;5;28mself[39m[38;5;241m.[39mbuffer [38;5;241m=[39m zipfile[38;5;241m.[39mZipFile(file, mode, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+
+File [0;32m~/anaconda3/lib/python3.11/zipfile.py:1284[0m, in [0;36mZipFile.__init__[0;34m(self, file, mode, compression, allowZip64, compresslevel, strict_timestamps, metadata_encoding)[0m
+[1;32m   1282[0m [38;5;28;01mwhile[39;00m [38;5;28;01mTrue[39;00m:
+[1;32m   1283[0m     [38;5;28;01mtry[39;00m:
+[0;32m-> 1284[0m         [38;5;28mself[39m[38;5;241m.[39mfp [38;5;241m=[39m io[38;5;241m.[39mopen(file, filemode)
+[1;32m   1285[0m     [38;5;28;01mexcept[39;00m [38;5;167;01mOSError[39;00m:
+[1;32m   1286[0m         [38;5;28;01mif[39;00m filemode [38;5;129;01min[39;00m modeDict:
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '../ISLP_datsets/creditcard.csv.zip'
+FileNotFoundError: [Errno 2] No such file or directory: '../ISLP_datsets/creditcard.csv.zip'
+
