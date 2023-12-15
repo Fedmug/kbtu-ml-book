@@ -3,6 +3,13 @@ author: KBTU
 logo: logo.png
 execute:
   execute_notebooks: cache
+execute_notebooks:
+  allow_errors: true
+  execute_timeout: 600
+  notebook_dir: notebooks
+  preprocessors:
+    - MyPreprocessor
+
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
@@ -32,6 +39,8 @@ execute:
   exclude_patterns:
     - 'python/basics/*'
     - 'linear_classificaton/multi_log_reg.ipynb'
+execution:
+  execute_notebooks: 'cache'
 
 sphinx:
   extra_extensions:
@@ -41,3 +50,6 @@ sphinx:
     bibtex_reference_style: author_year
     html_js_files:
       - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+extra_setup_code: |
+  from ipywidgets import widgets
+  from IPython.display import display
