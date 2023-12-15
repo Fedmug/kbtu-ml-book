@@ -1,0 +1,42 @@
+[
+  {
+           "question": "Consider the role of the Activation layer in a neural network. Identify the true statements.",
+           "type": "multiple_choice",
+           "answers": [
+               {
+                   "answer": "It introduces non-linearity into the network.",
+                   "correct": true,
+                   "feedback": "Correct! The Activation layer introduces non-linearity."
+               },
+               {
+                   "answer": "It is responsible for adjusting the learning rate dynamically.",
+                   "correct": false,
+                   "feedback": "Incorrect. Adjusting the learning rate is typically done by optimization algorithms."
+               },
+               {
+                   "answer": "It helps in normalizing input features.",
+                   "correct": false,
+                   "feedback": "Incorrect. Normalizing input features is not the responsibility of the Activation layer."
+               },
+               {
+                   "answer": "It transforms the raw input data to image format.",
+                   "correct": false,
+                   "feedback": "Incorrect. Transforming raw input data to an image format is not the role of the Activation layer."
+               },
+               {
+                   "answer": "It is unnecessary in shallow networks.",
+                   "correct": false,
+                   "feedback": "Incorrect. The Activation layer is still important in shallow networks."
+               },
+               {
+                   "answer": "It is crucial for capturing complex relationships in data.",
+                   "correct": true,
+                   "feedback": "Correct! The Activation layer is crucial for capturing complex relationships."
+               }
+           ],
+           "feedback": {
+               "correct": "Correct! The Activation layer introduces non-linearity (a), is crucial for complex relationships (f), and doesn't normalize input (c).",
+               "incorrect": "Incorrect. Review the feedback for each option. The correct options are a, f, and c. Hint: Think about non-linearity, role in complexity, and normalization."
+           }
+       }
+]

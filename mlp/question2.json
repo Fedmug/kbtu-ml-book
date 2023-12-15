@@ -1,0 +1,42 @@
+[
+  {
+            "question": "Which of the following are true regarding the Dense layer in a Multilayer Perceptron (MLP)?",
+            "type": "multiple_choice",
+            "answers": [
+                {
+                    "answer": "It performs matrix multiplication on input data.",
+                    "correct": true,
+                    "feedback": "Correct! Dense layer performs matrix multiplication."
+                },
+                {
+                    "answer": "It applies regularization to the network.",
+                    "correct": false,
+                    "feedback": "Incorrect. The Dense layer does not apply regularization."
+                },
+                {
+                    "answer": "It connects every neuron from one layer to every neuron in the next layer.",
+                    "correct": true,
+                    "feedback": "Correct! Dense layer connects every neuron."
+                },
+                {
+                    "answer": "It introduces non-linearity into the network.",
+                    "correct": false,
+                    "feedback": "Incorrect. The Dense layer does not introduce non-linearity."
+                },
+                {
+                    "answer": "It normalizes input features.",
+                    "correct": false,
+                    "feedback": "Incorrect. The Dense layer does not normalize input features."
+                },
+                {
+                    "answer": "It prevents overfitting by dropping out random neurons during training.",
+                    "correct": false,
+                    "feedback": "Correct! Dense layer prevents overfitting through dropout."
+                }
+            ],
+            "feedback": {
+                "correct": "Correct! The Dense layer performs matrix multiplication (a), connects every neuron (c), and prevents overfitting through dropout (f).",
+                "incorrect": "Incorrect. Review the feedback for each option. The correct options are a, c, and f. Hint: Think about matrix multiplication, connectivity, and dropout."
+            }
+        }
+]

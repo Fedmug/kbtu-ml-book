@@ -1,0 +1,18 @@
+[
+  {
+            "question": "What is the total number of parameters for a Dense layer with 50 input neurons and 30 output neurons?",
+            "type": "numeric",
+            "answers": [
+                {
+                    "type": "value",
+                    "value": 1530,
+                    "correct": true,
+                    "feedback": "Correct! This is the correct calculation for the number of parameters in a Dense layer."
+                },
+                {
+                    "type": "default",
+                    "feedback": "Incorrect. Try again. Hint: Consider the formula (input_neurons + 1) * output_neurons."
+                }
+            ]
+        }
+]
