@@ -1,0 +1,30 @@
+[
+    {
+        "question": "What is the purpose of the exploration-exploitation trade-off in Q-learning?",
+        "type": "many_choice",
+        "answers": [
+            {
+                "answer": "To balance between discovering new actions and exploiting known actions",
+                "correct": true,
+                "feedback": "Correct"
+            },
+            {
+                "answer": "To calculate the learning rate",
+                "correct": false,
+                "feedback": "Learning rate calculation is important, but the exploration-exploitation trade-off focuses on other tasks"
+            },
+            {
+                "answer": "To find the optimal policy",
+                "correct": false,
+                "feedback": "Optimizing the policy is the end goal,while the exploration-exploitation trade-off focuses on other tasks"
+            },
+            {
+                "answer": "To minimize the discount factor",
+                "correct": false,
+                "feedback": "Discount factor adjusts future rewards,try again."
+            }
+        ]
+    }
+    
+    
+]
