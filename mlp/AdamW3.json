@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "What does AdamW improve compared to the original Adam?",
+            "options": {
+                "a": "The process of calculating gradients",
+                "b": "The efficiency of the first and second moment estimates",
+                "c": "The method of applying the learning rate",
+                "d": "Generalization ability of the model and control of weight scaling"
+            },
+            "answer": "d"
+        }
+    ]
+}

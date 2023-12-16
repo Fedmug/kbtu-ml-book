@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "What does the NAG method do before making a parameter update?",
+            "options": {
+                "a": "It recalculates the previous gradients.",
+                "b": "It starts with the current momentum and makes a correction based on updated gradient information.",
+                "c":"It reduces the learning rate for a more conservative update.",
+                "d": "It doubles the accumulated gradient to ensure a larger step."
+            },
+            "answer": "b"
+        }
+    ]
+}

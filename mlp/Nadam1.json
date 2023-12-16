@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "What is the main goal of Nadam?",
+            "options": {
+                "a": "To increase the learning rate",
+                "b": "To reduce the amount of data needed",
+                "c": "To improve Adam by using Nesterov momentum",
+                "d": "To simplify the optimization process"
+            },
+            "answer": "c"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "Which algorithm does RMSprop intend to improve upon by addressing the issue of slowed down learning for frequently occurring parameters?",
+            "options": {
+                "a": "Gradient Descent",
+                "b": "Adadelta",
+                "c": "Adagrad",
+                "d": "Momentum"
+            },
+            "answer": "c"
+        }
+    ]
+}

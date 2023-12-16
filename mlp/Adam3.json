@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "In which situation might Adam not be the best choice?",
+            "options": {
+                "a": "When working with large variations in gradients",
+                "b": "When a high efficiency and versatility is required",
+                "c": "When determining the ideal model weights",
+                "d": "When other algorithms like SGD or RMSprop may perform better"
+            },
+            "answer": "d"
+        }
+    ]
+}

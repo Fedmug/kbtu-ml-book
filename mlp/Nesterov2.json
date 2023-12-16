@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "What is the result of Nesterov Accelerated Gradient's approach to optimization?",
+            "options": {
+                "a": "Slower convergence and degraded performance.",
+                "b": "Quicker convergence and improved overall performance.",
+                "c": "No significant change in convergence speed.",
+                "d": "More frequent oscillations in parameter updates."
+            },
+            "answer": "b"
+        }
+    ]
+}

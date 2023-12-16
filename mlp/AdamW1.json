@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "What is the main difference between AdamW and the regular Adam algorithm?",
+            "options": {
+                "a": "AdamW applies weight regularization separately from the gradient updating process",
+                "b": "AdamW uses a different method for estimating the first and second moments of gradients",
+                "c": "AdamW has a different way of handling learning rate",
+                "d": "AdamW uses a completely different approach to optimize model parameters"
+            },
+            "answer": "a"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "How does RMSprop adjust the learning rate for each weight parameter?",
+            "options": {
+                "a": "By dividing the learning rate by the sum of past gradients for that weight",
+                "b": "By multiplying the learning rate by the average of recent gradients for that weight",
+                "c": "By dividing the learning rate by the average of recent gradients for that weight",
+                "d": "By adding the learning rate to the average of recent gradients for that weight"
+            },
+            "answer": "c"
+        }
+    ]
+}

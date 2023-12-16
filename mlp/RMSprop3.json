@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "In RMSprop, which factor influences the limitation of learning rates for individual parameters?",
+            "options": {
+                "a": "Gradients of recent time steps",
+                "b": "Sum of past gradients",
+                "c": "Number of epochs",
+                "d": "Magnitude of weight updates"
+            },
+            "answer": "a"
+        }
+    ]
+}

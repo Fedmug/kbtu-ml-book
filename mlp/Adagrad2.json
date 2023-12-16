@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "How does Adagrad's update rule modify the general learning rate at each time step for every parameter?",
+            "options": {
+                "a": "By multiplying it with the gradient at that time step",
+                "b": "By dividing it by the sum of the squares of the gradients up to that time step",
+                "c": "By adding a smoothing term that avoids division by zero",
+                "d": "By dividing it by the square root of the sum of the squares of the gradients plus a smoothing term"
+            },
+            "answer": "d"
+        }
+    ]
+}

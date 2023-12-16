@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "question": "Why is AdamW particularly important for tasks prone to overfitting?",
+            "options": {
+                "a": "It reduces the learning rate more efficiently",
+                "b": "It applies weight regularization directly to model parameters rather than to gradients",
+                "c": "It changes the way gradients are calculated",
+                "d": "It uses a different first and second moment estimation technique"
+            },
+            "answer": "b"
+        }
+    ]
+}
