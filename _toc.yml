@@ -1,7 +1,12 @@
 format: jb-book
-root: README
+root: README 
 parts:
-  - caption: Introduction to ML
+  - caption: Courses
+    chapters:
+      - file: courses/ML_2023.md
+      - file: courses/Intro2ML.md
+      
+  - caption: Classical ML
     chapters:
       - file: intro/intro_to_ML
         sections:
