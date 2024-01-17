@@ -14,8 +14,8 @@ parts:
           - file: intro/applications
           - file: intro/data
           - file: intro/ml_types
-          - file: intro/knn
           - file: intro/model_selection
+          - file: intro/knn
 
       - file: lin_reg/linear_regression
         sections:
