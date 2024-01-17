@@ -11,10 +11,11 @@ Sincerely yours,
 chatGPT
 ```
 
-Hence, the course constists of two parts:
+Hence, the course constists of the following parts:
 
 * mathematics for ML
-* Python libraries for ML
+* Python libraries and frameworks for ML
+* basic model of ML
 
 ## Course assessment
 
@@ -26,3 +27,5 @@ Hence, the course constists of two parts:
 | Final exam           | $40\%$       |
 
 Practice consists of (nearly) weekly assignments in Jupyter Notebooks, around $3$ points each.
+
+**Invite to MS Teams**: mymkq0s
