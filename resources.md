@@ -12,6 +12,8 @@
 
 4. {cite:ps}`pml1Book` (more info [here](https://probml.github.io/pml-book/book1.html)) is even heavier relied on probabilistic and Bayesian grounds. It pays special attention to deep learning and its applications, the hottest area of machine learning nowadays. Even more modern advanced topics are covered in the second book [Probabilistic Machine Learning: Advanced Topics](https://probml.github.io/pml-book/book2.html).
 
+5. {cite:ps}`prince2023understanding` (more info [here](https://udlbook.github.io/udlbook/)) is a kind introduction to the modern field of deep learning.
+
 ## Online books
 
 1. [ML Handbook](https://academy.yandex.ru/handbook/ml) from Yandex (in Russian).

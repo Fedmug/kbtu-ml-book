@@ -5,6 +5,7 @@ parts:
     chapters:
       - file: courses/ML_2023.md
       - file: courses/Intro2ML.md
+      - file: courses/DL.md
       
   - caption: Classical ML
     chapters:
