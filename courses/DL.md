@@ -1,6 +1,18 @@
 <!-- #region -->
 # Deep Learning
 
+## Literature
+
+1. Probabilistic Machine Learning: An introduction. {cite:ps}`pml1Book` 
+
+2. Deep Learning {cite:ps}`Goodfellow-et-al-2016`
+
+3. Understanding Deep Learning {cite:ps}`prince2023understanding` 
+
+4. Dive into Deep Learning {cite:ps}`zhang2023dive`
+
+5. [ML Handbook](https://education.yandex.ru/handbook/ml)
+
 
 ## Course assessment
 
@@ -12,9 +24,7 @@
 | Endterm              | $10\%$       |
 | Final exam (project) | $40\%$       |
 
-Practice consists of (nearly) weekly assignments in Jupyter Notebooks, around $3$ points each.
-
-**Invite to MS Teams**: ?
+**Invite to MS Teams**: rvnmeqz
 
 ## Project
 
