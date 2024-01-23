@@ -142,10 +142,9 @@ parts:
         sections:
           - file: math/lin_alg/vectors
           - file: math/lin_alg/matrices
-          - file: math/lin_alg/linear_systems
           - file: math/lin_alg/inverse
           - file: math/lin_alg/rank
-          - file: math/lin_alg/orthogonality
+          # - file: math/lin_alg/orthogonality
           - file: math/lin_alg/projections
           - file: math/lin_alg/determinant
           - file: math/lin_alg/eig
