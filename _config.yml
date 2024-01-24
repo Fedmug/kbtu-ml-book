@@ -24,7 +24,7 @@ parse:
     - substitution
     - tasklist
 
-exclude_patterns: ["*/tasks.ipynb", "plotly_html.ipynb", "ISLP_datasets/*.ipynb",
+exclude_patterns: ["*/tasks.ipynb", "plotly_html.ipynb", "ISLP_datasets/*.ipynb", "*/master.ipynb",
                    "ensembling/bias_variance_handbook.ipynb", "notMNIST_small/*",
                    "mlp/MLP_notebook.ipynb", "mlp/keras.ipynb", "cnn/fashion-mnist-kaggle.ipynb",
                    "intro/Seminar1.ipynb", "math/lin_alg/linear_systems.ipynb", "math/lin_alg/orthogonality.ipynb"]
