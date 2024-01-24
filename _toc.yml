@@ -6,6 +6,10 @@ parts:
       - file: courses/ML_2023.md
       - file: courses/Intro2ML.md
       - file: courses/DL.md
+      - file: HW/hw.md
+        sections:
+          - file: HW/HW1
+          - file: HW/not_mnist_student
       
   - caption: Classical ML
     chapters:
@@ -167,10 +171,7 @@ parts:
           - file: math/optimization/GD.ipynb
           - file: math/optimization/SGD.ipynb
           - file: math/optimization/newton.ipynb
-
-  - caption: HW
-    chapters:
-      - file: not_mnist_student
+      
 
   - caption: References
     chapters:
