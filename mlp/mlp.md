@@ -19,14 +19,14 @@ $$
 * activation function 
 
 $$
-    z = \sigma(y), \quad \sigma(y) = [y > 0].
+    z = \psi(y), \quad \psi(y) = \mathbb I[y > 0].
 $$
 
 If we have several neurons $z_1, \ldots, z_m$ in the output layer, then the linear transformation between layers can be written as
 
 ```{math}
 :label: linear-layer-coord
-    z_j = \sum\limits_{i=1}^n w_{ij} x_i, \quad j  1, \ldots, m
+    z_j = \sum\limits_{i=1}^n w_{ij} x_i + b_j, \quad j = 1, \ldots, m.
 ```
 
 ```{admonition} Question
