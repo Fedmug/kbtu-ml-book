@@ -9,6 +9,7 @@ parts:
       - file: HW/hw.md
         sections:
           - file: HW/HW1
+          - file: HW/HW2
           - file: HW/not_mnist_student
       
   - caption: Classical ML

@@ -33,15 +33,16 @@ Practice consists of (nearly) weekly assignments in Jupyter Notebooks, around $3
 ## Homeworks
 
 * {ref}`HW1`, **deadline**: 31.01.2024 11:59 (GMT+6)
+* {ref}`HW2`, **deadline**: 07.02.2024 11:59 (GMT+6)
 
 ## Submission notes
 
 Name your file in the format `HWi_GROUPj_NAME_SURNAME.ipynb` where $i$ is homework index, $j$ is group index. There are $4$ groups:
 
-* `GROUP1`: Sergei Wed 13:00 - 15:00
-* `GROUP2`: Zhalgas Wed 13:00 - 15:00
-* `GROUP3`: Zhalgas Wed 15:00 - 17:00
-* `GROUP4`: Zhalgas Sat
+* `GROUP1`: Sergei Wed 13:00 - 15:00 (**TA**: Zarina Abildasheva)
+* `GROUP2`: Zhalgas Wed 13:00 - 15:00 (**TA**: Zhandos Makhambetali)
+* `GROUP3`: Zhalgas Wed 15:00 - 17:00 (**TA**: Salamat Kuantaiuly)
+* `GROUP4`: Zhalgas Sat (**TA**: Ахан Исмаилов)
 
 Then send it to **MS Teams**.
 
