@@ -90,7 +90,6 @@ parts:
       - file: mlp/mlp
         sections:
           - file: mlp/layers
-          - file: mlp/activations
           - file: mlp/forward_backward_pass
           - file: mlp/backprop
           - file: mlp/weight_init

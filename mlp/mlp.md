@@ -1,7 +1,7 @@
 <!-- #region -->
 # Multilayer perceptron (MLP)
 
-**Multilayer perceptron** (MLP) was originally introduced in Rosenblatt's paper back in 1957. It is a simplest type of feedforward artificial neural network that consists of multiple layers of interconnected artificial neurons (perceptrons).
+**Multilayer perceptron** (MLP) was originally introduced in {cite:p}`rosenblatt1958perceptron`. It is a simplest type of feedforward artificial neural network that consists of multiple layers of interconnected artificial neurons (perceptrons).
 
 ```{figure} https://miro.medium.com/v2/resize:fit:1400/1*ofVdu6L3BDbHyt1Ro8w07Q.png
 :align: center
