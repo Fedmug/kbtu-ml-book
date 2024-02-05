@@ -32,8 +32,14 @@ Practice consists of (nearly) weekly assignments in Jupyter Notebooks, around $3
 
 ## Homeworks
 
-* {ref}`HW1`, **deadline**: 31.01.2024 11:59 (GMT+6)
-* {ref}`HW2`, **deadline**: 07.02.2024 11:59 (GMT+6)
+### {ref}`HW1`
+* **Soft deadline**: 01.02.2024 11:59 (GMT+6)
+* **Hard deadline**: 07.02.2024 11:59 (GMT+6)
+
+### {ref}`HW2`
+
+* **Soft deadline**: 07.02.2024 11:59 (GMT+6)
+* **Hard deadline**: 14.02.2024 11:59 (GMT+6)
 
 ## Submission notes
 
@@ -44,9 +50,15 @@ Name your file in the format `HWi_GROUPj_NAME_SURNAME.ipynb` where $i$ is homewo
 * `GROUP3`: Zhalgas Wed 15:00 - 17:00 (**TA**: Salamat Kuantaiuly)
 * `GROUP4`: Zhalgas Sat (**TA**: Ахан Исмаилов)
 
-Then send it to **MS Teams**.
+Then send it to **MS TEAMS** (assignments section).
 
-**Deadline:** Wed 11:59 (GMT+6) next week.
+**Soft deadline:** Wed 11:59 (GMT+6) next week.
+
+**Hard deadline:** Wed 11:59 (GMT+6) next to next week.
+
+Submits after the hard deadline are not accepted. If you submit after the soft deadline, you receive 10% penalty per each day of delay. 
+
+**Example:** If deadline is 01.02.2024 11:59, and submission time is 04.02.2024 11:34, then you mark is multiplied by 0.7 (3 days of delay = 30% penalty). But if you submit one hour later (at 12:34), the penalty will be 40%.
 
 ## General recommendations
 

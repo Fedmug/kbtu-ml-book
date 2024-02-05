@@ -5,12 +5,12 @@ parts:
     chapters:
       - file: courses/ML_2023.md
       - file: courses/Intro2ML.md
-      - file: courses/DL.md
-      - file: HW/hw.md
         sections:
           - file: HW/HW1
           - file: HW/HW2
           - file: HW/not_mnist_student
+      - file: courses/DL.md
+        
       
   - caption: Classical ML
     chapters:
