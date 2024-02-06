@@ -160,6 +160,7 @@ parts:
           - file: math/calculus/1-d
           - file: math/calculus/multivariate
           - file: math/calculus/matrix_diff
+          - file: math/calculus/optimization
       - file: math/probability
         sections:
           - file: math/proba/entropy
