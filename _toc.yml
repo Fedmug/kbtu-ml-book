@@ -8,6 +8,7 @@ parts:
         sections:
           - file: HW/HW1
           - file: HW/HW2
+          - file: HW/HW3
           - file: HW/not_mnist_student
       - file: courses/DL.md
         
@@ -167,11 +168,6 @@ parts:
       - file: math/statistics
         sections:
           - file: math/stats/MLE
-      - file: math/optimization
-        sections:
-          - file: math/optimization/GD.ipynb
-          - file: math/optimization/SGD.ipynb
-          - file: math/optimization/newton.ipynb
       
 
   - caption: References
