@@ -41,6 +41,11 @@ Practice consists of (nearly) weekly assignments in Jupyter Notebooks, around $3
 * **Soft deadline**: 07.02.2024 11:59 (GMT+6)
 * **Hard deadline**: 14.02.2024 11:59 (GMT+6)
 
+### {ref}`HW3`
+
+* **Soft deadline**: 14.02.2024 11:59 (GMT+6)
+* **Hard deadline**: 21.02.2024 11:59 (GMT+6)
+
 ## Submission notes
 
 Name your file in the format `HWi_GROUPj_NAME_SURNAME.ipynb` where $i$ is homework index, $j$ is group index. There are $4$ groups:
