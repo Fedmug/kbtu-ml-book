@@ -164,6 +164,7 @@ parts:
           - file: math/calculus/optimization
       - file: math/probability
         sections:
+          - file: math/proba/rvs
           - file: math/proba/entropy
       - file: math/statistics
         sections:
