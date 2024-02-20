@@ -167,8 +167,10 @@ parts:
         sections:
           - file: math/proba/rvs
           - file: math/proba/entropy
+          - file: math/proba/independence
       - file: math/statistics
         sections:
+          - file: math/stats/limit_theorems
           - file: math/stats/MLE
       
 
