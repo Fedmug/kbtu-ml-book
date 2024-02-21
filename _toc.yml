@@ -10,6 +10,7 @@ parts:
           - file: HW/HW2
           - file: HW/HW3
           - file: HW/HW4
+          - file: HW/HW5
           - file: HW/not_mnist_student
       - file: courses/DL.md
         
