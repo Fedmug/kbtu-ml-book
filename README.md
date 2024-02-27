@@ -20,3 +20,40 @@ Create conditions allowing students to acquire knowldedge and skills at the desi
 
 Our attempt will technically rely on [Jupyter book](https://jupyterbook.org/en/stable/intro.html), an open-source tool for building publication-quality books and documents from computational material.
 
+## [ML roadmap](https://drive.google.com/file/d/1dKGx_tJu_piWrteRjbmRlcoRalZ6ht7s/view)
+
+Machine learning is the fusion of mathematical principles and programming techniques, enabling systems to learn from data and make predictions or decisions without explicit programming instructions
+
+```{figure} ./ML_map.png
+:align: center
+```
+
+### Maths
+
+* Linear algebra
+* Calculus and optimization
+* Probability
+* Statistics
+
+### Data manipulation
+
+* [NumPy](https://numpy.org/)
+* [SciPy](https://scipy.org/)
+* [Pandas](https://pandas.pydata.org/)
+* [Polars](https://pola.rs/)
+* SQL
+
+### Data visualization
+
+* [Matplotlib](https://matplotlib.org/)
+* [Seaborn](https://seaborn.pydata.org/)
+* [Plotly](https://plotly.com/python/)
+
+### ML frameworks
+
+* [Scikit-learn](https://scikit-learn.org/stable/)
+* [PyTorch](https://pytorch.org/)
+* [Keras](https://keras.io/)
+* [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html)
+
+The last three are actually deep learning frameworks.
