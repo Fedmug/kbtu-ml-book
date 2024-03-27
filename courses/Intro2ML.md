@@ -54,7 +54,12 @@ Practice consists of (nearly) weekly assignments in Jupyter Notebooks, around $3
 ### {ref}`HW5`
 
 * **Soft deadline**: 28.02.2024 11:59 (GMT+6)
-* **Hard deadline**: 06.03.2024 11:59 (GMT+6)
+* **Hard deadline**: 06.03.2024 11:59 (GMT+5)
+
+### {ref}`HW6`
+
+* **Soft deadline**: 10.04.2024 11:59 (GMT+5)
+* **Hard deadline**: 17.04.2024 11:59 (GMT+5)
 
 ## Submission notes
 
