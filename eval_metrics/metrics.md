@@ -5,5 +5,5 @@
 ```
 
 In machine learning the loss function is typically used for model evaluation.
-However, this metric can be quite different from business metrics such as "earn more money. There can be even an hierarchy of proxy metrics between a business metric and a ML metric. See [here](https://academy.yandex.ru/handbook/ml/article/beta-metriki-klassifikacii-i-regressii#vybor-metrik-v-realnyh-zadachah) for an example.
+However, this metric can be quite different from business metrics such as "earn more money". There can be even an hierarchy of proxy metrics between a business metric and a ML metric. See [here](https://academy.yandex.ru/handbook/ml/article/beta-metriki-klassifikacii-i-regressii#vybor-metrik-v-realnyh-zadachah) for an example.
 
