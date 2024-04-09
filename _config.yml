@@ -26,7 +26,7 @@ parse:
 
 exclude_patterns: ["*/tasks.ipynb", "plotly_html.ipynb", "ISLP_datasets/*.ipynb", "*/master.ipynb",
                    "ensembling/bias_variance_handbook.ipynb", "notMNIST_small/*", "mlp/dropout.py",
-                   "mlp/MLP*.ipynb", "mlp/mnist/*", "mlp/keras.ipynb", "cnn/fashion-mnist-kaggle.ipynb",
+                   "mlp/MLP_pytorch.ipynb", "mlp/mnist/*", "mlp/keras.ipynb", "cnn/fashion-mnist-kaggle.ipynb",
                    "intro/Seminar1.ipynb", "math/lin_alg/linear_systems.ipynb", "math/lin_alg/orthogonality.ipynb"]
 
 execute:

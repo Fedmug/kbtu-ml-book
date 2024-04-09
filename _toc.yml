@@ -4,6 +4,8 @@ parts:
   - caption: Courses
     chapters:
       - file: courses/ML_2023.md
+        sections:
+          - file: HW/not_mnist_student
       - file: courses/Intro2ML.md
         sections:
           - file: HW/HW1
@@ -12,7 +14,7 @@ parts:
           - file: HW/HW4
           - file: HW/HW5
           - file: HW/HW6
-          - file: HW/not_mnist_student
+          - file: HW/HW7
       - file: courses/DL.md
         
       
@@ -99,6 +101,7 @@ parts:
           - file: mlp/weight_init
           - file: mlp/regularization
           - file: mlp/optimization_dl
+          - file: mlp/MLP_notebook
 
       - file: cnn/cnn
         sections:

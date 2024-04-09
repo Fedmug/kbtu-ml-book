@@ -4,3 +4,5 @@ _build/*
 .DS_STORE
 notMNIST_small
 notMNIST_small/*
+*.pyc
+*/*/*.pyc
