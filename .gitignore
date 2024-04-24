@@ -6,3 +6,5 @@ notMNIST_small
 notMNIST_small/*
 *.pyc
 */*/*.pyc
+*/*.pyc
+*util.cpython-311.pyc

@@ -30,7 +30,7 @@ The optimal weights $\boldsymbol{\widehat w}$ maximize the likelihood, or, equiv
     \log p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = \log\prod_{i=1}^n p(y_i \vert \boldsymbol x_i, \boldsymbol w) = \sum_{i=1}^n \log p(y_i \vert \boldsymbol x_i, \boldsymbol w) \to \max\limits_{\boldsymbol w}.
 ```
 
-Alternatively, one can minimize **negative log-likelikelihood** (**NLL**):
+Alternatively, one can minimize **negative log-likelihood** (**NLL**):
 
 $$
 - \log p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = -\sum_{i=1}^n \log p(y_i \vert \boldsymbol x_i, \boldsymbol w) \to \min\limits_{\boldsymbol w}.
