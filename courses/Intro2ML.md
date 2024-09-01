@@ -5,7 +5,7 @@ The key word is **introduction**. Completing this course one should be acquire k
 ```{admonition} Machine learning = Math + Programming
 :class: dropdown, important
 
-> Machine learning is a dynamic and interdisciplinary field that has emerged from the symbiotic combination of mathematics and programming. At its core, machine learning leverages mathematical principles, particularly statistics, linear algebra, and calculus, to develop algorithms that enable computers to learn from data and make predictions or decisions without explicit programming. The fusion of these mathematical foundations with programming languages such as Python and R has led to the creation of powerful frameworks and libraries, facilitating the implementation and deployment of complex machine learning models. 
+> Machine learning is a dynamic and interdisciplinary field that has emerged from the symbiotic combination of mathematics and programming. At its core, machine learning leverages mathematical principles, particularly statistics, linear algebra, and calculus, to develop algorithms that enable computers to learn from data and make predictions or decisions without explicit programming. The fusion of these mathematical foundations with programming languages such as Python and R has led to the creation of powerful frameworks and libraries, facilitating the implementation and deployment of complex machine learning models.
 
 Sincerely yours,
 chatGPT
@@ -13,58 +13,25 @@ chatGPT
 
 Hence, the course constists of the following parts:
 
-* mathematics for ML
-* Python libraries and frameworks for ML
-* basic model of ML
+- mathematics for ML
+- Python libraries and frameworks for ML
+- basic models of ML
 
 ## Course assessment
 
-| Activity             | Final scores |
-| -------------------- | ------------ |
-| Attendance           | $10\%$       |
-| Practice             | $30\%$       |
-| Midterm              | $20\%$       |
-| Final exam           | $40\%$       |
+| Activity                     | Final scores |
+| ---------------------------- | ------------ |
+| Attendance and participation | $10\%$       |
+| Practice (SIS)               | $20\%$       |
+| Mid-term                     | $15\%$       |
+| End-term                     | $15\%$       |
+| Final exam                   | $40\%$       |
 
-Practice consists of (nearly) weekly assignments in Jupyter Notebooks, around $3$ points each.
+Practice consists of assignments in Jupyter Notebooks.
 
-**Invite to MS Teams**: r6qcypl
+**Invite to MS Teams**: TBA
 
-## Homeworks
-
-### {ref}`HW1`
-* **Soft deadline**: 01.02.2024 11:59 (GMT+6)
-* **Hard deadline**: 07.02.2024 11:59 (GMT+6)
-
-### {ref}`HW2`
-
-* **Soft deadline**: 07.02.2024 11:59 (GMT+6)
-* **Hard deadline**: 14.02.2024 11:59 (GMT+6)
-
-### {ref}`HW3`
-
-* **Soft deadline**: 14.02.2024 11:59 (GMT+6)
-* **Hard deadline**: 21.02.2024 11:59 (GMT+6)
-
-### {ref}`HW4`
-
-* **Soft deadline**: 21.02.2024 11:59 (GMT+6)
-* **Hard deadline**: 28.02.2024 11:59 (GMT+6)
-
-### {ref}`HW5`
-
-* **Soft deadline**: 28.02.2024 11:59 (GMT+6)
-* **Hard deadline**: 06.03.2024 11:59 (GMT+5)
-
-### {ref}`HW6`
-
-* **Soft deadline**: 10.04.2024 11:59 (GMT+5)
-* **Hard deadline**: 17.04.2024 11:59 (GMT+5)
-
-### {ref}`HW7`
-
-* **Hard deadline**: 24.04.2024 11:59 (GMT+5)
-
+<!--
 ## Submission notes
 
 Name your file in the format `HWi_GROUPj_NAME_SURNAME.ipynb` where $i$ is homework index, $j$ is group index. There are $4$ groups:
@@ -80,7 +47,7 @@ Then send it to **MS TEAMS** (assignments section).
 
 **Hard deadline:** Wed 11:59 (GMT+6) next to next week.
 
-Submits after the hard deadline are not accepted. If you submit after the soft deadline, you receive 10% penalty per each day of delay. 
+Submits after the hard deadline are not accepted. If you submit after the soft deadline, you receive 10% penalty per each day of delay.
 
 **Example:** If deadline is 01.02.2024 11:59, and submission time is 04.02.2024 11:34, then you mark is multiplied by 0.7 (3 days of delay = 30% penalty). But if you submit one hour later (at 12:34), the penalty will be 40%.
 
@@ -93,3 +60,5 @@ Submits after the hard deadline are not accepted. If you submit after the soft d
 * Provide your solution with understandable comments; do not submit tons of formulas and/or code  cells without any text description of what you are doing
 
 * **Readability counts!** In case of poor writings you may receive penalty up to one point
+
+-->

@@ -1,33 +1,39 @@
 format: jb-book
-root: README 
+root: README
 parts:
   - caption: Courses
     chapters:
       - file: courses/ML_2023.md
-        sections:
-          - file: HW/not_mnist_student
+        # sections:
+        #   - file: HW/not_mnist_student
       - file: courses/Intro2ML.md
-        sections:
-          - file: HW/HW1
-          - file: HW/HW2
-          - file: HW/HW3
-          - file: HW/HW4
-          - file: HW/HW5
-          - file: HW/HW6
-          - file: HW/HW7
+        # sections:
+        #   - file: HW/HW1
+        #   - file: HW/HW2
+        #   - file: HW/HW3
+        #   - file: HW/HW4
+        #   - file: HW/HW5
+        #   - file: HW/HW6
+        #   - file: HW/HW7
       - file: courses/DL.md
-        
-      
+
   - caption: Classical ML
     chapters:
       - file: intro/intro_to_ML
         sections:
           - file: intro/definition
           - file: intro/applications
-          - file: intro/data
+          # - file: intro/data
           - file: intro/ml_types
+          - file: intro/python
           - file: intro/model_selection
           - file: intro/knn
+
+      - file: data/data
+        sections:
+          - file: data/tabular
+          - file: data/images
+          - file: data/text
 
       - file: lin_reg/linear_regression
         sections:
@@ -177,7 +183,6 @@ parts:
         sections:
           - file: math/stats/limit_theorems
           - file: math/stats/MLE
-      
 
   - caption: References
     chapters:
