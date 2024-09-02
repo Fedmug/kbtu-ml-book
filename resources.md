@@ -1,3 +1,5 @@
+(ml-resources)=
+
 # ML resources
 
 ## Textbooks
@@ -26,7 +28,7 @@
 
 1. [Maching Learning](https://www.coursera.org/learn/machine-learning?specialization=machine-learning-introduction) with Andrew Ng.
 
-2. [Open Machine Learning Course](https://mlcourse.ai/book/index.html) from ODS (also written with Jupyter Book!).
+2. [Open Machine Learning Course](https://mlcourse.ai/book/index.html) from ODS.
 
 3. [Machine learning course](http://www.machinelearning.ru/wiki/index.php?title=%D0%9C%D0%B0%D1%88%D0%B8%D0%BD%D0%BD%D0%BE%D0%B5_%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%28%D0%BA%D1%83%D1%80%D1%81_%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B9%2C_%D0%9A.%D0%92.%D0%92%D0%BE%D1%80%D0%BE%D0%BD%D1%86%D0%BE%D0%B2%29) by K. V. Vorontsov (in Russian).
 
@@ -43,3 +45,5 @@
 - Lectures from [Skoltech's Machine Learning course ](https://github.com/adasegroup/ML2023_lectures/tree/main)
 
 - [ChatGPT Prompt Engineering for Developers](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/)
+
+- [List of ML technical blogs](https://github.com/antoinebrl/awesome-ml-blogs?tab=readme-ov-file)

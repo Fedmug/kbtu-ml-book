@@ -30,30 +30,11 @@ Machine learning is the fusion of mathematical principles and programming techni
 
 ### Maths
 
-* Linear algebra
-* Calculus and optimization
-* Probability
-* Statistics
+- Linear algebra
+- Calculus and optimization
+- Probability
+- Statistics
 
-### Data manipulation
+### Python
 
-* [NumPy](https://numpy.org/)
-* [SciPy](https://scipy.org/)
-* [Pandas](https://pandas.pydata.org/)
-* [Polars](https://pola.rs/)
-* SQL
-
-### Data visualization
-
-* [Matplotlib](https://matplotlib.org/)
-* [Seaborn](https://seaborn.pydata.org/)
-* [Plotly](https://plotly.com/python/)
-
-### ML frameworks
-
-* [Scikit-learn](https://scikit-learn.org/stable/)
-* [PyTorch](https://pytorch.org/)
-* [Keras](https://keras.io/)
-* [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html)
-
-The last three are actually deep learning frameworks.
+See {ref}`Python libraries <python-for-ml>` section for details.
