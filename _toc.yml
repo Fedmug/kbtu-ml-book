@@ -26,14 +26,19 @@ parts:
           # - file: intro/data
           - file: intro/ml_types
           - file: intro/python
-          - file: intro/model_selection
-          - file: intro/knn
 
       - file: data/data
         sections:
           - file: data/tabular
           - file: data/images
           - file: data/text
+          - file: data/datasets
+
+      - file: supervised/sl
+        sections:
+          - file: supervised/sl_types
+          - file: supervised/model_selection
+          - file: supervised/knn
 
       - file: lin_reg/linear_regression
         sections:

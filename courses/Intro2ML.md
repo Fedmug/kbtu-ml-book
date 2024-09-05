@@ -29,7 +29,7 @@ Hence, the course constists of the following parts:
 
 Practice consists of assignments in Jupyter Notebooks.
 
-**Invite to MS Teams**: TBA
+**Invite to MS Teams**: a8wjfed
 
 <!--
 ## Submission notes
