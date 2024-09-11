@@ -16,6 +16,7 @@ parts:
         #   - file: HW/HW6
         #   - file: HW/HW7
       - file: courses/DL.md
+      - file: courses/ML_2024
       - file: courses/ML_2024_MBA
 
   - caption: Classical ML
