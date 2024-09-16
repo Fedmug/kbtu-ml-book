@@ -39,8 +39,8 @@ parts:
       - file: supervised/sl
         sections:
           - file: supervised/sl_types
-          - file: supervised/model_selection
           - file: supervised/knn
+          - file: supervised/model_selection
 
       - file: lin_reg/linear_regression
         sections:
