@@ -7,8 +7,8 @@ parts:
         # sections:
         #   - file: HW/not_mnist_student
       - file: courses/Intro2ML.md
-        # sections:
-        #   - file: HW/HW1
+        sections:
+          - file: HW/HW1_2024
         #   - file: HW/HW2
         #   - file: HW/HW3
         #   - file: HW/HW4

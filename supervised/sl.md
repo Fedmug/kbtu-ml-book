@@ -6,7 +6,7 @@ Supervised learning is the most commonly used type of machine learning. It invol
 
 - build some **model** which makes predictions $\widehat y = f(\boldsymbol x)$ on each sample $\boldsymbol x$;
 
-- choose a **loss function** $\mathcal L(\mathcal D) = \sum\limits_{i=1}^n \ell(f(x_i), y_i)$ where $\ell(\widehat y, y)$ measures how good is the prediction $\widehat y = f(\boldsymbol x)$;
+- choose a **loss function** $\mathcal L(\mathcal D) = \sum\limits_{i=1}^n \ell(f(\boldsymbol x_i), y_i)$ where $\ell(\widehat y, y)$ measures how good is the prediction $\widehat y = f(\boldsymbol x)$;
 
 - minimize the loss function $\mathcal L(\mathcal D) \to \min$ to find the optimal model (this is called **fitting the model**).
 

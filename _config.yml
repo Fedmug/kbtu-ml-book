@@ -28,7 +28,7 @@ exclude_patterns: ["*/tasks.ipynb", "plotly_html.ipynb", "ISLP_datasets/*.ipynb"
                    "ensembling/bias_variance_handbook.ipynb", "notMNIST_small/*", "mlp/dropout.py",
                    "mlp/MLP_pytorch.ipynb", "mlp/mnist/*", "mlp/keras.ipynb", "cnn/fashion-mnist-kaggle.ipynb",
                    "intro/Seminar1.ipynb", "math/lin_alg/linear_systems.ipynb", "math/lin_alg/orthogonality.ipynb",
-                   "HW/*.ipynb", "HW/HW6_solved.ipynb"]
+                   "HW/HW6_solved.ipynb"]
 
 execute:
   timeout: 100
