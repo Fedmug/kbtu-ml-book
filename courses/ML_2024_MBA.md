@@ -11,7 +11,7 @@
 
 **Practice** consists of assignments in Jupyter Notebooks.
 
-**Mid-term**: [Kaggle](https://www.kaggle.com/) competition.
+**Mid-term**: [Kaggle](https://www.kaggle.com/) competition and project proposal.
 
 **Final project**: application of machine learning to a real-world problem related to finance. See also description in {ref}`DL course <project-description>`.
 
