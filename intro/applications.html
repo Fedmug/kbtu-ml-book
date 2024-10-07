@@ -1,0 +1,837 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Applications of ML &#8212; ML book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro/applications';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Types of ML" href="ml_types.html" />
+    <link rel="prev" title="Definitions of ML" href="definition.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="ML book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="ML book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    ML Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../courses/ML_2024.html">ML 2024 (MS)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024_MS.html">HW1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_ML.html">Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="definition.html">Definitions of ML</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Applications of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_types.html">Types of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python libraries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/data.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/tabular.html">Tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/images.html">Image data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/text.html">Text data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/datasets.html">Datasets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supervised/sl.html">Supervised learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/sl_types.html">Types of supervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/model_selection.html">Model selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/knn.html">k-Nearest Neighbors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lin_reg/linear_regression.html">Linear regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lin_reg/simple.html">Simple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_reg/polynomial.html">Polynomial regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_reg/multiple.html">Multiple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_reg/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_reg/numeric_opt.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_reg/general.html">General linear model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_classification/classification.html">Linear classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../linear_classification/log_reg.html">Logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_classification/multi_log_reg.html">Multinomial logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_classification/num_opt_log_reg.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_classification/svm.html">Support Vector Machines (SVM)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../eval_metrics/metrics.html">Evaluation Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../eval_metrics/classification.html">Classification Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eval_metrics/ROC-AUC.html">ROC-AUC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eval_metrics/regression.html">Regression metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eval_metrics/cross_val.html">Cross-validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eval_metrics/hyperparameters.html">Hyperparameters tuning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../probabilistic_models/probabilistic.html">Probabilistic models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../probabilistic_models/bayesian_inference.html">Bayesian inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probabilistic_models/lin_reg_prob.html">Probabilistic models for linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probabilistic_models/log_reg_prob.html">Probabilistic models for logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probabilistic_models/LDA.html">Linear Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probabilistic_models/QDA.html">Quadratic Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probabilistic_models/naive_bayes.html">Naive Bayes classifier</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decision_trees/decision_tree.html">Decision Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decision_trees/classification.html">Classification tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decision_trees/regression.html">Regression tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decision_trees/impurity.html">Impurity and information criterions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decision_trees/pruning.html">Tree pruning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ensembling/ensemble.html">Ensembling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensembling/voting_stacking_blending.html">Voting, stacking and blending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensembling/bagging.html">Bagging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensembling/random_forest.html">Random forests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gradient_boosting/gradient_boosting.html">Gradient boosting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/boosting.html">Boosting and additive modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/generic_gb.html">Generic gradient boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/adaboost.html">AdaBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/xgboost.html">XGBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/catboost.html">CatBoost</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/k_means.html">K-means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/hierarchic_clustering.html">Hierarchical Clustering</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/regularization.html">Regularization in MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/optimization_dl.html">Optimization in DL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/MLP_notebook.html">Multilayer Perceptron (MLP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cnn/cnn.html">CNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/convolutions_2d.html">Convolution of matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/convolutions_3d.html">Convolutions of tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/pooling.html">Pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/back_prop.html">Back propagation in CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/architectures.html">Architectures of CNN</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rnn/sequential.html">Sequential NNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rnn/vanilla_rnn.html">Vanilla RNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rnn/lstm.html">LSTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rnn/gru.html">GRU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rnn/attention.html">Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rnn/transformers.html">Transformers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gm/generative.html">Generative models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gm/autoencoders.html">Autoencoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gm/vae.html">Variational autoencoders (VAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gm/gan.html">Ganerative adversarial networks (GAN)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl/RL.html">Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl/basics.html">RL basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multi-armed bandits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov Decision Process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/q_learning.html">Q-learning</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/python_basics.html">Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/basics/basic_types.html">Basic Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/basics/variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/basics/control_flow.html">Control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/basics/functions_strings.html">Functions</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python/basics/classes.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/basics/ISLP_lab.html">ISLP Lab</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/numpy.html">NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/visual.html">Data visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math for ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/linear_algebra.html">Linear Algebra</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/vectors.html">Vectors</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/inverse.html">Inverse matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/rank.html">Rank of a matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/projections.html">Orthogonal projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/determinant.html">Determinants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/eig.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/diagonalize.html">Diagonalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/positive_def.html">Positive definite matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/matrix_norms.html">Matrix norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/SVD.html">Singular Value Decomposition (SVD)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/optimization.html">Optimization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/independence.html">Independence and random vectors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notation.html">Notation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">ML resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/intro/applications.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Applications of ML</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-vision">Computer vision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-classification">Image classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-detection">Object detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantic-segmentation">Semantic segmentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#depth-estimation">Depth estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-recognition">Action recognition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-captioning">Image captioning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-language-processing">Natural language processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis">Sentiment analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-translation">Machine translation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-summarization">Text summarization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#speech-recognition">Speech recognition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spam-filtering">Spam filtering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finance">Finance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-scoring">Credit scoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fraud-detection">Fraud detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithmic-trading">Algorithmic trading</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendation-systems">Recommendation systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robotics">Robotics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#playing-games">Playing games</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai">Generative AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-creation">Content creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-generation">Image generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-fake">Deep fake</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#music-generation">Music generation</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="applications-of-ml">
+<h1>Applications of ML<a class="headerlink" href="#applications-of-ml" title="Link to this heading">#</a></h1>
+<section id="computer-vision">
+<h2>Computer vision<a class="headerlink" href="#computer-vision" title="Link to this heading">#</a></h2>
+<section id="image-classification">
+<h3>Image classification<a class="headerlink" href="#image-classification" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://ars.els-cdn.com/content/image/1-s2.0-S1474034619305531-gr4.jpg"><img alt="img-cat-or-dog" class="bg-primary mb-1 align-center" src="https://ars.els-cdn.com/content/image/1-s2.0-S1474034619305531-gr4.jpg" style="width: 500px;" /></a>
+</section>
+<section id="object-detection">
+<h3>Object detection<a class="headerlink" href="#object-detection" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://www.perficient.com/-/media/images/insights/hero-images/research_image-recognition-accuracy-study_hero.ashx?h=931&amp;iar=0&amp;w=1400&amp;hash=E0AED7417F234D3C66F9037149BB7612"><img alt="img-detection" class="bg-primary mb-1 align-center" src="https://www.perficient.com/-/media/images/insights/hero-images/research_image-recognition-accuracy-study_hero.ashx?h=931&amp;iar=0&amp;w=1400&amp;hash=E0AED7417F234D3C66F9037149BB7612" style="width: 500px;" /></a>
+</section>
+<section id="semantic-segmentation">
+<h3>Semantic segmentation<a class="headerlink" href="#semantic-segmentation" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://deeplobe.ai/wp-content/uploads/2023/06/Image-Segmentation_-What-Are-the-Most-Interesting-Applications_.png"><img alt="depth-estimation" class="bg-primary mb-1 align-center" src="https://deeplobe.ai/wp-content/uploads/2023/06/Image-Segmentation_-What-Are-the-Most-Interesting-Applications_.png" style="width: 500px;" /></a>
+</section>
+<section id="depth-estimation">
+<h3>Depth estimation<a class="headerlink" href="#depth-estimation" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://cdn.prod.website-files.com/645cec60ffb18d5ebb37da4b/65e822f311bddf1953d2c9fd_Picture3.jpg"><img alt="depth-estimation" class="bg-primary mb-1 align-center" src="https://cdn.prod.website-files.com/645cec60ffb18d5ebb37da4b/65e822f311bddf1953d2c9fd_Picture3.jpg" style="width: 500px;" /></a>
+</section>
+<section id="action-recognition">
+<h3>Action recognition<a class="headerlink" href="#action-recognition" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://miro.medium.com/v2/resize:fit:1400/1*EvxO1sdZ1DCLfDxQNTiflQ.png"><img alt="action-recognition" class="bg-primary mb-1 align-center" src="https://miro.medium.com/v2/resize:fit:1400/1*EvxO1sdZ1DCLfDxQNTiflQ.png" style="width: 500px;" /></a>
+</section>
+<section id="image-captioning">
+<h3>Image captioning<a class="headerlink" href="#image-captioning" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://repository-images.githubusercontent.com/83958320/8f162500-8ace-11e9-94ee-0b86d27bbc5e"><img alt="image-captioning" class="bg-primary mb-1 align-center" src="https://repository-images.githubusercontent.com/83958320/8f162500-8ace-11e9-94ee-0b86d27bbc5e" style="width: 500px;" /></a>
+</section>
+</section>
+<section id="natural-language-processing">
+<h2>Natural language processing<a class="headerlink" href="#natural-language-processing" title="Link to this heading">#</a></h2>
+<section id="sentiment-analysis">
+<h3>Sentiment analysis<a class="headerlink" href="#sentiment-analysis" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://vitalflux.com/wp-content/uploads/2021/10/sentiment-analysis-machine-learning-techniques.png"><img alt="sentiment-analysis" class="bg-primary mb-1 align-center" src="https://vitalflux.com/wp-content/uploads/2021/10/sentiment-analysis-machine-learning-techniques.png" style="width: 500px;" /></a>
+</section>
+<section id="machine-translation">
+<h3>Machine translation<a class="headerlink" href="#machine-translation" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://ehlion.com/wp-content/uploads/2020/10/Machine-Translation.jpg"><img alt="machine-translation" class="bg-primary mb-1 align-center" src="https://ehlion.com/wp-content/uploads/2020/10/Machine-Translation.jpg" style="width: 500px;" /></a>
+</section>
+<section id="text-summarization">
+<h3>Text summarization<a class="headerlink" href="#text-summarization" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM2YJJNIY5fLgF7nJJ4a8FurUHeKO6oXZFBA&amp;s"><img alt="text-summarization" class="bg-primary mb-1 align-center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM2YJJNIY5fLgF7nJJ4a8FurUHeKO6oXZFBA&amp;s" style="width: 500px;" /></a>
+</section>
+<section id="speech-recognition">
+<h3>Speech recognition<a class="headerlink" href="#speech-recognition" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://developer-blogs.nvidia.com/wp-content/uploads/2019/12/automatic-speech-recognition_updated.png"><img alt="speech-recognition" class="bg-primary mb-1 align-center" src="https://developer-blogs.nvidia.com/wp-content/uploads/2019/12/automatic-speech-recognition_updated.png" style="width: 500px;" /></a>
+</section>
+<section id="spam-filtering">
+<h3>Spam filtering<a class="headerlink" href="#spam-filtering" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://www.spcdn.org/images/spam-filter1.jpg"><img alt="spam-filtering" class="bg-primary mb-1 align-center" src="https://www.spcdn.org/images/spam-filter1.jpg" style="width: 500px;" /></a>
+</section>
+</section>
+<section id="finance">
+<h2>Finance<a class="headerlink" href="#finance" title="Link to this heading">#</a></h2>
+<section id="credit-scoring">
+<h3>Credit scoring<a class="headerlink" href="#credit-scoring" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzKB0N4TlZH-ooRz_br4JnfkXeFnYmjgsFketeQFr8ESqzTakiOEoNt0qWDu41grsMpyI&amp;usqp=CAU"><img alt="credit-scoring" class="bg-primary mb-1 align-center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzKB0N4TlZH-ooRz_br4JnfkXeFnYmjgsFketeQFr8ESqzTakiOEoNt0qWDu41grsMpyI&amp;usqp=CAU" style="width: 500px;" /></a>
+</section>
+<section id="fraud-detection">
+<h3>Fraud detection<a class="headerlink" href="#fraud-detection" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://news.mit.edu/sites/default/files/images/201809/MIT-Fraud-Detection-PRESS.jpg"><img alt="fraud-detection" class="bg-primary mb-1 align-center" src="https://news.mit.edu/sites/default/files/images/201809/MIT-Fraud-Detection-PRESS.jpg" style="width: 500px;" /></a>
+</section>
+<section id="algorithmic-trading">
+<h3>Algorithmic trading<a class="headerlink" href="#algorithmic-trading" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img.etimg.com/thumb/width-1200,height-900,imgsize-434644,resizemode-75,msid-79821832/markets/stocks/news/5-strategies-to-buy-and-sell-stocks-using-algo-trading.jpg"><img alt="algo-trading" class="bg-primary mb-1 align-center" src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-434644,resizemode-75,msid-79821832/markets/stocks/news/5-strategies-to-buy-and-sell-stocks-using-algo-trading.jpg" style="width: 500px;" /></a>
+</section>
+</section>
+<section id="recommendation-systems">
+<h2>Recommendation systems<a class="headerlink" href="#recommendation-systems" title="Link to this heading">#</a></h2>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://vitalflux.com/wp-content/uploads/2022/08/collaborative-filtering-recommender-system.png"><img alt="recommend" class="bg-primary mb-1 align-center" src="https://vitalflux.com/wp-content/uploads/2022/08/collaborative-filtering-recommender-system.png" style="width: 500px;" /></a>
+</section>
+<section id="robotics">
+<h2>Robotics<a class="headerlink" href="#robotics" title="Link to this heading">#</a></h2>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://bostondynamics.com/wp-content/uploads/2023/05/spot-explorer-web-2.jpg"><img alt="robotics" class="bg-primary mb-1 align-center" src="https://bostondynamics.com/wp-content/uploads/2023/05/spot-explorer-web-2.jpg" style="width: 500px;" /></a>
+</section>
+<section id="playing-games">
+<h2>Playing games<a class="headerlink" href="#playing-games" title="Link to this heading">#</a></h2>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://c.files.bbci.co.uk/0D9B/production/_88738430_pic1go.jpg"><img alt="img-recognition" class="bg-primary mb-1 align-center" src="https://c.files.bbci.co.uk/0D9B/production/_88738430_pic1go.jpg" style="width: 500px;" /></a>
+<!---
+```{admonition} TODO
+:class: warning
+* Add some text description
+* Add some code
+* Add more applications 
+* Add more morden stuff like chatGPT and generative AI
+* The interactive quizzes and plots are probably redundant here
+```
+--->
+</section>
+<section id="generative-ai">
+<h2>Generative AI<a class="headerlink" href="#generative-ai" title="Link to this heading">#</a></h2>
+<section id="content-creation">
+<h3>Content creation<a class="headerlink" href="#content-creation" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://media.licdn.com/dms/image/D5612AQFoxSZYLjV_EA/article-cover_image-shrink_720_1280/0/1677588476245?e=2147483647&amp;v=beta&amp;t=5WT3HMuBEmRSB9aJY-gUJkivFbH7DvkIH4LWk9T7u1Y"><img alt="chat-gpt" class="bg-primary mb-1 align-center" src="https://media.licdn.com/dms/image/D5612AQFoxSZYLjV_EA/article-cover_image-shrink_720_1280/0/1677588476245?e=2147483647&amp;v=beta&amp;t=5WT3HMuBEmRSB9aJY-gUJkivFbH7DvkIH4LWk9T7u1Y" style="width: 500px;" /></a>
+</section>
+<section id="image-generation">
+<h3>Image generation<a class="headerlink" href="#image-generation" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://s0.rbk.ru/v6_top_pics/media/img/3/69/346971151176693.jpeg"><img alt="image-gen" class="bg-primary mb-1 align-center" src="https://s0.rbk.ru/v6_top_pics/media/img/3/69/346971151176693.jpeg" style="width: 500px;" /></a>
+</section>
+<section id="deep-fake">
+<h3>Deep fake<a class="headerlink" href="#deep-fake" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://ichef.bbci.co.uk/news/976/cpsprodpb/14A0D/production/_129139448_68a836ea-f568-431d-862a-b04d839852e3.png"><img alt="deep-fake" class="bg-primary mb-1 align-center" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/14A0D/production/_129139448_68a836ea-f568-431d-862a-b04d839852e3.png" style="width: 500px;" /></a>
+</section>
+<section id="music-generation">
+<h3>Music generation<a class="headerlink" href="#music-generation" title="Link to this heading">#</a></h3>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/01/auto-music-.jpg"><img alt="music-gen" class="bg-primary mb-1 align-center" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/01/auto-music-.jpg" style="width: 500px;" /></a>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="definition.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Definitions of ML</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ml_types.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Types of ML</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-vision">Computer vision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-classification">Image classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-detection">Object detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantic-segmentation">Semantic segmentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#depth-estimation">Depth estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-recognition">Action recognition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-captioning">Image captioning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-language-processing">Natural language processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis">Sentiment analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-translation">Machine translation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-summarization">Text summarization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#speech-recognition">Speech recognition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spam-filtering">Spam filtering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finance">Finance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-scoring">Credit scoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fraud-detection">Fraud detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithmic-trading">Algorithmic trading</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendation-systems">Recommendation systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robotics">Robotics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#playing-games">Playing games</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai">Generative AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-creation">Content creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-generation">Image generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-fake">Deep fake</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#music-generation">Music generation</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By KBTU
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

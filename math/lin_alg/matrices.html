@@ -1,0 +1,1604 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Matrices &#8212; ML book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'math/lin_alg/matrices';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Inverse matrix" href="inverse.html" />
+    <link rel="prev" title="Vectors" href="vectors.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="ML book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    ML Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024.html">HW1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/ML_2024.html">ML 2024 (MS)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024_MS.html">HW1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/intro_to_ML.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/definition.html">Definitions of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/applications.html">Applications of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/ml_types.html">Types of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/python.html">Python libraries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../data/data.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../data/tabular.html">Tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/images.html">Image data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/text.html">Text data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/datasets.html">Datasets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../supervised/sl.html">Supervised learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/sl_types.html">Types of supervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/model_selection.html">Model selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/knn.html">k-Nearest Neighbors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lin_reg/linear_regression.html">Linear regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/simple.html">Simple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/polynomial.html">Polynomial regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/multiple.html">Multiple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/numeric_opt.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/general.html">General linear model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../linear_classification/classification.html">Linear classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/log_reg.html">Logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/multi_log_reg.html">Multinomial logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/num_opt_log_reg.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/svm.html">Support Vector Machines (SVM)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../eval_metrics/metrics.html">Evaluation Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/classification.html">Classification Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/ROC-AUC.html">ROC-AUC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/regression.html">Regression metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/cross_val.html">Cross-validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/hyperparameters.html">Hyperparameters tuning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../probabilistic_models/probabilistic.html">Probabilistic models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/bayesian_inference.html">Bayesian inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/lin_reg_prob.html">Probabilistic models for linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/log_reg_prob.html">Probabilistic models for logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/LDA.html">Linear Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/QDA.html">Quadratic Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/naive_bayes.html">Naive Bayes classifier</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../decision_trees/decision_tree.html">Decision Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/classification.html">Classification tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/regression.html">Regression tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/impurity.html">Impurity and information criterions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/pruning.html">Tree pruning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ensembling/ensemble.html">Ensembling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/voting_stacking_blending.html">Voting, stacking and blending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/bagging.html">Bagging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/random_forest.html">Random forests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../gradient_boosting/gradient_boosting.html">Gradient boosting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/boosting.html">Boosting and additive modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/generic_gb.html">Generic gradient boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/adaboost.html">AdaBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/xgboost.html">XGBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/catboost.html">CatBoost</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/k_means.html">K-means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/hierarchic_clustering.html">Hierarchical Clustering</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mlp/mlp.html">Multilayer perceptron (MLP)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/layers.html">Layers of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/forward_backward_pass.html">Training of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/backprop.html">Back propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/weight_init.html">Weights initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/regularization.html">Regularization in MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/optimization_dl.html">Optimization in DL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/MLP_notebook.html">Multilayer Perceptron (MLP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cnn/cnn.html">CNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/convolutions_2d.html">Convolution of matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/convolutions_3d.html">Convolutions of tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/pooling.html">Pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/back_prop.html">Back propagation in CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/architectures.html">Architectures of CNN</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rnn/sequential.html">Sequential NNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/vanilla_rnn.html">Vanilla RNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/lstm.html">LSTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/gru.html">GRU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/attention.html">Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/transformers.html">Transformers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../gm/generative.html">Generative models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/autoencoders.html">Autoencoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/vae.html">Variational autoencoders (VAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/gan.html">Ganerative adversarial networks (GAN)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rl/RL.html">Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/basics.html">RL basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/multiarmed_bandits.html">Multi-armed bandits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/mdp.html">Markov Decision Process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/q_learning.html">Q-learning</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../python/python_basics.html">Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/basic_types.html">Basic Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/control_flow.html">Control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/functions_strings.html">Functions</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/classes.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/ISLP_lab.html">ISLP Lab</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/numpy.html">NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/visual.html">Data visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math for ML</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../linear_algebra.html">Linear Algebra</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vectors.html">Vectors</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inverse.html">Inverse matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rank.html">Rank of a matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projections.html">Orthogonal projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="determinant.html">Determinants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eig.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagonalize.html">Diagonalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="positive_def.html">Positive definite matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrix_norms.html">Matrix norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SVD.html">Singular Value Decomposition (SVD)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../calculus.html">Calculus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/1-d.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/multivariate.html">Multivariate calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/matrix_diff.html">Matrix calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/optimization.html">Optimization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../probability.html">Probability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proba/rvs.html">Random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/independence.html">Independence and random vectors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../statistics.html">Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Estimations</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notation.html">Notation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources.html">ML resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/math/lin_alg/matrices.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Matrices</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#square-matrices">Square matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">Identity matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-matrix">Diagonal matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triangular-matrices">Triangular matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetric-matrices">Symmetric matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-matrices">Orthogonal matrices</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-operations">Matrix operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-product">Matrix-vector product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-times-column-column">Matrix times column = column</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#row-times-matrix-row">Row times matrix = row</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#row-times-column">Row times column</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-product">Matrix product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-matrix-product">Properties of matrix product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#powers-of-matrices">Powers of matrices</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-rank-matrix">One-rank matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-matrices">Block matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="matrices">
+<h1>Matrices<a class="headerlink" href="#matrices" title="Link to this heading">#</a></h1>
+<p>Табличный способ хранения данных чрезвычайно широко распространён, и если эти данные числовые, то с математической точки зрения они образуют <strong>матрицу</strong> — двумерный массив из чисел. Для эффективной обработки и анализа таких данных, а также обучения моделей машинного обучения на них, важно хорошо ориентироваться в матричных операциях и разложениях и их свойствах.</p>
+<p>Матрицы принято обозначать заглавными жирными буквами: <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol B\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol C\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol X\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol Y\)</span> и т.п. Множество матриц, имеющих <span class="math notranslate nohighlight">\(m\)</span> строк и <span class="math notranslate nohighlight">\(n\)</span> столбцов обозначается через <span class="math notranslate nohighlight">\(\mathbb R^{m\times n}\)</span>. Элемент <span class="math notranslate nohighlight">\(i\)</span>-й строки и <span class="math notranslate nohighlight">\(j\)</span>-го столбца матрицы <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> будем обозначать <span class="math notranslate nohighlight">\(A_{ij}\)</span>. Допустимо также обозначение <span class="math notranslate nohighlight">\(a_{ij}\)</span>, особенно когда дело доходит до подробной записи</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol A  = \begin{pmatrix}
+        a_{11} &amp; a_{12} &amp; \dots &amp; a_{1n} \\
+        a_{21} &amp; a_{22} &amp; \dots &amp; a_{2n} \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        a_{m1} &amp; a_{m2} &amp; \dots &amp; a_{mn} \\
+    \end{pmatrix}.
+\end{split}\]</div>
+<p>Эту же матрицу можно представить как набор строк или столбцов:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol A  = \begin{pmatrix}
+        \boldsymbol b_1^\mathsf{T} \\
+        \boldsymbol b_2^\mathsf{T} \\
+        \vdots\\
+        \boldsymbol b_m^\mathsf{T} \\
+    \end{pmatrix} = 
+    [\boldsymbol c_1 \boldsymbol c_2 \dots \boldsymbol c_n], \quad
+    \boldsymbol b_i = \begin{pmatrix}
+    a_{i1} \\
+    a_{i2} \\
+    \vdots \\
+    a_{in}
+    \end{pmatrix},
+    \quad
+    \boldsymbol c_j = \begin{pmatrix}
+    a_{1j} \\
+    a_{2j} \\
+    \vdots \\
+    a_{mj}
+    \end{pmatrix}
+\end{split}\]</div>
+<p>Если <span class="math notranslate nohighlight">\(m=n\)</span>, то матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> называется <strong>квадратной</strong>, в противном случае — <strong>прямоугольной</strong>. Вектор <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span> можно считать матрицей размера <span class="math notranslate nohighlight">\(n\times 1\)</span> (столбец) или <span class="math notranslate nohighlight">\(1\times n\)</span> (строка).</p>
+<p><strong>Транспонированная</strong> матрица <span class="math notranslate nohighlight">\(\boldsymbol A^\mathsf{T} \in \mathbb R^{n\times m}\)</span> в качестве строк содержит столбцы матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>: <span class="math notranslate nohighlight">\(A^\mathsf{T}_{ij} = A_{ji}\)</span>. В частности, вектор-столбец получается транспонированием из вектора-строки, и наоборот, чем и объясняется обозначение <span class="math notranslate nohighlight">\(\boldsymbol x^\mathsf{T}\)</span> для векторов-строк.</p>
+<div class="tip admonition">
+<p class="admonition-title">Feature matrix</p>
+<p>In machine learning a numeric dataset is usually represented by the <a class="reference internal" href="../../data/datasets.html#feature-matrix"><span class="std std-ref">feature matrix</span></a> <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> in which each training sample is represented by a row vector <span class="math notranslate nohighlight">\(\boldsymbol x_i^\mathsf{T}\)</span>. Hence,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol X  = \begin{pmatrix}
+        \boldsymbol x_1^\mathsf{T} \\
+        \boldsymbol x_2^\mathsf{T} \\
+        \vdots\\
+        \boldsymbol x_n^\mathsf{T} \\
+    \end{pmatrix}
+\end{split}\]</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">np.array</span></code> can handle multidimenstional arrays including matrices. For example, let’s generate a random matrix of shape <span class="math notranslate nohighlight">\(2\times 3\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.4495285 , 0.3634043 , 0.67298861],
+       [0.67521062, 0.10220722, 0.69235149]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>For transposing use attribute <code class="docutils literal notranslate"><span class="pre">.T</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.89698755, 0.52984442],
+       [0.59051524, 0.76303108],
+       [0.22936288, 0.33085304]])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="square-matrices">
+<h2>Square matrices<a class="headerlink" href="#square-matrices" title="Link to this heading">#</a></h2>
+<p>A <strong>square matrix</strong> <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> has the same number of rows and columns.
+Each square matrix has two diagonals: <strong>main</strong> (<strong>primaty</strong>, <strong>principle</strong>) and <strong>secondary</strong> (<strong>side</strong>, <strong>antidiagonal</strong>).</p>
+<figure class="align-default">
+<img alt="https://learnetutorials.com/assets/images/programs/diagonal1.png" class="figure" src="https://learnetutorials.com/assets/images/programs/diagonal1.png" />
+</figure>
+<p><strong>Trace</strong> of a matrix is equal to the sum of the elements on its main diagonal: <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol A) = \sum\limits_{i=1}^n a_{ii}\)</span>.</p>
+<section id="identity-matrix">
+<h3>Identity matrix<a class="headerlink" href="#identity-matrix" title="Link to this heading">#</a></h3>
+<p>All ones on the main diagonal, all zeros outside it. Identity matrix is denoted as <span class="math notranslate nohighlight">\(\boldsymbol I\)</span> or <span class="math notranslate nohighlight">\(\boldsymbol I_n\)</span> if we want to underscore its shape:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol I_2 = \begin{pmatrix}
+        1 &amp; 0 \\
+        0 &amp; 1 \\
+    \end{pmatrix}, \quad
+    \boldsymbol I_3 = \begin{pmatrix}
+        1 &amp; 0 &amp; 0 \\
+        0 &amp; 1 &amp; 0 \\
+        0 &amp; 0 &amp; 1 \\
+    \end{pmatrix}, \quad
+    \boldsymbol I_n = \begin{pmatrix}
+        1 &amp; 0 &amp; \dots &amp; 0 \\
+        0 &amp; 1 &amp; \dots &amp; 0 \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        0 &amp; 0 &amp;\dots &amp; 1 \\
+    \end{pmatrix}.
+\end{split}\]</div>
+<p>Identity matrix in NumPy is created by <code class="docutils literal notranslate"><span class="pre">np.eye</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="n">I</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 0, 0, 0],
+       [0, 1, 0, 0],
+       [0, 0, 1, 0],
+       [0, 0, 0, 1]], dtype=int32)
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default the underlying type is float:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="diagonal-matrix">
+<h3>Diagonal matrix<a class="headerlink" href="#diagonal-matrix" title="Link to this heading">#</a></h3>
+<p>Can have nonzero elements only on the main diagonal:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol \Lambda = \mathrm{diag}\{\lambda_1, \lambda_2, \ldots, \lambda_n\} = \begin{pmatrix}
+        \lambda_1 &amp; 0 &amp; \dots &amp; 0 \\
+        0 &amp; \lambda_2 &amp; \dots &amp; 0 \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        0 &amp; 0 &amp; \dots &amp; \lambda_n \\
+    \end{pmatrix}.\end{split}\]</div>
+<p>Identity matrix is a special case of a diagonal matrix:</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol I = \mathrm{diag}\{1, 1, \dots, 1\}.
+\]</div>
+<p><code class="docutils literal notranslate"><span class="pre">np.diag</span></code> can either create a diagonal matrix or extract the main diagonal of a matrix. Here we create a diagonal matrix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">D</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 0, 0],
+       [0, 2, 0],
+       [0, 0, 3]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.44717254,  1.4078295 , -0.6438964 ],
+       [ 0.30502598,  1.0711746 ,  1.15591706],
+       [ 1.51407551,  1.83549146, -1.7051814 ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here the extraction of the main diagonal happens:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.44717254,  1.0711746 , -1.7051814 ])
+</pre></div>
+</div>
+</div>
+</div>
+<!--
+3. **Матрица перестановки**. Такая матрица состоит из нулей и единиц, и содержит ровно одну единицу в каждой строке и в каждом столбце. Любая матрица перестановки получается некоторой перестановкой строк/столбцов единичной матрицы. Существует $n!$ различных матриц перестановок размера $n\times n$. Например, ниже перечислены все $3!=6$ матрицы перестановок размера $3\times3$:
+
+    $$
+    \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    \end{pmatrix},
+    \quad
+    \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 0 & 1 \\
+    0 & 1 & 0 \\
+    \end{pmatrix},
+    \quad
+    \begin{pmatrix}
+    0 & 1 & 0 \\
+    1 & 0 & 0 \\
+    0 & 0 & 1 \\
+    \end{pmatrix},
+    $$
+
+    $$
+    \begin{pmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    1 & 0 & 0 \\
+    \end{pmatrix},
+    \quad
+    \begin{pmatrix}
+    0 & 0 & 1 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    \end{pmatrix},
+    \quad
+    \begin{pmatrix}
+    0 & 0 & 1 \\
+    0 & 1 & 0 \\
+    1 & 0 & 0 \\
+    \end{pmatrix}.
+    $$
+-->
+</section>
+<section id="triangular-matrices">
+<h3>Triangular matrices<a class="headerlink" href="#triangular-matrices" title="Link to this heading">#</a></h3>
+<p>An <strong>upper triangular</strong> matrix <span class="math notranslate nohighlight">\(\boldsymbol U\)</span> has all zeros <strong>above</strong> the main diagonal: <span class="math notranslate nohighlight">\(U_{ij} = 0\)</span> if <span class="math notranslate nohighlight">\(i &gt; j\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol U  = \begin{pmatrix}
+        u_1 &amp; * &amp; * &amp; \dots &amp; * \\
+        0 &amp; u_2 &amp; * &amp; \dots &amp; * \\
+        0 &amp; 0 &amp; u_3 &amp; \dots &amp; * \\
+        \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        0 &amp; 0 &amp; 0 &amp; \dots &amp; u_n \\
+    \end{pmatrix}.
+\end{split}\]</div>
+<p>A <strong>lower triangular</strong> matrix <span class="math notranslate nohighlight">\(\boldsymbol L\)</span>, on the other hand, has all zeros <strong>below</strong> the main diagonal: <span class="math notranslate nohighlight">\(L_{ij} = 0\)</span> if <span class="math notranslate nohighlight">\(i &lt; j\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol L = \begin{pmatrix}
+        \ell_1 &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+        * &amp; \ell_2 &amp; 0 &amp; \dots &amp; 0 \\
+        * &amp; * &amp; \ell_3 &amp; \dots &amp; 0 \\
+        \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        * &amp; * &amp; * &amp; \dots &amp; \ell_n \\
+    \end{pmatrix}. 
+\end{split}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\boldsymbol U\)</span> is upper triangular iff <span class="math notranslate nohighlight">\(\boldsymbol U^\mathsf{T}\)</span> is lower triangular.</p>
+</section>
+<section id="symmetric-matrices">
+<h3>Symmetric matrices<a class="headerlink" href="#symmetric-matrices" title="Link to this heading">#</a></h3>
+<p>A square matrix <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is called</p>
+<ul class="simple">
+<li><p><strong>symmetric</strong> if <span class="math notranslate nohighlight">\(\boldsymbol A^\mathsf{T}  = \boldsymbol A\)</span>;</p></li>
+<li><p><strong>skew-symmetric</strong> if <span class="math notranslate nohighlight">\(\boldsymbol A^\mathsf{T}  = -\boldsymbol A\)</span>.</p></li>
+</ul>
+<p>Any square matrix <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> can be represented as a sum of a symmetric and a skew-symmetric matrix:</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol A = \frac{\boldsymbol A + \boldsymbol A^\top}2 + \frac{\boldsymbol A - \boldsymbol A^\top}2.
+\]</div>
+</section>
+<section id="orthogonal-matrices">
+<h3>Orthogonal matrices<a class="headerlink" href="#orthogonal-matrices" title="Link to this heading">#</a></h3>
+<p>A square matrix <span class="math notranslate nohighlight">\(\boldsymbol Q = [\boldsymbol q_1 \ldots \boldsymbol q_n]\)</span> is <strong>orthogonal</strong> if its columns are orthonormal, i.e., <span class="math notranslate nohighlight">\(\langle \boldsymbol q_i, \boldsymbol q_j\rangle = \delta_{ij}\)</span>, where <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> is <a class="reference external" href="https://en.wikipedia.org/wiki/Kronecker_delta">Kronecker delta</a>.</p>
+<p>An example of orthogonal matrix is given by the <strong>rotation matrix</strong></p>
+<div class="math notranslate nohighlight" id="equation-rotation-matrix">
+<span class="eqno">(43)<a class="headerlink" href="#equation-rotation-matrix" title="Link to this equation">#</a></span>\[\begin{split}    \boldsymbol Q = \begin{pmatrix}
+        \cos \theta &amp; -\sin\theta \\
+        \sin \theta &amp; \cos\theta \\
+    \end{pmatrix}.\end{split}\]</div>
+<!--
+* Иногда бывает полезна матрица из одних нулей или одних единиц; такие матрицы размера $m\times n$ будем обозначать $$\boldsymbol 0_{m\times n}$$ и $$\boldsymbol 1_{m\times n}$$ соответственно.
+
+* **Блочная матрица** имеет вид
+
+    $$
+        \begin{pmatrix}
+        \boldsymbol A & \boldsymbol B \\
+        \boldsymbol C & \boldsymbol D 
+        \end{pmatrix} =
+        \left(\begin{array}{@{}c|c@{}}
+        \begin{matrix}
+            a_{11} & \dots & a_{1m} \\
+            \vdots & \ddots & \vdots \\
+            a_{k1} & \dots & a_{km}
+        \end{matrix}
+        &
+        \begin{matrix}
+            b_{11} & \dots & b_{1n} \\
+            \vdots & \ddots & \vdots \\
+            b_{k1} & \dots & b_{kn}
+        \end{matrix} \\
+        \hline
+        \begin{matrix}
+            c_{11} & \dots & c_{1m} \\
+            \vdots & \ddots & \vdots \\
+            c_{\ell 1} & \dots & c_{\ell m}
+        \end{matrix} 
+        &
+        \begin{matrix}
+            d_{11} & \dots & d_{1n} \\
+            \vdots & \ddots & \vdots \\
+            d_{\ell 1} & \dots & d_{\ell n}
+        \end{matrix}
+        \end{array}\right).
+    $$
+
+    Блочные матрицы могут иметь произвольное число матричных блоков по каждому измерению.
+
+<!--
+    где $\boldsymbol A \in \mathbb R^{k\times m}$, $\boldsymbol B \in \mathbb R^{k\times n}$, $\boldsymbol C \in \mathbb R^{\ell\times m}$, $\boldsymbol D \in \mathbb R^{\ell\times n}$. 
+
+    
+Квадратные матрицы — очень важный класс матриц, среди них в свою очередь выделяют несколько часто встречающихся семейств
+--></section>
+</section>
+<section id="matrix-operations">
+<h2>Matrix operations<a class="headerlink" href="#matrix-operations" title="Link to this heading">#</a></h2>
+<p>Перечислим поэлементные операции с матрицами. Пусть матрицы <span class="math notranslate nohighlight">\(\boldsymbol A, \boldsymbol B \in \mathbb R^{m\times n}\)</span>, <span class="math notranslate nohighlight">\(\alpha \in \mathbb R\)</span>, <span class="math notranslate nohighlight">\(1 \leqslant i \leqslant m\)</span>, <span class="math notranslate nohighlight">\(1\leqslant j \leqslant n\)</span>.</p>
+<ul class="simple">
+<li><p>Сложение матриц:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol С = \boldsymbol A + \boldsymbol B \iff  C_{ij} = A_{ij} + B_{ij}.
+\]</div>
+<ul class="simple">
+<li><p>Умножение матрицы на скаляр:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol B = \alpha \boldsymbol A \iff B_{ij} = \alpha A_{ij}.
+\]</div>
+<ul>
+<li><p>Поэлементное умножение (<strong>произведение Адамара</strong>) и деление матриц:</p>
+<div class="math notranslate nohighlight">
+\[
+        \boldsymbol C = \boldsymbol A \odot \boldsymbol B \iff C_{ij} = A_{ij} B_{ij},\quad
+        \boldsymbol D = \boldsymbol A \oslash \boldsymbol B \iff D_{ij} = \frac{A_{ij}}{B_{ij}}
+    \]</div>
+<p>(последнее возможно, разумеется, только если все элементы матрицы <span class="math notranslate nohighlight">\(\boldsymbol B\)</span> не равны нулю). Стоит отметить, что под произведением матриц обычно понимают совсем иную операцию, нежели поэлементное умножение, и о ней предстоит отдельный разговор.</p>
+</li>
+</ul>
+<p>Первые два свойства указывают на то, что матрицы можно рассматривать как вектора особого вида. Можно даже пойти дальше и записать матрицу размера <span class="math notranslate nohighlight">\(m\times n\)</span> в виде одномерного массива длины <span class="math notranslate nohighlight">\(mn\)</span> (например, построчно), и получится вектор в чистом виде. Такая операция применяется, к примеру, в свёрточных нейронных сетях, когда на определённом этапе представленная матрицей или тензором картинка выпрямляется (flatten) в вектор для дальнейшего прохождения через один или несколько полносвязных слоёв.</p>
+<p>Matrix operations in NumPy are quite natural:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0 -2  0]
+ [ 1  1 -1]]
+[[1 2 3]
+ [4 5 6]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 0, 3],
+       [5, 6, 5]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1, -4, -3],
+       [-3, -4, -7]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">*</span> <span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0, -4,  0],
+       [ 4,  5, -6]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">/</span> <span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.        , -1.        ,  0.        ],
+       [ 0.25      ,  0.2       , -0.16666667]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matrix-vector-product">
+<h2>Matrix-vector product<a class="headerlink" href="#matrix-vector-product" title="Link to this heading">#</a></h2>
+<section id="matrix-times-column-column">
+<h3>Matrix times column = column<a class="headerlink" href="#matrix-times-column-column" title="Link to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>,  <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span>, then  <span class="math notranslate nohighlight">\(\boldsymbol A\boldsymbol x =  \boldsymbol b \in \mathbb R^m\)</span>, and its coordinates are</p>
+<div class="math notranslate nohighlight">
+\[
+    b_i = \sum\limits_{j=1}^n A_{ij} x_j, \quad 1 \leqslant i \leqslant m.
+\]</div>
+<p>Observe that <span class="math notranslate nohighlight">\(b_i =  \boldsymbol a_i^\mathsf{T}  \boldsymbol x\)</span> where <span class="math notranslate nohighlight">\(\boldsymbol a_i^\mathsf{T}\)</span> — <span class="math notranslate nohighlight">\(i\)</span>-th row of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>. Alternatively, if we denote <span class="math notranslate nohighlight">\(j\)</span>-th column of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> as <span class="math notranslate nohighlight">\(\boldsymbol a_j\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+   \boldsymbol b =  \boldsymbol A\boldsymbol x =  \sum\limits_{j=1}^n x_j \boldsymbol a_j.
+\]</div>
+<p>Hence, <span class="math notranslate nohighlight">\(\boldsymbol b =  \boldsymbol A\boldsymbol x\)</span> is a linear combination of columns of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>.</p>
+<!--
+Чтобы матрицу $\boldsymbol A$ можно было умножить на вектор $\boldsymbol x$, число её столбцов должно совпадать с размерностью вектора $\boldsymbol x$. Если $\boldsymbol A \in \mathbb R^{m\times n}$,  $\boldsymbol x \in \mathbb R^n$, то  $\boldsymbol A\boldsymbol x =  \boldsymbol b \in \mathbb R^m$; координаты вектора  $\boldsymbol b$ вычисляются по формуле
+-->
+<!--
+Таким образом, для умножения матрицы на вектор требуется вычислить $m$ скалярных произведений $n$-мерных векторов, поэтому сложность этих вычислений составляет $O(mn)$. Если матрица  $\boldsymbol A$ квадратная размера $n\times n$, то эта сложность равна $O(n^2)$.
+
+
+На матрично-векторное умножение можно взглянуть с другой стороны. А именно, если обозначить $j$-й столбец через $\boldsymbol a_j$, то получается, что
+
+$$
+   \boldsymbol b =  \boldsymbol A\boldsymbol x =  \sum\limits_{j=1}^n x_j \boldsymbol a_j.
+$$
+
+Таким образом, вектор $\boldsymbol b =  \boldsymbol A\boldsymbol x$ является линейной комбинацией столбцов матрицы $\boldsymbol A$ с координатами вектора $\boldsymbol x$ в качестве коэффициентов.
+-->
+<p>Since matrix times vector operation is quite similar to inner products, the Python syntax is the same as <a class="reference internal" href="vectors.html#inner-python"><span class="std std-ref">here</span></a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 1, 2, 3, 4],
+       [5, 6, 7, 8, 9]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">A</span> <span class="o">@</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([-9, -9]), array([-9, -9]), array([-9, -9]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>If the number of columns of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is different form the size of <span class="math notranslate nohighlight">\(\boldsymbol b\)</span>, the try to multiply them will result in an error:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">A</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="nn">ValueError: matmul: Input operand 1 has a mismatch</span> in <span class="ni">its core dimension 0, with gufunc signature (n?,k),(k,m?)-&gt;(n?,m?) </span><span class="nt">(size 4 is different from 5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="row-times-matrix-row">
+<h3>Row times matrix = row<a class="headerlink" href="#row-times-matrix-row" title="Link to this heading">#</a></h3>
+<p>Умножая матрицу на вектор-столбец, мы получаем снова вектор-столбец; умножение матрицы на вектор-строку записывают в обратном порядке:</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol y^\top \boldsymbol A = \boldsymbol c^\top,\quad \boldsymbol y \in \mathbb R^m, \quad \boldsymbol A \in \mathbb R^{m\times n}, \quad \boldsymbol c \in \mathbb R^n, \quad
+    c_j = \sum\limits_{i=1}^m y_i A_{ij}.
+\]</div>
+<p>Результат такого умножения представляет собой линейную комбинацию строк матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>:  <span class="math notranslate nohighlight">\(\boldsymbol c^\top = \sum\limits_{i=1}^m y_i \boldsymbol a_i^\top\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-2, -1],
+       [ 0,  1],
+       [ 2,  3]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-6, -4])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Without transposition <span class="math notranslate nohighlight">\(\boldsymbol b\)</span> is treated as a column vector, and attempt to multiply it by <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> fails:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">@</span> <span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">b</span> <span class="o">@</span> <span class="n">A</span>
+
+<span class="nn">ValueError: matmul: Input operand 1 has a mismatch</span> in <span class="ni">its core dimension 0, with gufunc signature (n?,k),(k,m?)-&gt;(n?,m?) </span><span class="nt">(size 2 is different from 5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="row-times-column">
+<h3>Row times column<a class="headerlink" href="#row-times-column" title="Link to this heading">#</a></h3>
+<p>Заметим, что матрицу <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> размера <span class="math notranslate nohighlight">\(1 \times n\)</span> можно представить в виде вектора-строки <span class="math notranslate nohighlight">\(\boldsymbol a^\mathsf{T}\)</span>. С другой стороны, согласно определению результат её умножения на вектор <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span> равен числу</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol A \boldsymbol x = \boldsymbol a^\mathsf{T} \boldsymbol x = \sum\limits_{j=1}^n a_j x_j,
+\]</div>
+<p>а это в точности скалярное произведение <span class="math notranslate nohighlight">\(\langle \boldsymbol a, \boldsymbol x\rangle\)</span>. Отсюда и проистекает его весьма популярное обозначение через матрично-векторное произведение <span class="math notranslate nohighlight">\(\boldsymbol a^\mathsf{T} \boldsymbol x\)</span>, которым мы также будем активно пользоваться в дальнейшем.</p>
+</section>
+</section>
+<section id="matrix-product">
+<h2>Matrix product<a class="headerlink" href="#matrix-product" title="Link to this heading">#</a></h2>
+<p>Матрицу <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> можно умножить на матрицу <span class="math notranslate nohighlight">\(\boldsymbol B\)</span>, если количество столбцов матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> равно числу строк матрицы <span class="math notranslate nohighlight">\(\boldsymbol B\)</span>. А именно, <strong>произведением</strong> матриц <span class="math notranslate nohighlight">\(\boldsymbol A \in\mathbb R^{m\times n}\)</span> и <span class="math notranslate nohighlight">\(\boldsymbol B \in\mathbb R^{n\times p}\)</span> является матрица <span class="math notranslate nohighlight">\(\boldsymbol C = \boldsymbol A \boldsymbol B \in\mathbb R^{m\times p}\)</span>, каждый элемент которой равен</p>
+<div class="math notranslate nohighlight">
+\[
+    C_{ik} = \sum\limits_{j=1}^n A_{ij}B_{jk},\quad 1\leqslant i \leqslant m, \quad 1\leqslant k \leqslant p.
+\]</div>
+<p>Элементы матрицы <span class="math notranslate nohighlight">\(\boldsymbol C\)</span> можно записать в виде <span class="math notranslate nohighlight">\(C_{ik} = \boldsymbol a_i^\mathsf{T} \boldsymbol b_k\)</span>, где <span class="math notranslate nohighlight">\(\boldsymbol a_i^\mathsf{T}\)</span> — строки матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>, а <span class="math notranslate nohighlight">\(\boldsymbol b_k\)</span> — столбцы матрицы <span class="math notranslate nohighlight">\(\boldsymbol B\)</span>. Вычисление каждого элемента <span class="math notranslate nohighlight">\(C_{ik}\)</span> требует <span class="math notranslate nohighlight">\(O(n)\)</span> арифметических операций, поэтому общая сложность подсчёта произведения матриц составляет <span class="math notranslate nohighlight">\(O(mnp)\)</span>. Если все матрицы квадратные размера <span class="math notranslate nohighlight">\(n\times n\)</span>, то сложность будет <span class="math notranslate nohighlight">\(O(n^3)\)</span>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">А быстрее можно?</p>
+<p><a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%A8%D1%82%D1%80%D0%B0%D1%81%D1%81%D0%B5%D0%BD%D0%B0">Алгоритм Штрассена</a> позволяет перемножать квадратные матрицы чуть быстрее, а именно за <span class="math notranslate nohighlight">\(O(n^{\log_2 7})\)</span>, что примерно составляет <span class="math notranslate nohighlight">\(O(n^{2.81})\)</span>. Алгоритм Штрассена был разработан ещё в 1969 году, и с тех пор было предложено множество алгоритмов с лучшей асимптотикой. Подробнее про эту гонку можно почитать в этой <a class="reference external" href="https://www.quantamagazine.org/mathematicians-inch-closer-to-matrix-multiplication-goal-20210323/">статье</a>, где текущая SoTA указана как <span class="math notranslate nohighlight">\(O(n^{2.3728596})\)</span>. Математики не оставляют надежд добиться асимптотики <span class="math notranslate nohighlight">\(O(n^2)\)</span> или хотя бы <span class="math notranslate nohighlight">\(O(n^{2+\varepsilon})\)</span> для любого сколь угодно малого <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span>, однако, все эти изыскания носят сугубо теоретический характер из-за гигантских констант в O-большом и сложности реализации подобных алгоритмов.</p>
+<p>Впрочем, сегодня новые алгоритмы перемножения матриц придумывают не только математики, но и нейронные сети.  Например, компания DeepMind с помощью глубокого обучения подкрепления разработала алгоритм <a class="reference external" href="https://www.deepmind.com/blog/discovering-novel-algorithms-with-alphatensor">AlphaTensor</a> способный перемножать матрицы размера <span class="math notranslate nohighlight">\(5\times 5\)</span> эффективнее, чем алгоритм Штрассена (<span class="math notranslate nohighlight">\(76\)</span> умножений против <span class="math notranslate nohighlight">\(80\)</span>).</p>
+</div>
+<p>Произведение матриц <span class="math notranslate nohighlight">\(\boldsymbol A \boldsymbol B\)</span> можно представить также в виде набора столбцов, получающихся умножением матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> на столбцы матрицы <span class="math notranslate nohighlight">\(\boldsymbol B\)</span>: если <span class="math notranslate nohighlight">\(\boldsymbol B = [\boldsymbol b_1 \ldots \boldsymbol b_p]\)</span>, то</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol A \boldsymbol B = [\boldsymbol A\boldsymbol b_1 \ldots \boldsymbol A\boldsymbol b_p].
+\]</div>
+<p>Или же можно строки матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> умножать на матрицу <span class="math notranslate nohighlight">\(\boldsymbol B\)</span>: если</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol A  = \begin{pmatrix}
+        \boldsymbol a_1^\mathsf{T} \\
+        \boldsymbol a_2^\mathsf{T} \\
+        \vdots\\
+        \boldsymbol a_m^\mathsf{T} \\
+    \end{pmatrix},
+    \text{ то }
+    \boldsymbol A \boldsymbol B = 
+    \begin{pmatrix}
+        \boldsymbol a_1^\mathsf{T} \boldsymbol B \\
+        \boldsymbol a_2^\mathsf{T} \boldsymbol B \\
+        \vdots\\
+        \boldsymbol a_m^\mathsf{T} \boldsymbol B \\
+    \end{pmatrix}.
+\end{split}\]</div>
+<p>Matrix product in NumPy is similar to that of vectors:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 3) (3, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 32,  38,  44,  50],
+       [ 68,  83,  98, 113]])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="properties-of-matrix-product">
+<h3>Properties of matrix product<a class="headerlink" href="#properties-of-matrix-product" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\((\boldsymbol{AB})\boldsymbol{C} = \boldsymbol{A}(\boldsymbol{BC})\)</span> (ассоциативность)</p></li>
+<li><p><span class="math notranslate nohighlight">\((\boldsymbol A + \boldsymbol B)\boldsymbol{C} = \boldsymbol{AC} + \boldsymbol{BC}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{C}(\boldsymbol A + \boldsymbol B) = \boldsymbol{CA} + \boldsymbol{CB}\)</span> (дистрибутивность)</p></li>
+<li><p><span class="math notranslate nohighlight">\((\boldsymbol{AB})^\mathsf{T} = \boldsymbol B^\mathsf{T} \boldsymbol A^\mathsf{T}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{AB}) = \mathrm{tr}(\boldsymbol{BA})\)</span></p></li>
+</ol>
+<p>Последнее свойство обобщается до равенства <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{ABC}) = \mathrm{tr}(\boldsymbol{CAB})\)</span>, которое справедливо для любого числа сомножителей с согласованными размерами. Это так называемое <strong>циклическое свойство</strong> следа матрицы.</p>
+<p>Let’s check this properties for random matrices. Start with associativity:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">((</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C</span><span class="p">),</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span> <span class="o">@</span> <span class="n">C</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Distributivity:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">((</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span> <span class="o">@</span> <span class="n">C</span><span class="p">,</span> <span class="n">A</span> <span class="o">@</span> <span class="n">C</span> <span class="o">+</span> <span class="n">B</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Transposing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">((</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Trace:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">B</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6484650575676159, 0.6484650575676162)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Несколько дополнительных свойств для квадратных матриц:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{AI} = \boldsymbol{IA} = \boldsymbol A\)</span>;</p></li>
+<li><p>если <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> — матрица перестановки, то матрица <span class="math notranslate nohighlight">\(\boldsymbol{PA}\)</span> получается из матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> перестановкой строк, а матрица <span class="math notranslate nohighlight">\(\boldsymbol{AP}\)</span> — перестановкой столбцов;</p></li>
+<li><p>произведение двух верхних (нижних) треугольных матриц тоже верхняя (нижняя) треугольная матрица;</p></li>
+<li><p>если матрица <span class="math notranslate nohighlight">\(\boldsymbol Q\)</span> ортогональна, то <span class="math notranslate nohighlight">\(\boldsymbol{QQ}^\mathsf{T} = \boldsymbol Q^\mathsf{T} \boldsymbol Q = \boldsymbol I\)</span>.</p></li>
+</ul>
+<p>А вот коммутировать квадратные матрицы не обязаны: в общем случае <span class="math notranslate nohighlight">\(\boldsymbol{AB} \ne \boldsymbol{BA}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">,</span> <span class="n">B</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="powers-of-matrices">
+<h3>Powers of matrices<a class="headerlink" href="#powers-of-matrices" title="Link to this heading">#</a></h3>
+<p>Квадратные матрицы можно возводить в натуральную степень так же, как и обычные числа. Вот, например, индуктивное определение степени матрицы:</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol A^n = \boldsymbol A^{n-1} \boldsymbol A, \quad n\in\mathbb N,\quad \boldsymbol A^0 = \boldsymbol I.
+\]</div>
+<p>Справедливы равенства</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol A^{m+n} = \boldsymbol A^m\boldsymbol A^n,\quad \boldsymbol A^{mn} = \boldsymbol (\boldsymbol A^m)^n, \quad m, n \in \mathbb N.
+\]</div>
+<p>Можно даже пойти дальше, и определить взятие экспоненты или синуса от матрицы через ряд Тейлора:</p>
+<div class="math notranslate nohighlight">
+\[
+    \exp(\boldsymbol A) = \sum\limits_{n=0}^\infty \frac{\boldsymbol A^n}{n!},\quad
+    \sin(\boldsymbol A) = \sum\limits_{n=0}^\infty (-1)^n\frac{\boldsymbol A^{2n+1}}{(2n+1)!}
+\]</div>
+<p>(можно доказать, что эти ряды сходятся).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>В машинном (и особенно глубинном) обучении часто берут числовую функцию от матрицы, например <span class="math notranslate nohighlight">\(\log(\boldsymbol A)\)</span>, <span class="math notranslate nohighlight">\(\tanh(\boldsymbol A)\)</span> или <span class="math notranslate nohighlight">\(\sigma(\boldsymbol A)\)</span>, где <span class="math notranslate nohighlight">\(\sigma(x) = \frac 1{1+e^{-x}}\)</span> — сигмоида. Такая запись почти наверное подразумевает поэлементное применение функции к каждой ячейке матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>, а вовсе не матричные ряды! Тем более что матрицы в машинном обучении чаще всего прямоугольные, а для них нельзя определить ни степень, ни ряд.</p>
+</div>
+<p>Exponent in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> is elementwise:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.00000000e+00, 2.71828183e+00, 7.38905610e+00, 2.00855369e+01],
+       [5.45981500e+01, 1.48413159e+02, 4.03428793e+02, 1.09663316e+03],
+       [2.98095799e+03, 8.10308393e+03, 2.20264658e+04, 5.98741417e+04]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="one-rank-matrix">
+<h2>One-rank matrix<a class="headerlink" href="#one-rank-matrix" title="Link to this heading">#</a></h2>
+<p><strong>Одноранговая матрица</strong> задаётся произведением столбца на строку: <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol {uv}^\mathsf{T}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol u \in \mathbb R^m\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol v \in \mathbb R^n\)</span>. Элементы этой прямоугольной матрицы равны <span class="math notranslate nohighlight">\(A_{ij} = u_i v_j\)</span>, а все её строки/столбцы пропорциональны. Отметим также, что если <span class="math notranslate nohighlight">\(m=n\)</span>, то</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathrm{tr}(\boldsymbol {uv}^\mathsf{T}) = \sum\limits_{i=1}^n u_i v_i = \boldsymbol v^\mathsf{T} \boldsymbol u = \mathrm{tr}(\boldsymbol v^\mathsf{T} \boldsymbol u).
+\]</div>
+<p>Произведение матриц <span class="math notranslate nohighlight">\(\boldsymbol A \in\mathbb R^{m\times n}\)</span> и <span class="math notranslate nohighlight">\(\boldsymbol B \in\mathbb R^{n\times p}\)</span> можно записать в виде суммы одноранговых матриц:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol {AB} = [\boldsymbol a_1, \ldots, \boldsymbol a_n] \begin{pmatrix}
+        \boldsymbol b_1^\mathsf{T} \\
+        \boldsymbol b_2^\mathsf{T} \\
+        \vdots\\
+        \boldsymbol b_n^\mathsf{T} \\
+    \end{pmatrix} = 
+    \sum\limits_{j=1}^n \boldsymbol a_j  \boldsymbol b_j^\mathsf{T}.
+\end{split}\]</div>
+<p>В англоязычной литературе умножение столбца на строку <span class="math notranslate nohighlight">\(\boldsymbol {uv}^\mathsf{T}\)</span> называется <strong>outer product</strong> («внешнее произведение»), по аналогии со скалярным произведением  <span class="math notranslate nohighlight">\(\boldsymbol u^\mathsf{T}\boldsymbol v\)</span>, называемым <strong>inner product</strong> («внутреннее произведение»).</p>
+</section>
+<section id="block-matrices">
+<h2>Block matrices<a class="headerlink" href="#block-matrices" title="Link to this heading">#</a></h2>
+<p><strong>Блочная матрица</strong> имеет вид</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        \begin{pmatrix}
+        \boldsymbol A &amp; \boldsymbol B \\
+        \boldsymbol C &amp; \boldsymbol D 
+        \end{pmatrix} =
+        \left(\begin{array}{&#64;{}c|c&#64;{}}
+        \begin{matrix}
+            a_{11} &amp; \dots &amp; a_{1m} \\
+            \vdots &amp; \ddots &amp; \vdots \\
+            a_{k1} &amp; \dots &amp; a_{km}
+        \end{matrix}
+        &amp;
+        \begin{matrix}
+            b_{11} &amp; \dots &amp; b_{1n} \\
+            \vdots &amp; \ddots &amp; \vdots \\
+            b_{k1} &amp; \dots &amp; b_{kn}
+        \end{matrix} \\
+        \hline
+        \begin{matrix}
+            c_{11} &amp; \dots &amp; c_{1m} \\
+            \vdots &amp; \ddots &amp; \vdots \\
+            c_{\ell 1} &amp; \dots &amp; c_{\ell m}
+        \end{matrix} 
+        &amp;
+        \begin{matrix}
+            d_{11} &amp; \dots &amp; d_{1n} \\
+            \vdots &amp; \ddots &amp; \vdots \\
+            d_{\ell 1} &amp; \dots &amp; d_{\ell n}
+        \end{matrix}
+        \end{array}\right).
+\end{split}\]</div>
+<!--
+<details>
+ <summary markdown="span">Ответ </summary>
+<div>
+Блоки $\boldsymbol B$ и $\boldsymbol C$ надо переставить, и не забыть ещё транспонировать каждый блок:
+
+$$
+    \begin{pmatrix}
+        \boldsymbol A^\top & \boldsymbol C^\top \\
+        \boldsymbol B^\top & \boldsymbol D^\top 
+    \end{pmatrix}.
+$$
+
+</div>
+</details>
+-->
+<p>Блочные матрицы могут иметь произвольное число матричных блоков по каждому измерению. Интересно, что перемножать блочные матрицы можно по тем же правилам, что и матрицы из чисел, например</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{pmatrix}
+        \boldsymbol A_{11} &amp; \boldsymbol A_{12} \\
+        \boldsymbol A_{21} &amp; \boldsymbol A_{22} 
+    \end{pmatrix}
+    \begin{pmatrix}
+        \boldsymbol B_1 \\
+        \boldsymbol B_2 
+    \end{pmatrix} = 
+    \begin{pmatrix}
+        \boldsymbol A_{11} \boldsymbol B_1 + \boldsymbol A_{12} \boldsymbol B_2 \\
+        \boldsymbol A_{21} \boldsymbol B_1 + \boldsymbol A_{22} \boldsymbol B_2
+    \end{pmatrix}
+\end{split}\]</div>
+<p>(при условии, что размеры матриц позволяют корректно произвести все матричные умножения).</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Calculate <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol I_n)\)</span>.</p></li>
+<li><p>Prove that the main diagonal of a skew-symmetric matrix contains only zeros.</p></li>
+<li><p>Prove that the rotation matrix <a class="reference internal" href="#equation-rotation-matrix">(43)</a> is orthogonal.</p></li>
+<li><p>Prove that any <strong>reflection matrix</strong> <span class="math notranslate nohighlight">\(\boldsymbol I - 2\boldsymbol u \boldsymbol u^\top\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol u \in\mathbb R^n\)</span>, <span class="math notranslate nohighlight">\(\Vert \boldsymbol u \Vert_2 = 1\)</span>, is orthogonal.</p></li>
+<li><p>How many arithmetic operations is required for calculation <span class="math notranslate nohighlight">\(\boldsymbol{Ax}\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>,  <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span>? What if <span class="math notranslate nohighlight">\(m=n\)</span>?</p></li>
+<li><p>Give an example of two square matrices <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol B\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol{AB} \ne \boldsymbol{BA}\)</span>.</p></li>
+<li><p>Prove that <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{A} + \boldsymbol{B}) = \mathrm{tr}(\boldsymbol{A}) + \mathrm{tr}(\boldsymbol{B})\)</span>, <span class="math notranslate nohighlight">\(\mathrm{tr}(\lambda\boldsymbol{A}) = \lambda\mathrm{tr}(\boldsymbol{A})\)</span>,  <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{AB}) = \mathrm{tr}(\boldsymbol{BA})\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol B\)</span> be two symmetric matrices of the same shape. Is their product is necessarily symmetric?</p></li>
+<li><p>Find the transpose to the block matrix</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{pmatrix}
+        \boldsymbol A &amp; \boldsymbol B \\
+        \boldsymbol C &amp; \boldsymbol D 
+    \end{pmatrix},
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{k\times m}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol B \in \mathbb R^{k\times n}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol C \in \mathbb R^{\ell\times m}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol D \in \mathbb R^{\ell\times n}\)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./math/lin_alg"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="vectors.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Vectors</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="inverse.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Inverse matrix</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#square-matrices">Square matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">Identity matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-matrix">Diagonal matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triangular-matrices">Triangular matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetric-matrices">Symmetric matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-matrices">Orthogonal matrices</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-operations">Matrix operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-product">Matrix-vector product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-times-column-column">Matrix times column = column</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#row-times-matrix-row">Row times matrix = row</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#row-times-column">Row times column</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-product">Matrix product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-matrix-product">Properties of matrix product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#powers-of-matrices">Powers of matrices</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-rank-matrix">One-rank matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-matrices">Block matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By KBTU
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

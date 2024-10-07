@@ -1,0 +1,1006 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Orthogonal projections &#8212; ML book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'math/lin_alg/projections';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Determinants" href="determinant.html" />
+    <link rel="prev" title="Rank of a matrix" href="rank.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="ML book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    ML Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024.html">HW1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/ML_2024.html">ML 2024 (MS)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024_MS.html">HW1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/intro_to_ML.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/definition.html">Definitions of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/applications.html">Applications of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/ml_types.html">Types of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/python.html">Python libraries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../data/data.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../data/tabular.html">Tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/images.html">Image data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/text.html">Text data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/datasets.html">Datasets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../supervised/sl.html">Supervised learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/sl_types.html">Types of supervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/model_selection.html">Model selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/knn.html">k-Nearest Neighbors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lin_reg/linear_regression.html">Linear regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/simple.html">Simple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/polynomial.html">Polynomial regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/multiple.html">Multiple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/numeric_opt.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/general.html">General linear model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../linear_classification/classification.html">Linear classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/log_reg.html">Logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/multi_log_reg.html">Multinomial logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/num_opt_log_reg.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/svm.html">Support Vector Machines (SVM)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../eval_metrics/metrics.html">Evaluation Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/classification.html">Classification Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/ROC-AUC.html">ROC-AUC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/regression.html">Regression metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/cross_val.html">Cross-validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/hyperparameters.html">Hyperparameters tuning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../probabilistic_models/probabilistic.html">Probabilistic models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/bayesian_inference.html">Bayesian inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/lin_reg_prob.html">Probabilistic models for linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/log_reg_prob.html">Probabilistic models for logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/LDA.html">Linear Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/QDA.html">Quadratic Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/naive_bayes.html">Naive Bayes classifier</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../decision_trees/decision_tree.html">Decision Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/classification.html">Classification tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/regression.html">Regression tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/impurity.html">Impurity and information criterions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/pruning.html">Tree pruning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ensembling/ensemble.html">Ensembling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/voting_stacking_blending.html">Voting, stacking and blending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/bagging.html">Bagging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/random_forest.html">Random forests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../gradient_boosting/gradient_boosting.html">Gradient boosting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/boosting.html">Boosting and additive modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/generic_gb.html">Generic gradient boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/adaboost.html">AdaBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/xgboost.html">XGBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/catboost.html">CatBoost</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/k_means.html">K-means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/hierarchic_clustering.html">Hierarchical Clustering</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mlp/mlp.html">Multilayer perceptron (MLP)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/layers.html">Layers of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/forward_backward_pass.html">Training of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/backprop.html">Back propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/weight_init.html">Weights initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/regularization.html">Regularization in MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/optimization_dl.html">Optimization in DL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/MLP_notebook.html">Multilayer Perceptron (MLP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cnn/cnn.html">CNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/convolutions_2d.html">Convolution of matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/convolutions_3d.html">Convolutions of tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/pooling.html">Pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/back_prop.html">Back propagation in CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/architectures.html">Architectures of CNN</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rnn/sequential.html">Sequential NNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/vanilla_rnn.html">Vanilla RNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/lstm.html">LSTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/gru.html">GRU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/attention.html">Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/transformers.html">Transformers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../gm/generative.html">Generative models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/autoencoders.html">Autoencoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/vae.html">Variational autoencoders (VAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/gan.html">Ganerative adversarial networks (GAN)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rl/RL.html">Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/basics.html">RL basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/multiarmed_bandits.html">Multi-armed bandits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/mdp.html">Markov Decision Process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/q_learning.html">Q-learning</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../python/python_basics.html">Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/basic_types.html">Basic Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/control_flow.html">Control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/functions_strings.html">Functions</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/classes.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/ISLP_lab.html">ISLP Lab</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/numpy.html">NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/visual.html">Data visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math for ML</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../linear_algebra.html">Linear Algebra</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vectors.html">Vectors</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inverse.html">Inverse matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rank.html">Rank of a matrix</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Orthogonal projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="determinant.html">Determinants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eig.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagonalize.html">Diagonalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="positive_def.html">Positive definite matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrix_norms.html">Matrix norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SVD.html">Singular Value Decomposition (SVD)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../calculus.html">Calculus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/1-d.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/multivariate.html">Multivariate calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/matrix_diff.html">Matrix calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/optimization.html">Optimization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../probability.html">Probability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proba/rvs.html">Random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/independence.html">Independence and random vectors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../statistics.html">Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Estimations</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notation.html">Notation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources.html">ML resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/math/lin_alg/projections.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Orthogonal projections</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-onto-a-line">Projection onto a line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">Simple linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-onto-a-subspace">Projection onto a subspace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-spaces">Orthogonal spaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="orthogonal-projections">
+<h1>Orthogonal projections<a class="headerlink" href="#orthogonal-projections" title="Link to this heading">#</a></h1>
+<p>Из геометрии мы знаем, что для нахождения <strong>проекции</strong> вектора на прямую или плоскость, надо из его конца опустить перпендикуляр. Вектор, указывающий в точку пересечения перпенидкуляра с прямой/плоскостью, и будет искомой (ортогональной) проекцией. В этом разделе мы займёмся ортогональным проектированием на произвольное подпространство <span class="math notranslate nohighlight">\(\mathbb R^n\)</span>.</p>
+<p>Проекции хороши тем, что позволяют находить ближайшую точку из заданного подпространства. На этом свойстве основан метод наименьших квадратов и такой классический метод машинного обучения как линейная регрессия.</p>
+<section id="projection-onto-a-line">
+<h2>Projection onto a line<a class="headerlink" href="#projection-onto-a-line" title="Link to this heading">#</a></h2>
+<p>Пусть прямая в <span class="math notranslate nohighlight">\(\mathbb R^n\)</span> задана ненулевым вектором <span class="math notranslate nohighlight">\(\boldsymbol a = (a_1, \ldots, a_n)^\mathsf{T}\)</span>, и мы хотим найти на этой прямой точку <span class="math notranslate nohighlight">\(\boldsymbol p\)</span>, ближайшую к заданной точке <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>. Для этого вектор <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> надо спроектировать на прямую <span class="math notranslate nohighlight">\(\mathrm{span}(\boldsymbol a)\)</span>; результатом проекции и будет вектор <span class="math notranslate nohighlight">\(\boldsymbol p = c \boldsymbol a\)</span>. Проекция <span class="math notranslate nohighlight">\(\boldsymbol p\)</span> характеризуется свойством <span class="math notranslate nohighlight">\(\boldsymbol x - \boldsymbol p \perp \boldsymbol a\)</span>, из которого мы и найдём число <span class="math notranslate nohighlight">\(c\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-1d-projection">
+<span class="eqno">(47)<a class="headerlink" href="#equation-1d-projection" title="Link to this equation">#</a></span>\[    \boldsymbol a^\mathsf{T}(\boldsymbol x - \boldsymbol p) = 0 \iff 
+    \boldsymbol a^\mathsf{T}\boldsymbol x - c\boldsymbol a^\mathsf{T}\boldsymbol a = 0 \iff
+    c = \frac{\boldsymbol a^\mathsf{T}\boldsymbol x}{\boldsymbol a^\mathsf{T}\boldsymbol a}. \]</div>
+<p>Итак, наша проекция равна <span class="math notranslate nohighlight">\(\boldsymbol p = \frac{\boldsymbol a^\mathsf{T}\boldsymbol x}{\boldsymbol a^\mathsf{T}\boldsymbol a} \boldsymbol a\)</span>.
+Если вектор <span class="math notranslate nohighlight">\(\boldsymbol a\)</span> единичный, то формула для проекции упрощается до <span class="math notranslate nohighlight">\(\boldsymbol p = \langle \boldsymbol a, \boldsymbol x\rangle \boldsymbol a\)</span>.</p>
+<p>Отметим два простых, но важных частных случая проекции на прямую:</p>
+<ol class="arabic">
+<li><p>Если точка <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> уже лежит на прямой <span class="math notranslate nohighlight">\(\mathrm{span}(\boldsymbol a)\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol x = d \boldsymbol a\)</span>, то</p>
+<div class="math notranslate nohighlight">
+\[
+        \boldsymbol p = \frac{d\boldsymbol a^\mathsf{T}\boldsymbol a}{\boldsymbol a^\mathsf{T}\boldsymbol a} \boldsymbol a = d \boldsymbol a = \boldsymbol b.
+    \]</div>
+<p>В этом случае проектируемая точка уже лежит на прямой, поэтому ничего искать не надо: её проекция совпадает с ней самой.</p>
+</li>
+<li><p>Если <span class="math notranslate nohighlight">\(\boldsymbol x \perp a\)</span>, то <span class="math notranslate nohighlight">\(\boldsymbol a^\mathsf{T}\boldsymbol x = 0\)</span> и <span class="math notranslate nohighlight">\(\boldsymbol p = \boldsymbol 0\)</span>. Это хорошо известное из геометрии и физики свойство: проекция перпендикулярного вектора равна нулю.</p></li>
+</ol>
+<p>Проектирование вектора <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> на прямую <span class="math notranslate nohighlight">\(\mathrm{span}(\boldsymbol a)\)</span> можно записать в виде умножения на одноранговую матрицу <span class="math notranslate nohighlight">\(\boldsymbol P\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol p = \boldsymbol {Px}, \quad \boldsymbol P = \frac{\boldsymbol a \boldsymbol a^\mathsf{T}}{\boldsymbol a^\mathsf{T} \boldsymbol a}.
+\]</div>
+<p>Матрица <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> является частным случаем <strong>матрицы проекции</strong> и обладает свойством <span class="math notranslate nohighlight">\(\boldsymbol P^2 = \boldsymbol P\)</span>.</p>
+</section>
+<section id="simple-linear-regression">
+<h2>Simple linear regression<a class="headerlink" href="#simple-linear-regression" title="Link to this heading">#</a></h2>
+<p>Consider a simple linear regression model without intercept: <span class="math notranslate nohighlight">\(y = a x\)</span>. Given training dataset <span class="math notranslate nohighlight">\(\mathcal D = \{(x_i, y_i)\}_{i=1}^n\)</span>, how to find optimal value of <span class="math notranslate nohighlight">\(a\)</span>?</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/fe5ba4c9397c3c03d54e74808fc8fa3faafa6423d12ad327059f4f699ffc82b8.svg" src="../../_images/fe5ba4c9397c3c03d54e74808fc8fa3faafa6423d12ad327059f4f699ffc82b8.svg" />
+</div>
+</div>
+<p>In linear regression we minimize the distance from the target vector <span class="math notranslate nohighlight">\(\boldsymbol y = (y_1, \ldots, y_n)\)</span> and the line specified by the feature vector <span class="math notranslate nohighlight">\(\boldsymbol x = (x_1, \ldots, x_n)\)</span>. According <a class="reference internal" href="#equation-1d-projection">(47)</a> we can achieve this by putting</p>
+<div class="math notranslate nohighlight" id="equation-best-slope-lr-no-bias">
+<span class="eqno">(48)<a class="headerlink" href="#equation-best-slope-lr-no-bias" title="Link to this equation">#</a></span>\[    \widehat a = \frac{\boldsymbol x^\mathsf{T} \boldsymbol y}{\boldsymbol x^\mathsf{T} \boldsymbol x} = \frac{\sum\limits_{i=1}^n x_i y_i}{\sum\limits_{i=1}^n x_i^2}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Linear regression with bias <span class="math notranslate nohighlight">\(y = ax + b\)</span> is described <a class="reference internal" href="../../lin_reg/simple.html#simple-linear-regression"><span class="std std-ref">here</span></a>. The optimal parameters are given by <a class="reference internal" href="../../lin_reg/simple.html#equation-1-d-weights">(9)</a>. See also <a class="reference internal" href="../../supervised/sl_types.html#lr-1d-plot"><span class="std std-ref">this</span></a> plot.</p>
+</div>
+</section>
+<section id="projection-onto-a-subspace">
+<h2>Projection onto a subspace<a class="headerlink" href="#projection-onto-a-subspace" title="Link to this heading">#</a></h2>
+<p>Теперь займёмся поиском проекции вектора <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^m\)</span> на подпространство <span class="math notranslate nohighlight">\(\mathrm{span}(\boldsymbol a_1, \ldots, \boldsymbol a_n)\)</span>, <span class="math notranslate nohighlight">\(n\leqslant m\)</span>. Будем считать, что все векторы <span class="math notranslate nohighlight">\(\boldsymbol a_1, \ldots, \boldsymbol a_n\)</span> линейно независимы (в противном случае выкинем лишние). Проекция <span class="math notranslate nohighlight">\(\boldsymbol p\)</span> вектора <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> представляет собой линейную комбинацию</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol p = c_1 \boldsymbol a_1 + \ldots + c_n\boldsymbol a_n, 
+\]</div>
+<p>что эквивалентно матрично-векторному умножению</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol p = \boldsymbol {Ac}, \quad \boldsymbol A = [\boldsymbol a_1 \ldots \boldsymbol a_n], \quad \boldsymbol c = (c_1,\ldots, c_n)^\mathsf{T}.
+\]</div>
+<p>Вектор <span class="math notranslate nohighlight">\(\boldsymbol x - \boldsymbol p\)</span> должен быть ортогонален подпространству <span class="math notranslate nohighlight">\(\mathrm{span(\boldsymbol a_1, \ldots, \boldsymbol a_n)}\)</span>, поэтому <span class="math notranslate nohighlight">\(\boldsymbol x - \boldsymbol{Ac} \perp \boldsymbol a_j\)</span> при всех <span class="math notranslate nohighlight">\(j=1, \ldots, n\)</span>, т.е.</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol a_j^\mathsf{T} (\boldsymbol x - \boldsymbol{Ac}) = 0, \; 1 \leqslant j \leqslant n, \;\iff\;
+    \boldsymbol A^\mathsf{T} (\boldsymbol x - \boldsymbol{Ac}) = \boldsymbol 0.
+\]</div>
+<p>Таким образом, справедливо равенство <span class="math notranslate nohighlight">\(\boldsymbol A^\mathsf{T} \boldsymbol x = \boldsymbol A^\mathsf{T} \boldsymbol{Ac}\)</span>. Поскольку <span class="math notranslate nohighlight">\(\mathrm{rank}(\boldsymbol A) =n\)</span>, матрица <span class="math notranslate nohighlight">\(\boldsymbol A^\mathsf{T} \boldsymbol A\)</span> обратима, и можно домножить предыдущее равенство на <span class="math notranslate nohighlight">\((\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1}\)</span>.</p>
+<!--
+Чтобы найти отсюда вектор коэффициентов $\boldsymbol c$ и проекцию $\boldsymbol p = \boldsymbol {Ac}$, требуется обратить квадратную матрицу $\boldsymbol A^\mathsf{T} \boldsymbol A$. Но обратима ли она?
+
+**Упражнение**. Докажите, что матрица $\boldsymbol A^\mathsf{T} \boldsymbol A$ невырождена тогда и только тогда, когда столбцы матрицы $\boldsymbol A \in \mathbb R^{m\times n}$ линейно независимы.
+
+
+```{admonition} Proof
+:class: dropdown
+Матрица $\boldsymbol A^\mathsf{T} \boldsymbol A$ квадратная размера $n\times n$. Достаточно доказать, что $N(\boldsymbol A^\top \boldsymbol A) = N(\boldsymbol A)$, поскольку нулевое ядро эквивалентно линейной независимости столбцов матрицы.
+
+Если $\boldsymbol x \in N(\boldsymbol A)$, то $\boldsymbol{Ax} = \boldsymbol 0$ и $\boldsymbol A^\top\boldsymbol{Ax} = \boldsymbol A^\top\boldsymbol 0 = \boldsymbol 0$, т.е. $\boldsymbol x \in N(\boldsymbol A^\top \boldsymbol A)$.
+
+Если же $\boldsymbol x \in N(\boldsymbol A^\top \boldsymbol A)$, то $\boldsymbol A^\top\boldsymbol{Ax} = \boldsymbol 0$. Домножая это равенство на $\boldsymbol x^\top$ слева, получаем
+
+$$
+    \boldsymbol x^\top\boldsymbol A^\top\boldsymbol{Ax}=\boldsymbol {Ax}^\top\boldsymbol{Ax} = \Vert \boldsymbol{Ax}\Vert^2 = 0.
+$$
+
+Следовательно, $\boldsymbol{Ax} = \boldsymbol 0$ и $\boldsymbol x \in N(\boldsymbol A)$.
+```
+-->
+<p>В результате получаем, что</p>
+<div class="math notranslate nohighlight" id="equation-projection-coef">
+<span class="eqno">(49)<a class="headerlink" href="#equation-projection-coef" title="Link to this equation">#</a></span>\[\boldsymbol c = (\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T} \boldsymbol x,\]</div>
+<p>а сама проекция равна</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol p = \boldsymbol{Ac} = \boldsymbol A(\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T} \boldsymbol x.
+\]</div>
+<p>Отметим, что проекция на прямую является частным случаем проекции на подпространство, когда матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> состоит из одного столбца <span class="math notranslate nohighlight">\(\boldsymbol a\)</span>. Проекция на подпространство записывается в виде <span class="math notranslate nohighlight">\(\boldsymbol p = \boldsymbol {Px}\)</span> с помощью матрицы проекции</p>
+<div class="math notranslate nohighlight" id="equation-proj-matrix">
+<span class="eqno">(50)<a class="headerlink" href="#equation-proj-matrix" title="Link to this equation">#</a></span>\[    \boldsymbol P = \boldsymbol A (\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T}. \]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The matrix <span class="math notranslate nohighlight">\((\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T}\)</span> is also called <strong>Moore–Penrose pseudo inverse</strong> matrix and denotes as <span class="math notranslate nohighlight">\(\boldsymbol A^\dagger\)</span>. Thus, <a class="reference internal" href="#equation-projection-coef">(49)</a> can be rewritten as <span class="math notranslate nohighlight">\(\boldsymbol c = \boldsymbol A^\dagger \boldsymbol x\)</span>.</p>
+</div>
+<!--
+Поиск проекции основан на геометрических соображениях, имеющих связь с основной теоремой линейной алгебры. Проектируя вектор $\boldsymbol x$ на $C(\boldsymbol A)$, мы «опускаем перепендикуляр» из $\boldsymbol x$ на $C(\boldsymbol A)$, т.е. ищем такой вектор $\boldsymbol p$, $\boldsymbol x - \boldsymbol p \perp C(\boldsymbol A)$. Но мы знаем, что $C(\boldsymbol A)^\perp = N(\boldsymbol A^\mathsf{T})$, следовательно, вектор $\boldsymbol x - \boldsymbol p$ лежит в левом ядре матрицы $\boldsymbol A$ и $\boldsymbol A^\mathsf{T}(\boldsymbol x - \boldsymbol p) = \boldsymbol 0$.
+
+
+--><!--
+## Least squares approximation
+
+Нередко случается так, что СЛАУ $\boldsymbol{Ax} = \boldsymbol b$ с прямоугольной матрицей $\boldsymbol A \in \mathbb R^{m\times n}$ не имеет решения. Так обычно происходит, если $m > n$: уравнений слишком много, чтобы каждое из них можно было удовлетворить путём выбора некоторого вектора $\boldsymbol x \in \mathbb R^n$. Иногда это всё же возможно (если вектор $\boldsymbol b$ лежит в линейной оболочке столбцов матрицы $\boldsymbol A$), но для случайно выбранной правой части система почти наверное несовместна.
+
+Однако отсутствие точного решения — не повод отчаиваться; для прикладных целей вполне приемлемым может оказаться приближённое решение $\widehat{\boldsymbol x}$, для которого вектор $\boldsymbol{A}\widehat{\boldsymbol x}$ максимально близок к вектору $\boldsymbol b$:
+
+```{math}
+:label: LSA
+    \widehat{\boldsymbol x} = \arg\min\limits_{\boldsymbol x\in \mathbb R^n}\Vert \boldsymbol{Ax} - \boldsymbol b\Vert. 
+```
+
+Такой метод «решения» СЛАУ $\boldsymbol{Ax} = \boldsymbol b$ называется **методом наименьших квадратов** (МНК), поскольку вектор $\widehat{\boldsymbol x}$ минимизирует величину $\Vert \boldsymbol{Ax} - \boldsymbol b\Vert^2$, которая в координатах записывается как сумма тех самых «квадратов»:
+
+$$
+    \Vert \boldsymbol{Ax} - \boldsymbol b\Vert^2 = \sum\limits_{i=1}^m \big((\boldsymbol{Ax})_i - b_i\big)^2 \to \min.
+$$
+
+На самом деле задачу оптимизации {eq}`LSA` мы уже решили в предыдущем пункте, когда искали проекцию на подпространство $C(\boldsymbol{A})$. Любой вектор $\boldsymbol b$ представляется в виде
+
+$$
+    \boldsymbol b = \boldsymbol e + \boldsymbol p, \quad \boldsymbol e = \boldsymbol b - \boldsymbol p \perp \boldsymbol p,
+$$
+
+где 
+
+$$
+\boldsymbol p = \boldsymbol{A}\widehat{\boldsymbol x} = \boldsymbol A(\boldsymbol A^\top \boldsymbol A)^{-1} \boldsymbol A^\top \boldsymbol b
+$$
+
+ — проекция вектора $\boldsymbol b$ на $C(\boldsymbol{A})$. Из геометрических соображений получаем, что минимальное расстояние от $\boldsymbol b$ до $\boldsymbol{Ax}$ доставляет перпендикуляр, опущенный из вектора $\boldsymbol b$ на его проекцию $\boldsymbol p = \boldsymbol{A}\widehat{\boldsymbol x}$. Действительно, вектор $\boldsymbol e = \boldsymbol p - \boldsymbol b$ ортогонален $C(\boldsymbol A)$, поэтому по теореме Пифагора получаем
+
+ $$
+    \Vert \boldsymbol{Ax} - \boldsymbol b \Vert^2 = \Vert \boldsymbol{Ax} - \boldsymbol p + \boldsymbol p - \boldsymbol b \Vert^2 = \Vert \boldsymbol{Ax} - \boldsymbol p \Vert^2 + \Vert \boldsymbol e \Vert^2.
+ $$
+
+ Второе слагаемое равно квадрату длины перпендикуляра $\boldsymbol e = \boldsymbol p - \boldsymbol b$, и никак не может быть уменьшено за счёт выбора вектора $\boldsymbol x$. А вот неотрицательное первое слагаемое можно обнулить, полагая $\boldsymbol x = \widehat{\boldsymbol x}$. Если $\boldsymbol b \in C(\boldsymbol A)$, $\boldsymbol e = \boldsymbol 0$, и второе слагаемое тоже обнуляется; в этом случае система $\boldsymbol{Ax} = \boldsymbol x$ имеет точное решение.
+
+Разумеется, решить оптимизационную задачу {eq}`LSA` можно также с помощью матричного дифференцирования.
+ 
+```{admonition} Аналитический вывод МНК
+:class: dropdown
+Полагая
+
+$$
+  f(\boldsymbol x) = \Vert \boldsymbol{Ax} - \boldsymbol b\Vert^2 = (\boldsymbol{Ax} - \boldsymbol b)^\top (\boldsymbol{Ax} - \boldsymbol b),
+$$
+
+находим
+
+$$
+    df(\boldsymbol x) = (\boldsymbol A d\boldsymbol x)^\top (\boldsymbol{Ax} - \boldsymbol b) + (\boldsymbol{Ax} - \boldsymbol b)^\top \boldsymbol A d\boldsymbol x = 2 (\boldsymbol{Ax} - \boldsymbol b)^\top \boldsymbol A d\boldsymbol x.
+$$
+
+Градиент $\nabla f(\boldsymbol x)$ равен транспонированному коэффициенту перед $d\boldsymbol x$, т.е.
+
+$$
+    \nabla f(\boldsymbol x) = 2\boldsymbol A^\top (\boldsymbol{Ax} - \boldsymbol b).
+$$
+
+Оптимальный вектор $\widehat{\boldsymbol x}$ обнуляет градиент:
+
+$$
+    \nabla f(\widehat{\boldsymbol x}) = 0 \iff \boldsymbol A^\top \boldsymbol{Ax} = \boldsymbol A^\top \boldsymbol b \iff \widehat{\boldsymbol x} = (\boldsymbol A^\top \boldsymbol A)^{-1}\boldsymbol A^\top \boldsymbol b.
+$$
+
+Критическая точка $\widehat{\boldsymbol x}$ единственна, поэтому она является точкой глобального минимума ограниченной снизу функции $\nabla f(\boldsymbol x)$. Также это можно обосновать положительной определённостью гессиана $\nabla^2 f = 2\boldsymbol A^\top \boldsymbol A$. 
+```
+
+Отметим, что единственность решения задачи {eq}`LSA` обеспечивается линейной независимостью столбцов матрицы $\boldsymbol A$. В противном случае матрица $\boldsymbol A^\top \boldsymbol A$ вырождена, и решение СЛАУ $\boldsymbol A^\top \boldsymbol{Ax} = \boldsymbol A^\top \boldsymbol b$ перестаёт быть единственным.
+
+Оценим вычислительную сложность метода наименьших квадратов. Сколько арифметических операций требуется затратить для вычисления $\widehat{\boldsymbol x} = (\boldsymbol A^\top \boldsymbol A)^{-1}\boldsymbol A^\top \boldsymbol b$?
+
+* Вычисление $\boldsymbol c = \boldsymbol A^\top \boldsymbol b$ сводится к умножению матрицы размера $n\times m$ на вектор $b\in\mathbb R^m$, что требует $O(mn)$ арифметических операций.
+
+* Для вычисления $\boldsymbol A^\top \boldsymbol A$ надо умножить матрицу размера $n\times m$ на матрицу размера $m\times n$, это стоит $O(n^2 m)$ операций.
+
+* Вычисление матрицы $\boldsymbol B = (\boldsymbol A^\top \boldsymbol A)^{-1}$ требует обращения матрицы размера $n\times n$, что делается за $O(n^3)$ операций.
+
+* Вычисление $\widehat{\boldsymbol x} = \boldsymbol{Bc}$ требует $O(n^2)$ операций.
+
+Суммируя затраты на каждом этапе, находим общую сложность МНК: 
+
+$$
+O(mn) + O(n^2m ) + O(n^3) + O(n^2) = O(n^2m + n ^3) = O(n^2m).
+$$
+
+Последнее равенство имеет место, поскольку метод наименьших квадратов обычно применяют при условии $m \geqslant n$.
+--></section>
+<section id="linear-regression">
+<h2>Linear regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h2>
+<!--
+На методе наименьших квадратов основана **линейная регрессия** — простейший метод машинного обучения для решения задачи регрессии. 
+-->
+<p>Цель задачи регрессии — смоделировать зависимость целевой переменной <span class="math notranslate nohighlight">\(y \in \mathbb R\)</span> от признаков объекта <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^d\)</span> (<span class="math notranslate nohighlight">\(d\)</span> — число признаков). Линейная регрессия строит линейную модель, которая предполагает линейную зависимость <span class="math notranslate nohighlight">\(y\)</span> от <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>. Как мы знаем, всякий линейный функционал из <span class="math notranslate nohighlight">\(\mathbb R^d\)</span> в <span class="math notranslate nohighlight">\(\mathbb R\)</span> может быть записан в виде скалярного произведения</p>
+<div class="math notranslate nohighlight" id="equation-lin-reg-lsa">
+<span class="eqno">(51)<a class="headerlink" href="#equation-lin-reg-lsa" title="Link to this equation">#</a></span>\[    y = \boldsymbol x^\mathsf{T} \boldsymbol w\]</div>
+<p>для некоторого фиксированного вектора весов <span class="math notranslate nohighlight">\(\boldsymbol w \in \mathbb R^d\)</span>. Правда, в таком случае <span class="math notranslate nohighlight">\(y = 0\)</span> при <span class="math notranslate nohighlight">\(\boldsymbol x = \boldsymbol 0\)</span>, что может не соответствовать нашим данным. Поэтому к линейному функционалу добавляют ещё один параметр — свободный член (bias) <span class="math notranslate nohighlight">\(w_0\)</span>, и тогда линейная модель <a class="reference internal" href="#equation-lin-reg-lsa">(51)</a> приобретает вид</p>
+<div class="math notranslate nohighlight">
+\[
+    y = \boldsymbol x^\mathsf{T} \boldsymbol w  + w_0.
+\]</div>
+<p>Записывать в таком виде линейную регрессию не очень удобно, но свободный член можно учесть в первоначальной записи <a class="reference internal" href="#equation-lin-reg-lsa">(51)</a>, если добавить ещё один (нулевой) признак, всегда равный единице:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol x = \begin{pmatrix}
+        1 \\
+        x_1 \\
+        \vdots \\
+        x_d\\
+    \end{pmatrix},
+    \quad
+    \boldsymbol w = \begin{pmatrix}
+        w_0 \\
+        w_1 \\
+        \vdots \\
+        w_d\\
+    \end{pmatrix},
+    \quad
+    y = \boldsymbol x^\mathsf{T} \boldsymbol w.
+\end{split}\]</div>
+<p>Далее будем считать, что этот фиктивный принак уже добавлен, и всякая линейная зависимость между признаками объекта <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> и таргетом <span class="math notranslate nohighlight">\(y\)</span> имеет вид <a class="reference internal" href="#equation-lin-reg-lsa">(51)</a>.</p>
+<p>Для решения задачи регрессии (в том числе линейной) нам, разумеется, нужна обучающая выборка — датасет</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal D = (\boldsymbol x_i, y_i)_{i=1}^n,
+\]</div>
+<p>состоящий из признаков <span class="math notranslate nohighlight">\(\boldsymbol x_i \in \mathbb R^d\)</span> и таргетов <span class="math notranslate nohighlight">\(y_i\in \mathbb R\)</span> <span class="math notranslate nohighlight">\(i\)</span>-го
+обучающего объекта, <span class="math notranslate nohighlight">\(i=1, \ldots, n\)</span>. Такие числовые датасеты удобно записывать в матрично-векторной форме: построчно записанные признаки <span class="math notranslate nohighlight">\(\boldsymbol x_i\)</span> образуют матрицу  объект-признак <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> размера <span class="math notranslate nohighlight">\(n\times d\)</span>, а таргеты — вектор <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol X = \begin{pmatrix} 
+    \boldsymbol x_1^\mathsf{T} \\ 
+    \vdots \\ 
+    \boldsymbol x_n^\mathsf{T} 
+    \end{pmatrix}, 
+    \quad
+    \boldsymbol y = \begin{pmatrix} 
+    y_1 \\ 
+    \vdots \\ 
+    y_n
+    \end{pmatrix}.
+\end{split}\]</div>
+<p>Такие обозначения позволяют линейную модель <a class="reference internal" href="#equation-lin-reg-lsa">(51)</a> записать единой формулой сразу для всего датасета <span class="math notranslate nohighlight">\(\mathcal D\)</span> как</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol y = \boldsymbol{Xw}.
+\]</div>
+<p>Задача линейной регрессии состоит в подборе весов <span class="math notranslate nohighlight">\(\boldsymbol w\)</span> таким образом, чтобы <span class="math notranslate nohighlight">\(\boldsymbol{Xw}\)</span> был как можно ближе к вектору <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>. Для этого надо спроектировать вектор <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> на <span class="math notranslate nohighlight">\(C(\boldsymbol X)\)</span>. Согласно <a class="reference internal" href="#equation-projection-coef">(49)</a> оптимальный вектор весов <span class="math notranslate nohighlight">\(\widehat {\boldsymbol w}\)</span> равен</p>
+<!--
+В качестве меры близости можно взять, например, евклидову норму (или её квадрат):
+
+```{math}
+:label: lin-reg-opt-lsa
+\Vert \boldsymbol y - \boldsymbol{Xw}\Vert_2^2 \to \min\limits_{\boldsymbol w}. 
+```
+-->
+<div class="math notranslate nohighlight" id="equation-lin-reg-solution-lsa">
+<span class="eqno">(52)<a class="headerlink" href="#equation-lin-reg-solution-lsa" title="Link to this equation">#</a></span>\[    \widehat {\boldsymbol w} = (\boldsymbol X^\mathsf{T} \boldsymbol X)^{-1} \boldsymbol X^\mathsf{T} \boldsymbol y \]</div>
+<p>Чтобы веса линейной регрессии можно было найти по этой формуле, матрица объект-признак <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> должна иметь линейно независимые столбцы. Если это не так, то между признаками в датасете <span class="math notranslate nohighlight">\(\mathcal D\)</span> есть линейная зависимость (её также называют <strong>мультиколлинеарностью</strong>). Мультиколлинеарность ломает линейную регрессию, поэтому от неё следует избавляться, например, проредив количество признаков.</p>
+<!--
+Вычислительная сложность нахождения весов линейной регрессии по формуле {eq}`lin-reg-solution-lsa` составляет $O(ND^2 + D^3)$. Таким образом, при большом количестве признаков точное аналитическое вычисление весов — весьма дорогое удовольствие. Вычисления можно ускорить, используя продвинутые алгоритмы перемножения матриц или итерационные методы поиска обратной матрицы. Или же можно вообще не использовать формулу {eq}`lin-reg-solution-lsa`, а искать приближённое решения задачи оптимизации {eq}`lin-reg-opt-lsa` методом градиентного спуска, например.
+--></section>
+<section id="orthogonal-spaces">
+<h2>Orthogonal spaces<a class="headerlink" href="#orthogonal-spaces" title="Link to this heading">#</a></h2>
+<p>Subspaces <span class="math notranslate nohighlight">\(U, V \subset \mathbb R^n\)</span> are called <strong>orthogonal</strong> if</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol u^\mathsf{T}\boldsymbol v = 0 \text{ for all } \boldsymbol u, \boldsymbol v \in V.
+\]</div>
+<p>For example, lines <span class="math notranslate nohighlight">\(y = x\)</span> and <span class="math notranslate nohighlight">\(y = -x\)</span> are orthogonal in <span class="math notranslate nohighlight">\(\mathbb R^2\)</span>, and plane <span class="math notranslate nohighlight">\(x + y + z = 0\)</span> is orthogonal to line spanned by vector <span class="math notranslate nohighlight">\((1, 1, 1)\)</span>.</p>
+<p><strong>Orthogonal complement</strong> of a subspace <span class="math notranslate nohighlight">\(V\subset \mathbb R^n\)</span> is a subspace of vectors perpendicular to all vectors from <span class="math notranslate nohighlight">\(V\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    V^\perp = \{ \boldsymbol x \in \mathbb R^n\colon \boldsymbol x^{\mathsf T} \boldsymbol v = 0 \text{ for all } \boldsymbol v \in V\}.
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(V\)</span> is a subspace of <span class="math notranslate nohighlight">\(\mathbb R^n\)</span>, then <span class="math notranslate nohighlight">\(\dim V + \dim V ^\perp = n\)</span>.</p>
+<div class="important admonition">
+<p class="admonition-title">Fundamental theorem of linear algebra, part 2</p>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[
+C(\boldsymbol A)^\perp = N(\boldsymbol A^\mathsf{T}), \quad
+C(\boldsymbol A^\mathsf{T})^\perp = N(\boldsymbol A).
+\]</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Proof</p>
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol x \in N(\boldsymbol A)\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol y \in C(\boldsymbol A^\mathsf{T})\)</span>, then <span class="math notranslate nohighlight">\(\boldsymbol{Ax} = \boldsymbol 0\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y = \boldsymbol A^\mathsf{T} \boldsymbol z\)</span> for some <span class="math notranslate nohighlight">\(\boldsymbol z \in \mathbb R^m\)</span>. Hence,</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol x^\mathsf{T}\boldsymbol y = \boldsymbol x^\mathsf{T}  \boldsymbol A^\mathsf{T} \boldsymbol z = (\boldsymbol{Ax})^{\mathsf T} \boldsymbol z = \boldsymbol 0^\mathsf{T} \boldsymbol z = 0.
+\]</div>
+</div>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Find the projection matrix onto the line <span class="math notranslate nohighlight">\(x + y = 0\)</span>.</p></li>
+<li><p>Prove that <span class="math notranslate nohighlight">\(\boldsymbol P = \frac{\boldsymbol a \boldsymbol a^\mathsf{T}}{\boldsymbol a^\mathsf{T} \boldsymbol a}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol a \ne \boldsymbol 0\)</span>, is a projection matrix, i.e., <span class="math notranslate nohighlight">\(\boldsymbol P^2 = \boldsymbol P\)</span>.</p></li>
+<li><p>Show that matrix <a class="reference internal" href="#equation-proj-matrix">(50)</a> is a projection matrix.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol X \in \mathbb R^{n\times d}\)</span>. Estimate the complexity of calculations by formula <a class="reference internal" href="#equation-lin-reg-solution-lsa">(52)</a> in terms of big-O.</p></li>
+<li><p>Find the feature matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> for simple linear regression <span class="math notranslate nohighlight">\(y = ax + b\)</span>. Applying <a class="reference internal" href="#equation-lin-reg-solution-lsa">(52)</a> show that the equalities <a class="reference internal" href="../../lin_reg/simple.html#equation-1-d-weights">(9)</a> hold.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> be a projection matrix. Show that <span class="math notranslate nohighlight">\(\boldsymbol I - \boldsymbol P\)</span> is also a projection matrix.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> be the projection matrix onto <span class="math notranslate nohighlight">\(C(\boldsymbol A)\)</span>. On which subspace will project the matrix <span class="math notranslate nohighlight">\(\boldsymbol I - \boldsymbol P\)</span>?</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Answer</p>
+<p>Заметим, что</p>
+<div class="math notranslate nohighlight">
+\[
+(\boldsymbol I - \boldsymbol P)^2 = \boldsymbol I - 2\boldsymbol P + \overbrace{\boldsymbol P^2}^{=\boldsymbol P} = \boldsymbol I - \boldsymbol P,
+\]</div>
+<p>так что <span class="math notranslate nohighlight">\(\boldsymbol I - \boldsymbol P\)</span> действительно матрица проекции. Любой вектор <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> единственным образом представляется в виде суммы <span class="math notranslate nohighlight">\(\boldsymbol x = \boldsymbol p + \boldsymbol e\)</span>, где <span class="math notranslate nohighlight">\(\boldsymbol p  = \boldsymbol{Px}\)</span> — проекция на <span class="math notranslate nohighlight">\(C(\boldsymbol A)\)</span>,
+<span class="math notranslate nohighlight">\(\boldsymbol e  = \boldsymbol x - \boldsymbol p\)</span> — ортогональный ей вектор. Имеем</p>
+<div class="math notranslate nohighlight">
+\[
+(\boldsymbol I - \boldsymbol P) \boldsymbol x = \boldsymbol x - \boldsymbol p = \boldsymbol e;
+\]</div>
+<p>таким образом, матрица <span class="math notranslate nohighlight">\(\boldsymbol I - \boldsymbol P\)</span> проектирует на ортогональное дополнение к <span class="math notranslate nohighlight">\(C(\boldsymbol A)\)</span>, т.е. на левое ядро <span class="math notranslate nohighlight">\(N(\boldsymbol A^\mathsf{T})\)</span>.</p>
+</div>
+</li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./math/lin_alg"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rank.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Rank of a matrix</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="determinant.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Determinants</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-onto-a-line">Projection onto a line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">Simple linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-onto-a-subspace">Projection onto a subspace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-spaces">Orthogonal spaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By KBTU
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

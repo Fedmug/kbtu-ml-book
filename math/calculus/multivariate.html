@@ -1,0 +1,1122 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Multivariate calculus &#8212; ML book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'math/calculus/multivariate';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Matrix calculus" href="matrix_diff.html" />
+    <link rel="prev" title="Derivative" href="1-d.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="ML book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    ML Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024.html">HW1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/ML_2024.html">ML 2024 (MS)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024_MS.html">HW1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/intro_to_ML.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/definition.html">Definitions of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/applications.html">Applications of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/ml_types.html">Types of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/python.html">Python libraries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../data/data.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../data/tabular.html">Tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/images.html">Image data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/text.html">Text data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/datasets.html">Datasets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../supervised/sl.html">Supervised learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/sl_types.html">Types of supervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/model_selection.html">Model selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/knn.html">k-Nearest Neighbors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lin_reg/linear_regression.html">Linear regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/simple.html">Simple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/polynomial.html">Polynomial regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/multiple.html">Multiple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/numeric_opt.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/general.html">General linear model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../linear_classification/classification.html">Linear classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/log_reg.html">Logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/multi_log_reg.html">Multinomial logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/num_opt_log_reg.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/svm.html">Support Vector Machines (SVM)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../eval_metrics/metrics.html">Evaluation Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/classification.html">Classification Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/ROC-AUC.html">ROC-AUC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/regression.html">Regression metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/cross_val.html">Cross-validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/hyperparameters.html">Hyperparameters tuning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../probabilistic_models/probabilistic.html">Probabilistic models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/bayesian_inference.html">Bayesian inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/lin_reg_prob.html">Probabilistic models for linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/log_reg_prob.html">Probabilistic models for logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/LDA.html">Linear Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/QDA.html">Quadratic Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/naive_bayes.html">Naive Bayes classifier</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../decision_trees/decision_tree.html">Decision Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/classification.html">Classification tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/regression.html">Regression tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/impurity.html">Impurity and information criterions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/pruning.html">Tree pruning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ensembling/ensemble.html">Ensembling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/voting_stacking_blending.html">Voting, stacking and blending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/bagging.html">Bagging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/random_forest.html">Random forests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../gradient_boosting/gradient_boosting.html">Gradient boosting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/boosting.html">Boosting and additive modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/generic_gb.html">Generic gradient boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/adaboost.html">AdaBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/xgboost.html">XGBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/catboost.html">CatBoost</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/k_means.html">K-means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/hierarchic_clustering.html">Hierarchical Clustering</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mlp/mlp.html">Multilayer perceptron (MLP)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/layers.html">Layers of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/forward_backward_pass.html">Training of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/backprop.html">Back propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/weight_init.html">Weights initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/regularization.html">Regularization in MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/optimization_dl.html">Optimization in DL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/MLP_notebook.html">Multilayer Perceptron (MLP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cnn/cnn.html">CNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/convolutions_2d.html">Convolution of matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/convolutions_3d.html">Convolutions of tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/pooling.html">Pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/back_prop.html">Back propagation in CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/architectures.html">Architectures of CNN</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rnn/sequential.html">Sequential NNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/vanilla_rnn.html">Vanilla RNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/lstm.html">LSTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/gru.html">GRU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/attention.html">Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/transformers.html">Transformers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../gm/generative.html">Generative models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/autoencoders.html">Autoencoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/vae.html">Variational autoencoders (VAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/gan.html">Ganerative adversarial networks (GAN)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rl/RL.html">Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/basics.html">RL basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/multiarmed_bandits.html">Multi-armed bandits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/mdp.html">Markov Decision Process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/q_learning.html">Q-learning</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../python/python_basics.html">Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/basic_types.html">Basic Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/control_flow.html">Control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/functions_strings.html">Functions</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/classes.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/ISLP_lab.html">ISLP Lab</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/numpy.html">NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/visual.html">Data visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math for ML</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_algebra.html">Linear Algebra</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lin_alg/vectors.html">Vectors</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lin_alg/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_alg/inverse.html">Inverse matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_alg/rank.html">Rank of a matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_alg/projections.html">Orthogonal projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_alg/determinant.html">Determinants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_alg/eig.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_alg/diagonalize.html">Diagonalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_alg/positive_def.html">Positive definite matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_alg/matrix_norms.html">Matrix norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_alg/SVD.html">Singular Value Decomposition (SVD)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../calculus.html">Calculus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-d.html">Derivative</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Multivariate calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrix_diff.html">Matrix calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Optimization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../probability.html">Probability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proba/rvs.html">Random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/independence.html">Independence and random vectors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../statistics.html">Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Estimations</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notation.html">Notation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources.html">ML resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/math/calculus/multivariate.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Multivariate calculus</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differentials-of-scalar-functions">Differentials of scalar functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-of-vectors">Functions of vectors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differentials-of-vector-functions">Differentials of vector functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-in-general-case">Differential in general case</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases">Special cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-of-differentiation">Rules of differentiation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-differential">Second differential</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="multivariate-calculus">
+<h1>Multivariate calculus<a class="headerlink" href="#multivariate-calculus" title="Link to this heading">#</a></h1>
+<p>The idea is the same: approximate the increment <span class="math notranslate nohighlight">\(\Delta f\)</span> by a linear function:</p>
+<div class="math notranslate nohighlight">
+\[
+	f(x+h) - f(x) = Df(x)[h] + \mathcal O\big(\Vert h\Vert^2\big), \Vert h\Vert \to 0
+\]</div>
+<p>(cp. with <a class="reference internal" href="1-d.html#equation-derivative-o-def">(60)</a>). Here <strong>differential</strong> <span class="math notranslate nohighlight">\(Df(x)[h]\)</span> is a linear function (which is usually called <strong>linear operator</strong> in multidimensional case) with respect to increment <span class="math notranslate nohighlight">\(h\)</span> which represents the main linear part of the increment <span class="math notranslate nohighlight">\(\Delta f = f(x+h) - f(x)\)</span>.</p>
+<!--
+Перейдём теперь к более общей ситуации. Пусть заданы два конечномерных пространства $U$ и $V$ (например, векторов или матриц). Функция $f \colon X \to V$, $X \subset U$, дифференцируема в точке $x\in X$, если найдётся такой линейный оператор $L\colon U \to V$, что справедливо равенство
+
+$$
+	f(x+h) - f(x) = L[h] + o(\Vert h\Vert) \text{ при } \Vert h\Vert \to 0.
+$$
+
+Линейное отображение $L$ из мира $x$-ов в мир значений $f$ называется **дифференциалом** (**производной**, **производным отображением**) функции $f$ в точке $x$ и обозначается $df(x)$ или $Df(x)[h]$. Фактически дифференциал зависит от двух аргументов: $df \colon X\times U \to V$, причём по второму аргументу он линеен. Среди всех линейных операторов из $U$ в $V$ дифференциал наилучшим образом приближает приращение функции: 
+
+$$
+f(x+h) - f(x) \approx Df(x)[h].
+$$ 
+
+
+```{note}
+Нотация $Df(x)[h]$ для дифференциала выглядит несколько громоздко, зато в неё явно включены обе переменные, от которых зависит дифференциал. При вычислении дифференциала функции $f$ в произвольной точке $x$ часто используют более короткую запись $df(x)$ или даже $df$; переменная приращения в таких случаях традиционно обозначается через $dx$. Обозначение $dx$ следует воспринимать как единый неделимый символ, по смыслу полностью тождественный приращению $h$. 
+``` 
+-->
+<section id="differentials-of-scalar-functions">
+<h2>Differentials of scalar functions<a class="headerlink" href="#differentials-of-scalar-functions" title="Link to this heading">#</a></h2>
+<p>In the previous section we considered the simplest case when <span class="math notranslate nohighlight">\(f \colon \mathbb R \to \mathbb R\)</span> is a real-valued function of real argument. Then its differential is written as <span class="math notranslate nohighlight">\(df(x) = f'(x) dx\)</span> or <span class="math notranslate nohighlight">\(Df(x)[h] = f'(x)h\)</span>. Now see what happens when the function <span class="math notranslate nohighlight">\(f\)</span> has multidimensional domain.</p>
+<section id="functions-of-vectors">
+<h3>Functions of vectors<a class="headerlink" href="#functions-of-vectors" title="Link to this heading">#</a></h3>
+<p>let <span class="math notranslate nohighlight">\(f\colon \mathbb R^n \to \mathbb R\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol x = (x_1, \ldots, x_n)^\mathsf{T}\)</span>. Then</p>
+<div class="math notranslate nohighlight" id="equation-vector-func-diff">
+<span class="eqno">(61)<a class="headerlink" href="#equation-vector-func-diff" title="Link to this equation">#</a></span>\[Df(\boldsymbol x)[\boldsymbol h] = \sum\limits_{i=1}^n
+\frac{\partial f(\boldsymbol x)}{\partial 	 x_i} h_i = 
+\langle \nabla f(\boldsymbol x), \boldsymbol h\rangle = 
+\nabla     f       (\boldsymbol x)^\mathsf{T} 		\boldsymbol h,\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\frac{\partial f(\boldsymbol x)}{\partial 	 x_i}\)</span> are <a class="reference external" href="https://en.wikipedia.org/wiki/Partial_derivative">partial derivatives</a> of <span class="math notranslate nohighlight">\(f\)</span> at point <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>. The vector of partial derivatives</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla f = \Big(\frac{\partial f}{\partial x_1}, \ldots,\frac{\partial f}{\partial x_n}\Big)^\mathsf{T}
+\]</div>
+<p>is called <strong>gradient</strong> of <span class="math notranslate nohighlight">\(f\)</span>. Alternative notation for differential:</p>
+<div class="math notranslate nohighlight">
+\[
+df(\boldsymbol x) = \sum\limits_{i=1}^n
+\frac{\partial f(\boldsymbol x)}{\partial 	 x_i} dx_i = \nabla f(\boldsymbol x)^\mathsf{T} d\boldsymbol 	x, \quad
+d\boldsymbol x = (dx_1, \ldots, dx_n)^\mathsf{T}.
+\]</div>
+<p>Note that both increment <span class="math notranslate nohighlight">\(d\boldsymbol x\)</span> and gradient <span class="math notranslate nohighlight">\(\nabla f\)</span> have the same shape as variable <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>: they are columns of size <span class="math notranslate nohighlight">\(n\)</span>. All partial derivatives are functions of <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>, therefore, gradient also depends on <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>.</p>
+<div class="important admonition">
+<p class="admonition-title">Question</p>
+<p>How to write <span class="math notranslate nohighlight">\(df\)</span> in vector form if the argument of <span class="math notranslate nohighlight">\(f\)</span> is a row vector <span class="math notranslate nohighlight">\(\boldsymbol x = (x_1, \ldots, x_n)\)</span>?</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Answer</p>
+<p>The coordinate form is the same:</p>
+<div class="math notranslate nohighlight">
+\[
+df = \sum\limits_{i=1}^n
+\frac{\partial f(\boldsymbol x)}{\partial 	 x_i} dx_i.
+\]</div>
+<p>Now <span class="math notranslate nohighlight">\(\nabla f(\boldsymbol x)\)</span> and <span class="math notranslate nohighlight">\(d\boldsymbol x\)</span> are rows, hence</p>
+<div class="math notranslate nohighlight">
+\[
+    df(\boldsymbol x) = \nabla f(\boldsymbol x) d\boldsymbol 	x^\mathsf{T}
+\]</div>
+<p>Alternative notation:</p>
+<div class="math notranslate nohighlight">
+\[
+	Df(\boldsymbol x)[\boldsymbol h] = \nabla    f(\boldsymbol x)		\boldsymbol h ^\mathsf{T}.
+\]</div>
+</div>
+</div>
+<!--
+**Вопрос на подумать**. Как записать в векторной форме дифференциал функции $f\colon \mathbb R^n \to \mathbb R$, принимающей на вход вектор-строку, а не вектор-столбец?
+
+<details>
+<summary markdown="span">Попробуйте прийти к ответу самостоятельно, прежде чем смотреть решение. </summary>
+<div>
+В координатах разницы в записи дифференциала нет, по-прежнему 
+    
+$$
+    df = \sum\limits_{i=1}^n \frac{\partial f}{\partial 	 x_i} dx_i.
+$$
+    
+Поскольку $\boldsymbol x$ теперь вектор-строка, такую же форму имеют и градиент, и приращение. Подружить их в скалярном произведении, в котором всегда вектор-строка умножается на вектор-столбец, можно так: 
+    
+$$
+    df(\boldsymbol x) = \nabla f(\boldsymbol x) d\boldsymbol 	x^\top,
+$$
+    
+а в другой нотации — так: 
+	
+$$
+	Df(\boldsymbol x)[\boldsymbol h] = \nabla    f(\boldsymbol x)		\boldsymbol h ^\top.
+$$
+
+</div>
+</details>
+-->
+<!--
+### Gradients shape
+
+В {eq}`vector-func-diff` и {eq}`matrix-func-diff` пришлось столкнуться с давним знакомым из матанализа: градиентом $\nabla f$ скалярной функции $f$, который состоит из частных производных этой функции по всем координатам её аргумента $x$. При этом его обычно упаковывают в ту же форму, что и сам аргумент: если $x$ — вектор-строка, то и градиент записывается вектор-строкой, а если $x$ — матрица, то и градиент тоже будет матрицей того же размера. Это важно, например, для алгоритма градиентного спуска, при осуществлении которого мы должны уметь прибавлять градиент к точке, в которой он посчитан.
+-->
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Иногда приходится дифференцировать функции, зависящие от различных наборов аргументов, и тогда во избежание неоднозачности в индексе у буквы <span class="math notranslate nohighlight">\(\nabla\)</span> указывают аргумент, по которому осуществляется дифференцирование. Например, запись <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol w} f(\boldsymbol X, \boldsymbol y, \boldsymbol w)\)</span> недвусмысленно даёт понять, что мы дифференцируем фукнцию <span class="math notranslate nohighlight">\(f\)</span> по вектору <span class="math notranslate nohighlight">\(\boldsymbol w\)</span>, а <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> и <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> рассматриваем при этом как фиксированные параметры.</p>
+</div>
+<!--
+Посмотрим теперь, как выглядит дифференцирование для функций, которые на выходе выдают не скаляр, а вектор или матрицу.
+
+(activation-diff)=
+### Applying a function elementwise 
+
+Пусть 
+
+```{math}
+:label: elementwise-func
+f \colon \mathbb R^m \to \mathbb R^m,\quad  
+f(\boldsymbol x) = \begin{pmatrix} 
+\varphi(x_1)\\ \vdots\\ \varphi(x_m) 
+\end{pmatrix},
+```
+
+где $\varphi \colon \mathbb R \to \mathbb R$ — некоторая гладкая функция. Тогда
+
+$$
+	f(\boldsymbol x + \boldsymbol h) - f(\boldsymbol x) = 
+	    \begin{pmatrix}
+	            \varphi(x_1 + h_1) - \varphi(x_1)\\
+	            \vdots \\
+	            \varphi(x_m + h_m) - \varphi(x_m) 
+	    \end{pmatrix}
+	    \approx 
+	    \begin{pmatrix}
+	            \varphi'(x_{1}) h_1\\
+	            \vdots  \\
+	            \varphi'(x_{m}) h_m
+	    \end{pmatrix} 
+	    =
+	        \begin{pmatrix}
+	            \varphi'(x_{1}) \\
+	            \vdots \\
+	            \varphi'(x_{m})
+	        \end{pmatrix}
+	        \odot
+	           \boldsymbol h.
+$$
+
+В последнем выражении происходит покомпонентное умножение. Если обозначить через $\varphi'(\boldsymbol x)$ покомпонетное применение функции $\varphi'$ к координатам вектора $\boldsymbol x = (x_1, \ldots, x_m)^\top$, то дифференциал функции $f$ можно записать как
+
+$$
+	Df(\boldsymbol x)[\boldsymbol h] = \varphi'(\boldsymbol x) \odot \boldsymbol h =\boldsymbol h \odot \varphi'(\boldsymbol x).
+$$
+
+(linear-diff)=
+### Linear matrix function
+
+Let $f(\boldsymbol X) = \boldsymbol{XW}$, где $\boldsymbol X$ и $\boldsymbol W$ — матрицы подходящего размера. Тогда
+	
+$$
+f(\boldsymbol X + \boldsymbol H) - f(\boldsymbol X) = (\boldsymbol X + \boldsymbol H) \boldsymbol W - \boldsymbol X \boldsymbol W = \boldsymbol H \boldsymbol W.
+$$
+
+Получилась линейная по $\boldsymbol H$ функция, поэтому она и является дифференциалом функции $f$ в точке $\boldsymbol X$: $Df(\boldsymbol X) [\boldsymbol H] = \boldsymbol{HW}$. Допустима также запись $df(\boldsymbol X) = d\boldsymbol X\cdot \boldsymbol W$.
+
+```{admonition} Exercise
+:class: important
+Найдите дифференциал функции $f(\boldsymbol W) = \boldsymbol{XW}$, где $\boldsymbol X$ и $\boldsymbol W$ — матрицы подходящего размера.
+``` 
+-->
+</section>
+</section>
+<section id="differentials-of-vector-functions">
+<h2>Differentials of vector functions<a class="headerlink" href="#differentials-of-vector-functions" title="Link to this heading">#</a></h2>
+<p>Пусть <span class="math notranslate nohighlight">\(f\colon \mathbb R^m \to \mathbb R^n\)</span>, тогда дифференциал должен быть линейным оператором из <span class="math notranslate nohighlight">\(\mathbb R^m\)</span> в <span class="math notranslate nohighlight">\(\mathbb R^n\)</span>, то есть матрицей размера <span class="math notranslate nohighlight">\(n\times m\)</span>. И, действительно, с помощью <strong>матрицы Якоби</strong></p>
+<div class="math notranslate nohighlight" id="equation-jacobi">
+<span class="eqno">(62)<a class="headerlink" href="#equation-jacobi" title="Link to this equation">#</a></span>\[\begin{split}\boldsymbol J_f = \frac{\partial f}{\partial \boldsymbol x} = 
+		    \begin{pmatrix} 
+	    	        \frac{\partial f_1}{\partial x_1} &amp; \ldots &amp; 
+	        	    \frac{\partial f_1}{\partial x_m} \\
+	        	\vdots &amp; &amp; \vdots \\
+	            	\frac{\partial f_n}{\partial x_1} &amp; \ldots &amp; 
+	            	\frac{\partial f_n}{\partial x_m}\\
+	    	\end{pmatrix}\end{split}\]</div>
+<p>differential is written as</p>
+<div class="math notranslate nohighlight" id="equation-vec2vec-diff">
+<span class="eqno">(63)<a class="headerlink" href="#equation-vec2vec-diff" title="Link to this equation">#</a></span>\[Df(\boldsymbol x)[\boldsymbol h] = \boldsymbol J_f(\boldsymbol x)\boldsymbol h \text { or }
+df(\boldsymbol x) = \boldsymbol J_f(\boldsymbol x) d\boldsymbol x.\]</div>
+<div class="important admonition">
+<p class="admonition-title">Question</p>
+<p>Let <span class="math notranslate nohighlight">\(f\colon \mathbb R^m \to \mathbb R^n\)</span> be a mapping from a row vector <span class="math notranslate nohighlight">\(\boldsymbol x = (x_1, \ldots, x_m)\)</span> to another row vector <span class="math notranslate nohighlight">\((f_1(\boldsymbol x), \ldots, f_n(\boldsymbol x))\)</span>. How to write <span class="math notranslate nohighlight">\(df\)</span> in matrix form?</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Answer</p>
+<p>Значение дифференциала <span class="math notranslate nohighlight">\(Df(\boldsymbol x)[\boldsymbol h]\)</span> теперь должно быть вектором-строкой, а не вектором-столбцом. Этого легко добиться транспонированием <a class="reference internal" href="#equation-vec2vec-diff">(63)</a>:</p>
+<div class="math notranslate nohighlight">
+\[
+Df(\boldsymbol x)[\boldsymbol h] = \boldsymbol h^\mathsf{T} \boldsymbol J_f(\boldsymbol x)^{\mathsf T}.
+\]</div>
+<p>Следует учесть, однако, что теперь приращение <span class="math notranslate nohighlight">\(\boldsymbol h\)</span> — это строка, поэтому его транспонировать не нужно. В итоге получаем</p>
+<div class="math notranslate nohighlight">
+\[
+Df(\boldsymbol x)[\boldsymbol h] = \boldsymbol h \boldsymbol J_f(\boldsymbol x)^\mathsf{T}, \text{ or }
+df = d\boldsymbol x \cdot \boldsymbol J_f(\boldsymbol x)^\mathsf{T}.
+\]</div>
+</div>
+</div>
+<!--
+**Вопрос на подумать**. Как записать в векторно-матричной форме дифференциал функции $f\colon \mathbb R^m \to \mathbb R^n$, отображающей вектор-строку $\boldsymbol x = (x_1, \ldots, x_m)$ в вектор-строку $(f_1(\boldsymbol x), \ldots, f_n(\boldsymbol x))$?
+
+<details>
+    <summary markdown="span">Попробуйте прийти к ответу самостоятельно, прежде чем смотреть решение. </summary>
+    <div>
+	Значение дифференциала $$Df(\boldsymbol x)[\boldsymbol h]$$ теперь должно быть вектором-строкой, а не вектором-столбцом. Этого легко добиться транспонированием: применяя её к формуле из предыдущего примера, получаем $$Df(\boldsymbol x)[\boldsymbol h] = \boldsymbol h^T \boldsymbol J_f(\boldsymbol x)^T$$. Следует учесть, однако, что теперь приращение $$\boldsymbol h$$ — это строка, поэтому его транспонировать не нужно. В итоге получаем $$Df(\boldsymbol x)[\boldsymbol h] = \boldsymbol h \boldsymbol J_f(\boldsymbol x)^T$$ (альтернативная запись: $$df = d\boldsymbol x \cdot \boldsymbol J_f(\boldsymbol x)^T$$).
+	</div>
+</details>
+--></section>
+<section id="differential-in-general-case">
+<h2>Differential in general case<a class="headerlink" href="#differential-in-general-case" title="Link to this heading">#</a></h2>
+<p>Функция <span class="math notranslate nohighlight">\(f \colon X \to V\)</span>, <span class="math notranslate nohighlight">\(X \subset U\)</span>, дифференцируема в точке <span class="math notranslate nohighlight">\(x\in X\)</span>, если найдётся такой линейный оператор <span class="math notranslate nohighlight">\(L\colon U \to V\)</span>, что справедливо равенство</p>
+<div class="math notranslate nohighlight">
+\[
+	f(x+h) - f(x) = L[h] + o(\Vert h\Vert) \text{ при } \Vert h\Vert \to 0.
+\]</div>
+<p>Линейное отображение <span class="math notranslate nohighlight">\(L\)</span> из мира <span class="math notranslate nohighlight">\(x\)</span>-ов в мир значений <span class="math notranslate nohighlight">\(f\)</span> называется <strong>дифференциалом</strong> (<strong>производной</strong>, <strong>производным отображением</strong>) функции <span class="math notranslate nohighlight">\(f\)</span> в точке <span class="math notranslate nohighlight">\(x\)</span> и обозначается <span class="math notranslate nohighlight">\(df(x)\)</span> или <span class="math notranslate nohighlight">\(Df(x)[h]\)</span>. Фактически дифференциал зависит от двух аргументов: <span class="math notranslate nohighlight">\(df \colon X\times U \to V\)</span>, причём по второму аргументу он линеен. Среди всех линейных операторов из <span class="math notranslate nohighlight">\(U\)</span> в <span class="math notranslate nohighlight">\(V\)</span> дифференциал наилучшим образом приближает приращение функции:</p>
+<div class="math notranslate nohighlight">
+\[
+f(x+h) - f(x) \approx Df(x)[h].
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Нотация <span class="math notranslate nohighlight">\(Df(x)[h]\)</span> для дифференциала выглядит несколько громоздко, зато в неё явно включены обе переменные, от которых зависит дифференциал. При вычислении дифференциала функции <span class="math notranslate nohighlight">\(f\)</span> в произвольной точке <span class="math notranslate nohighlight">\(x\)</span> часто используют более короткую запись <span class="math notranslate nohighlight">\(df(x)\)</span> или даже <span class="math notranslate nohighlight">\(df\)</span>; переменная приращения в таких случаях традиционно обозначается через <span class="math notranslate nohighlight">\(dx\)</span>. Обозначение <span class="math notranslate nohighlight">\(dx\)</span> следует воспринимать как единый неделимый символ, по смыслу полностью тождественный приращению <span class="math notranslate nohighlight">\(h\)</span>.</p>
+</div>
+<section id="special-cases">
+<h3>Special cases<a class="headerlink" href="#special-cases" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(U = V = \mathbb R\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+        Df(x)[h] = f'(x)h \text{ or } df = f'(x)dx
+    \]</div>
+</li>
+<li><p><span class="math notranslate nohighlight">\(U = \mathbb R^n\)</span>, <span class="math notranslate nohighlight">\(V = \mathbb R\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     Df(\boldsymbol x)[\boldsymbol h] = \nabla f(\boldsymbol x)^{\mathsf T} \boldsymbol h \text{ or }
+     df = \nabla f^{\mathsf T} d\boldsymbol x
+    \]</div>
+</li>
+<li><p><span class="math notranslate nohighlight">\(U = \mathbb R^{m\times n}\)</span>, <span class="math notranslate nohighlight">\(V = \mathbb R\)</span> (see <a class="reference internal" href="matrix_diff.html#matrix-gradient"><span class="std std-ref">next section</span></a>:</p>
+<div class="math notranslate nohighlight">
+\[
+     Df(\boldsymbol X)[\boldsymbol H] = \mathrm{tr}\big(\nabla f(\boldsymbol X)^{\mathsf T} \boldsymbol H\big) \text{ or }
+     df = \mathrm{tr}\big(\nabla f^{\mathsf T} d\boldsymbol X\big)
+    \]</div>
+</li>
+<li><p><span class="math notranslate nohighlight">\(U = \mathbb R^{m}\)</span>, <span class="math notranslate nohighlight">\(V = \mathbb R^n\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     Df(\boldsymbol x)[\boldsymbol h] = J_f(\boldsymbol x) \boldsymbol h \text{ or }
+     df = J_f d\boldsymbol x
+    \]</div>
+</li>
+</ul>
+<div class="important admonition">
+<p class="admonition-title">Question</p>
+<p>If <span class="math notranslate nohighlight">\(f\colon U \to V\)</span> is differentiable at point <span class="math notranslate nohighlight">\(x\)</span>, what is the shape of <span class="math notranslate nohighlight">\(Df(x)[h]\)</span>?</p>
+</div>
+</section>
+<section id="rules-of-differentiation">
+<h3>Rules of differentiation<a class="headerlink" href="#rules-of-differentiation" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Производная константы</strong>. Если <span class="math notranslate nohighlight">\(f(x) = \mathrm{const}\)</span>, то <span class="math notranslate nohighlight">\(f(x+h) - f(x) = 0\)</span>, и по определению <span class="math notranslate nohighlight">\(Df(x)[h] = 0\)</span>. По этой же причине градиент постоянной функции векторного или матричного аргумента также равен нулю.</p></li>
+<li><p><strong>Дифференциал линейного отображения</strong>. Пусть <span class="math notranslate nohighlight">\(f(x)\)</span> — линейное отображение. Тогда</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+f(x + h) - f(x) = f(x) + f(h) - f(x) = f(h).
+\]</div>
+<p>Поскольку справа линейное отображение, то по определению оно и является дифференциалом <span class="math notranslate nohighlight">\(Df(x)[h]\)</span>.</p>
+<ol class="arabic" start="3">
+<li><p><strong>Линейность дифференциала</strong>. Пусть функции <span class="math notranslate nohighlight">\(f \colon X \to V\)</span> и <span class="math notranslate nohighlight">\(g \colon X \to V\)</span> дифференцируемы в точке <span class="math notranslate nohighlight">\(x\in X\)</span> и <span class="math notranslate nohighlight">\(\alpha, \beta \in \mathbb R\)</span>. Тогда функция <span class="math notranslate nohighlight">\(\alpha f + \beta g\)</span> дифференцируема в точке <span class="math notranslate nohighlight">\(x\)</span>, и</p>
+<div class="math notranslate nohighlight">
+\[
+	D(\alpha f + \beta g)(x)[h] = \alpha Df(x)[h] + \beta Dg(x)[h].
+	\]</div>
+</li>
+<li><p><strong>Дифференциал произведения</strong>. Пусть функции <span class="math notranslate nohighlight">\(u \colon X \to \mathbb R\)</span>, <span class="math notranslate nohighlight">\(v \colon X \to V\)</span> дифференцируемы в точке <span class="math notranslate nohighlight">\(x\)</span>. Тогда функция <span class="math notranslate nohighlight">\(u\cdot v\)</span> дифференцируема в точке <span class="math notranslate nohighlight">\(x\)</span>, и</p>
+<div class="math notranslate nohighlight">
+\[
+		D(uv)(x)[h] = Du(x)[h]\cdot v(x) + u(x)\cdot Dv(x)[h].
+	\]</div>
+<p>Это же правило сработает и для скалярного произведения:</p>
+<div class="math notranslate nohighlight">
+\[
+		D \langle u(x), v(x)\rangle [h] = \langle Du(x)[h], v(x)\rangle + \langle u(x), 	Dv(x)[h]\rangle.
+	\]</div>
+</li>
+<li><p><strong>Производная сложной функции.</strong> Пусть функция <span class="math notranslate nohighlight">\(u \colon X \to Y\)</span> дифференцируема в точке <span class="math notranslate nohighlight">\(x\)</span>, а функция <span class="math notranslate nohighlight">\(v \colon Y \to Z\)</span> дифференцируема в точке <span class="math notranslate nohighlight">\(u(x)\)</span>. Тогда их композиция <span class="math notranslate nohighlight">\(v\circ u\)</span> дифференцируема в точке <span class="math notranslate nohighlight">\(x\)</span>, и</p>
+<div class="math notranslate nohighlight">
+\[
+	D(u\circ v)(x)[h] = Dv(u(x))\Big[Du(x)[h]\Big].
+	\]</div>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Proof</p>
+<p>Обозначим <span class="math notranslate nohighlight">\(f(x) = (v\circ u)(x)\)</span>, тогда</p>
+<div class="math notranslate nohighlight">
+\[
+	f(x+h) - f(x) = v(u(x+h)) - v(u(x)) \approx v\big(u(x) + Du(x)[h]\big) - v(u(x)).
+\]</div>
+<p>Получилось приращение функции <span class="math notranslate nohighlight">\(v\)</span>, взятое в точке <span class="math notranslate nohighlight">\(u(x)\)</span> с приращением <span class="math notranslate nohighlight">\(Du(x)[h]\)</span>. Приближённо оно равно дифференциалу <span class="math notranslate nohighlight">\(Dv(u(x))\Big[Du(x)[h]\Big]\)</span>.</p>
+</div>
+<p>В частности, если <span class="math notranslate nohighlight">\(Y \subset \mathbb R\)</span> и <span class="math notranslate nohighlight">\(Z = \mathbb R\)</span>, то <span class="math notranslate nohighlight">\(d(v\circ u)(x) = v'(u(x))du(x)\)</span>.</p>
+</li>
+<li><p>Важный частный случай: <strong>дифференцирование перестановочно с линейным отображением</strong>. Пусть <span class="math notranslate nohighlight">\(f(x) = L(v(x))\)</span>, где <span class="math notranslate nohighlight">\(L\)</span> — линейное отображение. Тогда <span class="math notranslate nohighlight">\(DL(v(x))\)</span> совпадает с самим <span class="math notranslate nohighlight">\(L\)</span> и формула упрощается:</p>
+<div class="math notranslate nohighlight">
+\[
+	D(L\circ v)(x)[h] = L(Dv(x)[h]).
+	\]</div>
+</li>
+</ol>
+<!--
+```{admonition} Exercise
+:class: important
+Let $\boldsymbol A \in \mathbb R^{n\times n}$ and
+
+$$
+ f(\boldsymbol x) = \langle \boldsymbol{Ax}, \boldsymbol x\rangle = \boldsymbol x^\top \boldsymbol{Ax}.
+$$
+
+Find $\nabla f(\boldsymbol x)$.
+
+```{admonition} Solution
+:class: tip, dropdown
+
+Воспользуемся формулой дифференциала произведения:
+
+$$
+	df = \langle d(\boldsymbol{Ax}), \boldsymbol x\rangle + \langle \boldsymbol{Ax}, d\boldsymbol x\rangle = \langle \boldsymbol A d\boldsymbol x, \boldsymbol x\rangle + \langle \boldsymbol{Ax}, d\boldsymbol x\rangle. 
+$$
+
+Чтобы найти градиент, нам надо это выражение представить в виде $\langle ?, d\boldsymbol x\rangle$. Для этого поменяем местами множители первого произведения и перенесём $\boldsymbol A$ в другую сторону ($\boldsymbol A$ перенесётся с транспонированием):
+
+$$
+	df = \langle d\boldsymbol x, \boldsymbol A^T\boldsymbol x\rangle + \langle \boldsymbol{Ax}, d\boldsymbol x\rangle = \langle (\boldsymbol A^T + \boldsymbol A)\boldsymbol x, d\boldsymbol x\rangle.
+$$
+
+Отсюда получаем, что $\nabla f(\boldsymbol x) = (\boldsymbol A^T + \boldsymbol A)\boldsymbol x$.
+```	
+````
+--></section>
+</section>
+<section id="second-differential">
+<h2>Second differential<a class="headerlink" href="#second-differential" title="Link to this heading">#</a></h2>
+<p>Дифференциал <span class="math notranslate nohighlight">\(Df(x)[h]\)</span>  функции</p>
+<div class="math notranslate nohighlight">
+\[
+f \colon X \to V, \quad X\subset U,
+\]</div>
+<p>где <span class="math notranslate nohighlight">\(U\)</span> и <span class="math notranslate nohighlight">\(V\)</span> — некоторые конечномерные пространства, зависит от двух аргументов: <span class="math notranslate nohighlight">\(x\in X\)</span> и <span class="math notranslate nohighlight">\(h\in U\)</span>. Зафиксировав приращение <span class="math notranslate nohighlight">\(h_1\in U\)</span>, получим функцию от переменной <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+g(x) = Df(x)[h_1].
+\]</div>
+<p>А значит, её тоже можно попробовать продифференцировать! Если это возможно, то её дифференциал <span class="math notranslate nohighlight">\(Dg(x)[h_2]\)</span> называется <strong>вторым дифференциалом</strong> функции <span class="math notranslate nohighlight">\(f\)</span>, и обозначается</p>
+<div class="math notranslate nohighlight">
+\[
+D^2f(x)[h_1, h_2] \text{ или } d^2f(x).
+\]</div>
+<p>На сей раз это не линейный оператор, а билинейная форма: при фиксированном <span class="math notranslate nohighlight">\(x_0\in X\)</span> функция <span class="math notranslate nohighlight">\(D^2f(x_0)[h_1, h_2]\)</span> линейна по каждому из аргументов приращения.</p>
+<p>Для функций <span class="math notranslate nohighlight">\(f\colon \mathbb R^n \to \mathbb R\)</span> второй дифференциал, как и любую билинейную форму, можно представить в виде матрицы:</p>
+<div class="math notranslate nohighlight">
+\[
+	D^2f(\boldsymbol x)[\boldsymbol h_1, \boldsymbol h_2] = \langle \boldsymbol H_x \boldsymbol h_1, \boldsymbol h_2\rangle = \boldsymbol h_2^\mathsf{T} \boldsymbol H_x \boldsymbol h_1, \quad \boldsymbol H_x \in \mathbb R^{n\times n}.
+\]</div>
+<p>Матрица <span class="math notranslate nohighlight">\(\boldsymbol H_x\)</span> назвается <strong>гессианом</strong> функции <span class="math notranslate nohighlight">\(f\)</span> в точке <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> и обозначается <span class="math notranslate nohighlight">\(\nabla^2 f( \boldsymbol x)\)</span>. Гессиан состоит из вторых частных производных:</p>
+<div class="math notranslate nohighlight">
+\[
+	\nabla^2 f(\boldsymbol x) = \left \| \frac{\partial^2 f}{\partial x_i \partial x_j}(\boldsymbol x)\right\|_{i, j=1}^n.
+\]</div>
+<p>Если все вторые частные производные функции <span class="math notranslate nohighlight">\(f\)</span> непрерывны, то её гессиан представляет собой симметричную матрицу (в этом состоит утверждение <a class="reference external" href="https://en.wikipedia.org/wiki/Symmetry_of_second_derivatives#Theorem_of_Schwarz">теоремы Шварца</a>). Также для таких функций справедливо разложение по формуле Тейлора до второго порядка:</p>
+<div class="math notranslate nohighlight">
+\[
+	f(\boldsymbol x+ \boldsymbol h) = f(\boldsymbol x) + Df(\boldsymbol x)[\boldsymbol h] + \frac 12 D^2f(\boldsymbol x)[\boldsymbol h, \boldsymbol h] + o(\|\boldsymbol h\|^2),
+\]</div>
+<p>или, в другой записи,</p>
+<div class="math notranslate nohighlight">
+\[
+	f(\boldsymbol x+\boldsymbol h) = f(\boldsymbol x) + \nabla f(\boldsymbol x)^\mathsf{T} \boldsymbol h + \frac 12 \boldsymbol h^\mathsf{T}\nabla ^2f(\boldsymbol x)\boldsymbol h + o(\|\boldsymbol h\|^2).
+\]</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol a \in \mathbb R^n\)</span> be a fixed vector and</p>
+<div class="math notranslate nohighlight">
+\[
+        f(\boldsymbol x) = \sum\limits_{k=1}^n a_k x_k = \boldsymbol a^\mathsf{T} \boldsymbol x.
+    \]</div>
+<p>Find <span class="math notranslate nohighlight">\(\nabla f(\boldsymbol x)\)</span>.</p>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(\varphi \in C^1(\mathbb R)\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^m\)</span>, and</p>
+<div class="math notranslate nohighlight" id="equation-elementwise-func">
+<span class="eqno">(64)<a class="headerlink" href="#equation-elementwise-func" title="Link to this equation">#</a></span>\[\begin{split}f(\boldsymbol x) = \begin{pmatrix} 
+\varphi(x_1)\\ \vdots\\ \varphi(x_m) 
+\end{pmatrix}, \quad 
+g(\boldsymbol x) = \begin{pmatrix} 
+\varphi'(x_1)\\ \vdots\\ \varphi'(x_m) 
+\end{pmatrix}\end{split}\]</div>
+<p>Show that</p>
+<div class="math notranslate nohighlight" id="equation-elementwise-diff">
+<span class="eqno">(65)<a class="headerlink" href="#equation-elementwise-diff" title="Link to this equation">#</a></span>\[    Df(\boldsymbol x)[\boldsymbol h] = g(\boldsymbol x) \odot \boldsymbol h =\boldsymbol h \odot g(\boldsymbol x).\]</div>
+</li>
+<li><p>According to <a class="reference internal" href="#equation-jacobi">(62)</a>, the differential of the function <span class="math notranslate nohighlight">\(f\)</span> from <a class="reference internal" href="#equation-elementwise-func">(64)</a> should be an <span class="math notranslate nohighlight">\(m\times m\)</span> matrix. How does it look like?</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+     f(\boldsymbol x) = \langle \boldsymbol{Ax}, \boldsymbol x\rangle = \boldsymbol x^\mathsf{T} \boldsymbol{Ax}.
+    \]</div>
+<p>Find <span class="math notranslate nohighlight">\(\nabla f(\boldsymbol x)\)</span> and <span class="math notranslate nohighlight">\(\nabla^2 f(\boldsymbol x)\)</span>.</p>
+</li>
+<li><p><em>Logistic function</em> is</p>
+<div class="math notranslate nohighlight">
+\[
+    f(\boldsymbol x) = \log\big(1 + \exp(\boldsymbol a^\mathsf{T} \boldsymbol x)\big), \quad
+    \boldsymbol a \in \mathbb R^n.
+    \]</div>
+<p>Find <span class="math notranslate nohighlight">\(\nabla f(\boldsymbol x)\)</span> and <span class="math notranslate nohighlight">\(\nabla^2 f(\boldsymbol x)\)</span>.</p>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol A^\mathsf{T}\)</span> and <span class="math notranslate nohighlight">\(f(\boldsymbol x) = \frac 12 \Vert\boldsymbol{xx}^\mathsf{T} - \boldsymbol A\Vert_F^2\)</span>. Find <span class="math notranslate nohighlight">\(\nabla f(\boldsymbol x)\)</span> and <span class="math notranslate nohighlight">\(\nabla^2 f(\boldsymbol x)\)</span>.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./math/calculus"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1-d.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Derivative</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="matrix_diff.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Matrix calculus</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differentials-of-scalar-functions">Differentials of scalar functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-of-vectors">Functions of vectors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differentials-of-vector-functions">Differentials of vector functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-in-general-case">Differential in general case</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases">Special cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-of-differentiation">Rules of differentiation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-differential">Second differential</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By KBTU
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

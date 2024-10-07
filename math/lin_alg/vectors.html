@@ -1,0 +1,1196 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Vectors &#8212; ML book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'math/lin_alg/vectors';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Matrices" href="matrices.html" />
+    <link rel="prev" title="Linear Algebra" href="../linear_algebra.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="ML book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    ML Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024.html">HW1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/ML_2024.html">ML 2024 (MS)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024_MS.html">HW1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/intro_to_ML.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/definition.html">Definitions of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/applications.html">Applications of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/ml_types.html">Types of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/python.html">Python libraries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../data/data.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../data/tabular.html">Tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/images.html">Image data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/text.html">Text data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/datasets.html">Datasets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../supervised/sl.html">Supervised learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/sl_types.html">Types of supervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/model_selection.html">Model selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/knn.html">k-Nearest Neighbors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lin_reg/linear_regression.html">Linear regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/simple.html">Simple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/polynomial.html">Polynomial regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/multiple.html">Multiple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/numeric_opt.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/general.html">General linear model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../linear_classification/classification.html">Linear classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/log_reg.html">Logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/multi_log_reg.html">Multinomial logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/num_opt_log_reg.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/svm.html">Support Vector Machines (SVM)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../eval_metrics/metrics.html">Evaluation Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/classification.html">Classification Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/ROC-AUC.html">ROC-AUC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/regression.html">Regression metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/cross_val.html">Cross-validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/hyperparameters.html">Hyperparameters tuning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../probabilistic_models/probabilistic.html">Probabilistic models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/bayesian_inference.html">Bayesian inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/lin_reg_prob.html">Probabilistic models for linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/log_reg_prob.html">Probabilistic models for logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/LDA.html">Linear Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/QDA.html">Quadratic Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/naive_bayes.html">Naive Bayes classifier</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../decision_trees/decision_tree.html">Decision Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/classification.html">Classification tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/regression.html">Regression tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/impurity.html">Impurity and information criterions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/pruning.html">Tree pruning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ensembling/ensemble.html">Ensembling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/voting_stacking_blending.html">Voting, stacking and blending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/bagging.html">Bagging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/random_forest.html">Random forests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../gradient_boosting/gradient_boosting.html">Gradient boosting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/boosting.html">Boosting and additive modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/generic_gb.html">Generic gradient boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/adaboost.html">AdaBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/xgboost.html">XGBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/catboost.html">CatBoost</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/k_means.html">K-means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/hierarchic_clustering.html">Hierarchical Clustering</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mlp/mlp.html">Multilayer perceptron (MLP)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/layers.html">Layers of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/forward_backward_pass.html">Training of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/backprop.html">Back propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/weight_init.html">Weights initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/regularization.html">Regularization in MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/optimization_dl.html">Optimization in DL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/MLP_notebook.html">Multilayer Perceptron (MLP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cnn/cnn.html">CNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/convolutions_2d.html">Convolution of matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/convolutions_3d.html">Convolutions of tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/pooling.html">Pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/back_prop.html">Back propagation in CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/architectures.html">Architectures of CNN</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rnn/sequential.html">Sequential NNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/vanilla_rnn.html">Vanilla RNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/lstm.html">LSTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/gru.html">GRU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/attention.html">Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/transformers.html">Transformers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../gm/generative.html">Generative models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/autoencoders.html">Autoencoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/vae.html">Variational autoencoders (VAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/gan.html">Ganerative adversarial networks (GAN)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rl/RL.html">Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/basics.html">RL basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/multiarmed_bandits.html">Multi-armed bandits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/mdp.html">Markov Decision Process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/q_learning.html">Q-learning</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../python/python_basics.html">Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/basic_types.html">Basic Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/control_flow.html">Control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/functions_strings.html">Functions</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/classes.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/ISLP_lab.html">ISLP Lab</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/numpy.html">NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/visual.html">Data visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math for ML</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../linear_algebra.html">Linear Algebra</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Vectors</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inverse.html">Inverse matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rank.html">Rank of a matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projections.html">Orthogonal projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="determinant.html">Determinants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eig.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagonalize.html">Diagonalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="positive_def.html">Positive definite matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrix_norms.html">Matrix norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SVD.html">Singular Value Decomposition (SVD)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../calculus.html">Calculus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/1-d.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/multivariate.html">Multivariate calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/matrix_diff.html">Matrix calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/optimization.html">Optimization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../probability.html">Probability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proba/rvs.html">Random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/independence.html">Independence and random vectors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../statistics.html">Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Estimations</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notation.html">Notation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources.html">ML resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/math/lin_alg/vectors.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Vectors</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vectors</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-in-python">Vectors in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-norm">Vector norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-product">Inner product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-in-numpy">Dot product in NumPy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="vectors">
+<h1>Vectors<a class="headerlink" href="#vectors" title="Link to this heading">#</a></h1>
+<p>Possible definitions of a <strong>vector</strong>:</p>
+<ol class="arabic simple">
+<li><p>a directed line segment</p></li>
+<li><p>an ordered sequence of numbers</p></li>
+<li><p>an element of a <strong>vector space</strong></p></li>
+</ol>
+<p>The most suitable for the purposes of machine learning is the second. Vectors are usually denoted by small bold letters: <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol u\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol v\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol a\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol b, \ldots\)</span>. By default, a vector <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> with <span class="math notranslate nohighlight">\(n\)</span> elements is written as a column:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol x =  \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}.
+\end{split}\]</div>
+<p>To obtain a row representation the vector <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> should be transposed:</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol x^\mathsf{T} = (x_1, \ldots, x_n).
+\]</div>
+<p>Sometimes it does not matter if we write the vector <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> as a row of a column. In such cases notation <span class="math notranslate nohighlight">\(\boldsymbol x = (x_1, \ldots, x_n)\)</span> is also admittable.</p>
+<p>The set of all vectors with real elements of size <span class="math notranslate nohighlight">\(n\)</span> is denoted as <span class="math notranslate nohighlight">\(\mathbb R^n\)</span>.</p>
+<!--
+В школе учат, что вектор — это направленный отрезок. Такую геометрическую интерпретацию вектора полезно иметь в виду, однако, в прикладных задачах, связанных с машинным обучением и анализом данных, на вектор смотрят как на упорядоченный набор чисел. Его можно записать двумя способами: в строчку или в столбик. Традиция такова, что по умолчанию вектор считается вектором-столбцом, если не оговорено иное. В этом учебнике мы будем придерживаться следующих конвенций:
+
+* векторы обозначаются строчными жирными буквами: $\boldsymbol x$, $\boldsymbol y$, $\boldsymbol u$, $\boldsymbol v$, $\boldsymbol a$, $\boldsymbol b, \ldots$;
+* по умолчанию подразумевается, что вектор $\boldsymbol x$ — это вектор-столбец:
+
+$$
+\boldsymbol x =  \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix};
+$$
+
+* для записи в строчку вектор-столбец $\boldsymbol x$ надо **транспонировать**: 
+
+    $$
+    \boldsymbol x^\mathsf{T} = (x_1, \ldots, x_n);
+    $$
+
+* зачастую направление записи вектора (в строчку или в столбец) не имеет существенного значения, и тогда для экономии места вполне допустима запись $\boldsymbol x = (x_1, \ldots, x_n)$.
+
+Компоненты вектора $\boldsymbol x = (x_1, \ldots, x_n)$ называются его **координатами**. Обычно подразумевается, что компоненты вектора — это действительные числа, и поэтому пространство числовых векторов с $n$ координатами обозначают $\mathbb R^n$. 
+--><section id="vectors-in-python">
+<h2>Vectors in Python<a class="headerlink" href="#vectors-in-python" title="Link to this heading">#</a></h2>
+<p>For numeric operations with matrices and vectors in Python there is <a class="reference external" href="https://numpy.org/">NumPy</a> library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The attribute <code class="docutils literal notranslate"><span class="pre">dtype</span></code> specifies the underlying type of the vector’s elements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">float_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.123</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">float_vector</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">float_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.123</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">float_vector</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;vector&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="vector-operations">
+<h2>Vector operations<a class="headerlink" href="#vector-operations" title="Link to this heading">#</a></h2>
+<p>There are two basic vector operations.</p>
+<ol class="arabic">
+<li><p><strong>Addition</strong>: if</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol x =  \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}, \quad
+    \boldsymbol y =  \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix},
+    \text{ then }
+    \boldsymbol x + \boldsymbol y =  \begin{pmatrix} x_1 + y_1 \\ \vdots \\ x_n + y_n \end{pmatrix}.
+    \end{split}\]</div>
+</li>
+<li><p><strong>Multiplication by a scalar (number)</strong>: if</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol x =  \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix},\quad
+    \alpha \in \mathbb R,
+    \text{ then } 
+    \alpha \boldsymbol x =  \begin{pmatrix} \alpha x_1 \\ \vdots \\ \alpha x_n \end{pmatrix}.
+    \end{split}\]</div>
+</li>
+</ol>
+<p><strong>Zero vector</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol 0 = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}; \quad
+\boldsymbol x + \boldsymbol 0 = \boldsymbol x \; \forall \boldsymbol x \in \mathbb R^n.
+\end{split}\]</div>
+<p>Sometimes a vector of all ones is useful:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol 1 = \begin{pmatrix} 1 \\ \vdots \\ 1 \end{pmatrix}.
+\end{split}\]</div>
+<p>Two vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> are <strong>collinear</strong> if <span class="math notranslate nohighlight">\(\boldsymbol y = \alpha \boldsymbol x\)</span> for some <span class="math notranslate nohighlight">\(\alpha \in \mathbb R\)</span>. Collinear vectors lie on the same line which passes through the origin.</p>
+<p>If <span class="math notranslate nohighlight">\(\alpha = -1\)</span> then vector <span class="math notranslate nohighlight">\(\boldsymbol y = (-1)\cdot \boldsymbol x =  -\boldsymbol x\)</span> is called the <strong>opposite</strong> vector to <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>.</p>
+<!--
+**Нулевой вектор** $\boldsymbol 0$, все координаты которого равны нулю, обладает свойством $\boldsymbol x + \boldsymbol 0 = \boldsymbol x$, $\boldsymbol x \in \mathbb R^n$.
+
+Вектор $-\boldsymbol x = (-1)\cdot \boldsymbol x$ называется **противоположным вектором** для вектора $\boldsymbol x$. Вычитание векторов сводится к добавлению противоположного вектора: $\boldsymbol y - \boldsymbol x = \boldsymbol y + (-\boldsymbol x)$.
+
+Векторы $\boldsymbol x$ и $\boldsymbol y$ **коллинеарны**, если $\boldsymbol y = \alpha \boldsymbol x$ при некотором $\alpha \in \mathbb R$. Геометрически это означает, что коллинеарные векторы лежат на одной прямой, проходящей через начало координат.
+--><p>In NumPy all these operations are straightforward:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zero vector:&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vector of ones:&quot;</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Diff:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Diff:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;x&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;y&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="vector-norm">
+<span id="id1"></span><h2>Vector norm<a class="headerlink" href="#vector-norm" title="Link to this heading">#</a></h2>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol x = (x_1, \ldots, x_n)\)</span>, then its <strong>length</strong> (aka <strong>Euclidean norm</strong>) is</p>
+<div class="math notranslate nohighlight">
+\[
+    \Vert \boldsymbol x \Vert = \sqrt{\sum\limits_{k=1}^n x_k^2}.
+\]</div>
+<p>Euclidean norm is a special case of <strong><span class="math notranslate nohighlight">\(p\)</span>-norm</strong> (aka <strong>Minkowski norm</strong>)</p>
+<div class="math notranslate nohighlight">
+\[
+    \Vert \boldsymbol x \Vert_p = \bigg(\sum\limits_{k=1}^n |x_k|^p \bigg)^\frac 1p, \quad p \geqslant 1.
+\]</div>
+<p>The Minkowski norm becomes</p>
+<ul class="simple">
+<li><p>Euclidean norm if <span class="math notranslate nohighlight">\(p=2\)</span>;</p></li>
+<li><p><strong>Manhattan</strong> norm <span class="math notranslate nohighlight">\(\Vert \boldsymbol x \Vert_1 = \sum\limits_{k=1}^n \vert x_k \vert\)</span> if <span class="math notranslate nohighlight">\(p=1\)</span>;</p></li>
+<li><p><strong>maximum</strong> norm <span class="math notranslate nohighlight">\(\Vert \boldsymbol x \Vert_\infty = \max \{\vert x_1 \vert, \ldots, \vert x_n \vert\}\)</span> if <span class="math notranslate nohighlight">\(p\to\infty\)</span>.</p></li>
+</ul>
+<!--
+Под **длиной**, или **нормой**, вектора $\boldsymbol x = (x_1, \ldots, x_n)$ чаще всего понимают величину
+
+$$
+    \Vert \boldsymbol x \Vert = \sqrt{\sum\limits_{k=1}^n x_k^2}.
+$$
+
+Это так называемая **евклидова норма** вектора $\boldsymbol x$, представляющая собой обобщение теоремы Пифагора на случай $\mathbb R^n$.
+
+
+Вообще нормой вектора $\boldsymbol x \in \mathbb R^n$ называется функция $\Vert\cdot \Vert \colon \mathbb R^n \to [0, +\infty)$ со следующими свойствами:
+
+1. $\Vert\boldsymbol x\Vert \geqslant 0$, $\Vert\boldsymbol x\Vert = 0 \iff \boldsymbol x =\boldsymbol 0$;
+
+2. $\Vert\alpha \boldsymbol x \Vert = \vert\alpha\vert \Vert\boldsymbol x \Vert$ для всех $\alpha \in \mathbb R$, $\boldsymbol x \in \mathbb R^n$;
+
+3. $\Vert\boldsymbol x + \boldsymbol y\Vert \leqslant \Vert\boldsymbol x \Vert + \Vert\boldsymbol y \Vert$ для всех $\boldsymbol x, \boldsymbol y \in \mathbb R^n$ (неравенство треугольника).
+
+Евклидова норма является частным случаем **$p$-нормы** (или **нормы Минковского**)
+
+$$
+    \Vert \boldsymbol x \Vert_p = \bigg(\sum\limits_{k=1}^n |x_k|^p \bigg)^\frac 1p, \quad p \geqslant 1.
+$$
+
+
+Неравенство треугольника для $p$-нормы вытекает из [неравенства Минковского](https://ru.wikipedia.org/wiki/%D0%9D%D0%B5%D1%80%D0%B0%D0%B2%D0%B5%D0%BD%D1%81%D1%82%D0%B2%D0%BE_%D0%9C%D0%B8%D0%BD%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE#%D0%A7%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B5_%D1%81%D0%BB%D1%83%D1%87%D0%B0%D0%B8). Тут важно, что $p \geqslant 1$, в противном случае неравенство треугольника не выполняется, и $p$-норма уже больше не норма.
+
+
+Норма Минковского превращается в
+
+* евклидову норму при $p=2$;
+
+* **манхэттенскую** норму $\Vert \boldsymbol x \Vert_1 = \sum\limits_{k=1}^n \vert x_k \vert$ при $p=1$;
+
+* **максимальную** норму $\Vert \boldsymbol x \Vert_\infty = \max \{\vert x_1 \vert, \ldots, \vert x_n \vert\}$ при $p\to\infty$.
+
+
+```{admonition} Solution
+:class: tip, dropdown
+Первые два свойства легко проверяются напрямую. Свойство 3 для $p=1$ и $p=\infty$ следует из неравенства $\vert a+b\vert \leqslant \vert a\vert + \vert b \vert$. Для остальных значений $p$ неравенство треугольника эквивалентно [неравенству Минковского](https://ru.wikipedia.org/wiki/%D0%9D%D0%B5%D1%80%D0%B0%D0%B2%D0%B5%D0%BD%D1%81%D1%82%D0%B2%D0%BE_%D0%9C%D0%B8%D0%BD%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE#%D0%A7%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B5_%D1%81%D0%BB%D1%83%D1%87%D0%B0%D0%B8){:target="_blank"}.
+```
+
+
+Три свойства из последнего упражнения являются аксиомами нормы в $\mathbb R^n$. Иначе говоря, всякая функция $\Vert\cdot \Vert \colon \mathbb R^n \to [0, +\infty)$, удовлетворяющая этим трём свойством, по определению называется нормой. В частности, $p$-норма является нормой при $1\leqslant p \leqslant \infty$. Отметим, что $p$-норма перестаёт быть нормой при $p<1$, поскольку неравенство треугольника в таком случае не выполняется.
+-->
+<p>A <strong>unit</strong> vector <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> has norm equal to <span class="math notranslate nohighlight">\(1\)</span>: <span class="math notranslate nohighlight">\(\Vert \boldsymbol x\Vert = 1\)</span>. The <strong>unit ball</strong> in <span class="math notranslate nohighlight">\(\mathbb R^n\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+    \{\boldsymbol x \in \mathbb R^n\colon \Vert \boldsymbol x \Vert \leqslant 1\}.
+\]</div>
+<p>The shape of the unit ball depends on the norm. For Euclidean norm it will be a normal ball. Unit disks in two dimensions for different values of <span class="math notranslate nohighlight">\(p\)</span>:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <strong>distance</strong> between vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> equals to <span class="math notranslate nohighlight">\(\Vert \boldsymbol x - \boldsymbol y\Vert\)</span>. In case of Euclidean norm the distance</p>
+<div class="math notranslate nohighlight">
+\[
+\Vert\boldsymbol x - \boldsymbol y\Vert_2 = \sqrt{\sum\limits_{i=1}^n (x_i - y_i)^2}
+\]</div>
+<p>is also called Euclidean.</p>
+<p>How to calculate norm in NumPy? Use <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.norm.html">np.linalg.norm</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>To specify <span class="math notranslate nohighlight">\(p\)</span> use parameter <code class="docutils literal notranslate"><span class="pre">ord</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1-norm =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2-norm =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;10-norm =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;infinite norm =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1-norm =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2-norm =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;10-norm =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="inner-product">
+<h2>Inner product<a class="headerlink" href="#inner-product" title="Link to this heading">#</a></h2>
+<p><strong>Inner product</strong> (aka <strong>dot product</strong>) of vectors <span class="math notranslate nohighlight">\(\boldsymbol x, \boldsymbol y \in \mathbb R^n\)</span> equals</p>
+<div class="math notranslate nohighlight" id="equation-inner">
+<span class="eqno">(40)<a class="headerlink" href="#equation-inner" title="Link to this equation">#</a></span>\[    \langle \boldsymbol x, \boldsymbol y \rangle = \sum\limits_{k=1}^n x_k y_k.\]</div>
+<p>Alternative notation: <span class="math notranslate nohighlight">\(\boldsymbol x^\mathsf{T} \boldsymbol y\)</span>.</p>
+<p>Inner product generates Euclidean norm: if <span class="math notranslate nohighlight">\(\boldsymbol x  \in \mathbb R^n\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[
+\sqrt{\langle \boldsymbol x, \boldsymbol x \rangle} = \Vert \boldsymbol x \Vert_2.
+\]</div>
+<p>The Cauchy-Schwarz inequality <a class="reference internal" href="#equation-cauchy-schwarz">(42)</a> can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+    \vert\langle \boldsymbol x, \boldsymbol y \rangle\vert \leqslant \Vert \boldsymbol x \Vert_2 \cdot \Vert \boldsymbol y \Vert_2.
+\]</div>
+<p>This inequality turns into equality iff vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> are collinear.</p>
+<p>The vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> are called <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\langle\boldsymbol x, \boldsymbol y \rangle = 0\)</span>. <strong>Angle</strong> <span class="math notranslate nohighlight">\(\theta\)</span> between two nonzero vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> is defined from equality</p>
+<div class="math notranslate nohighlight" id="equation-cos-angle">
+<span class="eqno">(41)<a class="headerlink" href="#equation-cos-angle" title="Link to this equation">#</a></span>\[    \cos \theta = \frac{\langle \boldsymbol x, \boldsymbol y \rangle}{\Vert \boldsymbol x\Vert_2 \cdot \Vert \boldsymbol y\Vert_2}.\]</div>
+<p>The angle is well-defined since this fraction is always between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> due to the Cauchy-Schwarz inequality. If <span class="math notranslate nohighlight">\(\langle \boldsymbol x, \boldsymbol y \rangle = 0\)</span>, then <span class="math notranslate nohighlight">\(\cos\theta = 0\)</span> and <span class="math notranslate nohighlight">\(\theta = \frac \pi 2\)</span>. Hence, the angle between orhogonal vectors equals to <span class="math notranslate nohighlight">\(90°\)</span>.</p>
+<p>In data analysis and machine learning the formula <a class="reference internal" href="#equation-cos-angle">(41)</a> is often used to measure similarity between vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>: the closer <span class="math notranslate nohighlight">\(\cos \theta\)</span> to <span class="math notranslate nohighlight">\(1\)</span>, the more similar the vectors are. By the same reason the quantity <span class="math notranslate nohighlight">\(1-\cos\theta\)</span> is called <strong>cosine distance</strong> between <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>.</p>
+<!--
+**Скалярным произведением** векторов $\boldsymbol x, \boldsymbol y \in \mathbb R^n$ называется величина
+
+$$
+    \langle \boldsymbol x, \boldsymbol y \rangle = \sum\limits_{k=1}^n x_k y_k.\tag{1}
+$$ 
+
+Альтернативное обозначение: $\boldsymbol x^\top \boldsymbol y$ (объяснение этого обозначения см. в одной из [следующих секций](#умножение-матрицы-на-вектор)). 
+-->
+<!--
+Скалярное произведение является функцией $\langle \cdot, \cdot \rangle \colon \mathbb R^n\times \mathbb R^n \to \mathbb R$ со следующими свойствами:
+
+1. $\langle \boldsymbol x, \boldsymbol x \rangle \geqslant 0$, $\langle \boldsymbol x, \boldsymbol x \rangle = 0 \iff \boldsymbol x = \boldsymbol 0$ (положительная определённость);
+
+2. $\langle \boldsymbol x, \boldsymbol y \rangle = \langle \boldsymbol y, \boldsymbol x \rangle$ (симметричность);
+
+3. $\langle \alpha\boldsymbol x + \beta\boldsymbol y, \boldsymbol z \rangle = \alpha \langle \boldsymbol x, \boldsymbol z \rangle + \beta \langle \boldsymbol y, \boldsymbol z \rangle$ (линейность).
+
+Нетрудно проверить, что определённое по формуле (1) стандартное скалярное произведение в $\mathbb R^n$ удовлетворяет всем этим свойствам. Существуют и другие виды скалярных произведений, но на практике они редко находят применение.
+
+
+Скалярное произведение автоматически порождает норму по формуле $\Vert \boldsymbol x \Vert = \sqrt{\langle \boldsymbol x, \boldsymbol x \rangle}$. Первые два свойства такой нормы немедленно вытекают из определения скалярного произведения, а 
+
+
+Скалярное произведение порождает евклидову норму в $\mathbb R^n$: 
+
+$$
+\sqrt{\langle \boldsymbol x, \boldsymbol x \rangle} = \Vert \boldsymbol x \Vert_2.
+$$
+
+**Упражнение**. Докажите неравенство Коши—Буняковского—Шварца
+
+$$
+    \bigg(\sum\limits_{k=1}^n x_k y_k\bigg)^2 \leqslant \sum\limits_{k=1}^n x_k^2 \sum\limits_{k=1}^n y_k^2, 
+$$
+
+<details>
+<summary markdown="span">Решение </summary>
+<div>
+
+[Здесь](https://rgmia.org/papers/v12e/Cauchy-Schwarzinequality.pdf){:target="_blank"} можно найти 12 различных доказательств этого замечательного неравенства. Вот первое из них:
+
+$$
+    \begin{multline*}
+    0\leqslant \sum\limits_{i, j=1}^n (x_i y_j - x_j y_i)^2 = \\
+    =\sum\limits_{i=1}^n x_i^2 \sum\limits_{j=1}^n y_j^2 + \sum\limits_{i=1}^n y_i^2 \sum\limits_{j=1}^n x_j^2 - 2  \sum\limits_{i=1}^n x_i y_i\sum\limits_{j=1}^n x_j y_j = \\
+    =2\sum\limits_{i=1}^n x_i^2 \sum\limits_{j=1}^n y_j^2 - 2\bigg(\sum\limits_{i=1}^n x_i y_i\bigg)^2,
+    \end{multline*}
+$$
+
+откуда и вытекает требуемое. Из приведённого рассуждения также следует, что неравенство Коши—Буняковского—Шварца обращается в равенство в следующих случаях:
+
+* $x_i = 0$ при всех $i=1, \ldots, n$;
+* $y_i = 0$ при всех $i=1, \ldots, n$;
+* $\frac{x_i}{y_i} = C$ при всех $i=1, \ldots, n$.
+</div>
+</details>
+-
+
+С учётом введённых выше определений евклидовой нормы и скалярного произведения неравенство Коши—Буняковского—Шварца можно переписать в виде
+
+$$
+    \vert\langle \boldsymbol x, \boldsymbol y \rangle\vert \leqslant \Vert \boldsymbol x \Vert \cdot \Vert \boldsymbol y \Vert.
+$$
+
+Это неравенство обращается в равенство тогда и только тогда, когда векторы $\boldsymbol x$ и $\boldsymbol y$ коллинеарны.
+
+
+
+Если скалярное произведение векторов $\boldsymbol x$ и $\boldsymbol y$ равно нулю, то они называются **ортогональными**. Угол $\theta$ между двумя ненулевыми векторами $\boldsymbol x$ и $\boldsymbol y$ определяется из соотношения
+
+$$
+    \cos \theta = \frac{\langle \boldsymbol x, \boldsymbol y \rangle}{\Vert \boldsymbol x\Vert \cdot \Vert \boldsymbol y\Vert}.
+$$
+
+В силу неравенства Коши—Буняковского—Шварца эта дробь всегда находится в диапазоне от $-1$ до $1$, поэтому такое определение угла между векторами корректно.
+Если $\langle \boldsymbol x, \boldsymbol y \rangle = 0$, то $\cos\theta = 0$ и $\theta = \frac \pi 2$. Таким образом, угол между ортогональными векторами равен $90°$.
+
+В анализе данных косинус угла между векторами часто берут в качестве меры их близости (**cosine similarity**): чем ближе $\cos\theta$ к единице, тем более похожими считаются вектора. Похожая метрика **косинусное расстояние** (**cosine distance**) определяется по формуле $1-\cos\theta$.
+
+Отметим, что для вычисления скалярного произведения по формуле (1) требуется выполнить $n$ умножений и $n-1$ сложение. Если измерять трудоёмкость подсчёта скалярного произведения $n$-мерных векторов в количестве арифметических операций, то она составит $O(n)$.
+--><section id="dot-product-in-numpy">
+<span id="inner-python"></span><h3>Dot product in NumPy<a class="headerlink" href="#dot-product-in-numpy" title="Link to this heading">#</a></h3>
+<p>There are several way to calculate the inner product of two vectors in Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span>. Prove that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Vert \boldsymbol x \Vert_\infty \leqslant \Vert \boldsymbol x \Vert_1 \leqslant n\Vert \boldsymbol x \Vert_\infty\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Vert \boldsymbol x \Vert_\infty \leqslant \Vert \boldsymbol x \Vert_2 \leqslant \sqrt{n}\Vert \boldsymbol x \Vert_\infty\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Vert \boldsymbol x \Vert_2 \leqslant \Vert \boldsymbol x \Vert_1 \leqslant \sqrt{n}\Vert \boldsymbol x \Vert_2\)</span>.</p></li>
+</ul>
+</li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>Соотношения 1 и 2 немедленно следуют из неравенств</p>
+<div class="math notranslate nohighlight">
+\[
+    \max\{a_1, \ldots, a_n\} \leqslant \sum\limits_{k=1}^n a_k \leqslant n\max\{a_1, \ldots, a_n\},
+\]</div>
+<p>справедливых для любых неотрицательных чисел <span class="math notranslate nohighlight">\(a_1, \ldots, a_n\)</span>. Неравенство <span class="math notranslate nohighlight">\(\Vert \boldsymbol x \Vert_2 \leqslant \Vert \boldsymbol x \Vert_1\)</span> эквивалентно неравенству</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum\limits_{k=1}^n x_k^2 \leqslant \Big(\sum\limits_{k=1}^n \vert x_k\vert\Big)^2 =  \sum\limits_{k=1}^n x_k^2 + \underbrace{2\sum\limits_{1\leqslant i &lt; j\leqslant n} \vert x_i\vert \vert x_j\vert}_{\geqslant 0},
+\]</div>
+<p>которое, очевидно, выполнено. Наконец, последнее неравенство вытекает из неравенства
+Коши—Буняковского—Шварца.</p>
+<div class="math notranslate nohighlight">
+\[
+    \Vert \boldsymbol x \Vert_1 = \sum\limits_{k=1}^n 1\cdot\vert x_k\vert \leqslant \sqrt{\sum\limits_{k=1}^n 1^2}\sqrt{\sum\limits_{k=1}^n \vert x_k\vert^2} = \sqrt n \Vert \boldsymbol x \Vert_2.
+\]</div>
+</div>
+<ol class="arabic" start="2">
+<li><p>Prove that <span class="math notranslate nohighlight">\(p\)</span>-norm for <span class="math notranslate nohighlight">\(1\leqslant p \leqslant \infty\)</span> satisfies the following properties:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Vert\boldsymbol x\Vert \geqslant 0\)</span>, <span class="math notranslate nohighlight">\(\Vert\boldsymbol x\Vert = 0 \iff \boldsymbol x =\boldsymbol 0\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Vert\alpha \boldsymbol x \Vert = \vert\alpha\vert \Vert\boldsymbol x \Vert\)</span> for all <span class="math notranslate nohighlight">\(\alpha \in \mathbb R\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Vert\boldsymbol x + \boldsymbol y\Vert \leqslant \Vert\boldsymbol x \Vert + \Vert\boldsymbol y \Vert\)</span> для всех <span class="math notranslate nohighlight">\(\boldsymbol x, \boldsymbol y \in \mathbb R^n\)</span> (triangle inequality).</p></li>
+</ul>
+</li>
+<li><p>Show that <span class="math notranslate nohighlight">\(\Vert \boldsymbol x \Vert_\infty = \max \{\vert x_1 \vert, \ldots, \vert x_n \vert\}\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim\limits_{p\to+\infty}\bigg(\sum\limits_{k=1}^n |x_k|^p \bigg)^\frac 1p = \max \{\vert x_1 \vert, \ldots, \vert x_n \vert\}.
+    \]</div>
+</li>
+<li><p>Prove the Cauchy-Schwarz inequality</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-cauchy-schwarz">
+<span class="eqno">(42)<a class="headerlink" href="#equation-cauchy-schwarz" title="Link to this equation">#</a></span>\[    \bigg(\sum\limits_{k=1}^n x_k y_k\bigg)^2 \leqslant \sum\limits_{k=1}^n x_k^2 \sum\limits_{k=1}^n y_k^2, \]</div>
+<ol class="arabic simple" start="5">
+<li><p>Show that cosine distance between two vectors is always between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2\)</span>.</p></li>
+<li><p>How many arithmetic operations are required to calculate the dot product by formula <a class="reference internal" href="#equation-inner">(40)</a>?</p></li>
+</ol>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./math/lin_alg"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../linear_algebra.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Linear Algebra</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="matrices.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Matrices</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vectors</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-in-python">Vectors in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-norm">Vector norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-product">Inner product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-in-numpy">Dot product in NumPy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By KBTU
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

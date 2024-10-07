@@ -1,0 +1,1141 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Determinants &#8212; ML book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'math/lin_alg/determinant';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Eigenvalues and eigenvectors" href="eig.html" />
+    <link rel="prev" title="Orthogonal projections" href="projections.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="ML book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    ML Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024.html">HW1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/ML_2024.html">ML 2024 (MS)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024_MS.html">HW1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/intro_to_ML.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/definition.html">Definitions of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/applications.html">Applications of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/ml_types.html">Types of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro/python.html">Python libraries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../data/data.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../data/tabular.html">Tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/images.html">Image data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/text.html">Text data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data/datasets.html">Datasets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../supervised/sl.html">Supervised learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/sl_types.html">Types of supervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/model_selection.html">Model selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../supervised/knn.html">k-Nearest Neighbors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lin_reg/linear_regression.html">Linear regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/simple.html">Simple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/polynomial.html">Polynomial regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/multiple.html">Multiple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/numeric_opt.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lin_reg/general.html">General linear model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../linear_classification/classification.html">Linear classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/log_reg.html">Logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/multi_log_reg.html">Multinomial logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/num_opt_log_reg.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../linear_classification/svm.html">Support Vector Machines (SVM)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../eval_metrics/metrics.html">Evaluation Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/classification.html">Classification Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/ROC-AUC.html">ROC-AUC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/regression.html">Regression metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/cross_val.html">Cross-validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../eval_metrics/hyperparameters.html">Hyperparameters tuning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../probabilistic_models/probabilistic.html">Probabilistic models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/bayesian_inference.html">Bayesian inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/lin_reg_prob.html">Probabilistic models for linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/log_reg_prob.html">Probabilistic models for logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/LDA.html">Linear Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/QDA.html">Quadratic Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../probabilistic_models/naive_bayes.html">Naive Bayes classifier</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../decision_trees/decision_tree.html">Decision Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/classification.html">Classification tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/regression.html">Regression tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/impurity.html">Impurity and information criterions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/pruning.html">Tree pruning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ensembling/ensemble.html">Ensembling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/voting_stacking_blending.html">Voting, stacking and blending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/bagging.html">Bagging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensembling/random_forest.html">Random forests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../gradient_boosting/gradient_boosting.html">Gradient boosting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/boosting.html">Boosting and additive modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/generic_gb.html">Generic gradient boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/adaboost.html">AdaBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/xgboost.html">XGBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gradient_boosting/catboost.html">CatBoost</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/k_means.html">K-means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../unsupervised_learning/hierarchic_clustering.html">Hierarchical Clustering</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mlp/mlp.html">Multilayer perceptron (MLP)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/layers.html">Layers of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/forward_backward_pass.html">Training of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/backprop.html">Back propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/weight_init.html">Weights initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/regularization.html">Regularization in MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/optimization_dl.html">Optimization in DL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlp/MLP_notebook.html">Multilayer Perceptron (MLP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cnn/cnn.html">CNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/convolutions_2d.html">Convolution of matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/convolutions_3d.html">Convolutions of tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/pooling.html">Pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/back_prop.html">Back propagation in CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cnn/architectures.html">Architectures of CNN</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rnn/sequential.html">Sequential NNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/vanilla_rnn.html">Vanilla RNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/lstm.html">LSTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/gru.html">GRU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/attention.html">Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rnn/transformers.html">Transformers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../gm/generative.html">Generative models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/autoencoders.html">Autoencoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/vae.html">Variational autoencoders (VAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../gm/gan.html">Ganerative adversarial networks (GAN)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rl/RL.html">Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/basics.html">RL basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/multiarmed_bandits.html">Multi-armed bandits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/mdp.html">Markov Decision Process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rl/q_learning.html">Q-learning</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../python/python_basics.html">Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/basic_types.html">Basic Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/control_flow.html">Control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/functions_strings.html">Functions</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/classes.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python/basics/ISLP_lab.html">ISLP Lab</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/numpy.html">NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/visual.html">Data visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math for ML</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../linear_algebra.html">Linear Algebra</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vectors.html">Vectors</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inverse.html">Inverse matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rank.html">Rank of a matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projections.html">Orthogonal projections</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Determinants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eig.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagonalize.html">Diagonalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="positive_def.html">Positive definite matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrix_norms.html">Matrix norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SVD.html">Singular Value Decomposition (SVD)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../calculus.html">Calculus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/1-d.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/multivariate.html">Multivariate calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/matrix_diff.html">Matrix calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calculus/optimization.html">Optimization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../probability.html">Probability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proba/rvs.html">Random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/independence.html">Independence and random vectors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../statistics.html">Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Estimations</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notation.html">Notation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources.html">ML resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/math/lin_alg/determinant.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Determinants</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-formulas">Explicit formulas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-definition">General definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-determinants">Properties of determinants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#big-formula">Big Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cofactor-formula">Cofactor formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determinants-in-python">Determinants in python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="determinants">
+<h1>Determinants<a class="headerlink" href="#determinants" title="Link to this heading">#</a></h1>
+<p>Determinant is a function on square matrices: <span class="math notranslate nohighlight">\(\det \colon \mathbb R^{n\times n} \to \mathbb R\)</span>. Determinant of a matrix <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is denoted <span class="math notranslate nohighlight">\(\det \boldsymbol A\)</span> or <span class="math notranslate nohighlight">\(\vert\boldsymbol A\vert\)</span>.</p>
+<section id="explicit-formulas">
+<h2>Explicit formulas<a class="headerlink" href="#explicit-formulas" title="Link to this heading">#</a></h2>
+<p>Determinant of a <span class="math notranslate nohighlight">\(2\times 2\)</span> matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{vmatrix}
+    a_{11} &amp; a_{12} \\
+    a_{21} &amp; a_{22} 
+    \end{vmatrix} = 
+    a_{11}a_{22} - a_{12}a_{21}.
+\end{split}\]</div>
+<p>Determinant of a <span class="math notranslate nohighlight">\(3\times 3\)</span> matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{vmatrix}
+    a_{11} &amp; a_{12} &amp; a_{13} \\
+    a_{21} &amp; a_{22} &amp; a_{23} \\
+    a_{31} &amp; a_{32} &amp; a_{33} \\
+    \end{vmatrix} = 
+    a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} - 
+    a_{13}a_{22}a_{31} - a_{12}a_{21}a_{33} - a_{11}a_{23}a_{32}.
+\end{split}\]</div>
+</section>
+<section id="general-definition">
+<h2>General definition<a class="headerlink" href="#general-definition" title="Link to this heading">#</a></h2>
+<p><strong>Определитель</strong>, или <strong>детерминант</strong>, представляет собой важную числовую характеристику квадратной матрицы. Определителем матрицы называется <strong>полилинейная кососимметричная</strong> функция от строк матрицы. Точнее говоря, определитель — это функция <span class="math notranslate nohighlight">\(\det \colon \mathbb R^{n\times n} \to \mathbb R\)</span>, удовлетворяющая трём аксиомам:</p>
+<ol class="arabic simple">
+<li><p>(кососимметричность) <span class="math notranslate nohighlight">\(\det \boldsymbol B = -\det \boldsymbol A\)</span>, если матрица <span class="math notranslate nohighlight">\(\boldsymbol B\)</span> получена перестановкой каких-либо двух строк матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>;</p></li>
+<li><p>(полилинейность) определитель линеен по каждой строке:</p>
+<ul class="simple">
+<li><p>если матрица <span class="math notranslate nohighlight">\(\boldsymbol B\)</span> получена из матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> умножением некоторой её строки на число <span class="math notranslate nohighlight">\(\lambda\)</span>, то <span class="math notranslate nohighlight">\(\det \boldsymbol B = \lambda \det \boldsymbol A\)</span>;</p></li>
+<li><p>если <span class="math notranslate nohighlight">\(i\)</span>-я строка матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> равна сумме <span class="math notranslate nohighlight">\(i\)</span>-ых строк матриц <span class="math notranslate nohighlight">\(\boldsymbol B\)</span> и <span class="math notranslate nohighlight">\(\boldsymbol C\)</span>, а все остальные строки этих матриц совпадают, то <span class="math notranslate nohighlight">\(\det \boldsymbol A = \det \boldsymbol B + \det \boldsymbol C\)</span>.</p></li>
+</ul>
+</li>
+<li><p>(нормировка) <span class="math notranslate nohighlight">\(\det \boldsymbol I = 1\)</span>.</p></li>
+</ol>
+<p>Можно показать, что существует только одна функция, удовлетворяющая этим трём свойствам.</p>
+</section>
+<section id="properties-of-determinants">
+<h2>Properties of determinants<a class="headerlink" href="#properties-of-determinants" title="Link to this heading">#</a></h2>
+<p>Из аксиом 1-3 напрямую выводятся следующие свойства определителя:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\det \boldsymbol A = 0\)</span>, если матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> содержит нулевую строку или две пропорциональные строки;</p></li>
+<li><p>определитель не меняется при основном элементарном преобразовании вида</p>
+<div class="math notranslate nohighlight">
+\[
+        \boldsymbol a_i^\mathsf{T} := \boldsymbol a_i^\mathsf{T} - \lambda \boldsymbol a_j^\mathsf{T};
+    \]</div>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\det (\lambda\boldsymbol A) = \lambda^n \det \boldsymbol A\)</span>;</p></li>
+<li><p>определитель диагональной матрицы равен произведению диагональных элементов</p></li>
+<li><p>определитель треугольной матрицы равен произведению диагональных элементов</p></li>
+<li><p><span class="math notranslate nohighlight">\(\det \boldsymbol A = 0\)</span> тогда и только тогда, когда матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> вырождена</p></li>
+<li><p><span class="math notranslate nohighlight">\(\vert\boldsymbol{AB}\vert = \vert\boldsymbol{A}\vert \cdot \vert\boldsymbol{B}\vert\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\det \boldsymbol A^\mathsf{T} = \det \boldsymbol A\)</span></p></li>
+</ul>
+<p>Инвариантность определителя относительно транспонирования означает, что во всех перечисленных выше свойствах детерминантов можно заменить «строки» на «столбцы», и утверждения останутся верными.</p>
+<p>Из формулы для определителя произведения матриц вытекает, что детерминант обратной матрицы равен <span class="math notranslate nohighlight">\(\det \boldsymbol A^{-1} = \frac 1{\det \boldsymbol A}\)</span>.</p>
+<!--
+Перечислим ещё несколько широко используемых свойств детерминантов.
+
+1. Определитель треугольной матрицы равен произведению диагональных элементов.
+
+    ```{admonition} Proof
+    :class: dropdown
+    Если все элементы главной диагонали $u_1, \ldots, u_n$ треугольной матрицы $\boldsymbol U$ не равны нулю, то основными элементарными преобразованиями матрица $\boldsymbol U$ приводится к диагональному виду $\boldsymbol \Lambda = \mathrm{diag}\{u_1, \ldots, u_n\}$ с теми же самыми элементами на диагонали. Эти элементарные преобразования не меняют определитель, поэтому $\det \boldsymbol U = \det\boldsymbol \Lambda = u_1\cdot\ldots \cdot u_n$. 
+
+    Если же хотя бы один диагональный элемент $u_k = 0$, то в ходе диагонализации методом Гаусса образуется нулевая строка, поэтому $\det \boldsymbol U = 0$.
+    ```
+
+2. $\det \boldsymbol A = 0$ тогда и только тогда, когда матрица $\boldsymbol A$ вырождена.
+    ```{admonition} Proof
+    :class: dropdown
+    Прямой ход метода Гаусса превращает матрицу $\boldsymbol A$ в верхнюю треугольную матрицу $\boldsymbol U$, задействуя преимущественно основные элементарные преобразования; иногда к ним добавляются перестановки строк. Первые не меняют определитель, а вторые меняют его знак, поэтому
+    $\det \boldsymbol A =\pm \det \boldsymbol U$. Матрица $\boldsymbol A \in \mathbb R^{n\times n}$ невырождена тогда и только тогда, когда $\mathrm{rank}(\boldsymbol A) = \mathrm{rank}(\boldsymbol U) = n$, что свою очередь эквивалентно тому, что все диагональные элементы матрицы $\boldsymbol U$ не равны нулю. Таким образом, наше утверждение следует из предыдущего свойства.
+    ``` 
+
+3. $\vert\boldsymbol{AB}\vert = \vert\boldsymbol{A}\vert \cdot \vert\boldsymbol{B}\vert$.
+    ```{admonition} Proof
+    :class: dropdown
+    
+    Если матрица $\boldsymbol B$ вырождена, то обе части доказываемого равенства равны нулю. В противном случае положим $D(\boldsymbol A) = \frac{\vert\boldsymbol{AB}\vert}{\vert\boldsymbol B\vert}$ и покажем, что функция $D(\boldsymbol A)$ удовлетворяет всем трём аксиомам, характеризующим определитель. 
+
+    * Обмен строк матрицы $\boldsymbol A$ влечёт обмен тех же строк матрицы $\boldsymbol{AB}$, поэтому $\vert\boldsymbol{AB}\vert $ меняет знак, и то же самое делает $D(\boldsymbol A)$.
+
+    * При умножении $i$-й строки матрицы $\boldsymbol A$ на число $\lambda$ $i$-я строка матрицы $\boldsymbol{AB}$ тоже умножается на $\lambda$, что приводит к умножению $D(\boldsymbol A)$ на $\lambda$.
+
+    * Если $i$-я строка матрицы $\boldsymbol A$ представлена в виде суммы двух строк, $\boldsymbol a_i^\top = \boldsymbol c^\top + \boldsymbol d^\top$, то $i$-я строка матрицы $\boldsymbol{AB}$ равна
+
+        $$
+        \boldsymbol a_i^\top \boldsymbol B = (\boldsymbol c^\top + \boldsymbol d^\top)\boldsymbol B = \boldsymbol c^\top \boldsymbol B + \boldsymbol d^\top \boldsymbol B.
+        $$
+
+        Если обозначить через $\boldsymbol C$ и $\boldsymbol D$ матрицы, полученные заменой $i$-й строки матрицы $\boldsymbol A$ на $\boldsymbol c^\top$ и $\boldsymbol d^\top$ соответствено, то получим
+
+        $$
+            D(\boldsymbol A) = \frac{\vert \boldsymbol{CB} \vert + \vert\boldsymbol{DB}\vert}{\vert \boldsymbol{B}\vert} =  D(\boldsymbol C) + D(\boldsymbol D).   
+        $$
+
+    * Наконец, $D(\boldsymbol I) = \frac{\vert\boldsymbol{B}\vert}{\vert\boldsymbol B\vert} = 1$.
+    ```  
+
+4. $\det \boldsymbol A^\top = \det \boldsymbol A$.
+    ```{admonition} Proof
+    :class: dropdown
+    Справедливо LU-разложение вида $\boldsymbol{PA} = \boldsymbol{LU}$. После транспонирования получаем $\boldsymbol A^\top \boldsymbol P^\top = \boldsymbol U^\top \boldsymbol L^\top$. Из предыдущего свойства вытекает, что
+
+    $$
+        \vert \boldsymbol P\vert \vert \boldsymbol A\vert = \vert \boldsymbol L\vert \vert \boldsymbol U\vert, \quad
+        \vert \boldsymbol A^\top\vert \vert \boldsymbol P^\top\vert = \vert \boldsymbol U^\top\vert \vert \boldsymbol L^\top\vert.
+    $$
+
+    Заметим следующее:
+    * $\det \boldsymbol L = \det \boldsymbol L^\top = 1$, так как нижняя треугольная матрица $\boldsymbol L$ содержит только единицы на главной диагонали;
+
+    * $\det \boldsymbol U = \det \boldsymbol U^\top$, так как главные диагонали треугольных матриц $\boldsymbol U$ и $\boldsymbol U^\top$ совпадают;
+
+    * $\det \boldsymbol P = \det \boldsymbol P^\top = \pm 1$, так как для матрицы перестановки $\boldsymbol P$ справедливо равенство $\boldsymbol P \boldsymbol P^\top = \boldsymbol I$.
+
+    Следовательно, $\det \boldsymbol A^\top = \det \boldsymbol A$.
+    ``` 
+
+Инвариантность определителя относительно транспонирования означает, что во всех перечисленных выше свойствах детерминантов можно заменить «строки» на «столбцы», и утверждения останутся верными.
+
+Из формулы для определителя произведения матриц вытекает, что детерминант обратной матрицы равен $\det \boldsymbol A^{-1} = \frac 1{\det \boldsymbol A}$.
+--><!--
+## Oriented volume
+
+У определителя есть любопытная геометрическая интерпретация в лице **ориентированного объёма**. Обозначим через $V(\boldsymbol u_1, \ldots, \boldsymbol u_n)$ объём параллелепипеда, построенного на векторах $\boldsymbol u_1, \ldots, \boldsymbol u_n \in \mathbb R^n$.
+Если записать эти векторы в виде матрицы по столбцам, то оказывается, что модуль её определителя равен объёму параллелепипеда:
+
+```{math}
+:label: oriented-volume
+V(\boldsymbol u_1, \ldots, \boldsymbol u_n) = \big\vert\det([\boldsymbol u_1 \ldots \boldsymbol u_n])\big\vert. 
+```
+    
+
+
+Если же модуль не ставить, то получится ориентированный объём, или объём со знаком: он может быть как положительным, так и отрицательным в зависимости от того, как ориентирован набор векторов $\boldsymbol u_1, \ldots, \boldsymbol u_n$. 
+
+Почему же формула {eq}`oriented-volume` вообще верна? Убедимся, что объём параллелепипеда на векторах удовлетворяет аксиомам определителя.
+
+1. Обмен двух векторов местами, очевидно, не меняет значение объёма.
+
+2. Если какое-то ребро параллелепипеда равно сумме двух других, то и объёмы складываются:
+
+    $$
+    V(\boldsymbol u_1, \ldots, \boldsymbol v + \boldsymbol w, \ldots \boldsymbol u_n) =  V(\boldsymbol u_1, \ldots, \boldsymbol v,\ldots,  \boldsymbol u_n) + V(\boldsymbol u_1, \ldots, \boldsymbol w, \ldots,  \boldsymbol u_n).
+    $$
+
+    А при умножении одного из рёбер на число $\alpha$ весь объём умножается на него:
+
+    $$
+    V(\boldsymbol u_1, \ldots, \alpha\boldsymbol u_i, \ldots, \boldsymbol u_n) = \alpha V(\boldsymbol u_1, \ldots, \boldsymbol u_i, \ldots, \boldsymbol u_n).
+    $$
+
+3. Наконец, объём единичного куба соответствует определителю единичной матрицы, и оба они равны единице.
+--></section>
+<section id="big-formula">
+<h2>Big Formula<a class="headerlink" href="#big-formula" title="Link to this heading">#</a></h2>
+<p>Иногда детерминант матрицы</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol A  = \begin{pmatrix}
+        a_{11} &amp; a_{12} &amp; \dots &amp; a_{1n} \\
+        a_{21} &amp; a_{22} &amp; \dots &amp; a_{2n} \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn} \\
+    \end{pmatrix}
+\end{split}\]</div>
+<p>определяют по явной формуле</p>
+<div class="math notranslate nohighlight" id="equation-big-formula">
+<span class="eqno">(53)<a class="headerlink" href="#equation-big-formula" title="Link to this equation">#</a></span>\[\det \boldsymbol A = \sum\limits_{\sigma \in S_n} (-1)^\sigma a_{1\sigma(1)}\ldots a_{n\sigma(n)}, \]</div>
+<p>где <span class="math notranslate nohighlight">\(S_n\)</span> — множество <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B5%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0">перестановок</a> множества <span class="math notranslate nohighlight">\(\{1, 2, \ldots, n\}\)</span>, <span class="math notranslate nohighlight">\((-1)^\sigma = +1\)</span>, если перестановка чётная и <span class="math notranslate nohighlight">\(-1\)</span> в противном случае.</p>
+<p><strong>Упражнение</strong>. Проверьте, что определение детерминанта по формуле <a class="reference internal" href="#equation-big-formula">(53)</a> согласуется с приведёнными выше аксиомами 1-3.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Proof</p>
+<p>Линейность по строкам вытекает из самого вида формулы  <a class="reference internal" href="#equation-big-formula">(53)</a>, ведь элемент каждой строки входит в каждое слагаемое ровно один раз.</p>
+<p>Если <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol I\)</span>, то единственное ненулевое слагаемое в сумме  <a class="reference internal" href="#equation-big-formula">(53)</a> соответствует тождественной перестановке <span class="math notranslate nohighlight">\(\sigma\)</span>, поэтому вся сумма равна <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Наконец, разберёмся с перестановкой строк. Формула  <a class="reference internal" href="#equation-big-formula">(53)</a> для матрицы, полученной обменом <span class="math notranslate nohighlight">\(i\)</span>-й и <span class="math notranslate nohighlight">\(j\)</span>-й строки матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>, примет вид</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum\limits_{\sigma \in S_n} (-1)^\sigma a_{1\sigma(1)}\ldots a_{i\sigma(j)} \ldots a_{j\sigma(i)} \ldots a_{n\sigma(n)}.
+\]</div>
+<p>В каждом слагаемом перестановка <span class="math notranslate nohighlight">\(\sigma\)</span> отличается от перестановки в исходной формуле  <a class="reference internal" href="#equation-big-formula">(53)</a> лишь одной транспозицией. Добавление одной транспозиции меняет знак перестановки, поэтому знак каждого слагаемого должен измениться, и, следовательно, меняется знак всего определителя.</p>
+</div>
+<p>Формула  <a class="reference internal" href="#equation-big-formula">(53)</a> содержит <span class="math notranslate nohighlight">\(n!\)</span> слагаемых, что делает её бесполезной для практики при хоть сколько-нибудь больших значениях <span class="math notranslate nohighlight">\(n\)</span>. Однако при малых <span class="math notranslate nohighlight">\(n\)</span> она довольно удобна.</p>
+<!--
+имеем
+
+$$
+    \begin{vmatrix}
+    a_{11} & a_{12} \\
+    a_{21} & a_{22} 
+    \end{vmatrix} = 
+    a_{11}a_{22} - a_{12}a_{21},
+$$
+
+$$
+    \begin{vmatrix}
+    a_{11} & a_{12} & a_{13} \\
+    a_{21} & a_{22} & a_{23} \\
+    a_{31} & a_{32} & a_{33} \\
+    \end{vmatrix} = 
+    a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} - 
+    a_{13}a_{22}a_{31} - a_{12}a_{21}a_{33} - a_{11}a_{23}a_{32}.
+$$
+--></section>
+<section id="cofactor-formula">
+<h2>Cofactor formula<a class="headerlink" href="#cofactor-formula" title="Link to this heading">#</a></h2>
+<p>Определитель матрицы размера <span class="math notranslate nohighlight">\(3\times 3\)</span> можно переписать как</p>
+<div class="math notranslate nohighlight">
+\[
+    a_{11}(a_{22}a_{33}-a_{23}a_{32}) + a_{12}(a_{23}a_{31} - a_{21}a_{33}) + a_{13}(a_{21}a_{32} - a_{22}a_{31}),
+\]</div>
+<p>или же как</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    a_{11}\begin{vmatrix}
+    a_{22} &amp; a_{23} \\
+    a_{32} &amp; a_{33} 
+    \end{vmatrix} - a_{12}\begin{vmatrix}
+    a_{21} &amp; a_{23} \\
+    a_{31} &amp; a_{33} 
+    \end{vmatrix} + a_{13}\begin{vmatrix}
+    a_{21} &amp; a_{22} \\
+    a_{31} &amp; a_{32} 
+    \end{vmatrix}.
+\end{split}\]</div>
+<p>Получилась сумма произведений элементов первой строки на <strong>дополнительные миноры</strong> — определители подматриц исходной матрицы, полученные вычёркиванием первой строки и столбца, в котором находится умножаемый на минор элемент. Заметим также, что второе слагаемое взято со знаком «минус». Такой способ подсчёта детерминанта называется <strong>разложением по строке</strong>. В общем случае справедливо равенство</p>
+<div class="math notranslate nohighlight" id="equation-cofactor-formula">
+<span class="eqno">(54)<a class="headerlink" href="#equation-cofactor-formula" title="Link to this equation">#</a></span>\[\begin{split}    \begin{vmatrix}
+        a_{11} &amp; a_{12} &amp; \dots &amp; a_{1n} \\
+        a_{21} &amp; a_{22} &amp; \dots &amp; a_{2n} \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        a_{n1} &amp; a_{n2} &amp; \dots &amp; a_{nn} \\
+    \end{vmatrix} =
+    \sum\limits_{j = 1}^n (-1)^{i+j}a_{ij} M_{ij},\end{split}\]</div>
+<p>где <span class="math notranslate nohighlight">\(M_{ij}\)</span> — дополнительный минор, полученный вычёркиванием <span class="math notranslate nohighlight">\(i\)</span>-й строки и <span class="math notranslate nohighlight">\(j\)</span>-го столбца. Аналогичная формула справедлива и для <strong>разложения по столбцу</strong>.</p>
+<!--
+**Упражнение**. Докажите формулу разложения детерминанта по строке, проверив, что для правой части равенства {eq}`cofactor-formula` выполняются аксиомы 1-3 определителя.
+-->
+<div class="dropdown tip admonition">
+<p class="admonition-title">Proof of the cofactor formula</p>
+<p>Заметим, то минор <span class="math notranslate nohighlight">\(M_{ij}\)</span> не зависит от <span class="math notranslate nohighlight">\(i\)</span>-й строки матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> и линеен по всем остальным строкам (это же определитель). Следовательно, выражение <span class="math notranslate nohighlight">\((-1)^{i+j}a_{ij} M_{ij}\)</span> линейно по каждой строке матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>, равно как и их сумма.</p>
+<p>Если <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol I_n\)</span>, то</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum\limits_{j = 1}^n (-1)^{i+j}a_{ij} M_{ij} = \sum\limits_{j = 1}^n (-1)^{i+j}\delta_{ij} M_{ij} = M_{ii} = \det \boldsymbol I_{n-1} = 1.
+\]</div>
+<p>На десерт у нас снова обмен строк. Если <span class="math notranslate nohighlight">\(i\)</span>-я строка не участвует в обмене, то знак каждого слагаемого в правой части <a class="reference internal" href="#equation-cofactor-formula">(54)</a> меняется за счёт изменения знака минора <span class="math notranslate nohighlight">\(M_{ij}\)</span>. Пусть теперь <span class="math notranslate nohighlight">\(i\)</span>-я строка обменялась с <span class="math notranslate nohighlight">\(k\)</span>-й, <span class="math notranslate nohighlight">\(i &lt; k\)</span>. Тогда правая часть <a class="reference internal" href="#equation-cofactor-formula">(54)</a> превращается в</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum\limits_{j=1}^n (-1)^{i+j}a_{kj} \widehat M_{ij},
+\]</div>
+<p>где минор <span class="math notranslate nohighlight">\(\widehat M_{ij}\)</span> отличается от минора <span class="math notranslate nohighlight">\(M_{ij}\)</span> тем, что на месте <span class="math notranslate nohighlight">\(k\)</span>-й строки у него
+находится <span class="math notranslate nohighlight">\(i\)</span>-я. Переставляя соседние строки <span class="math notranslate nohighlight">\(k-i - 1\)</span> раз, превратим минор <span class="math notranslate nohighlight">\(\widehat M_{ij}\)</span> в <span class="math notranslate nohighlight">\(M_{kj}\)</span>, не забыв умножить на <span class="math notranslate nohighlight">\((-1)^{k-i-1}\)</span> за счёт смены знака при каждой перестановке. В итоге получаем, что</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum\limits_{j=1}^n (-1)^{i+j}a_{kj} \widehat M_{ij} = 
+    \sum\limits_{j=1}^n (-1)^{i+j}a_{kj} (-1)^{k-i-1} M_{kj} = 
+    -\sum\limits_{j=1}^n (-1)^{k+j}a_{kj} M_{kj},
+\]</div>
+<p>то есть знак действительно поменялся в результате обмена строк.</p>
+</div>
+<p>Особенно удобно разлагать определитель по таким строкам/столбцам, которые содержат много нулей, поскольку число слагаемых в таком разложении равно количеству ненулевых элементов.</p>
+<p><strong>Пример</strong>. Вычислим определитель трёхдиагональной матрицы <span class="math notranslate nohighlight">\(\boldsymbol A_n\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    D_n = \det \boldsymbol A_n = \begin{vmatrix}
+		2 &amp; -1 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 \\
+		-1 &amp; 2 &amp; -1 &amp; 0 &amp; \dots &amp; 0 &amp; 0 \\
+		0 &amp; -1 &amp; 2 &amp; -1 &amp;\dots &amp; 0 &amp; 0 \\
+		\vdots &amp; \vdots &amp; \ddots &amp; \ddots &amp; \ddots &amp; \vdots &amp; \vdots \\
+		0 &amp; 0 &amp; \dots &amp; -1 &amp; 2 &amp; -1 &amp; 0 \\
+		0 &amp; 0 &amp; \dots &amp; 0 &amp; -1 &amp; 2 &amp; -1 \\
+		0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; -1 &amp; 2 \\
+	\end{vmatrix}
+\end{split}\]</div>
+<p>Имеем <span class="math notranslate nohighlight">\(D_1 = 2\)</span>, <span class="math notranslate nohighlight">\(D_2 = 4 -1 = 3\)</span>. Похоже, что <span class="math notranslate nohighlight">\(D_n = n+1\)</span>. Чтобы это доказать, выведем рекуррентную формулу для <span class="math notranslate nohighlight">\(D_n\)</span>, разложив его по первой строке:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    D_n = 2D_{n-1} - (-1) \begin{vmatrix}
+    -1 &amp; -1 &amp; 0 &amp; \dots &amp; 0 \\
+    \begin{matrix} 
+    0 \\
+    \vdots\\
+    0
+    \end{matrix} &amp;  &amp;\boldsymbol A_{n-2} 
+    \end{vmatrix} = 2D_{n-1} - D_{n-2}.
+\end{split}\]</div>
+<p>По индукции отсюда получаем, что <span class="math notranslate nohighlight">\(D_n = 2n - (n-1) = n+1\)</span>.</p>
+<!--
+## Cofactors and inverse matrix
+
+Коэффициент при $a_{ij}$ в разложении определителя по строке называется **алгебраическим дополнением**: $C_{ij} = (-1)^{i+j} M_{ij}$. Таким образом,
+
+```{math}
+:label: cofactor-inverse
+\det\boldsymbol A = \sum\limits_{j=1}^n a_{ij}C_{ij}. 
+```
+    
+С помощью матрицы алгебраических дополнений $\boldsymbol C$ можно явно выписать формулу для обратной матрицы:
+
+$$
+    \boldsymbol A^{-1} = \frac{\boldsymbol C^\top}{\det \boldsymbol A}.
+$$
+
+Чтобы её доказать, надо проверить равенство
+
+$$
+    \begin{pmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & \dots & a_{nn} \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        C_{11} & C_{21} & \dots & C_{n1} \\
+        C_{12} & C_{22} & \dots & C_{n1} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        C_{1n} & C_{2n} & \dots & C_{nn} \\
+    \end{pmatrix} =
+
+    \begin{pmatrix}
+        \det \boldsymbol A & 0 & \dots & 0 \\
+        0 & \det \boldsymbol A & \dots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \dots & \det \boldsymbol A \\
+    \end{pmatrix}.
+$$
+
+Наличие $\det \boldsymbol A$ везде на главной диагонали следует из формулы {eq}`cofactor-inverse`.
+
+**Вопрос на подумать**. Почему все остальные внедиагональные элементы равны нулю?
+
+```{admonition} Answer
+:class: dropdown
+
+Каждый такой элемент равен
+    
+$$
+    \sum\limits_{j=1}^n a_{ij}C_{kj}, \quad i \ne k,
+$$
+
+а эта сумма представляет собой разложение по $k$-й строке определителя матрицы $\boldsymbol A'$, полученной заменой в матрице $\boldsymbol A$ $k$-й строки на $i$-ю. Такая матрица содержит две одинаковые строки, поэтому её определитель равен нулю. 
+```
+--></section>
+<section id="determinants-in-python">
+<h2>Determinants in python<a class="headerlink" href="#determinants-in-python" title="Link to this heading">#</a></h2>
+<p>To calculate a determinant, use <code class="docutils literal notranslate"><span class="pre">np.linalg.det</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">hilbert</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">hilbert</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">hilbert</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">A</span> <span class="o">=</span> <span class="n">hilbert</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>What about complextity of calcualting determinants?</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s2">&quot;InlineBackend.figure_format = &#39;svg&#39;&quot;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">plot_time_vs_size</span><span class="p">(</span><span class="n">max_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;plot_time_vs_size&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="important admonition">
+<p class="admonition-title">Question</p>
+<p>Is it true that it takes <span class="math notranslate nohighlight">\(O(n^2)\)</span> arithmetical operations to calculate <span class="math notranslate nohighlight">\(\det \boldsymbol A\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span>?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>If we look further for larger values of <span class="math notranslate nohighlight">\(n\)</span>, we’ll see that asymptotics <span class="math notranslate nohighlight">\(O(n^2)\)</span> is incorrect:</p>
+<p>A practical way to calculate <span class="math notranslate nohighlight">\(\det \boldsymbol A\)</span> is to use Gaussian elimination to reduce <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> to echelon form <span class="math notranslate nohighlight">\(\boldsymbol U\)</span> which is an upper triangular matrix. Then</p>
+<div class="math notranslate nohighlight">
+\[
+    \det \boldsymbol A = \det \boldsymbol U = \prod\limits_{i=1}^n u_{ii}.
+\]</div>
+<p>This takes <span class="math notranslate nohighlight">\(O(n^3)\)</span> arithmetic operations in total.</p>
+</div>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> and <span class="math notranslate nohighlight">\(\det \boldsymbol A = 2\)</span>. Find <span class="math notranslate nohighlight">\(\det(2\boldsymbol A)\)</span>, <span class="math notranslate nohighlight">\(\det(-\boldsymbol A)\)</span>, <span class="math notranslate nohighlight">\(\det \boldsymbol A^3\)</span>, <span class="math notranslate nohighlight">\(\det\boldsymbol A^{-1}\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(D_n\)</span> be the <span class="math notranslate nohighlight">\(n\times n\)</span> determinant</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{vmatrix}
+		1 &amp; -1 &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 \\
+		1 &amp; 1 &amp; -1 &amp; 0 &amp; \dots &amp; 0 &amp; 0 \\
+		0 &amp; 1 &amp; 1 &amp; -1 &amp;\dots &amp; 0 &amp; 0 \\
+		\vdots &amp; \vdots &amp; \ddots &amp; \ddots &amp; \ddots &amp; \vdots &amp; \vdots \\
+		0 &amp; 0 &amp; \dots &amp; 1 &amp; 1 &amp; -1 &amp; 0 \\
+		0 &amp; 0 &amp; \dots &amp; 0 &amp; 1 &amp; 1 &amp; -1 \\
+		0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
+	\end{vmatrix}.
+    \end{split}\]</div>
+<p>Show that <span class="math notranslate nohighlight">\(D_n = F_{n + 1}\)</span> where <span class="math notranslate nohighlight">\(F_n\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Fibonacci_sequence">Fibonacci sequence</a>.</p>
+</li>
+<li><p>What are the possible values of <span class="math notranslate nohighlight">\(\det \boldsymbol P\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> is a permutation matrix? projection matrix?</p></li>
+<li><p>Prove that <span class="math notranslate nohighlight">\(\det \boldsymbol A = 0\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is a skew-symmetric matrix of odd shape.</p></li>
+<li><p>Prove that <span class="math notranslate nohighlight">\(\vert\det \boldsymbol Q\vert = 1\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol Q\)</span> is an orthogonal matrix.</p></li>
+<li><p>Matrices <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol B\)</span> are <strong>similar</strong> (<span class="math notranslate nohighlight">\(\boldsymbol A \sim \boldsymbol B\)</span>) if there exists a nonsingular matrix <span class="math notranslate nohighlight">\(\boldsymbol M\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol B = \boldsymbol M^{-1} \boldsymbol {AM}\)</span>. Prove that <span class="math notranslate nohighlight">\(\det \boldsymbol A = \det \boldsymbol B\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol A \sim \boldsymbol B\)</span>.</p></li>
+<li><p>Establish the formula for the <a class="reference external" href="https://en.wikipedia.org/wiki/Vandermonde_matrix">Vandermonde determinant</a>.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./math/lin_alg"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="projections.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Orthogonal projections</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="eig.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Eigenvalues and eigenvectors</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-formulas">Explicit formulas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-definition">General definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-determinants">Properties of determinants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#big-formula">Big Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cofactor-formula">Cofactor formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determinants-in-python">Determinants in python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By KBTU
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
