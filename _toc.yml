@@ -175,6 +175,7 @@ parts:
           - file: math/lin_alg/determinant
           - file: math/lin_alg/eig
           - file: math/lin_alg/diagonalize
+          - file: math/lin_alg/positive_def
           - file: math/lin_alg/matrix_norms
           - file: math/lin_alg/SVD
       - file: math/calculus
