@@ -180,7 +180,8 @@ parts:
           - file: math/lin_alg/SVD
       - file: math/calculus
         sections:
-          - file: math/calculus/1-d
+          - file: math/calculus/derivative
+          - file: math/calculus/integral
           - file: math/calculus/multivariate
           - file: math/calculus/matrix_diff
           - file: math/calculus/optimization
