@@ -602,7 +602,7 @@ then <span class="math notranslate nohighlight">\(\widehat{\boldsymbol \theta}\)
 <p class="admonition-title">Note</p>
 <p>If condition <span class="math notranslate nohighlight">\(\Vert \nabla\mathcal L(\boldsymbol w) \Vert &gt; \varepsilon\)</span> holds for too long, the loop in step 3 terminates after some number iterations <code class="docutils literal notranslate"><span class="pre">max_iter</span></code>.</p>
 </div>
-<p>Application of gradient descent algorithm to linear regression is described <a class="reference internal" href="../../lin_reg/numeric_opt.html#num-opt-lin-reg"><span class="std std-ref">here</span></a></p>
+<p>Application of gradient descent algorithm to linear regression is described <a class="reference internal" href="../../lin_reg/numeric_opt.html#num-opt-lin-reg"><span class="std std-ref">here</span></a>.</p>
 </section>
 <section id="newton-s-method">
 <h2>Newton’s method<a class="headerlink" href="#newton-s-method" title="Permalink to this heading">#</a></h2>
@@ -625,7 +625,13 @@ then <span class="math notranslate nohighlight">\(\widehat{\boldsymbol \theta}\)
         \min\limits_{\boldsymbol X} \Vert \boldsymbol{AX} - \boldsymbol B  \Vert_F^2, \quad \boldsymbol A \in \mathbb R^{k\times m},\quad \boldsymbol B \in \mathbb R^{k\times n},\quad \mathrm{rank}(\boldsymbol A) = m.
     \]</div>
 </li>
-<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> be a symmetric positive definite matrix and <span class="math notranslate nohighlight">\(f(\boldsymbol X) = \mathrm{tr} (\boldsymbol X^{-1} \boldsymbol A) + \ln \vert \boldsymbol X\vert\)</span>. Find <span class="math notranslate nohighlight">\(\min\limits_{\boldsymbol X \in \mathbb R^{n\times n}} f(\boldsymbol X)\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> be a symmetric positive definite matrix and</p>
+<div class="math notranslate nohighlight">
+\[
+    f(\boldsymbol X) = \mathrm{tr} (\boldsymbol X^{-1} \boldsymbol A) + \ln \vert \boldsymbol X\vert.
+    \]</div>
+<p>Find <span class="math notranslate nohighlight">\(\min\limits_{\boldsymbol X \in \mathbb R^{n\times n}} f(\boldsymbol X)\)</span>.</p>
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> be a symmetric matrix and</p>
 <div class="math notranslate nohighlight">
 \[
