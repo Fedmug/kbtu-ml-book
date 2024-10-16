@@ -230,8 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../decision_trees/decision_tree.html">Decision Trees</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../decision_trees/classification.html">Classification tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decision_trees/regression.html">Regression tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decision_trees/overview.html">Classification and regression trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decision_trees/impurity.html">Impurity and information criterions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decision_trees/pruning.html">Tree pruning</a></li>
 </ul>
@@ -337,7 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/derivative.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/integral.html">Integral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/optimization.html">Optimization</a></li>
@@ -619,7 +619,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c2f73a45508d834153933cffa42487b34fb344107756a9147bb858fac483defd.svg" src="../_images/c2f73a45508d834153933cffa42487b34fb344107756a9147bb858fac483defd.svg" /></div>
+<img alt="../_images/172bfbaa01ce39db000c3cc9b71ff523361091a56019d8cfd1ffb458a39e266e.svg" src="../_images/172bfbaa01ce39db000c3cc9b71ff523361091a56019d8cfd1ffb458a39e266e.svg" /></div>
 </div>
 <p>Fit linear regression model and check metrics:</p>
 <div class="cell docutils container">
@@ -649,13 +649,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.8063558386303775
-Slope: -0.591608190920962
-Mean Absolute Error (MAE): 0.3836
-Mean Squared Error (MSE): 0.2190
-Root Mean Squared Error (RMSE): 0.4680
-R2-score: 0.1175
-Mean absolute percentage error(MAPE): 0.3512
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.640328505628747
+Slope: -0.5320796086068229
+Mean Absolute Error (MAE): 0.3915
+Mean Squared Error (MSE): 0.2475
+Root Mean Squared Error (RMSE): 0.4975
+R2-score: 0.0870
+Mean absolute percentage error(MAPE): 0.3629
 </pre></div>
 </div>
 </div>
@@ -673,7 +673,7 @@ Mean absolute percentage error(MAPE): 0.3512
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/363f7aaeb3e0b656a586ebed536bd9f325d96e7f625f6d909c9b43ceba9292e7.svg" src="../_images/363f7aaeb3e0b656a586ebed536bd9f325d96e7f625f6d909c9b43ceba9292e7.svg" /></div>
+<img alt="../_images/11cadd9e1e4898fe11f8024017bddbb658d66275cde30e73c66c51dcfa014eaa.svg" src="../_images/11cadd9e1e4898fe11f8024017bddbb658d66275cde30e73c66c51dcfa014eaa.svg" /></div>
 </div>
 <p>Fit linear regression once again:</p>
 <div class="cell docutils container">
@@ -687,8 +687,8 @@ Mean absolute percentage error(MAPE): 0.3512
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.54893009605612
-Slope: 0.3324842183199621
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.7512195947376576
+Slope: -0.3520616068066426
 </pre></div>
 </div>
 </div>
@@ -711,11 +711,11 @@ Slope: 0.3324842183199621
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error (MAE): 0.6456
-Mean Squared Error (MSE): 4.2774
-Root Mean Squared Error (RMSE): 2.0682
-R2-score: 0.0021
-Mean absolute percentage error(MAPE): 0.4667
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error (MAE): 0.6347
+Mean Squared Error (MSE): 3.9073
+Root Mean Squared Error (RMSE): 1.9767
+R2-score: 0.0026
+Mean absolute percentage error(MAPE): 0.4556
 </pre></div>
 </div>
 </div>

@@ -230,8 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../decision_trees/decision_tree.html">Decision Trees</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../decision_trees/classification.html">Classification tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decision_trees/regression.html">Regression tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decision_trees/overview.html">Classification and regression trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decision_trees/impurity.html">Impurity and information criterions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decision_trees/pruning.html">Tree pruning</a></li>
 </ul>
@@ -337,7 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/derivative.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/integral.html">Integral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/optimization.html">Optimization</a></li>
@@ -603,18 +603,18 @@ This is a partition of space which associates a region <span class="math notrans
 \]</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/138d62bed34caa1086f42e74ed87bdb6b28746f650374ad49db8603804e1a8a4.svg" src="../_images/138d62bed34caa1086f42e74ed87bdb6b28746f650374ad49db8603804e1a8a4.svg" /></div>
+<img alt="../_images/f5bb95e9052f0a008bf79ec28b68d8e1f32b451c9bf06a7c15f187b34fe4d30a.svg" src="../_images/f5bb95e9052f0a008bf79ec28b68d8e1f32b451c9bf06a7c15f187b34fe4d30a.svg" /></div>
 </div>
 <p><span style="display:none" id="q_1nn_train_loss">W3sicXVlc3Rpb24iOiAiU3VwcG9zZSB3ZSBhcmUgdHJhaW5pbmcgJDEkLU5OIGFsZ29yaXRobSB1c2luZyBtaXNjbGFzc2lmaWNhdGlvbiByYXRlIGFzIHRoZSBsb3NzIGZ1bmN0aW9uLiBXaGF0IHdpbGwgYmUgdGhlIHRyYWluIGVycm9yPyIsICJ0eXBlIjogIm51bWVyaWMiLCAiYW5zd2VycyI6IFt7InR5cGUiOiAidmFsdWUiLCAidmFsdWUiOiAwLCAiY29ycmVjdCI6IHRydWUsICJmZWVkYmFjayI6ICJSaWdodCBvbiEgQWxsIHRyYWluaW5nIHBvaW50cyB3aWxsIGJlIGNsYXNzaWZpZWQgY29ycmVjdGx5In0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFstMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCwgMF0sICJmZWVkYmFjayI6ICJNaXNjbGFzc2lmaWNhdGlvbiByYXRlIG11c3QgYmUgYmV0d2VlbiAwIGFuZCAxIn0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFsxLjAwMDAwMDAwMDEsIDEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBdLCAiZmVlZGJhY2siOiAiTWlzY2xhc3NpZmljYXRpb24gcmF0ZSBtdXN0IGJlIGJldHdlZW4gMCBhbmQgMSJ9LCB7InR5cGUiOiAiZGVmYXVsdCIsICJmZWVkYmFjayI6ICJObywgdGhpcyBpcyBub3QgdHJ1ZSJ9XX1d</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="ewqjmKpUmdCX" data-shufflequestions="False"
+<div class="output text_html"><div id="tpahZpbXQbXM" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#ewqjmKpUmdCX {
+#tpahZpbXQbXM {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -785,14 +785,14 @@ This is a partition of space which associates a region <span class="math notrans
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("q_1nn_train_loss");
-            var questionsewqjmKpUmdCX;
+            var questionstpahZpbXQbXM;
             try {
-               questionsewqjmKpUmdCX=JSON.parse(window.atob(element.innerHTML));
+               questionstpahZpbXQbXM=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionsewqjmKpUmdCX = JSON.parse(element.innerHTML);
+               questionstpahZpbXQbXM = JSON.parse(element.innerHTML);
             }
-            console.log(questionsewqjmKpUmdCX);;
+            console.log(questionstpahZpbXQbXM);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -1541,8 +1541,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("ewqjmKpUmdCX")) {
-            show_questions(questionsewqjmKpUmdCX,  ewqjmKpUmdCX); 
+          if(document.getElementById("tpahZpbXQbXM")) {
+            show_questions(questionstpahZpbXQbXM,  tpahZpbXQbXM); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -1551,8 +1551,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("ewqjmKpUmdCX");
-        // console.log(document.getElementById("ewqjmKpUmdCX"));
+        //console.log("tpahZpbXQbXM");
+        // console.log(document.getElementById("tpahZpbXQbXM"));
 
         try_show();
         }
@@ -1581,13 +1581,13 @@ if (typeof version == 'undefined') {
 <p><span style="display:none" id="watermelon">W3sicXVlc3Rpb24iOiAiV2hhdCBwZXJjZW50YWdlIG9mIHRoZSB3YXRlcm1lbG9uIGlzIGVhdGFibGU/IiwgInR5cGUiOiAibnVtZXJpYyIsICJhbnN3ZXJzIjogW3sidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDAuNzI5LCAiY29ycmVjdCI6IGZhbHNlLCAiZmVlZGJhY2siOiAiVGhpcyBpcyB0aGUgcGFydCB3cml0dGVuIGFzIGRlY2ltYWwgZnJhY3Rpb24ifSwgeyJ0eXBlIjogInZhbHVlIiwgInZhbHVlIjogNzIuOSwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiVGhhdCdzIGNvcnJlY3QhICQoMC45KV4zXFx0aW1lcyAxMDBcXCUgPSA3Mi45XFwlJCJ9LCB7InR5cGUiOiAicmFuZ2UiLCAicmFuZ2UiOiBbLTEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwLCAwXSwgImZlZWRiYWNrIjogIlBlcmNlbnRhZ2UgY2Fubm90IGJlIG5lZ2F0aXZlIn0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFsxMDAuMDAwMDAwMDAwMSwgMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBdLCAiZmVlZGJhY2siOiAiWW91IGNhbm5vdCBlYXQgbW9yZSB0aGF0ICQxMDBcXCUkIG9mIHRoZSB3YXRlcm1lbG9uIn0sIHsidHlwZSI6ICJkZWZhdWx0IiwgImZlZWRiYWNrIjogIk5vLCB0aGlzIGlzIG5vdCB0cnVlIn1dfSwgeyJxdWVzdGlvbiI6ICJIb3cgdGhlIGFuc3dlciB3b3VsZCBjaGFuZ2UgaWYgd2Ugd2VyZSBsaXZpbmcgaW4gJFxcbWF0aGJiIFJeezEwfSQ/IiwgInR5cGUiOiAibnVtZXJpYyIsICJhbnN3ZXJzIjogW3sidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFswLjM0OCwgMC4zNDkxXSwgImNvcnJlY3QiOiBmYWxzZSwgImZlZWRiYWNrIjogIlRoaXMgaXMgdGhlIHBhcnQgd3JpdHRlbiBhcyBkZWNpbWFsIGZyYWN0aW9uIn0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFszNC44LCAzNC45MV0sICJjb3JyZWN0IjogdHJ1ZSwgImZlZWRiYWNrIjogIlRoYXQncyBjb3JyZWN0ISAkKDAuOSleezEwfVxcdGltZXMgMTAwXFwlIFxcYXBwcm94IDM0LjlcXCUkIn0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFstMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAsIDBdLCAiY29ycmVjdCI6IGZhbHNlLCAiZmVlZGJhY2siOiAiUGVyY2VudGFnZSBjYW5ub3QgYmUgbmVnYXRpdmUifSwgeyJ0eXBlIjogInJhbmdlIiwgInJhbmdlIjogWzEwMC4wMDAwMDAwMDAxLCAxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMF0sICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJZb3UgY2Fubm90IGVhdCBtb3JlIHRoYXQgJDEwMFxcJSQgb2YgdGhlIHdhdGVybWVsb24ifSwgeyJ0eXBlIjogImRlZmF1bHQiLCAiZmVlZGJhY2siOiAiRmFsc2UifV19XQ==</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="frRsoLnGTqFd" data-shufflequestions="False"
+<div class="output text_html"><div id="pGBwmwkFhAKH" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#frRsoLnGTqFd {
+#pGBwmwkFhAKH {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -1758,14 +1758,14 @@ if (typeof version == 'undefined') {
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("watermelon");
-            var questionsfrRsoLnGTqFd;
+            var questionspGBwmwkFhAKH;
             try {
-               questionsfrRsoLnGTqFd=JSON.parse(window.atob(element.innerHTML));
+               questionspGBwmwkFhAKH=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionsfrRsoLnGTqFd = JSON.parse(element.innerHTML);
+               questionspGBwmwkFhAKH = JSON.parse(element.innerHTML);
             }
-            console.log(questionsfrRsoLnGTqFd);;
+            console.log(questionspGBwmwkFhAKH);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -2514,8 +2514,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("frRsoLnGTqFd")) {
-            show_questions(questionsfrRsoLnGTqFd,  frRsoLnGTqFd); 
+          if(document.getElementById("pGBwmwkFhAKH")) {
+            show_questions(questionspGBwmwkFhAKH,  pGBwmwkFhAKH); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -2524,8 +2524,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("frRsoLnGTqFd");
-        // console.log(document.getElementById("frRsoLnGTqFd"));
+        //console.log("pGBwmwkFhAKH");
+        // console.log(document.getElementById("pGBwmwkFhAKH"));
 
         try_show();
         }
@@ -2534,7 +2534,7 @@ if (typeof version == 'undefined') {
 <p>This is how the <strong>curse of dimensionality</strong> works. In <span class="math notranslate nohighlight">\(50\)</span>-dimensional space there is almost nothing to eat in a watermelon.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/6c02434d7c54c5009d25f65f743ed867b0a12dff9967cbbfcc468f74ed676d7b.svg" src="../_images/6c02434d7c54c5009d25f65f743ed867b0a12dff9967cbbfcc468f74ed676d7b.svg" /></div>
+<img alt="../_images/72a55c2befc3175ff7a58dbf00bbbb6154a3f46146959a38180db7d9fd3e8577.svg" src="../_images/72a55c2befc3175ff7a58dbf00bbbb6154a3f46146959a38180db7d9fd3e8577.svg" /></div>
 </div>
 <p>What are the consequenes of curse of the dimensionality for <span class="math notranslate nohighlight">\(k\)</span>-NN?</p>
 <div class="admonition-a-common-example-from-textbooks admonition">
@@ -2543,7 +2543,7 @@ if (typeof version == 'undefined') {
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/a8297191fcc07f47328995356f1327f42c4c9a2e3a27f7512b0ce4d02cb5ea7c.svg" src="../_images/a8297191fcc07f47328995356f1327f42c4c9a2e3a27f7512b0ce4d02cb5ea7c.svg" /></div>
+<img alt="../_images/526c46b872de6f4b91732189ea666d7db2d44a78d1a102e34540017ba3296678.svg" src="../_images/526c46b872de6f4b91732189ea666d7db2d44a78d1a102e34540017ba3296678.svg" /></div>
 </div>
 </section>
 <section id="k-nn-for-boston-dataset">
@@ -2793,7 +2793,7 @@ MSE loss for 10-NN: 27.524774703557313
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3ceb42dd1060444e11ca1e18b70db55a22a57dee45de5d5ad802699a72d16e7d.svg" src="../_images/3ceb42dd1060444e11ca1e18b70db55a22a57dee45de5d5ad802699a72d16e7d.svg" /></div>
+<img alt="../_images/284c2111817de14d01bab0678bcc748588145838a19da8f9fe9f1a0ca4e94f92.svg" src="../_images/284c2111817de14d01bab0678bcc748588145838a19da8f9fe9f1a0ca4e94f92.svg" /></div>
 </div>
 </section>
 <section id="k-nn-for-classification">
@@ -2863,7 +2863,7 @@ MSE loss for 10-NN: 27.524774703557313
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cf303966e5b3d10e0b6d51d325e1fff6bbd45374629c258700b839399b3d8e53.svg" src="../_images/cf303966e5b3d10e0b6d51d325e1fff6bbd45374629c258700b839399b3d8e53.svg" /></div>
+<img alt="../_images/fa3ced1a81657b5ab6648df8dd8922edbc9edfbee5793dd13364cb5255807ab0.svg" src="../_images/fa3ced1a81657b5ab6648df8dd8922edbc9edfbee5793dd13364cb5255807ab0.svg" /></div>
 </div>
 </section>
 <section id="exercises">

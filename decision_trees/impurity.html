@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tree pruning" href="pruning.html" />
-    <link rel="prev" title="Regression tree" href="regression.html" />
+    <link rel="prev" title="Classification and regression trees" href="overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -230,8 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="decision_tree.html">Decision Trees</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="classification.html">Classification tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regression.html">Regression tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Classification and regression trees</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Impurity and information criterions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pruning.html">Tree pruning</a></li>
 </ul>
@@ -337,7 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/derivative.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/integral.html">Integral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/optimization.html">Optimization</a></li>
@@ -513,7 +513,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iris-dataset">Iris dataset</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impurity-measure-in-regression-trees">Impurity measure in regression trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impurity-measure-in-regression-trees">Impurity measure in regression trees</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boston-dataset">Boston dataset</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -566,7 +569,7 @@ p_k = \frac 1n\sum\limits_{(\boldsymbol x_i, y_i)\in V} \mathbb I[y_i = k].
 </section>
 <section id="information-gain">
 <h3>Information gain<a class="headerlink" href="#information-gain" title="Permalink to this heading">#</a></h3>
-<p>Suppose that in the node <span class="math notranslate nohighlight">\(V\)</span> the distribution of classes is <span class="math notranslate nohighlight">\(p\)</span>, and after the split the distributions in the child nodes <span class="math notranslate nohighlight">\(V^l\)</span> and <span class="math notranslate nohighlight">\(V^r\)</span> are <span class="math notranslate nohighlight">\(p^l\)</span> and <span class="math notranslate nohighlight">\(p^r\)</span> respectively. Than the <strong>information gain</strong> of the split <span class="math notranslate nohighlight">\(V \to (V^l, V^r)\)</span>  is</p>
+<p>Suppose that in the node <span class="math notranslate nohighlight">\(V\)</span> the distribution of classes is <span class="math notranslate nohighlight">\(p\)</span>, and after the split the distributions in the child nodes <span class="math notranslate nohighlight">\(V^l\)</span> and <span class="math notranslate nohighlight">\(V^r\)</span> are <span class="math notranslate nohighlight">\(p^l\)</span> and <span class="math notranslate nohighlight">\(p^r\)</span> respectively. The <strong>information gain</strong> of the split <span class="math notranslate nohighlight">\(V \to (V^l, V^r)\)</span>  is</p>
 <div class="math notranslate nohighlight">
 \[
     \mathbb H[p] - \frac{\vert V^l\vert}{\vert V\vert}\mathbb H[p^l]- \frac{\vert V^r\vert}{\vert V\vert}\mathbb H[p^r]
@@ -636,6 +639,7 @@ Gini accuracy: 0.96
 <div class="cell_output docutils container">
 <img alt="../_images/6d9e99c87ae639de8e8484aa5c4d97819c3683a1c8d46e155562ae465be1b267.svg" src="../_images/6d9e99c87ae639de8e8484aa5c4d97819c3683a1c8d46e155562ae465be1b267.svg" /></div>
 </div>
+<p><strong>Q.</strong> What is the information gain of each split in this tree?</p>
 </section>
 </section>
 <section id="impurity-measure-in-regression-trees">
@@ -662,6 +666,46 @@ c^r = \frac 1{\vert V^r\vert} \sum\limits_{(\boldsymbol x_i, y_i)\in V^r} y_i.
 \[
     H(V) - \frac {\vert V^l\vert}{\vert V\vert}H(V^l) - \frac {\vert V^r\vert}{\vert V\vert}H(V^r).
 \]</div>
+<section id="boston-dataset">
+<h3>Boston dataset<a class="headerlink" href="#boston-dataset" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span><span class="p">,</span> <span class="n">export_graphviz</span>
+
+<span class="n">boston</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../datasets/ISLP/Boston.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">boston</span><span class="p">[</span><span class="s1">&#39;medv&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">boston</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;medv&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">DT</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">DT</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train R-score:&quot;</span><span class="p">,</span> <span class="n">DT</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train R-score: 0.695574477973027
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">graphviz</span>
+
+<span class="n">dot_data</span> <span class="o">=</span> <span class="n">export_graphviz</span><span class="p">(</span><span class="n">DT</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                           <span class="n">feature_names</span><span class="o">=</span><span class="n">boston</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>   
+                           <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  
+                           <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+<span class="n">graph</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">dot_data</span><span class="p">)</span>  
+<span class="n">graph</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/aa053d2a7a34225e3501bd49c7e0505d5a500c7375ab057936588359d904c60d.svg" src="../_images/aa053d2a7a34225e3501bd49c7e0505d5a500c7375ab057936588359d904c60d.svg" /></div>
+</div>
+<p><strong>Q.</strong> Find information gain of each split in this regression tree.</p>
+</section>
 </section>
 </section>
 
@@ -697,12 +741,12 @@ c^r = \frac 1{\vert V^r\vert} \sum\limits_{(\boldsymbol x_i, y_i)\in V^r} y_i.
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="regression.html"
+       href="overview.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Regression tree</p>
+        <p class="prev-next-title">Classification and regression trees</p>
       </div>
     </a>
     <a class="right-next"
@@ -739,7 +783,10 @@ c^r = \frac 1{\vert V^r\vert} \sum\limits_{(\boldsymbol x_i, y_i)\in V^r} y_i.
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iris-dataset">Iris dataset</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impurity-measure-in-regression-trees">Impurity measure in regression trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impurity-measure-in-regression-trees">Impurity measure in regression trees</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boston-dataset">Boston dataset</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

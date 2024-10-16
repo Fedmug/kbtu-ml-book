@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Matrix calculus" href="matrix_diff.html" />
-    <link rel="prev" title="Derivative" href="1-d.html" />
+    <link rel="prev" title="Integral" href="integral.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -230,8 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../decision_trees/decision_tree.html">Decision Trees</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/classification.html">Classification tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/regression.html">Regression tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decision_trees/overview.html">Classification and regression trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../decision_trees/impurity.html">Impurity and information criterions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../decision_trees/pruning.html">Tree pruning</a></li>
 </ul>
@@ -337,7 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../calculus.html">Calculus</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="1-d.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="derivative.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integral.html">Integral</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="matrix_diff.html">Matrix calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="optimization.html">Optimization</a></li>
@@ -536,7 +536,7 @@ document.write(`
 \[
 	f(x+h) - f(x) = Df(x)[h] + \mathcal O\big(\Vert h\Vert^2\big), \Vert h\Vert \to 0
 \]</div>
-<p>(cp. with <a class="reference internal" href="1-d.html#equation-derivative-o-def">(60)</a>). Here <strong>differential</strong> <span class="math notranslate nohighlight">\(Df(x)[h]\)</span> is a linear function (which is usually called <strong>linear operator</strong> in multidimensional case) with respect to increment <span class="math notranslate nohighlight">\(h\)</span> which represents the main linear part of the increment <span class="math notranslate nohighlight">\(\Delta f = f(x+h) - f(x)\)</span>.</p>
+<p>(cp. with <a class="reference internal" href="derivative.html#equation-derivative-o-def">(60)</a>). Here <strong>differential</strong> <span class="math notranslate nohighlight">\(Df(x)[h]\)</span> is a linear function (which is usually called <strong>linear operator</strong> in multidimensional case) with respect to increment <span class="math notranslate nohighlight">\(h\)</span> which represents the main linear part of the increment <span class="math notranslate nohighlight">\(\Delta f = f(x+h) - f(x)\)</span>.</p>
 <!--
 Перейдём теперь к более общей ситуации. Пусть заданы два конечномерных пространства $U$ и $V$ (например, векторов или матриц). Функция $f \colon X \to V$, $X \subset U$, дифференцируема в точке $x\in X$, если найдётся такой линейный оператор $L\colon U \to V$, что справедливо равенство
 
@@ -996,12 +996,12 @@ g(\boldsymbol x) = \begin{pmatrix}
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="1-d.html"
+       href="integral.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Derivative</p>
+        <p class="prev-next-title">Integral</p>
       </div>
     </a>
     <a class="right-next"

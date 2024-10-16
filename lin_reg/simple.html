@@ -230,8 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../decision_trees/decision_tree.html">Decision Trees</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../decision_trees/classification.html">Classification tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decision_trees/regression.html">Regression tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decision_trees/overview.html">Classification and regression trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decision_trees/impurity.html">Impurity and information criterions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decision_trees/pruning.html">Tree pruning</a></li>
 </ul>
@@ -337,7 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/derivative.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/integral.html">Integral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/optimization.html">Optimization</a></li>
@@ -611,13 +611,13 @@ TSS = \sum\limits_{i=1}^n(y_i - \overline {\boldsymbol y})^2.
 <p><span style="display:none" id="R2_dummy">W3sicXVlc3Rpb24iOiAiV2hhdCBpcyB0aGUgJFJeMiQtc2NvcmUgb2YgdGhlIGR1bW15IG1vZGVsICRcXHdpZGVoYXQgeSA9IFxcb3ZlcmxpbmUge1xcYm9sZHN5bWJvbCB5fSQ/IiwgInR5cGUiOiAibnVtZXJpYyIsICJhbnN3ZXJzIjogW3sidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDAsICJjb3JyZWN0IjogdHJ1ZSwgImZlZWRiYWNrIjogIllvdSBuYWlsZWQgaXQhICRSXjIgPSAxIC0gMSA9IDAkIn0sIHsidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDEsICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJObywgaXQgc2hvdWxkIGJlIHN1YnRyYWN0ZWQgZnJvbSAkMSQifSwgeyJ0eXBlIjogInJhbmdlIiwgInJhbmdlIjogWy0xMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCwgMF0sICJmZWVkYmFjayI6ICIkUl4yJC1zY29yZSBtdXN0IGJlIGJldHdlZW4gMCBhbmQgMSJ9LCB7InR5cGUiOiAicmFuZ2UiLCAicmFuZ2UiOiBbMS4wMDAwMDAwMDAxLCAxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMF0sICJmZWVkYmFjayI6ICIkUl4yJC1zY29yZSBtdXN0IGJlIGJldHdlZW4gMCBhbmQgMSJ9LCB7InR5cGUiOiAiZGVmYXVsdCIsICJmZWVkYmFjayI6ICJUaGlzIHZhbHVlIGxvb2tzIGluY29ycmVjdCJ9XX1d</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="bAFzxAYGmLMC" data-shufflequestions="False"
+<div class="output text_html"><div id="bopNtULKKCcv" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#bAFzxAYGmLMC {
+#bopNtULKKCcv {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -788,14 +788,14 @@ TSS = \sum\limits_{i=1}^n(y_i - \overline {\boldsymbol y})^2.
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("R2_dummy");
-            var questionsbAFzxAYGmLMC;
+            var questionsbopNtULKKCcv;
             try {
-               questionsbAFzxAYGmLMC=JSON.parse(window.atob(element.innerHTML));
+               questionsbopNtULKKCcv=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionsbAFzxAYGmLMC = JSON.parse(element.innerHTML);
+               questionsbopNtULKKCcv = JSON.parse(element.innerHTML);
             }
-            console.log(questionsbAFzxAYGmLMC);;
+            console.log(questionsbopNtULKKCcv);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -1544,8 +1544,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("bAFzxAYGmLMC")) {
-            show_questions(questionsbAFzxAYGmLMC,  bAFzxAYGmLMC); 
+          if(document.getElementById("bopNtULKKCcv")) {
+            show_questions(questionsbopNtULKKCcv,  bopNtULKKCcv); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -1554,8 +1554,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("bAFzxAYGmLMC");
-        // console.log(document.getElementById("bAFzxAYGmLMC"));
+        //console.log("bopNtULKKCcv");
+        // console.log(document.getElementById("bopNtULKKCcv"));
 
         try_show();
         }
@@ -1732,7 +1732,7 @@ if (typeof version == 'undefined') {
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a702728cf3705a83e79f2643a286619ec68b111e7b2ded9a99162b2aeecca3b7.svg" src="../_images/a702728cf3705a83e79f2643a286619ec68b111e7b2ded9a99162b2aeecca3b7.svg" /></div>
+<img alt="../_images/e288d9eed7e3c0c63d128aaac4e75d4b6cf0e87add0d796d2d0bb63c4b15dab7.svg" src="../_images/e288d9eed7e3c0c63d128aaac4e75d4b6cf0e87add0d796d2d0bb63c4b15dab7.svg" /></div>
 </div>
 <p>Calculate MSE:</p>
 <div class="cell docutils container">
@@ -1778,7 +1778,7 @@ Dummy R2-score: 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/eebc8238b84af4282064a61e7ac7f229a8e55f4059e3bf90cbe2ecd70677035b.svg" src="../_images/eebc8238b84af4282064a61e7ac7f229a8e55f4059e3bf90cbe2ecd70677035b.svg" /></div>
+<img alt="../_images/15f44e7b87411d115f52b8915e5425d440700f5b2353c1d56bc8b9e77db1b229.svg" src="../_images/15f44e7b87411d115f52b8915e5425d440700f5b2353c1d56bc8b9e77db1b229.svg" /></div>
 </div>
 <p>Linear regression from <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>:</p>
 <div class="cell docutils container">

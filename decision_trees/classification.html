@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Classification tree &#8212; ML book</title>
+    <title>Classification and regression trees &#8212; ML book</title>
   
   
   
@@ -230,7 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="decision_tree.html">Decision Trees</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Classification tree</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Classification and regression trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regression.html">Regression tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="impurity.html">Impurity and information criterions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pruning.html">Tree pruning</a></li>
@@ -337,7 +337,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/derivative.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/integral.html">Integral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/optimization.html">Optimization</a></li>
@@ -496,7 +497,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Classification tree</h1>
+    <h1>Classification and regression trees</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -506,10 +507,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-splitting">Binary splitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopping-criteria">Stopping criteria</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iris-dataset">Iris dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mnist">MNIST</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-conditions">Splitting conditions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chatgpt-suggestions">ChatGPT suggestions</a></li>
 </ul>
             </nav>
         </div>
@@ -521,8 +522,41 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="classification-tree">
-<h1>Classification tree<a class="headerlink" href="#classification-tree" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="classification-and-regression-trees">
+<h1>Classification and regression trees<a class="headerlink" href="#classification-and-regression-trees" title="Permalink to this heading">#</a></h1>
+<figure class="align-center">
+<img alt="https://dataaspirant.com/wp-content/uploads/2017/01/B03905_05_01-compressor.png" src="https://dataaspirant.com/wp-content/uploads/2017/01/B03905_05_01-compressor.png" />
+</figure>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<p>A decision tree chapter in <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/reshayushchiye-derevya.">ML Handbook</a></p>
+</div>
+<section id="binary-splitting">
+<h2>Binary splitting<a class="headerlink" href="#binary-splitting" title="Permalink to this heading">#</a></h2>
+<p>Suppose we have a dataset <span class="math notranslate nohighlight">\(\mathcal D = (\boldsymbol X, \boldsymbol y)\)</span> with <span class="math notranslate nohighlight">\(n\)</span> training samples, each of which has <span class="math notranslate nohighlight">\(d\)</span> numeric features. To make a <strong>binary split</strong> one needs to do the following:</p>
+<ul class="simple">
+<li><p>take <span class="math notranslate nohighlight">\(j\)</span>-th feature, <span class="math notranslate nohighlight">\(1\leqslant j \leqslant d\)</span></p></li>
+<li><p>select a threshold <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p>split dataset by condition <span class="math notranslate nohighlight">\(\boldsymbol X_{:, j} \leqslant t\)</span></p></li>
+</ul>
+<p>After that the dataset <span class="math notranslate nohighlight">\(\mathcal D\)</span> has been split into two parts, <span class="math notranslate nohighlight">\(\mathcal D_\ell\)</span> and <span class="math notranslate nohighlight">\(\mathcal D_r\)</span>, such that <span class="math notranslate nohighlight">\(j\)</span>-th feature of samples from <span class="math notranslate nohighlight">\(\mathcal D_\ell\)</span> is greater than <span class="math notranslate nohighlight">\(t\)</span> whereas <span class="math notranslate nohighlight">\(j\)</span>-th feature of samples from <span class="math notranslate nohighlight">\(\mathcal D_r\)</span> is does not exceed <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>This splitting operation continues recursively: apply binary splitting to both left and right nodes with datasets <span class="math notranslate nohighlight">\(\mathcal D_\ell\)</span> and <span class="math notranslate nohighlight">\(\mathcal D_r\)</span> respectively. On this way we obtain a binary <strong>decision tree</strong> which consists of <strong>decision nodes</strong>.</p>
+<p><strong>Q.</strong> How many variants are there for selection a feature <span class="math notranslate nohighlight">\(j\)</span> and a threshold <span class="math notranslate nohighlight">\(t\)</span> on the first step when we create the root node? Suppose that we want to avoid trivial splits when one of subnodes is empty.</p>
+</section>
+<section id="stopping-criteria">
+<h2>Stopping criteria<a class="headerlink" href="#stopping-criteria" title="Permalink to this heading">#</a></h2>
+<p>Where should we stop and not do split a decision node anymore? There could be different stategies.</p>
+<ul class="simple">
+<li><p>All data points in a node belong to the same class (for classification)</p></li>
+<li><p>A pre-defined depth of the tree is reached</p></li>
+<li><p>A pre-defined minimum leaf size is reached</p></li>
+<li><p>Further splitting doesn’t add much value</p></li>
+</ul>
+<p>If a node is not split, it becomes a leaf. Each leaf produces a prediction as majority class of samples in this leaf (for classification) or average of targets (for regression). A regression tree is always a piecewise constant model.</p>
+<figure class="align-center">
+<img alt="https://raw.githubusercontent.com/Wei2624/AI_Learning_Hub/master/machine-learning/images/cs229_trees_3.png" src="https://raw.githubusercontent.com/Wei2624/AI_Learning_Hub/master/machine-learning/images/cs229_trees_3.png" />
+</figure>
+</section>
 <section id="iris-dataset">
 <h2>Iris dataset<a class="headerlink" href="#iris-dataset" title="Permalink to this heading">#</a></h2>
 <p>This is an example from <a class="reference external" href="https://scikit-learn.org/stable/modules/tree.html#classification">sklearn</a>.</p>
@@ -548,12 +582,12 @@ document.write(`
 <span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 1.0
 </pre></div>
 </div>
 </div>
@@ -566,7 +600,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0080f1067c35c7c7e4531f66c78bc24d1d97aea2bb3a01fbb84f0d393c6db60e.png" src="../_images/0080f1067c35c7c7e4531f66c78bc24d1d97aea2bb3a01fbb84f0d393c6db60e.png" />
+<img alt="../_images/51fe45a96358301684ebc593b1445bc0ae4212449de4a1f1aa4dd7858b37f513.png" src="../_images/51fe45a96358301684ebc593b1445bc0ae4212449de4a1f1aa4dd7858b37f513.png" />
 </div>
 </div>
 <p>A prettier tree can be drawn by <code class="docutils literal notranslate"><span class="pre">graphviz</span></code>:</p>
@@ -585,26 +619,26 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d0789819f5cfca6b9183b157dee233b35e4b950d3915909e6f2480a53777225d.svg" src="../_images/d0789819f5cfca6b9183b157dee233b35e4b950d3915909e6f2480a53777225d.svg" /></div>
+<img alt="../_images/1d8211eaa9de654fcb8ac16f6b223635f3f79c5ce8ac47662992f08afd49888d.svg" src="../_images/1d8211eaa9de654fcb8ac16f6b223635f3f79c5ce8ac47662992f08afd49888d.svg" /></div>
 </div>
-<p>Depth equal to <span class="math notranslate nohighlight">\(2\)</span> is enough for this toy dataset:</p>
+<p>To reduce overfitting, tree depth is usually limited. Depth <span class="math notranslate nohighlight">\(2\)</span> is enough for this toy dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.96
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.96
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/6de197877034cd57eabc6b799301ea137ee6d6ad6b114df3a31fe4a09b0226bc.svg" src="../_images/6de197877034cd57eabc6b799301ea137ee6d6ad6b114df3a31fe4a09b0226bc.svg" /></div>
+<img alt="../_images/ed5f83344db7c11d337487e839c8db53a8ccc5bc1d9f80cdd6bdcf489abc9e2e.svg" src="../_images/ed5f83344db7c11d337487e839c8db53a8ccc5bc1d9f80cdd6bdcf489abc9e2e.svg" /></div>
 </div>
 </section>
 <section id="mnist">
@@ -631,7 +665,7 @@ document.write(`
 <p>Visualize data:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/0a72ea3cfdd84e6900cfe4befc2ca9ec22856dd2e7e039612eed1f2714623cb4.svg" src="../_images/0a72ea3cfdd84e6900cfe4befc2ca9ec22856dd2e7e039612eed1f2714623cb4.svg" /></div>
+<img alt="../_images/e9f48b378f8516a55465c954e7e70718c894e83e564277f9d4056b8f0c193629.svg" src="../_images/e9f48b378f8516a55465c954e7e70718c894e83e564277f9d4056b8f0c193629.svg" /></div>
 </div>
 <p>Split into train and test:</p>
 <div class="cell docutils container">
@@ -684,7 +718,7 @@ Test accuracy: 0.8735
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d0c78107720dffa293e59d202cf50278e0ab6d279960cffd433172eabb5e9886.svg" src="../_images/d0c78107720dffa293e59d202cf50278e0ab6d279960cffd433172eabb5e9886.svg" /></div>
+<img alt="../_images/6af360a722cfba4c39eb227e380da87469267297fc7803abd2db453f00b27ccc.svg" src="../_images/6af360a722cfba4c39eb227e380da87469267297fc7803abd2db453f00b27ccc.svg" /></div>
 </div>
 <p>Limit the tree depth and size of leaves:</p>
 <div class="cell docutils container">
@@ -713,66 +747,57 @@ Test accuracy: 0.8776
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/153deb0bee4c283eff3bc0ac2cb67064bc01677c508b54f71a0ae037049b4d1c.svg" src="../_images/153deb0bee4c283eff3bc0ac2cb67064bc01677c508b54f71a0ae037049b4d1c.svg" /></div>
+<img alt="../_images/4984c551c923d753af5a77fd11197f885c525e6f24c4c7e9cf7c686d3b0fbaa5.svg" src="../_images/4984c551c923d753af5a77fd11197f885c525e6f24c4c7e9cf7c686d3b0fbaa5.svg" /></div>
 </div>
-</section>
-<section id="splitting-conditions">
-<h2>Splitting conditions<a class="headerlink" href="#splitting-conditions" title="Permalink to this heading">#</a></h2>
-<p>Each non-terminal node contains <strong>splitting condition</strong>, depending on which we are going to the left or to the right subtree. The splitting condition usually consists in comparing value of some feature <span class="math notranslate nohighlight">\(x_j\)</span> with a threshold <span class="math notranslate nohighlight">\(t\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-    \mathbb I[x_j \leqslant t], \quad 1\leqslant j \leqslant d.
-\]</div>
-<p>According to the splitting condition, the training sample <span class="math notranslate nohighlight">\(X\)</span> is split into two subsamples <span class="math notranslate nohighlight">\(X_l\)</span> and <span class="math notranslate nohighlight">\(X_r\)</span>, <span class="math notranslate nohighlight">\(X = X_l \cup X_r\)</span>.</p>
-</section>
-<section id="chatgpt-suggestions">
-<h2>ChatGPT suggestions<a class="headerlink" href="#chatgpt-suggestions" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple" start="2">
-<li><p>Node Splitting</p></li>
-</ol>
-<p>At each internal node, the tree algorithm selects a feature and a splitting criterion to divide the data into two or more child nodes. The goal is to create splits that maximize the purity or homogeneity of the class labels within each node.</p>
-<ol class="arabic simple" start="3">
-<li><p>Leaf Nodes</p></li>
-</ol>
-<p>The leaf nodes are the terminal nodes of the tree. Each leaf node contains a predicted class label, representing the majority class of the training samples in that node.</p>
-<ol class="arabic simple" start="4">
-<li><p>Predictive Modeling</p></li>
-</ol>
-<p>To make predictions for new data, you traverse the tree from the root to a leaf node based on the feature values of the new data point. The class label in the selected leaf node is the predicted class for that data point.</p>
-<ol class="arabic simple" start="5">
-<li><p>Recursive Partitioning</p></li>
-</ol>
-<p>The process of building a classification tree is recursive. The algorithm starts with the entire dataset and recursively splits it into subsets by choosing the best feature and split criterion at each node, continuing until a stopping condition is met.</p>
-<ol class="arabic simple" start="6">
-<li><p>Stopping Criteria</p></li>
-</ol>
-<p>Stopping criteria are used to determine when to stop growing the tree. Common stopping criteria include limiting the tree depth, setting a minimum number of samples per leaf, or using a minimum impurity reduction threshold.</p>
-<ol class="arabic simple" start="7">
-<li><p>Impurity Measures</p></li>
-</ol>
-<p>In classification trees, impurity measures such as Gini impurity, entropy, or misclassification rate are used to evaluate how well a split increases the purity or homogeneity of class labels. The split that minimizes impurity is selected.</p>
-<ol class="arabic simple" start="8">
-<li><p>Pruning</p></li>
-</ol>
-<p>After building a classification tree, it may be pruned to reduce overfitting. Pruning involves removing nodes that do not significantly improve the tree’s performance on a validation dataset.</p>
-<ol class="arabic simple" start="9">
-<li><p>Visualization</p></li>
-</ol>
-<p>Classification trees can be visualized graphically, making it easy to interpret and understand the model’s decision-making process.</p>
-<ol class="arabic simple" start="10">
-<li><p>Ensemble Methods</p></li>
-</ol>
-<p>Classification trees are often used as building blocks in ensemble methods like Random Forests and Gradient Boosting, which combine multiple trees to improve predictive accuracy and reduce overfitting.</p>
-<ol class="arabic simple" start="11">
-<li><p>Advantages</p></li>
-</ol>
-<p>Classification trees are interpretable, and their decision-making process is easy to understand. They can capture complex decision boundaries and interactions between features.</p>
-<ol class="arabic simple" start="12">
-<li><p>Limitations</p></li>
-</ol>
-<p>They can be prone to overfitting, especially if the tree is allowed to grow deep. Single trees may not generalize well on certain types of data. Ensembling methods can mitigate these limitations.</p>
-<p>Classification trees are widely used in various domains, including healthcare, finance, and natural language processing, for tasks such as spam email detection, disease diagnosis, and sentiment analysis. Proper tuning of hyperparameters and consideration of potential overfitting are essential when working with classification trees.</p>
-</section>
+<!--
+## ChatGPT suggestions
+
+2. Node Splitting
+
+At each internal node, the tree algorithm selects a feature and a splitting criterion to divide the data into two or more child nodes. The goal is to create splits that maximize the purity or homogeneity of the class labels within each node.
+
+3. Leaf Nodes
+
+The leaf nodes are the terminal nodes of the tree. Each leaf node contains a predicted class label, representing the majority class of the training samples in that node.
+
+4. Predictive Modeling
+
+To make predictions for new data, you traverse the tree from the root to a leaf node based on the feature values of the new data point. The class label in the selected leaf node is the predicted class for that data point.
+
+5. Recursive Partitioning
+
+The process of building a classification tree is recursive. The algorithm starts with the entire dataset and recursively splits it into subsets by choosing the best feature and split criterion at each node, continuing until a stopping condition is met.
+
+6. Stopping Criteria
+
+Stopping criteria are used to determine when to stop growing the tree. Common stopping criteria include limiting the tree depth, setting a minimum number of samples per leaf, or using a minimum impurity reduction threshold.
+
+7. Impurity Measures
+
+In classification trees, impurity measures such as Gini impurity, entropy, or misclassification rate are used to evaluate how well a split increases the purity or homogeneity of class labels. The split that minimizes impurity is selected.
+
+8. Pruning
+
+After building a classification tree, it may be pruned to reduce overfitting. Pruning involves removing nodes that do not significantly improve the tree's performance on a validation dataset.
+
+9. Visualization
+
+Classification trees can be visualized graphically, making it easy to interpret and understand the model's decision-making process.
+
+10. Ensemble Methods
+
+Classification trees are often used as building blocks in ensemble methods like Random Forests and Gradient Boosting, which combine multiple trees to improve predictive accuracy and reduce overfitting.
+
+11. Advantages
+
+Classification trees are interpretable, and their decision-making process is easy to understand. They can capture complex decision boundaries and interactions between features.
+
+12. Limitations
+
+They can be prone to overfitting, especially if the tree is allowed to grow deep. Single trees may not generalize well on certain types of data. Ensembling methods can mitigate these limitations.
+
+Classification trees are widely used in various domains, including healthcare, finance, and natural language processing, for tasks such as spam email detection, disease diagnosis, and sentiment analysis. Proper tuning of hyperparameters and consideration of potential overfitting are essential when working with classification trees.
+--></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -842,10 +867,10 @@ Test accuracy: 0.8776
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-splitting">Binary splitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopping-criteria">Stopping criteria</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iris-dataset">Iris dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mnist">MNIST</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-conditions">Splitting conditions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chatgpt-suggestions">ChatGPT suggestions</a></li>
 </ul>
   </nav></div>
 
