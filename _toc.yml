@@ -79,8 +79,8 @@ parts:
 
       - file: decision_trees/decision_tree
         sections:
-          - file: decision_trees/classification
-          - file: decision_trees/regression
+          - file: decision_trees/overview
+          # - file: decision_trees/regression
           - file: decision_trees/impurity
           - file: decision_trees/pruning
 
