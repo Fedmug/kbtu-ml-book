@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -561,9 +562,9 @@ document.write(`
 \]</div>
 <p>In particular, they took</p>
 <div class="math notranslate nohighlight" id="equation-glorot-init">
-<span class="eqno">(37)<a class="headerlink" href="#equation-glorot-init" title="Permalink to this equation">#</a></span>\[    w_{ij} \sim U\bigg[-\sqrt{\frac 6{n_{\mathrm{in}} + n_{\mathrm{out}}}}, \sqrt{\frac 6{n_{\mathrm{in}} + n_{\mathrm{out}}}}\bigg]\]</div>
+<span class="eqno">(39)<a class="headerlink" href="#equation-glorot-init" title="Permalink to this equation">#</a></span>\[    w_{ij} \sim U\bigg[-\sqrt{\frac 6{n_{\mathrm{in}} + n_{\mathrm{out}}}}, \sqrt{\frac 6{n_{\mathrm{in}} + n_{\mathrm{out}}}}\bigg]\]</div>
 <p><strong>Q.</strong> Why so strange numbers?</p>
-<p>Initialization <a class="reference internal" href="#equation-glorot-init">(37)</a> suits well if activation functions have symmetric range (e.g., <span class="math notranslate nohighlight">\(\psi(x) = \tanh(x)\)</span>). For ReLU activation <span id="id3">[<a class="reference internal" href="../bibliography.html#id11" title="Kaiming He, X. Zhang, Shaoqing Ren, and Jian Sun. Delving deep into rectifiers: surpassing human-level performance on imagenet classification. 2015 IEEE International Conference on Computer Vision (ICCV), pages 1026-1034, 2015. URL: https://api.semanticscholar.org/CorpusID:13740328.">He <em>et al.</em>, 2015</a>]</span> suggests</p>
+<p>Initialization <a class="reference internal" href="#equation-glorot-init">(39)</a> suits well if activation functions have symmetric range (e.g., <span class="math notranslate nohighlight">\(\psi(x) = \tanh(x)\)</span>). For ReLU activation <span id="id3">[<a class="reference internal" href="../bibliography.html#id11" title="Kaiming He, X. Zhang, Shaoqing Ren, and Jian Sun. Delving deep into rectifiers: surpassing human-level performance on imagenet classification. 2015 IEEE International Conference on Computer Vision (ICCV), pages 1026-1034, 2015. URL: https://api.semanticscholar.org/CorpusID:13740328.">He <em>et al.</em>, 2015</a>]</span> suggests</p>
 <div class="math notranslate nohighlight">
 \[
     w_{ij} \sim \mathcal N\Big(0, \frac 2{n_{\mathrm{in}}}\Big).

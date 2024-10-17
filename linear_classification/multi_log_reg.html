@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -565,7 +566,7 @@ k = 1, \ldots, K.
 <h2>Loss function<a class="headerlink" href="#loss-function" title="Permalink to this heading">#</a></h2>
 <p>The optimal parameters <span class="math notranslate nohighlight">\(\boldsymbol W\)</span> are solutions of the following optimization problem:</p>
 <div class="math notranslate nohighlight" id="equation-multi-log-reg-opt">
-<span class="eqno">(28)<a class="headerlink" href="#equation-multi-log-reg-opt" title="Permalink to this equation">#</a></span>\[\mathcal L (\boldsymbol W) = \sum\limits_{i=1}^n  \bigg(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{y_i} -\log\Big(\sum\limits_{k=1}^K \exp(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{k})\Big)\bigg) \to \max\limits_{\boldsymbol w_{1}, \ldots, \boldsymbol w_{K}}\]</div>
+<span class="eqno">(30)<a class="headerlink" href="#equation-multi-log-reg-opt" title="Permalink to this equation">#</a></span>\[\mathcal L (\boldsymbol W) = \sum\limits_{i=1}^n  \bigg(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{y_i} -\log\Big(\sum\limits_{k=1}^K \exp(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{k})\Big)\bigg) \to \max\limits_{\boldsymbol w_{1}, \ldots, \boldsymbol w_{K}}\]</div>
 <p>If the targets <span class="math notranslate nohighlight">\(y_k\)</span> are one-hot encoded, then they from a matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -577,10 +578,10 @@ k = 1, \ldots, K.
     \quad
     y_{ik} \geqslant 0, \quad \sum\limits_{k=1}^K y_{ik} = 1.
 \end{split}\]</div>
-<p>Accordingly, the loss function <a class="reference internal" href="#equation-multi-log-reg-opt">(28)</a> can be written as</p>
+<p>Accordingly, the loss function <a class="reference internal" href="#equation-multi-log-reg-opt">(30)</a> can be written as</p>
 <div class="math notranslate nohighlight" id="equation-multi-log-reg-loss">
-<span class="eqno">(29)<a class="headerlink" href="#equation-multi-log-reg-loss" title="Permalink to this equation">#</a></span>\[\mathcal L (\boldsymbol W) = \sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik}\log\bigg(\frac{\exp(\boldsymbol x_i^\mathsf{T}\boldsymbol w_k)}{\sum\limits_{1 \leqslant k \leqslant K}\exp(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{k})}\bigg) =  \sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik} \log \widehat y_{ik},\]</div>
-<p>and this is generally the cross-entropy loss <a class="reference internal" href="../supervised/sl_types.html#equation-cross-entropy">(5)</a>, taken with opposite sign.</p>
+<span class="eqno">(31)<a class="headerlink" href="#equation-multi-log-reg-loss" title="Permalink to this equation">#</a></span>\[\mathcal L (\boldsymbol W) = \sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik}\log\bigg(\frac{\exp(\boldsymbol x_i^\mathsf{T}\boldsymbol w_k)}{\sum\limits_{1 \leqslant k \leqslant K}\exp(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{k})}\bigg) =  \sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik} \log \widehat y_{ik},\]</div>
+<p>and this is generally the cross-entropy loss <a class="reference internal" href="../supervised/sl_types.html#equation-cross-entropy">(7)</a>, taken with opposite sign.</p>
 <p>Regularized version:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -754,7 +755,7 @@ Please also refer to the documentation for alternative solver options:
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Denote <span class="math notranslate nohighlight">\(\boldsymbol{\widehat Y} = (\widehat y_{ik}) = \mathrm{Softmax}(\boldsymbol {XW})\)</span> (softmax is applied to each row). Rewrite the loss function <a class="reference internal" href="#equation-multi-log-reg-loss">(29)</a> in matrix form.</p></li>
+<li><p>Denote <span class="math notranslate nohighlight">\(\boldsymbol{\widehat Y} = (\widehat y_{ik}) = \mathrm{Softmax}(\boldsymbol {XW})\)</span> (softmax is applied to each row). Rewrite the loss function <a class="reference internal" href="#equation-multi-log-reg-loss">(31)</a> in matrix form.</p></li>
 </ol>
 <!--
 ```{admonition} Answer

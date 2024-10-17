@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -537,7 +538,7 @@ document.write(`
     \mathcal L(\boldsymbol w) = \Vert \boldsymbol y - \boldsymbol{Xw}\Vert_2^2 + C\Vert \boldsymbol w \Vert_2^2, \quad C&gt;0.
 \]</div>
 <p>To find the optimal weights, one need to solve the equation <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol w} \mathcal L(\boldsymbol w) = \boldsymbol 0\)</span>.</p>
-<p>Since <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol w}(\Vert \boldsymbol w \Vert_2^2) = 2\boldsymbol w\)</span>, we receive one additional term to <a class="reference internal" href="multiple.html#equation-lin-reg-grad">(20)</a>:</p>
+<p>Since <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol w}(\Vert \boldsymbol w \Vert_2^2) = 2\boldsymbol w\)</span>, we receive one additional term to <a class="reference internal" href="multiple.html#equation-lin-reg-grad">(22)</a>:</p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol X^\top \boldsymbol X\boldsymbol w - \boldsymbol X^\top \boldsymbol y + C\boldsymbol w = \boldsymbol 0.
@@ -547,7 +548,7 @@ document.write(`
 \[
     \widehat{\boldsymbol w} = (\boldsymbol X^\top \boldsymbol X + C\boldsymbol I)^{-1} \boldsymbol X^\top \boldsymbol y.
 \]</div>
-<p>Note that this is equal to <a class="reference internal" href="multiple.html#equation-lin-reg-solution">(21)</a> if <span class="math notranslate nohighlight">\(C=0\)</span>. Ridge regression also allows to avoid inverting of a singular matrix.</p>
+<p>Note that this is equal to <a class="reference internal" href="multiple.html#equation-lin-reg-solution">(23)</a> if <span class="math notranslate nohighlight">\(C=0\)</span>. Ridge regression also allows to avoid inverting of a singular matrix.</p>
 <p>Once again take the Boston dataset, and try ridge regression on it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1547,7 +1548,7 @@ if (typeof version == 'undefined') {
 \]</div>
 <p>and the optimal weights <span class="math notranslate nohighlight">\(\widehat w\)</span> are the solution of the optimization task</p>
 <div class="math notranslate nohighlight" id="equation-lasso-opt">
-<span class="eqno">(23)<a class="headerlink" href="#equation-lasso-opt" title="Permalink to this equation">#</a></span>\[\Vert \boldsymbol y - \boldsymbol{Xw}\Vert_2^2 + C\Vert \boldsymbol w \Vert_1 \to \min\limits_{\boldsymbol w}.\]</div>
+<span class="eqno">(25)<a class="headerlink" href="#equation-lasso-opt" title="Permalink to this equation">#</a></span>\[\Vert \boldsymbol y - \boldsymbol{Xw}\Vert_2^2 + C\Vert \boldsymbol w \Vert_1 \to \min\limits_{\boldsymbol w}.\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>LASSO stands for <strong>L</strong>east <strong>A</strong>bsolute <strong>S</strong>hrinkage and <strong>S</strong>election <strong>O</strong>perator</p>
@@ -1562,7 +1563,7 @@ if (typeof version == 'undefined') {
 <li><p>sparse solution</p></li>
 <li><p>feature selection</p></li>
 </ul>
-<p>However, there is no closed-form solution of <a class="reference internal" href="#equation-lasso-opt">(23)</a>.</p>
+<p>However, there is no closed-form solution of <a class="reference internal" href="#equation-lasso-opt">(25)</a>.</p>
 <p><strong>Empirical recipe</strong> to provide better prediction performance:</p>
 <ul class="simple">
 <li><p>first, perform variable selection using LASSO;</p></li>

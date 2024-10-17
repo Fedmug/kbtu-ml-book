@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -1671,7 +1672,7 @@ if (typeof version == 'undefined') {
 </ol>
 <p>Finally, <strong>TF-IDF</strong> of a term <span class="math notranslate nohighlight">\(t\)</span> and a documnent <span class="math notranslate nohighlight">\(d\)</span> from collection <span class="math notranslate nohighlight">\(D\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-tf-idf">
-<span class="eqno">(1)<a class="headerlink" href="#equation-tf-idf" title="Permalink to this equation">#</a></span>\[    \text{TF-IDF}(t, d, D) = \mathrm{TF}(t, d) \times \mathrm{IDF}(t,D) = \frac{n_{td}}{\sum\limits_{t' \in d} n_{t'd}} \cdot \log \frac{\vert D \vert}{n_t}.\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-tf-idf" title="Permalink to this equation">#</a></span>\[    \text{TF-IDF}(t, d, D) = \mathrm{TF}(t, d) \times \mathrm{IDF}(t,D) = \frac{n_{td}}{\sum\limits_{t' \in d} n_{t'd}} \cdot \log \frac{\vert D \vert}{n_t}.\]</div>
 <p><span style="display:none" id="q_tfidf">W3sicXVlc3Rpb24iOiAiRmluZCBURi1JREYgdG9yIHRoZSB3b3JkIFwibGVhcm5pbmdcIiBpbiB0aGUgbGFzdCBzZW50ZW5jZS4gUm91bmQgeW91ciBhbnN3ZXIgdXAgdG8gNSBkZWNpbWFsIHBsYWNlcy4iLCAidHlwZSI6ICJudW1lcmljIiwgImFuc3dlcnMiOiBbeyJ0eXBlIjogInJhbmdlIiwgInJhbmdlIjogWzAuMTU5ODksIDAuMTU5ODkxXSwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiQ29ycmVjdCEifSwgeyJ0eXBlIjogInJhbmdlIiwgInJhbmdlIjogWy0xZSszMDAsIC0xZS0xNV0sICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJURi1JREYgY2Fubm90IGJlIG5lZ2F0aXZlISJ9LCB7InR5cGUiOiAiZGVmYXVsdCIsICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJJbmNvcnJlY3QhIn1dfV0=</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -2930,9 +2931,9 @@ if (typeof version == 'undefined') {
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Which <a class="reference internal" href="#bow-flaws"><span class="std std-ref">disadvantages of BoW model</span></a> could be overcomed by applying TF-IDF?</p></li>
-<li><p>Can TF-IDF <a class="reference internal" href="#equation-tf-idf">(1)</a> be negative?</p></li>
-<li><p>TF-IDF calculated by <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> seems to be different from that of given by <a class="reference internal" href="#equation-tf-idf">(1)</a>. Why?</p></li>
-<li><p>Suppose that a term <span class="math notranslate nohighlight">\(t\)</span> is present in each document exactly once. What is the value of <span class="math notranslate nohighlight">\(\text{TF-IDF}(t, d)\)</span> for any document <span class="math notranslate nohighlight">\(d\)</span>? What if we use some modifications of <a class="reference internal" href="#equation-tf-idf">(1)</a>?</p></li>
+<li><p>Can TF-IDF <a class="reference internal" href="#equation-tf-idf">(3)</a> be negative?</p></li>
+<li><p>TF-IDF calculated by <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> seems to be different from that of given by <a class="reference internal" href="#equation-tf-idf">(3)</a>. Why?</p></li>
+<li><p>Suppose that a term <span class="math notranslate nohighlight">\(t\)</span> is present in each document exactly once. What is the value of <span class="math notranslate nohighlight">\(\text{TF-IDF}(t, d)\)</span> for any document <span class="math notranslate nohighlight">\(d\)</span>? What if we use some modifications of <a class="reference internal" href="#equation-tf-idf">(3)</a>?</p></li>
 </ol>
 </section>
 </section>

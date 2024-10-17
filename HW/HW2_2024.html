@@ -1,0 +1,1321 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>HW2 &#8212; ML book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'HW/HW2_2024';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deep Learning 2024" href="../courses/DL.html" />
+    <link rel="prev" title="HW1" href="HW1_2024.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    ML Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="HW1_2024.html">HW1</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">HW2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../courses/ML_2024.html">ML 2024 (MS)</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="HW1_2024_MS.html">HW1</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro/intro_to_ML.html">Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro/definition.html">Definitions of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/applications.html">Applications of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/ml_types.html">Types of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/python.html">Python libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/data.html">Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/tabular.html">Tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/images.html">Image data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/text.html">Text data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/datasets.html">Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supervised/sl.html">Supervised learning</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/sl_types.html">Types of supervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/model_selection.html">Model selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/knn.html">k-Nearest Neighbors</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lin_reg/linear_regression.html">Linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lin_reg/simple.html">Simple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_reg/polynomial.html">Polynomial regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_reg/multiple.html">Multiple linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_reg/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_reg/numeric_opt.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lin_reg/general.html">General linear model</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_classification/classification.html">Linear classification</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../linear_classification/log_reg.html">Logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_classification/multi_log_reg.html">Multinomial logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_classification/num_opt_log_reg.html">Numeric optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_classification/svm.html">Support Vector Machines (SVM)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../eval_metrics/metrics.html">Evaluation Metrics</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../eval_metrics/classification.html">Classification Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eval_metrics/ROC-AUC.html">ROC-AUC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eval_metrics/regression.html">Regression metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eval_metrics/cross_val.html">Cross-validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eval_metrics/hyperparameters.html">Hyperparameters tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../probabilistic_models/probabilistic.html">Probabilistic models</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../probabilistic_models/bayesian_inference.html">Bayesian inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probabilistic_models/lin_reg_prob.html">Probabilistic models for linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probabilistic_models/log_reg_prob.html">Probabilistic models for logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probabilistic_models/LDA.html">Linear Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probabilistic_models/QDA.html">Quadratic Discriminant Analysis (QDA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../probabilistic_models/naive_bayes.html">Naive Bayes classifier</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decision_trees/decision_tree.html">Decision Trees</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decision_trees/overview.html">Classification and regression trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decision_trees/impurity.html">Impurity and information criterions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decision_trees/pruning.html">Tree pruning</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ensembling/ensemble.html">Ensembling</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensembling/voting_stacking_blending.html">Voting, stacking and blending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensembling/bagging.html">Bagging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensembling/random_forest.html">Random forests</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gradient_boosting/gradient_boosting.html">Gradient boosting</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/boosting.html">Boosting and additive modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/generic_gb.html">Generic gradient boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/adaboost.html">AdaBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/xgboost.html">XGBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gradient_boosting/catboost.html">CatBoost</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/k_means.html">K-means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/hierarchic_clustering.html">Hierarchical Clustering</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/regularization.html">Regularization in MLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/optimization_dl.html">Optimization in DL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/MLP_notebook.html">Multilayer Perceptron (MLP)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cnn/cnn.html">CNN</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/convolutions_2d.html">Convolution of matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/convolutions_3d.html">Convolutions of tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/pooling.html">Pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/back_prop.html">Back propagation in CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/architectures.html">Architectures of CNN</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rnn/sequential.html">Sequential NNs</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rnn/vanilla_rnn.html">Vanilla RNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rnn/lstm.html">LSTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rnn/gru.html">GRU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rnn/attention.html">Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rnn/transformers.html">Transformers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gm/generative.html">Generative models</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gm/autoencoders.html">Autoencoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gm/vae.html">Variational autoencoders (VAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gm/gan.html">Ganerative adversarial networks (GAN)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl/RL.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl/basics.html">RL basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multi-armed bandits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov Decision Process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/q_learning.html">Q-learning</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python for ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/python_basics.html">Python Basics</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/basics/basic_types.html">Basic Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/basics/variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/basics/control_flow.html">Control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/basics/functions_strings.html">Functions</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python/basics/classes.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/basics/ISLP_lab.html">ISLP Lab</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python/numpy.html">NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/visual.html">Data visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Math for ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/vectors.html">Vectors</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/inverse.html">Inverse matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/rank.html">Rank of a matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/projections.html">Orthogonal projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/determinant.html">Determinants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/eig.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/diagonalize.html">Diagonalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/positive_def.html">Positive definite matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/matrix_norms.html">Matrix norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/SVD.html">Singular Value Decomposition (SVD)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/derivative.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/integral.html">Integral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/optimization.html">Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/independence.html">Independence and random vectors</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notation.html">Notation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">ML resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/HW/HW2_2024.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>HW2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quadratic-oracle">Quadratic oracle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-1-1-point">Task 6.1 (1 point)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-oracle">Linear regression oracle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-2-1-5-points">Task 6.2 (1.5 points)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-oracle">Logistic regression oracle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-3-1-5-point">Task 6.3 (1.5 point)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent">Gradient descent</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-4-1-point">Task 6.4 (1 point)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-5-1-point">Task 6.5 (1 point)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gd-for-linear-regression">GD for linear regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-6-0-5-points">Task 6.6 (0.5 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gd-for-logistic-regression">GD for logistic regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-7-0-5-points">Task 6.7 (0.5 points)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">Newton’s method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-8-1-point">Task 6.8 (1 point)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-9-1-point">Task 6.9 (1 point)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gd-vs-newton">GD vs Newton</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-10-1-point">Task 6.10 (1 point)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hw2">
+<span id="hw2-2024"></span><h1>HW2<a class="headerlink" href="#hw2" title="Permalink to this heading">#</a></h1>
+<p><strong>Deadline:</strong> 03.11.2024 23:59 (GMT+5).</p>
+<p>In this task you are suggested to implement gradient descent and Newton’s optimization methods, and investigate their performance for three types of functions:</p>
+<ul class="simple">
+<li><p>quadratic function</p></li>
+<li><p>loss function of linear regression</p></li>
+<li><p>loss function of logistic regression</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">BaseSmoothOracle</span></code> is an abstract class for objective function <span class="math notranslate nohighlight">\(f\)</span> (<strong>oracle</strong>). Each concrete oracle must inherit this class, implementing four methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">func(x)</span></code> calculates <span class="math notranslate nohighlight">\(f(\boldsymbol x)\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grad(x)</span></code> calculates <span class="math notranslate nohighlight">\(\nabla f(\boldsymbol x)\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hess(x)</span></code> calculates <span class="math notranslate nohighlight">\(\nabla^2 f(\boldsymbol x)\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_opt(x)</span></code> calculates point of minimum by direct formula (works only for quadratic and linear regression oracles)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BaseSmoothOracle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for implementation of oracles.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the value of function at point x.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Func oracle is not implemented.&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the gradient at point x.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Grad oracle is not implemented.&#39;</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">hess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the Hessian matrix at point x.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Hessian oracle is not implemented.&#39;</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">get_opt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the point x at which minimum is attained</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;True solution is unavailable.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="quadratic-oracle">
+<h2>Quadratic oracle<a class="headerlink" href="#quadratic-oracle" title="Permalink to this heading">#</a></h2>
+<section id="task-6-1-1-point">
+<h3>Task 6.1 (1 point)<a class="headerlink" href="#task-6-1-1-point" title="Permalink to this heading">#</a></h3>
+<p>Implement quadratic oracle</p>
+<div class="math notranslate nohighlight" id="equation-quadratic-oracle">
+<span class="eqno">(1)<a class="headerlink" href="#equation-quadratic-oracle" title="Permalink to this equation">#</a></span>\[    f(\boldsymbol x) = \frac 12 \boldsymbol x^\mathsf{T} \boldsymbol{Ax} - \boldsymbol b^\mathsf{T} \boldsymbol x, \quad \boldsymbol A^\mathsf{T}  = \boldsymbol A \in \mathbb R^{n\times n}, \quad \boldsymbol b\in\mathbb R^n\]</div>
+<!-- Let $\boldsymbol A$ be a symmetric positive definite matrix. Solve the optimization task
+
+$$
+    f(\boldsymbol x) = \frac 12 \boldsymbol x^\mathsf{T} \boldsymbol{Ax} - \boldsymbol b^\mathsf{T}\boldsymbol x \to \min\limits_{\boldsymbol x \in \mathbb R^n}
+$$
+
+analytically. Namely, -->
+<p>Namely,</p>
+<ul class="simple">
+<li><p>find solution <span class="math notranslate nohighlight">\(\boldsymbol x_*\)</span> of the equation <span class="math notranslate nohighlight">\(\nabla f(\boldsymbol x) = \boldsymbol 0\)</span></p></li>
+<li><p>find hessian <span class="math notranslate nohighlight">\(\nabla^2 f\)</span> and show that <span class="math notranslate nohighlight">\(\nabla^2 f(\boldsymbol x_*)\)</span> is positive definite</p></li>
+<li><p>prove that <span class="math notranslate nohighlight">\(\boldsymbol x_*\)</span> is the point of global minimum of <span class="math notranslate nohighlight">\(f\)</span></p></li>
+<li><p>finally, fill the gaps in cell below</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">class</span> <span class="nc">QuadraticOracle</span><span class="p">(</span><span class="n">BaseSmoothOracle</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Oracle for quadratic function:</span>
+<span class="sd">       func(x) = 1/2 x^TAx - b^Tx.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;A should be a symmetric matrix.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
+
+    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">hess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">get_opt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot levels of the quadraric oracle in 2-dimensional case using the following function:</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+</section>
+</section>
+<section id="linear-regression-oracle">
+<h2>Linear regression oracle<a class="headerlink" href="#linear-regression-oracle" title="Permalink to this heading">#</a></h2>
+<section id="task-6-2-1-5-points">
+<h3>Task 6.2 (1.5 points)<a class="headerlink" href="#task-6-2-1-5-points" title="Permalink to this heading">#</a></h3>
+<p>Implement linear regression oracle</p>
+<div class="math notranslate nohighlight">
+\[
+    f(\boldsymbol x) = \frac 1m \Vert \boldsymbol{Ax} - \boldsymbol b\Vert_2^2, \quad \boldsymbol A \in \mathbb R^{m\times n}, \quad \boldsymbol b \in \mathbb R^n.
+\]</div>
+<p>Namely,</p>
+<ul class="simple">
+<li><p>find <span class="math notranslate nohighlight">\(\nabla f(\boldsymbol x)\)</span></p></li>
+<li><p>find <span class="math notranslate nohighlight">\(\nabla^2 f(\boldsymbol x)\)</span></p></li>
+<li><p>find analytic solution of the minimization problem <span class="math notranslate nohighlight">\(f(\boldsymbol x) \to \min\limits_{\boldsymbol x}\)</span></p></li>
+<li><p>finally, fill the gaps in the next cell</p></li>
+</ul>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LinRegOracle</span><span class="p">(</span><span class="n">BaseSmoothOracle</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Oracle for linear regression:</span>
+<span class="sd">       func(x) = 1/m ||Ax - b||^2.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
+
+    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">hess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">get_opt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="logistic-regression-oracle">
+<h2>Logistic regression oracle<a class="headerlink" href="#logistic-regression-oracle" title="Permalink to this heading">#</a></h2>
+<section id="task-6-3-1-5-point">
+<h3>Task 6.3 (1.5 point)<a class="headerlink" href="#task-6-3-1-5-point" title="Permalink to this heading">#</a></h3>
+<p>Implement logistic regression oracle</p>
+<div class="math notranslate nohighlight" id="equation-log-reg-oracle">
+<span class="eqno">(2)<a class="headerlink" href="#equation-log-reg-oracle" title="Permalink to this equation">#</a></span>\[    f(\boldsymbol x) = \frac 1m \sum_{i=1}^m \log\big(1 + \exp(-b_i\boldsymbol a_i^\mathsf{T} \boldsymbol x)\big) + \frac C2\Vert \boldsymbol x\Vert_2^2\]</div>
+<p>Namely, denote</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol A = \begin{pmatrix} a_1^\mathsf{T} \\
+    a_2^\mathsf{T} \\
+    \vdots\\
+    a_m^\mathsf{T}
+    \end{pmatrix} \in \mathbb R^{m\times n}, \quad
+    \boldsymbol b = \begin{pmatrix} b_1 \\
+    b_2\\
+    \vdots\\
+    b_m
+    \end{pmatrix}\in \mathbb R^m,
+    \quad
+    \boldsymbol x = \begin{pmatrix} x_1 \\
+    x_2\\
+    \vdots\\
+    x_n
+    \end{pmatrix}\in \mathbb R^n,
+\end{split}\]</div>
+<p>and then</p>
+<ul class="simple">
+<li><p>find the gradient <span class="math notranslate nohighlight">\(\nabla f(\boldsymbol x)\)</span> and hessian <span class="math notranslate nohighlight">\(\nabla^2 f(\boldsymbol x)\)</span> of logistic regression oracle <a class="reference internal" href="#equation-log-reg-oracle">(2)</a> in matrix-vector form</p></li>
+<li><p>fill the gaps in the cell below</p></li>
+</ul>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">log_loss</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">expit</span>
+
+<span class="k">class</span> <span class="nc">LogRegOracle</span><span class="p">(</span><span class="n">BaseSmoothOracle</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Oracle for logistic regression.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">regcoef</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">C</span> <span class="o">=</span> <span class="n">regcoef</span>
+
+    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">hess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span> 
+    
+    <span class="k">def</span> <span class="nf">get_opt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Since there is no analytic solution for the optimal weights of logistic regression, </span>
+<span class="sd">        here we have to cheat a bit</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">LR</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">LR</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">LR</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="gradient-descent">
+<h2>Gradient descent<a class="headerlink" href="#gradient-descent" title="Permalink to this heading">#</a></h2>
+<p>Given a starting point <span class="math notranslate nohighlight">\(\boldsymbol x_0 \in\mathbb R^n\)</span> and learning rate <span class="math notranslate nohighlight">\(\eta &gt; 0\)</span>, iteratively calculate</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol x_{k+1} = \boldsymbol x_k - \eta \nabla f(\boldsymbol x_k), \quad k = 0, 1,\ldots
+\]</div>
+<p>The process should stop when either <span class="math notranslate nohighlight">\(k = \mathrm{max\_iter}\)</span> or</p>
+<div class="math notranslate nohighlight">
+\[
+\Vert \nabla f(\boldsymbol x_k)\Vert_2^2 \leqslant \varepsilon \Vert \nabla f(\boldsymbol x_0)\Vert_2^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span> is tolerance.</p>
+<section id="task-6-4-1-point">
+<h3>Task 6.4 (1 point)<a class="headerlink" href="#task-6-4-1-point" title="Permalink to this heading">#</a></h3>
+<p>Complete the implementation of gradient descent algorithm.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="k">def</span> <span class="nf">gradient_descent</span><span class="p">(</span><span class="n">oracle</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+                     <span class="n">trace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gradient descent optimization method.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    oracle : BaseSmoothOracle-descendant object</span>
+<span class="sd">        Oracle with .func(), .grad() and .hess() methods implemented for computing</span>
+<span class="sd">        function value, its gradient and Hessian respectively.</span>
+<span class="sd">    x_0 : np.array</span>
+<span class="sd">        Starting point for optimization algorithm.</span>
+<span class="sd">    learning_rate : float</span>
+<span class="sd">        Learning rate.</span>
+<span class="sd">    tolerance : float</span>
+<span class="sd">        Epsilon value for stopping criterion.</span>
+<span class="sd">    max_iter : int</span>
+<span class="sd">        Maximum number of iterations.</span>
+<span class="sd">    trace : bool</span>
+<span class="sd">        If True, the progress information is appended into history dictionary during training.</span>
+<span class="sd">        Otherwise None is returned instead of history.</span>
+<span class="sd">    display : bool</span>
+<span class="sd">        If True, debug information is displayed during optimization.</span>
+<span class="sd">        Printing format and is up to a student and is not checked in any way.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    x_star : np.array</span>
+<span class="sd">        The point found by the optimization procedure</span>
+<span class="sd">    message : string</span>
+<span class="sd">        &quot;success&quot; or the description of error:</span>
+<span class="sd">            - &#39;iterations_exceeded&#39;: if after max_iter iterations of the method x_k still doesn&#39;t satisfy</span>
+<span class="sd">                the stopping criterion.</span>
+<span class="sd">            - &#39;computational_error&#39;: in case of getting Infinity or None value during the computations.</span>
+<span class="sd">    history : dictionary of lists or None</span>
+<span class="sd">        Dictionary containing the progress information or None if trace=False.</span>
+<span class="sd">        Dictionary has to be organized as follows:</span>
+<span class="sd">            - history[&#39;time&#39;] : list of floats, containing time in seconds passed from the start of the method</span>
+<span class="sd">            - history[&#39;func&#39;] : list of function values f(x_k) on every step of the algorithm</span>
+<span class="sd">            - history[&#39;grad_norm&#39;] : list of values Euclidian norms ||g(x_k)|| of the gradient on every step of the algorithm</span>
+<span class="sd">            - history[&#39;x&#39;] : list of np.arrays, containing the trajectory of the algorithm. ONLY STORE IF x.size &lt;= 2</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt; oracle = QuadraticOracle(np.eye(5), np.arange(5))</span>
+<span class="sd">    &gt;&gt; x_opt, message, history = gradient_descent(oracle, np.zeros(5))</span>
+<span class="sd">    &gt;&gt; print(&#39;Found optimal point: {}&#39;.format(x_opt))</span>
+<span class="sd">       Found optimal point: [ 0.  1.  2.  3.  4.]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="k">if</span> <span class="n">trace</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">x_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x_0</span><span class="p">)</span>
+    <span class="n">grad_at_x_0</span> <span class="o">=</span> <span class="n">oracle</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">x_0</span><span class="p">)</span>
+
+    <span class="n">INF</span> <span class="o">=</span> <span class="mf">1e100</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>     
+        <span class="n">grad_at_x_k</span> <span class="o">=</span> <span class="n">oracle</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">x_k</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_k</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">INF</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">grad_at_x_k</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">INF</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">x_k</span><span class="p">,</span> <span class="s1">&#39;computational_error&#39;</span><span class="p">,</span> <span class="n">history</span>
+
+        <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+            <span class="n">history</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span><span class="o">.</span><span class="n">microseconds</span> <span class="o">*</span> <span class="mf">1e-6</span><span class="p">)</span>
+            <span class="n">history</span><span class="p">[</span><span class="s1">&#39;func&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oracle</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">x_k</span><span class="p">))</span>
+            <span class="n">history</span><span class="p">[</span><span class="s1">&#39;grad_norm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">grad_at_x_k</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">x_k</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">history</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_k</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">display</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;iteration </span><span class="si">{}</span><span class="s2">: |x_k-x_0| = </span><span class="si">{}</span><span class="s2">, f(x_k) = </span><span class="si">{}</span><span class="s2">, |grad(f(x_k))| = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">i</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x_k</span> <span class="o">-</span> <span class="n">x_0</span><span class="p">),</span> <span class="n">oracle</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">x_k</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">grad_at_x_k</span><span class="p">))</span>
+            <span class="p">)</span>
+
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now it’s try to test gradient descent algorithm on different tasks. Here is some auxiliary code for visualization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">colorsys</span>
+
+<span class="k">def</span> <span class="nf">get_color_array</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+    <span class="n">HSV_tuples</span> <span class="o">=</span> <span class="p">[(</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">size</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span>
+    <span class="n">RGB_tuples</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="n">HSV_tuples</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">RGB_tuples</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_2d</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">oracle</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">x_opt</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">n_levels</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylims</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">bound</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">history</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">history</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][:</span><span class="n">bound</span><span class="p">]</span>
+    <span class="n">hist_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">hist_x</span> <span class="o">-</span> <span class="n">x_opt</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;grad_norm&#39;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;grad_norm&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Gradients/residuals norm&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Iteration&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Residuals&#39;</span><span class="p">,</span> <span class="s1">&#39;Gradients&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">xlims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">x_range</span> <span class="o">=</span> <span class="n">xlims</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_opt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">scale</span><span class="p">,</span> <span class="n">x_opt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">scale</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">ylims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">y_range</span> <span class="o">=</span> <span class="n">ylims</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">y_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_opt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">scale</span><span class="p">,</span> <span class="n">x_opt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">scale</span><span class="p">]</span>
+    <span class="n">func_opt</span> <span class="o">=</span> <span class="n">oracle</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">x_opt</span><span class="p">)</span>
+    <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="n">func_opt</span> <span class="o">+</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">/</span> <span class="n">n_levels</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">n_levels</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+    <span class="c1"># sizes = np.minimum(5 * float(hist_x.shape[1]) / (np.arange(1, hist_x.shape[1] + 1)), 20)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">hist_x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hist_x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">get_color_array</span><span class="p">(</span><span class="n">hist_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hist_x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hist_x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="c1"># plt.plot(hist_x[0], hist_x[1], c=&#39;r&#39;, linewidth=3)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_opt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_opt</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">plot_levels</span><span class="p">(</span><span class="n">oracle</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">xrange</span><span class="o">=</span><span class="n">x_range</span><span class="p">,</span> <span class="n">yrange</span><span class="o">=</span><span class="n">y_range</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trajectory&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">xlims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xlims</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ylims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ylims</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">test_2d</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">oracle</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylims</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">x_opt</span> <span class="o">=</span> <span class="n">oracle</span><span class="o">.</span><span class="n">get_opt</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;gd&#39;</span><span class="p">:</span>
+        <span class="n">x_star</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">history</span> <span class="o">=</span> <span class="n">gradient_descent</span><span class="p">(</span>
+            <span class="n">oracle</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">tol</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;newton&#39;</span><span class="p">:</span>
+        <span class="n">x_star</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">history</span> <span class="o">=</span> <span class="n">newton</span><span class="p">(</span>
+            <span class="n">oracle</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">tol</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown error&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;grad_norm&#39;</span><span class="p">]),</span> <span class="s2">&quot;iterations&quot;</span><span class="p">)</span>
+    <span class="n">plot_2d</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">oracle</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">x_opt</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="s1">&#39;lr = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lr</span><span class="p">),</span> <span class="n">xlims</span><span class="o">=</span><span class="n">xlims</span><span class="p">,</span> <span class="n">ylims</span><span class="o">=</span><span class="n">ylims</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">bound</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Take a simple quadratic function</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x, y) = 2x^2 + 4xy + 5 y^2
+\]</div>
+<p>which ovbiously has minimum at <span class="math notranslate nohighlight">\((0, 0)\)</span>. Now run gradient descent method with <span class="math notranslate nohighlight">\(\eta = 0.01\)</span>, starting from point <span class="math notranslate nohighlight">\((-2, -1)\)</span>:</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">q_oracle</span> <span class="o">=</span> <span class="n">QuadraticOracle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">test_2d</span><span class="p">(</span><span class="s2">&quot;gd&quot;</span><span class="p">,</span> <span class="n">q_oracle</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">]),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you did all correctly, gradient descent should converge here to optimal point. But this is not always the case:</p>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(\eta\)</span> is very small, convergence could be too slow</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(\eta\)</span> is very big, than gradient descent often diverges</p></li>
+</ul>
+</section>
+<section id="task-6-5-1-point">
+<h3>Task 6.5 (1 point)<a class="headerlink" href="#task-6-5-1-point" title="Permalink to this heading">#</a></h3>
+<p>Take previous quadratic oracle and try different learning rates and starting points. Find the smallest and the largest learning rates for which gradient descent is still convergent. Provide some characteristic plots. Also, plot a graph of required iterations versus <span class="math notranslate nohighlight">\(\eta\)</span>.</p>
+</section>
+<section id="gd-for-linear-regression">
+<h3>GD for linear regression<a class="headerlink" href="#gd-for-linear-regression" title="Permalink to this heading">#</a></h3>
+<p>Let’s try it for simple linear regression. Here is a toy example:</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">oracle</span> <span class="o">=</span> <span class="n">LinRegOracle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">test_2d</span><span class="p">(</span><span class="s2">&quot;gd&quot;</span><span class="p">,</span> <span class="n">oracle</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="task-6-6-0-5-points">
+<h3>Task 6.6 (0.5 points)<a class="headerlink" href="#task-6-6-0-5-points" title="Permalink to this heading">#</a></h3>
+<p>Apply gradient descent algorithm to simple linear regression trained on <code class="docutils literal notranslate"><span class="pre">boston</span></code> dataset. Take <code class="docutils literal notranslate"><span class="pre">lstat</span></code> as feature, <code class="docutils literal notranslate"><span class="pre">medv</span></code> as target. Provide some visualizations.</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">boston</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../datasets/ISLP/Boston.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gd-for-logistic-regression">
+<h3>GD for logistic regression<a class="headerlink" href="#gd-for-logistic-regression" title="Permalink to this heading">#</a></h3>
+<p>The targets must be from <span class="math notranslate nohighlight">\(\{-1, 1\}\)</span>. One more toy example:</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">oracle</span> <span class="o">=</span> <span class="n">LogRegOracle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">test_2d</span><span class="p">(</span><span class="s2">&quot;gd&quot;</span><span class="p">,</span> <span class="n">oracle</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="task-6-7-0-5-points">
+<h3>Task 6.7 (0.5 points)<a class="headerlink" href="#task-6-7-0-5-points" title="Permalink to this heading">#</a></h3>
+<p>Train simple logistic regression model on <code class="docutils literal notranslate"><span class="pre">breast_cancer</span></code> dataset using your gradient descent method. Take any feature from the dataset. Visualize the results.</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
+<span class="n">breast</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">breast</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+<span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="newton-s-method">
+<h2>Newton’s method<a class="headerlink" href="#newton-s-method" title="Permalink to this heading">#</a></h2>
+<p>Given a starting point <span class="math notranslate nohighlight">\(\boldsymbol x_0 \in\mathbb R^n\)</span> and learning rate <span class="math notranslate nohighlight">\(\eta &gt; 0\)</span>, iteratively calculate</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol x_{k+1} = \boldsymbol x_k - \eta \big(\nabla^2 f(\boldsymbol x_k)\big)^{-1} \nabla f(\boldsymbol x_k), \quad k = 0, 1,\ldots
+\]</div>
+<p>The process should stop when either <span class="math notranslate nohighlight">\(k = \mathrm{max\_iter}\)</span> or</p>
+<div class="math notranslate nohighlight">
+\[
+\Vert \nabla f(\boldsymbol x_k)\Vert_2^2 \leqslant \varepsilon \Vert \nabla f(\boldsymbol x_0)\Vert_2^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span> is tolerance.</p>
+<section id="task-6-8-1-point">
+<h3>Task 6.8 (1 point)<a class="headerlink" href="#task-6-8-1-point" title="Permalink to this heading">#</a></h3>
+<p>Complete the implementation of Newton’s method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span>
+
+<span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">oracle</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Newton&#39;s optimization method.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    oracle : BaseSmoothOracle-descendant object</span>
+<span class="sd">        Oracle with .func(), .grad() and .hess() methods implemented for computing</span>
+<span class="sd">        function value, its gradient and Hessian respectively. If the Hessian</span>
+<span class="sd">        returned by the oracle is not positive-definite method stops with message=&quot;newton_direction_error&quot;</span>
+<span class="sd">    x_0 : np.array</span>
+<span class="sd">        Starting point for optimization algorithm</span>
+<span class="sd">    learning_rate : float</span>
+<span class="sd">        Learning rate.</span>
+<span class="sd">    tolerance : float</span>
+<span class="sd">        Epsilon value for stopping criterion.</span>
+<span class="sd">    max_iter : int</span>
+<span class="sd">        Maximum number of iterations.</span>
+<span class="sd">    trace : bool</span>
+<span class="sd">        If True, the progress information is appended into history dictionary during training.</span>
+<span class="sd">        Otherwise None is returned instead of history.</span>
+<span class="sd">    display : bool</span>
+<span class="sd">        If True, debug information is displayed during optimization.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    x_star : np.array</span>
+<span class="sd">        The point found by the optimization procedure</span>
+<span class="sd">    message : string</span>
+<span class="sd">        &#39;success&#39; or the description of error:</span>
+<span class="sd">            - &#39;iterations_exceeded&#39;: if after max_iter iterations of the method x_k still doesn&#39;t satisfy</span>
+<span class="sd">                the stopping criterion.</span>
+<span class="sd">            - &#39;newton_direction_error&#39;: in case of failure of solving linear system with Hessian matrix (e.g. non-invertible matrix).</span>
+<span class="sd">            - &#39;computational_error&#39;: in case of getting Infinity or None value during the computations.</span>
+<span class="sd">    history : dictionary of lists or None</span>
+<span class="sd">        Dictionary containing the progress information or None if trace=False.</span>
+<span class="sd">        Dictionary has to be organized as follows:</span>
+<span class="sd">            - history[&#39;time&#39;] : list of floats, containing time passed from the start of the method</span>
+<span class="sd">            - history[&#39;func&#39;] : list of function values f(x_k) on every step of the algorithm</span>
+<span class="sd">            - history[&#39;grad_norm&#39;] : list of values Euclidian norms ||g(x_k)|| of the gradient on every step of the algorithm</span>
+<span class="sd">            - history[&#39;x&#39;] : list of np.arrays, containing the trajectory of the algorithm. ONLY STORE IF x.size &lt;= 2</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt; oracle = QuadraticOracle(np.eye(5), np.arange(5))</span>
+<span class="sd">    &gt;&gt; x_opt, message, history = newton(oracle, np.zeros(5), line_search_options={&#39;method&#39;: &#39;Constant&#39;, &#39;c&#39;: 1.0})</span>
+<span class="sd">    &gt;&gt; print(&#39;Found optimal point: {}&#39;.format(x_opt))</span>
+<span class="sd">       Found optimal point: [ 0.  1.  2.  3.  4.]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="k">if</span> <span class="n">trace</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">x_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x_0</span><span class="p">)</span>
+    <span class="n">grad_at_x_0</span> <span class="o">=</span> <span class="n">oracle</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">x_0</span><span class="p">)</span>
+
+    <span class="n">INF</span> <span class="o">=</span> <span class="mf">1e100</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span> 
+        <span class="n">grad_at_x_k</span> <span class="o">=</span> <span class="n">oracle</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">x_k</span><span class="p">)</span>
+        <span class="n">hess_at_x_k</span> <span class="o">=</span> <span class="n">oracle</span><span class="o">.</span><span class="n">hess</span><span class="p">(</span><span class="n">x_k</span><span class="p">)</span>  
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_k</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">INF</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">grad_at_x_k</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">INF</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">x_k</span><span class="p">,</span> <span class="s1">&#39;computational_error&#39;</span><span class="p">,</span> <span class="n">history</span>
+
+        <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+            <span class="n">history</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span>
+            <span class="n">history</span><span class="p">[</span><span class="s1">&#39;func&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oracle</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">x_k</span><span class="p">))</span>
+            <span class="n">history</span><span class="p">[</span><span class="s1">&#39;grad_norm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">grad_at_x_k</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">x_k</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">history</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_k</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">display</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;iteration </span><span class="si">{}</span><span class="s2">: |x_k-x_0| = </span><span class="si">{}</span><span class="s2">, f(x_k) = </span><span class="si">{}</span><span class="s2">, |grad(f(x_k))| = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">i</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x_k</span> <span class="o">-</span> <span class="n">x_0</span><span class="p">),</span> <span class="n">oracle</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">x_k</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">grad_at_x_k</span><span class="p">))</span>
+            <span class="p">)</span>
+
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="task-6-9-1-point">
+<h3>Task 6.9 (1 point)<a class="headerlink" href="#task-6-9-1-point" title="Permalink to this heading">#</a></h3>
+<p>Apply Newton’s methods to the previous tasks:</p>
+<ul class="simple">
+<li><p>quadratic function</p></li>
+<li><p>simple linear regression trained on <code class="docutils literal notranslate"><span class="pre">boston</span></code> dataset</p></li>
+<li><p>simple logistic regression trained on <code class="docutils literal notranslate"><span class="pre">breast_cancer</span></code> dataset</p></li>
+</ul>
+<p>Compare the number of iterations and time execution of GD and Newton methods in this examples. Visualize your results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="gd-vs-newton">
+<h2>GD vs Newton<a class="headerlink" href="#gd-vs-newton" title="Permalink to this heading">#</a></h2>
+<section id="task-6-10-1-point">
+<h3>Task 6.10 (1 point)<a class="headerlink" href="#task-6-10-1-point" title="Permalink to this heading">#</a></h3>
+<p>Run both gradient descent and Newton’s methods on <strong>full</strong> <code class="docutils literal notranslate"><span class="pre">boston</span></code> and <code class="docutils literal notranslate"><span class="pre">breast_cancer</span></code> datasets. Do they converge? How many iterations are required for convergence? How much time? Justify your answers by numeric experiments and visualizations.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./HW"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="HW1_2024.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">HW1</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../courses/DL.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deep Learning 2024</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quadratic-oracle">Quadratic oracle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-1-1-point">Task 6.1 (1 point)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-oracle">Linear regression oracle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-2-1-5-points">Task 6.2 (1.5 points)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-oracle">Logistic regression oracle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-3-1-5-point">Task 6.3 (1.5 point)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent">Gradient descent</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-4-1-point">Task 6.4 (1 point)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-5-1-point">Task 6.5 (1 point)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gd-for-linear-regression">GD for linear regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-6-0-5-points">Task 6.6 (0.5 points)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gd-for-logistic-regression">GD for logistic regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-7-0-5-points">Task 6.7 (0.5 points)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">Newton’s method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-8-1-point">Task 6.8 (1 point)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-9-1-point">Task 6.9 (1 point)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gd-vs-newton">GD vs Newton</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-6-10-1-point">Task 6.10 (1 point)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By KBTU
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

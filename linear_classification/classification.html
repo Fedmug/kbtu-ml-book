@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -546,9 +547,9 @@ document.write(`
 \[
     \widehat y = \mathrm{sgn}\Big(\sum\limits_{j=1}^d x_j w_j\Big) = \mathrm{sgn}(\boldsymbol x^\mathsf{T}\boldsymbol w).
 \]</div>
-<p>What about loss function? Rewrite the misclassification rate <a class="reference internal" href="../supervised/sl_types.html#equation-mis-rate">(3)</a> as</p>
+<p>What about loss function? Rewrite the misclassification rate <a class="reference internal" href="../supervised/sl_types.html#equation-mis-rate">(5)</a> as</p>
 <div class="math notranslate nohighlight" id="equation-mis-rate-class">
-<span class="eqno">(25)<a class="headerlink" href="#equation-mis-rate-class" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol w) = \frac 1n\sum\limits_{i=1}^n [\boldsymbol x_i^\mathsf{T} \boldsymbol w y_i &lt; 0].\]</div>
+<span class="eqno">(27)<a class="headerlink" href="#equation-mis-rate-class" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol w) = \frac 1n\sum\limits_{i=1}^n [\boldsymbol x_i^\mathsf{T} \boldsymbol w y_i &lt; 0].\]</div>
 <section id="margins">
 <h3>Margins<a class="headerlink" href="#margins" title="Permalink to this heading">#</a></h3>
 <p>Define the <strong>margin</strong> of the training sample <span class="math notranslate nohighlight">\((\boldsymbol x_i, y_i)\)</span> as</p>
@@ -556,9 +557,9 @@ document.write(`
 \[
     M_i = \boldsymbol x_i^\mathsf{T} \boldsymbol w y_i.
 \]</div>
-<p>If the margin is positive, the prediction is correct, and vise versa. Now we can express the loss function <a class="reference internal" href="#equation-mis-rate-class">(25)</a> in terms of margins:</p>
+<p>If the margin is positive, the prediction is correct, and vise versa. Now we can express the loss function <a class="reference internal" href="#equation-mis-rate-class">(27)</a> in terms of margins:</p>
 <div class="math notranslate nohighlight" id="equation-mis-rate-margin">
-<span class="eqno">(26)<a class="headerlink" href="#equation-mis-rate-margin" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol w) = \frac 1n\sum\limits_{i=1}^n \ell(M_i), \quad \ell(M) = [M &lt; 0].\]</div>
+<span class="eqno">(28)<a class="headerlink" href="#equation-mis-rate-margin" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol w) = \frac 1n\sum\limits_{i=1}^n \ell(M_i), \quad \ell(M) = [M &lt; 0].\]</div>
 <p>The function <span class="math notranslate nohighlight">\(\ell\)</span> is discontinuous, which impedes the direct optimization of this loss functions. That’s why <span class="math notranslate nohighlight">\(\ell\)</span> is often substituted by some smooth loss function <span class="math notranslate nohighlight">\(\overline{\ell}(M)\)</span>, which estimates <span class="math notranslate nohighlight">\(\ell(M)\)</span> from above: <span class="math notranslate nohighlight">\(\ell(M) \leqslant \overline{\ell}(M)\)</span>.</p>
 <p>Popular choices of <span class="math notranslate nohighlight">\(\overline{\ell}(M)\)</span>:</p>
 <ul class="simple">

@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
@@ -662,7 +663,7 @@ a_{m1}x_1 &amp;+ a_{m2}x_2 +\ldots + a_{mn}x_n = b_m \\
 \end{split}\]</div>
 <p>где <span class="math notranslate nohighlight">\(\boldsymbol u \in \mathbb R^{n-1}\)</span>, верхняя треугольная матрица <span class="math notranslate nohighlight">\(\boldsymbol U_{n-1}\)</span> имеет размер <span class="math notranslate nohighlight">\((n-1)\times(n-1)\)</span>, а её обратная матрица <span class="math notranslate nohighlight">\( \boldsymbol U_{n-1}^{-1}\)</span> тоже верхняя треугольная с элементами <span class="math notranslate nohighlight">\(\frac 1{d_2}, \ldots, \frac 1{d_n}\)</span> на главной диагонали. Поищем обратную матрицу <span class="math notranslate nohighlight">\(\boldsymbol U^{-1}\)</span> в таком же виде:</p>
 <div class="math notranslate nohighlight" id="equation-u-inv">
-<span class="eqno">(44)<a class="headerlink" href="#equation-u-inv" title="Permalink to this equation">#</a></span>\[\begin{split}    \boldsymbol U^{-1} = \begin{pmatrix}
+<span class="eqno">(46)<a class="headerlink" href="#equation-u-inv" title="Permalink to this equation">#</a></span>\[\begin{split}    \boldsymbol U^{-1} = \begin{pmatrix}
         \frac 1{d_{1}} &amp; \boldsymbol v^\top \\
         \boldsymbol 0 &amp; \boldsymbol U_{n-1}^{-1}
     \end{pmatrix}. \end{split}\]</div>
@@ -674,7 +675,7 @@ a_{m1}x_1 &amp;+ a_{m2}x_2 +\ldots + a_{mn}x_n = b_m \\
         \boldsymbol 0 &amp; \boldsymbol I_{n-1}
     \end{pmatrix}.
 \end{split}\]</div>
-<p>Таким образом, полагая <span class="math notranslate nohighlight">\(\boldsymbol v^\top = -\frac 1{d_1} \boldsymbol u^\top \boldsymbol U_{n-1}^{-1}\)</span>, убеждаемся, что верхняя треугольная матрица <a class="reference internal" href="#equation-u-inv">(44)</a> действительно является обратной к матрице <span class="math notranslate nohighlight">\(\boldsymbol U\)</span>. Для нижних треугольных матриц доказательство аналогично.</p>
+<p>Таким образом, полагая <span class="math notranslate nohighlight">\(\boldsymbol v^\top = -\frac 1{d_1} \boldsymbol u^\top \boldsymbol U_{n-1}^{-1}\)</span>, убеждаемся, что верхняя треугольная матрица <a class="reference internal" href="#equation-u-inv">(46)</a> действительно является обратной к матрице <span class="math notranslate nohighlight">\(\boldsymbol U\)</span>. Для нижних треугольных матриц доказательство аналогично.</p>
 </div>
 </li>
 <li><p>Если матрица обратима, то транспонированная к ней матрица также обратима, причём</p>
@@ -700,19 +701,19 @@ a_{m1}x_1 &amp;+ a_{m2}x_2 +\ldots + a_{mn}x_n = b_m \\
 <h2>Gauss—Jordan method<a class="headerlink" href="#gaussjordan-method" title="Permalink to this heading">#</a></h2>
 <p>Чтобы обратить невырожденную матрицу <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span>, нужно решить <span class="math notranslate nohighlight">\(n\)</span> систем линейных уравнений</p>
 <div class="math notranslate nohighlight" id="equation-inv-systems">
-<span class="eqno">(45)<a class="headerlink" href="#equation-inv-systems" title="Permalink to this equation">#</a></span>\[    \boldsymbol{Ax}_1 = \boldsymbol e_1, \ldots, \boldsymbol{Ax}_n = \boldsymbol e_n,\]</div>
+<span class="eqno">(47)<a class="headerlink" href="#equation-inv-systems" title="Permalink to this equation">#</a></span>\[    \boldsymbol{Ax}_1 = \boldsymbol e_1, \ldots, \boldsymbol{Ax}_n = \boldsymbol e_n,\]</div>
 <p>и тогда <span class="math notranslate nohighlight">\(\boldsymbol A^{-1} = [\boldsymbol x_1 \ldots \boldsymbol x_n]\)</span>.</p>
-<p>Решение СЛАУ размера <span class="math notranslate nohighlight">\(n\times n\)</span> методом Гаусса требует <span class="math notranslate nohighlight">\(O(n^3)\)</span> арифметических операций. Если решать каждую систему из <a class="reference internal" href="#equation-inv-systems">(45)</a> по отдельности, то суммарная сложность составит <span class="math notranslate nohighlight">\(O(n^4)\)</span>. Однако <strong>метод Гаусса—Жордана</strong> позволяет решить все СЛАУ <a class="reference internal" href="#equation-inv-systems">(45)</a> одновременно за <span class="math notranslate nohighlight">\(O(n^3)\)</span> операций.
+<p>Решение СЛАУ размера <span class="math notranslate nohighlight">\(n\times n\)</span> методом Гаусса требует <span class="math notranslate nohighlight">\(O(n^3)\)</span> арифметических операций. Если решать каждую систему из <a class="reference internal" href="#equation-inv-systems">(47)</a> по отдельности, то суммарная сложность составит <span class="math notranslate nohighlight">\(O(n^4)\)</span>. Однако <strong>метод Гаусса—Жордана</strong> позволяет решить все СЛАУ <a class="reference internal" href="#equation-inv-systems">(47)</a> одновременно за <span class="math notranslate nohighlight">\(O(n^3)\)</span> операций.
 Для этого составляют блочную матрицу</p>
 <div class="math notranslate nohighlight" id="equation-gj-matrix">
-<span class="eqno">(46)<a class="headerlink" href="#equation-gj-matrix" title="Permalink to this equation">#</a></span>\[(\;\boldsymbol A \;\vert\;\boldsymbol I\;)\]</div>
+<span class="eqno">(48)<a class="headerlink" href="#equation-gj-matrix" title="Permalink to this equation">#</a></span>\[(\;\boldsymbol A \;\vert\;\boldsymbol I\;)\]</div>
 <p>и проводят с ней следующие шаги:</p>
 <ol class="arabic simple">
 <li><p>методом Гаусса превращают матрицу <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> в вернюю треугольную матрицу <span class="math notranslate nohighlight">\(\boldsymbol U\)</span>;</p></li>
 <li><p>обратным ходом метода Гаусса из матрицы <span class="math notranslate nohighlight">\(\boldsymbol U\)</span> получают диагональную матрицу <span class="math notranslate nohighlight">\(\boldsymbol D\)</span>;</p></li>
 <li><p>после деления на диагональные элементы <span class="math notranslate nohighlight">\(\boldsymbol D\)</span> становится единичной.</p></li>
 </ol>
-<p>Шаги 1—3 применяются также и правому блоку матрицы <a class="reference internal" href="#equation-gj-matrix">(46)</a>, и после завершения работы метода Гаусса—Жордана на месте единичной матрицы оказывается обратная матрица <span class="math notranslate nohighlight">\(\boldsymbol A^{-1}\)</span>.</p>
+<p>Шаги 1—3 применяются также и правому блоку матрицы <a class="reference internal" href="#equation-gj-matrix">(48)</a>, и после завершения работы метода Гаусса—Жордана на месте единичной матрицы оказывается обратная матрица <span class="math notranslate nohighlight">\(\boldsymbol A^{-1}\)</span>.</p>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>

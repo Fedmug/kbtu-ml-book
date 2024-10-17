@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -560,7 +561,7 @@ document.write(`
 \[
     d\tilde{\mathcal L}(\boldsymbol V) = \mathrm{tr}\big(\nabla \tilde{\mathcal L}(\boldsymbol V)^\mathsf{T} d\boldsymbol V\big) = \mathrm{tr}\big(\nabla \mathcal L(\boldsymbol Z)^\mathsf{T} d\boldsymbol Z\big).
 \]</div>
-<p>From <a class="reference internal" href="../math/calculus/multivariate.html#equation-elementwise-diff">(65)</a> we know that <span class="math notranslate nohighlight">\(d \boldsymbol Z = d\psi(\boldsymbol V) = \psi'(\boldsymbol V) \odot d\boldsymbol V =  d\boldsymbol V \odot \psi'(\boldsymbol V)\)</span>. Hence,</p>
+<p>From <a class="reference internal" href="../math/calculus/multivariate.html#equation-elementwise-diff">(67)</a> we know that <span class="math notranslate nohighlight">\(d \boldsymbol Z = d\psi(\boldsymbol V) = \psi'(\boldsymbol V) \odot d\boldsymbol V =  d\boldsymbol V \odot \psi'(\boldsymbol V)\)</span>. Hence,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{tr}\big(\nabla \mathcal L(\boldsymbol Z)^\mathsf{T} d\boldsymbol Z\big) = 
@@ -673,10 +674,10 @@ document.write(`
 <h3>Classification<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h3>
 <p>The usual choice of loss here is <strong>cross-entropy loss</strong>:</p>
 <div class="math notranslate nohighlight" id="equation-cross-entropy-mlp">
-<span class="eqno">(35)<a class="headerlink" href="#equation-cross-entropy-mlp" title="Permalink to this equation">#</a></span>\[	\mathcal L(\boldsymbol Y, \boldsymbol {\widehat Y}) = -\frac 1N \sum\limits_{i=1}^N\sum\limits_{j=1}^K Y_{ij} \log \widehat Y_{ij} = -\frac 1N \mathrm{tr}\big(\boldsymbol Y^T\log\boldsymbol {\widehat Y}\big).\]</div>
+<span class="eqno">(37)<a class="headerlink" href="#equation-cross-entropy-mlp" title="Permalink to this equation">#</a></span>\[	\mathcal L(\boldsymbol Y, \boldsymbol {\widehat Y}) = -\frac 1N \sum\limits_{i=1}^N\sum\limits_{j=1}^K Y_{ij} \log \widehat Y_{ij} = -\frac 1N \mathrm{tr}\big(\boldsymbol Y^T\log\boldsymbol {\widehat Y}\big).\]</div>
 <p>The target matrix <span class="math notranslate nohighlight">\(\boldsymbol Y \in \mathbb R^{B\times K}\)</span> consists of one-hot encoded rows, each of which contains <span class="math notranslate nohighlight">\(1\)</span> one and <span class="math notranslate nohighlight">\(K-1\)</span> zeros. Each row of the prediction matrix <span class="math notranslate nohighlight">\(\boldsymbol {\widehat Y} \in \mathbb R^{B\times K}\)</span> must be a valid probability distribution, which is achived by applying Softmax:</p>
 <div class="math notranslate nohighlight" id="equation-y-hat-softmax">
-<span class="eqno">(36)<a class="headerlink" href="#equation-y-hat-softmax" title="Permalink to this equation">#</a></span>\[	\widehat Y_{ij} = \mathrm{Softmax}(\boldsymbol X^{\mathrm{out}})_{ij} = \frac{e^{X^{\mathrm{out}}_{ij}}}{\sum\limits_{k=1}^K e^{X^{\mathrm{out}}_{ik}}}.\]</div>
+<span class="eqno">(38)<a class="headerlink" href="#equation-y-hat-softmax" title="Permalink to this equation">#</a></span>\[	\widehat Y_{ij} = \mathrm{Softmax}(\boldsymbol X^{\mathrm{out}})_{ij} = \frac{e^{X^{\mathrm{out}}_{ij}}}{\sum\limits_{k=1}^K e^{X^{\mathrm{out}}_{ik}}}.\]</div>
 <!--
 **Упражнение.** Запишите формулу для Softmax'а в матричном виде.
 
@@ -694,7 +695,7 @@ $$
 </details>
 -->
 <p>Формально Softmax и кросс-энтропия — это два подряд идущих слоя, однако, на практике в целях повышения вычислительной стабильности их часто объединяют в один (например, в <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.LogSoftmax.html">pytorch</a> Softmax и поэлементное взятие логарифма объединены в один слой LogSoftmax).</p>
-<p>Plugging <a class="reference internal" href="#equation-y-hat-softmax">(36)</a> into <a class="reference internal" href="#equation-cross-entropy-mlp">(35)</a>, we obtain</p>
+<p>Plugging <a class="reference internal" href="#equation-y-hat-softmax">(38)</a> into <a class="reference internal" href="#equation-cross-entropy-mlp">(37)</a>, we obtain</p>
 <div class="math notranslate nohighlight">
 \[
 	\mathcal L\big(\boldsymbol Y, \mathrm{Softmax}(\boldsymbol X^{\mathrm{out}})\big) = -\frac 1N \sum\limits_{i=1}^N\sum\limits_{j=1}^K Y_{ij} \Big(X^{\mathrm{out}}_{ij} - \log\Big(\sum\limits_{k=1}^K e^{X^{\mathrm{out}}_{ik}}\Big)\Big).

@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -539,7 +540,7 @@ document.write(`
 <h3>Convolution of sequences<a class="headerlink" href="#convolution-of-sequences" title="Permalink to this heading">#</a></h3>
 <p>The convolution of sequences <span class="math notranslate nohighlight">\((a_n)\)</span> and <span class="math notranslate nohighlight">\((b_n)\)</span> is the sequence <span class="math notranslate nohighlight">\(a * b\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-1-d-conv">
-<span class="eqno">(38)<a class="headerlink" href="#equation-1-d-conv" title="Permalink to this equation">#</a></span>\[(a * b)_n = \sum\limits_k a_k b_{n-k}\]</div>
+<span class="eqno">(40)<a class="headerlink" href="#equation-1-d-conv" title="Permalink to this equation">#</a></span>\[(a * b)_n = \sum\limits_k a_k b_{n-k}\]</div>
 <p>This formula assumes that the sequences <span class="math notranslate nohighlight">\((a_n)\)</span> and <span class="math notranslate nohighlight">\((b_n)\)</span> continue indefinitely to both sides. To calculate the convolution of finite sequences</p>
 <div class="math notranslate nohighlight">
 \[
@@ -556,7 +557,7 @@ document.write(`
 </div>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
-<p>How many nonzero elements are there in <a class="reference internal" href="#equation-1-d-conv">(38)</a> for these finite sequences?</p>
+<p>How many nonzero elements are there in <a class="reference internal" href="#equation-1-d-conv">(40)</a> for these finite sequences?</p>
 </div>
 <p>In practice there are several reasonable strategies how to caclulate convolutions.</p>
 <ul>
@@ -599,7 +600,7 @@ Valid: [13 22]
 <h3>Cross correlation<a class="headerlink" href="#cross-correlation" title="Permalink to this heading">#</a></h3>
 <p>This is a very similar operation to convolution. The cross correlation of sequences <span class="math notranslate nohighlight">\((a_n)\)</span> and <span class="math notranslate nohighlight">\((b_n)\)</span> is a sequence <span class="math notranslate nohighlight">\((c_n)\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-1-d-cross-corr">
-<span class="eqno">(39)<a class="headerlink" href="#equation-1-d-cross-corr" title="Permalink to this equation">#</a></span>\[c_n = \sum\limits_k a_{n+k} b_k\]</div>
+<span class="eqno">(41)<a class="headerlink" href="#equation-1-d-cross-corr" title="Permalink to this equation">#</a></span>\[c_n = \sum\limits_k a_{n+k} b_k\]</div>
 <p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.correlate.html"><code class="docutils literal notranslate"><span class="pre">np.correlate</span></code></a> calculates the cross correlation of two arrays. The meaning of the parameters <code class="docutils literal notranslate"><span class="pre">full</span></code>, <code class="docutils literal notranslate"><span class="pre">same</span></code>, <code class="docutils literal notranslate"><span class="pre">valid</span></code> is analogous to those of <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.convolve.html"><code class="docutils literal notranslate"><span class="pre">np.convolve</span></code></a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -622,7 +623,7 @@ Valid: [14 23]
 <p>How to express cross correlation it terms of convolution?</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Answer</p>
-<p>Denote <span class="math notranslate nohighlight">\((x^-_n)\)</span> the flipped sequence: <span class="math notranslate nohighlight">\(x^-_n = x_{-n}\)</span>. Now <span class="math notranslate nohighlight">\(c_n\)</span> from <a class="reference internal" href="#equation-1-d-cross-corr">(39)</a> is</p>
+<p>Denote <span class="math notranslate nohighlight">\((x^-_n)\)</span> the flipped sequence: <span class="math notranslate nohighlight">\(x^-_n = x_{-n}\)</span>. Now <span class="math notranslate nohighlight">\(c_n\)</span> from <a class="reference internal" href="#equation-1-d-cross-corr">(41)</a> is</p>
 <div class="math notranslate nohighlight">
 \[
     c_n = \sum\limits_k a^-_{-n-k} b_k = (a^- * b)_{-n}=(a^- * b)^-_n.

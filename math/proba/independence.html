@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
@@ -548,7 +549,7 @@ document.write(`
 <h2>Law of total probability<a class="headerlink" href="#law-of-total-probability" title="Permalink to this heading">#</a></h2>
 <p>If <span class="math notranslate nohighlight">\(\Omega = A_1 \bigsqcup A_2 \bigsqcup \ldots \bigsqcup A_n\)</span> then</p>
 <div class="math notranslate nohighlight" id="equation-total-proba">
-<span class="eqno">(70)<a class="headerlink" href="#equation-total-proba" title="Permalink to this equation">#</a></span>\[    \mathbb P(B) = \sum\limits_{k=1}^n \mathbb P(B\vert A_k) \mathbb P(A_k).\]</div>
+<span class="eqno">(72)<a class="headerlink" href="#equation-total-proba" title="Permalink to this equation">#</a></span>\[    \mathbb P(B) = \sum\limits_{k=1}^n \mathbb P(B\vert A_k) \mathbb P(A_k).\]</div>
 <p>This <strong>law of total probability</strong> also holds after conditioning on some event <span class="math notranslate nohighlight">\(C\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -567,7 +568,7 @@ document.write(`
 \[
     \mathbb P(A\vert B) =  \frac{\mathbb P(B\vert A) \mathbb P(A)}{\mathbb P(B)}
 \]</div>
-<p>Bayes’ theorem often combined with law of total probability <a class="reference internal" href="#equation-total-proba">(70)</a>:</p>
+<p>Bayes’ theorem often combined with law of total probability <a class="reference internal" href="#equation-total-proba">(72)</a>:</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbb P(A_k\vert B) =  \frac{\mathbb P(B\vert A_k) \mathbb P(A_k)}{\sum\limits_{k=1}^n \mathbb P(B\vert A_k) \mathbb P(A_k)}.
@@ -606,7 +607,7 @@ document.write(`
 <h2>Independent random variables<a class="headerlink" href="#independent-random-variables" title="Permalink to this heading">#</a></h2>
 <p>Discrete random variables <span class="math notranslate nohighlight">\(\xi\)</span> and <span class="math notranslate nohighlight">\(\eta\)</span> are called <strong>independent</strong> if</p>
 <div class="math notranslate nohighlight" id="equation-multivariate-gaussian">
-<span class="eqno">(71)<a class="headerlink" href="#equation-multivariate-gaussian" title="Permalink to this equation">#</a></span>\[    \mathbb P(\xi = x_i, \eta = y_j) = \mathbb P(\xi = x_i)\mathbb P(\eta = y_j) \text{ for all } i, j.\]</div>
+<span class="eqno">(73)<a class="headerlink" href="#equation-multivariate-gaussian" title="Permalink to this equation">#</a></span>\[    \mathbb P(\xi = x_i, \eta = y_j) = \mathbb P(\xi = x_i)\mathbb P(\eta = y_j) \text{ for all } i, j.\]</div>
 <p>Similarly, two continuous random variables <span class="math notranslate nohighlight">\(\xi\)</span> and <span class="math notranslate nohighlight">\(\eta\)</span> are independent if their joint density <span class="math notranslate nohighlight">\(p(x, y)\)</span> is equal to product of densities:</p>
 <div class="math notranslate nohighlight">
 \[

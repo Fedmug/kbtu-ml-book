@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
@@ -543,7 +544,7 @@ then <span class="math notranslate nohighlight">\(\widehat{\boldsymbol \theta}\)
 <h2>Linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
 <p>The loss function of <a class="reference internal" href="../../lin_reg/multiple.html#linear-regression"><span class="std std-ref">linear regression</span></a> model has from</p>
 <div class="math notranslate nohighlight" id="equation-lin-reg-opt-loss">
-<span class="eqno">(67)<a class="headerlink" href="#equation-lin-reg-opt-loss" title="Permalink to this equation">#</a></span>\[    f(\boldsymbol x) = \frac 12\Vert \boldsymbol{Ax} - \boldsymbol b\Vert_2^2, \quad
+<span class="eqno">(69)<a class="headerlink" href="#equation-lin-reg-opt-loss" title="Permalink to this equation">#</a></span>\[    f(\boldsymbol x) = \frac 12\Vert \boldsymbol{Ax} - \boldsymbol b\Vert_2^2, \quad
     \boldsymbol A \in \mathbb R^{m\times n}, \quad\boldsymbol b \in \mathbb R^m.\]</div>
 <p>Since</p>
 <div class="math notranslate nohighlight">
@@ -562,7 +563,7 @@ then <span class="math notranslate nohighlight">\(\widehat{\boldsymbol \theta}\)
 \]</div>
 <p>Assuming that <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> has full column rank, we obtain</p>
 <div class="math notranslate nohighlight" id="equation-lin-reg-opt-solution">
-<span class="eqno">(68)<a class="headerlink" href="#equation-lin-reg-opt-solution" title="Permalink to this equation">#</a></span>\[    \boldsymbol{\hat{x}} =  (\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T} \boldsymbol b = \boldsymbol A^\dagger \boldsymbol b,\]</div>
+<span class="eqno">(70)<a class="headerlink" href="#equation-lin-reg-opt-solution" title="Permalink to this equation">#</a></span>\[    \boldsymbol{\hat{x}} =  (\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T} \boldsymbol b = \boldsymbol A^\dagger \boldsymbol b,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\boldsymbol A^\dagger\)</span> is <a class="reference internal" href="../lin_alg/rank.html#pseudo-inverse"><span class="std std-ref">pseudo inverse</span></a> matrix.</p>
 <p>We’ve checked only necessary condition of extremum. To verify the fulfillment of the sufficient condition, calculate <span class="math notranslate nohighlight">\(d^2f\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -572,11 +573,11 @@ then <span class="math notranslate nohighlight">\(\widehat{\boldsymbol \theta}\)
 \]</div>
 <p>Therefore, <span class="math notranslate nohighlight">\(\nabla^2 f = \boldsymbol A^\mathsf{T} \boldsymbol A\)</span>. Note that it does not depend on <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and it is a positive definite matrix since</p>
 <div class="math notranslate nohighlight" id="equation-lin-reg-pos-def">
-<span class="eqno">(69)<a class="headerlink" href="#equation-lin-reg-pos-def" title="Permalink to this equation">#</a></span>\[    \boldsymbol x^\mathsf{T}\boldsymbol A^\mathsf{T} \boldsymbol{Ax} = \Vert \boldsymbol{Ax} \Vert_2^2 &gt;0 \text{ if } \boldsymbol x \ne \boldsymbol 0.\]</div>
+<span class="eqno">(71)<a class="headerlink" href="#equation-lin-reg-pos-def" title="Permalink to this equation">#</a></span>\[    \boldsymbol x^\mathsf{T}\boldsymbol A^\mathsf{T} \boldsymbol{Ax} = \Vert \boldsymbol{Ax} \Vert_2^2 &gt;0 \text{ if } \boldsymbol x \ne \boldsymbol 0.\]</div>
 </section>
 <section id="gradient-descent">
 <h2>Gradient descent<a class="headerlink" href="#gradient-descent" title="Permalink to this heading">#</a></h2>
-<p>Analytic solution like <a class="reference internal" href="#equation-lin-reg-opt-solution">(68)</a> is a rare case in machine learning tasks. It also requires inversion of a matrix which is computationally expensive. This is why it is important to elaborate alternative ways of numeric optimization. One of the simplest methods is <strong>gradient descent</strong>.</p>
+<p>Analytic solution like <a class="reference internal" href="#equation-lin-reg-opt-solution">(70)</a> is a rare case in machine learning tasks. It also requires inversion of a matrix which is computationally expensive. This is why it is important to elaborate alternative ways of numeric optimization. One of the simplest methods is <strong>gradient descent</strong>.</p>
 <div class="proof algorithm admonition" id="GD">
 <p class="admonition-title"><span>Algorithm </span> (Gradient descent)</p>
 <section class="algorithm-content" id="proof-content">
@@ -616,8 +617,8 @@ then <span class="math notranslate nohighlight">\(\widehat{\boldsymbol \theta}\)
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <ol class="arabic">
-<li><p>Show that <a class="reference internal" href="#equation-lin-reg-opt-solution">(68)</a> is the point of global minimium of the function <a class="reference internal" href="#equation-lin-reg-opt-loss">(67)</a>.</p></li>
-<li><p>Prove <a class="reference internal" href="#equation-lin-reg-pos-def">(69)</a> if <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> has full column rank.</p></li>
+<li><p>Show that <a class="reference internal" href="#equation-lin-reg-opt-solution">(70)</a> is the point of global minimium of the function <a class="reference internal" href="#equation-lin-reg-opt-loss">(69)</a>.</p></li>
+<li><p>Prove <a class="reference internal" href="#equation-lin-reg-pos-def">(71)</a> if <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> has full column rank.</p></li>
 <li><p>Find global minimum of the function <span class="math notranslate nohighlight">\(f(\boldsymbol x) = \boldsymbol a^\mathsf{T}\boldsymbol x + \frac \sigma 3\Vert \boldsymbol x\Vert_2^3\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol a \ne \boldsymbol 0\)</span>, <span class="math notranslate nohighlight">\(\sigma &gt; 0\)</span>.</p></li>
 <li><p>Find</p>
 <div class="math notranslate nohighlight">

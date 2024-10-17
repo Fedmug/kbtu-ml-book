@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
@@ -699,21 +700,21 @@ V(\boldsymbol u_1, \ldots, \boldsymbol u_n) = \big\vert\det([\boldsymbol u_1 \ld
 \end{split}\]</div>
 <p>определяют по явной формуле</p>
 <div class="math notranslate nohighlight" id="equation-big-formula">
-<span class="eqno">(53)<a class="headerlink" href="#equation-big-formula" title="Permalink to this equation">#</a></span>\[\det \boldsymbol A = \sum\limits_{\sigma \in S_n} (-1)^\sigma a_{1\sigma(1)}\ldots a_{n\sigma(n)}, \]</div>
+<span class="eqno">(55)<a class="headerlink" href="#equation-big-formula" title="Permalink to this equation">#</a></span>\[\det \boldsymbol A = \sum\limits_{\sigma \in S_n} (-1)^\sigma a_{1\sigma(1)}\ldots a_{n\sigma(n)}, \]</div>
 <p>где <span class="math notranslate nohighlight">\(S_n\)</span> — множество <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B5%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0">перестановок</a> множества <span class="math notranslate nohighlight">\(\{1, 2, \ldots, n\}\)</span>, <span class="math notranslate nohighlight">\((-1)^\sigma = +1\)</span>, если перестановка чётная и <span class="math notranslate nohighlight">\(-1\)</span> в противном случае.</p>
-<p><strong>Упражнение</strong>. Проверьте, что определение детерминанта по формуле <a class="reference internal" href="#equation-big-formula">(53)</a> согласуется с приведёнными выше аксиомами 1-3.</p>
+<p><strong>Упражнение</strong>. Проверьте, что определение детерминанта по формуле <a class="reference internal" href="#equation-big-formula">(55)</a> согласуется с приведёнными выше аксиомами 1-3.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Proof</p>
-<p>Линейность по строкам вытекает из самого вида формулы  <a class="reference internal" href="#equation-big-formula">(53)</a>, ведь элемент каждой строки входит в каждое слагаемое ровно один раз.</p>
-<p>Если <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol I\)</span>, то единственное ненулевое слагаемое в сумме  <a class="reference internal" href="#equation-big-formula">(53)</a> соответствует тождественной перестановке <span class="math notranslate nohighlight">\(\sigma\)</span>, поэтому вся сумма равна <span class="math notranslate nohighlight">\(1\)</span>.</p>
-<p>Наконец, разберёмся с перестановкой строк. Формула  <a class="reference internal" href="#equation-big-formula">(53)</a> для матрицы, полученной обменом <span class="math notranslate nohighlight">\(i\)</span>-й и <span class="math notranslate nohighlight">\(j\)</span>-й строки матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>, примет вид</p>
+<p>Линейность по строкам вытекает из самого вида формулы  <a class="reference internal" href="#equation-big-formula">(55)</a>, ведь элемент каждой строки входит в каждое слагаемое ровно один раз.</p>
+<p>Если <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol I\)</span>, то единственное ненулевое слагаемое в сумме  <a class="reference internal" href="#equation-big-formula">(55)</a> соответствует тождественной перестановке <span class="math notranslate nohighlight">\(\sigma\)</span>, поэтому вся сумма равна <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Наконец, разберёмся с перестановкой строк. Формула  <a class="reference internal" href="#equation-big-formula">(55)</a> для матрицы, полученной обменом <span class="math notranslate nohighlight">\(i\)</span>-й и <span class="math notranslate nohighlight">\(j\)</span>-й строки матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>, примет вид</p>
 <div class="math notranslate nohighlight">
 \[
     \sum\limits_{\sigma \in S_n} (-1)^\sigma a_{1\sigma(1)}\ldots a_{i\sigma(j)} \ldots a_{j\sigma(i)} \ldots a_{n\sigma(n)}.
 \]</div>
-<p>В каждом слагаемом перестановка <span class="math notranslate nohighlight">\(\sigma\)</span> отличается от перестановки в исходной формуле  <a class="reference internal" href="#equation-big-formula">(53)</a> лишь одной транспозицией. Добавление одной транспозиции меняет знак перестановки, поэтому знак каждого слагаемого должен измениться, и, следовательно, меняется знак всего определителя.</p>
+<p>В каждом слагаемом перестановка <span class="math notranslate nohighlight">\(\sigma\)</span> отличается от перестановки в исходной формуле  <a class="reference internal" href="#equation-big-formula">(55)</a> лишь одной транспозицией. Добавление одной транспозиции меняет знак перестановки, поэтому знак каждого слагаемого должен измениться, и, следовательно, меняется знак всего определителя.</p>
 </div>
-<p>Формула  <a class="reference internal" href="#equation-big-formula">(53)</a> содержит <span class="math notranslate nohighlight">\(n!\)</span> слагаемых, что делает её бесполезной для практики при хоть сколько-нибудь больших значениях <span class="math notranslate nohighlight">\(n\)</span>. Однако при малых <span class="math notranslate nohighlight">\(n\)</span> она довольно удобна.</p>
+<p>Формула  <a class="reference internal" href="#equation-big-formula">(55)</a> содержит <span class="math notranslate nohighlight">\(n!\)</span> слагаемых, что делает её бесполезной для практики при хоть сколько-нибудь больших значениях <span class="math notranslate nohighlight">\(n\)</span>. Однако при малых <span class="math notranslate nohighlight">\(n\)</span> она довольно удобна.</p>
 <!--
 имеем
 
@@ -758,7 +759,7 @@ $$
 \end{split}\]</div>
 <p>Получилась сумма произведений элементов первой строки на <strong>дополнительные миноры</strong> — определители подматриц исходной матрицы, полученные вычёркиванием первой строки и столбца, в котором находится умножаемый на минор элемент. Заметим также, что второе слагаемое взято со знаком «минус». Такой способ подсчёта детерминанта называется <strong>разложением по строке</strong>. В общем случае справедливо равенство</p>
 <div class="math notranslate nohighlight" id="equation-cofactor-formula">
-<span class="eqno">(54)<a class="headerlink" href="#equation-cofactor-formula" title="Permalink to this equation">#</a></span>\[\begin{split}    \begin{vmatrix}
+<span class="eqno">(56)<a class="headerlink" href="#equation-cofactor-formula" title="Permalink to this equation">#</a></span>\[\begin{split}    \begin{vmatrix}
         a_{11} &amp; a_{12} &amp; \dots &amp; a_{1n} \\
         a_{21} &amp; a_{22} &amp; \dots &amp; a_{2n} \\
         \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
@@ -777,7 +778,7 @@ $$
 \[
     \sum\limits_{j = 1}^n (-1)^{i+j}a_{ij} M_{ij} = \sum\limits_{j = 1}^n (-1)^{i+j}\delta_{ij} M_{ij} = M_{ii} = \det \boldsymbol I_{n-1} = 1.
 \]</div>
-<p>На десерт у нас снова обмен строк. Если <span class="math notranslate nohighlight">\(i\)</span>-я строка не участвует в обмене, то знак каждого слагаемого в правой части <a class="reference internal" href="#equation-cofactor-formula">(54)</a> меняется за счёт изменения знака минора <span class="math notranslate nohighlight">\(M_{ij}\)</span>. Пусть теперь <span class="math notranslate nohighlight">\(i\)</span>-я строка обменялась с <span class="math notranslate nohighlight">\(k\)</span>-й, <span class="math notranslate nohighlight">\(i &lt; k\)</span>. Тогда правая часть <a class="reference internal" href="#equation-cofactor-formula">(54)</a> превращается в</p>
+<p>На десерт у нас снова обмен строк. Если <span class="math notranslate nohighlight">\(i\)</span>-я строка не участвует в обмене, то знак каждого слагаемого в правой части <a class="reference internal" href="#equation-cofactor-formula">(56)</a> меняется за счёт изменения знака минора <span class="math notranslate nohighlight">\(M_{ij}\)</span>. Пусть теперь <span class="math notranslate nohighlight">\(i\)</span>-я строка обменялась с <span class="math notranslate nohighlight">\(k\)</span>-й, <span class="math notranslate nohighlight">\(i &lt; k\)</span>. Тогда правая часть <a class="reference internal" href="#equation-cofactor-formula">(56)</a> превращается в</p>
 <div class="math notranslate nohighlight">
 \[
     \sum\limits_{j=1}^n (-1)^{i+j}a_{kj} \widehat M_{ij},

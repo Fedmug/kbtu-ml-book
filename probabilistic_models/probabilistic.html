@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -542,18 +543,18 @@ document.write(`
 \]</div>
 <p>The optimal weights <span class="math notranslate nohighlight">\(\boldsymbol{\widehat w}\)</span> maximize the likelihood, or, equivalently, log-likelihood:</p>
 <div class="math notranslate nohighlight" id="equation-log-likelihood-max">
-<span class="eqno">(31)<a class="headerlink" href="#equation-log-likelihood-max" title="Permalink to this equation">#</a></span>\[    \log p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = \log\prod_{i=1}^n p(y_i \vert \boldsymbol x_i, \boldsymbol w) = \sum_{i=1}^n \log p(y_i \vert \boldsymbol x_i, \boldsymbol w) \to \max\limits_{\boldsymbol w}.\]</div>
+<span class="eqno">(33)<a class="headerlink" href="#equation-log-likelihood-max" title="Permalink to this equation">#</a></span>\[    \log p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = \log\prod_{i=1}^n p(y_i \vert \boldsymbol x_i, \boldsymbol w) = \sum_{i=1}^n \log p(y_i \vert \boldsymbol x_i, \boldsymbol w) \to \max\limits_{\boldsymbol w}.\]</div>
 <p>Alternatively, one can minimize <strong>negative log-likelihood</strong> (<strong>NLL</strong>):</p>
 <div class="math notranslate nohighlight">
 \[
 - \log p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = -\sum_{i=1}^n \log p(y_i \vert \boldsymbol x_i, \boldsymbol w) \to \min\limits_{\boldsymbol w}.
 \]</div>
-<p>The optimal estimation of weights <span class="math notranslate nohighlight">\(\boldsymbol{\widehat w}\)</span> maximizing log-likelihood <a class="reference internal" href="#equation-log-likelihood-max">(31)</a> is called <strong>maximum likelihood estimation</strong> (<strong>MLE</strong>).</p>
+<p>The optimal estimation of weights <span class="math notranslate nohighlight">\(\boldsymbol{\widehat w}\)</span> maximizing log-likelihood <a class="reference internal" href="#equation-log-likelihood-max">(33)</a> is called <strong>maximum likelihood estimation</strong> (<strong>MLE</strong>).</p>
 </section>
 <section id="bayesian-approach">
 <h2>Bayesian approach<a class="headerlink" href="#bayesian-approach" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Thomas_Bayes.gif/274px-Thomas_Bayes.gif" /></p>
-<p>From <a class="reference internal" href="#equation-log-likelihood-max">(31)</a> we obtain a point estimation <span class="math notranslate nohighlight">\(\boldsymbol {\widehat w}_{\mathrm{MLE}}\)</span>. In Bayesian framework we estimate not points but distributions!</p>
+<p>From <a class="reference internal" href="#equation-log-likelihood-max">(33)</a> we obtain a point estimation <span class="math notranslate nohighlight">\(\boldsymbol {\widehat w}_{\mathrm{MLE}}\)</span>. In Bayesian framework we estimate not points but distributions!</p>
 <p>Assume that parameters <span class="math notranslate nohighlight">\(\boldsymbol w\)</span> have <strong>prior</strong> distribution <span class="math notranslate nohighlight">\(p(\boldsymbol w)\)</span>. Observing the dataset <span class="math notranslate nohighlight">\(\mathcal D\)</span>, we can apply the Bayes formula and obtain <strong>posterior</strong> distribution</p>
 <div class="math notranslate nohighlight">
 \[

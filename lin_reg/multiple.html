@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -527,10 +528,10 @@ document.write(`
 <span id="linear-regression"></span><h1>Multiple linear regression<a class="headerlink" href="#multiple-linear-regression" title="Permalink to this heading">#</a></h1>
 <p>In practice, there usually more than one feature. Suppose that we have <span class="math notranslate nohighlight">\(n\)</span> training samples and <span class="math notranslate nohighlight">\(d\)</span> features. Given a training sample <span class="math notranslate nohighlight">\(\boldsymbol x \in\mathbb R^d\)</span>, we predict the target variable as follows:</p>
 <div class="math notranslate nohighlight" id="equation-multiple-lin-reg">
-<span class="eqno">(16)<a class="headerlink" href="#equation-multiple-lin-reg" title="Permalink to this equation">#</a></span>\[    y = w_0 + w_1 x_1 + \ldots + w_d x_d = w_0 + \sum\limits_{j=1}^d w_j x_j\]</div>
+<span class="eqno">(18)<a class="headerlink" href="#equation-multiple-lin-reg" title="Permalink to this equation">#</a></span>\[    y = w_0 + w_1 x_1 + \ldots + w_d x_d = w_0 + \sum\limits_{j=1}^d w_j x_j\]</div>
 <p>To fit the linear regression, minimize MSE or, equivalently, RSS:</p>
 <div class="math notranslate nohighlight" id="equation-multiple-lin-reg-rss">
-<span class="eqno">(17)<a class="headerlink" href="#equation-multiple-lin-reg-rss" title="Permalink to this equation">#</a></span>\[    RSS = \sum\limits_{i=1}^n \Big(y_i - w_0 - \sum\limits_{j=1}^k w_j x_j\Big)^2 \to \min\limits_{\boldsymbol w}.\]</div>
+<span class="eqno">(19)<a class="headerlink" href="#equation-multiple-lin-reg-rss" title="Permalink to this equation">#</a></span>\[    RSS = \sum\limits_{i=1}^n \Big(y_i - w_0 - \sum\limits_{j=1}^k w_j x_j\Big)^2 \to \min\limits_{\boldsymbol w}.\]</div>
 <section id="d-linear-regression-on-boston-dataset">
 <h2>2-d linear regression on Boston dataset<a class="headerlink" href="#d-linear-regression-on-boston-dataset" title="Permalink to this heading">#</a></h2>
 <p><a class="reference internal" href="simple.html#boston-simple"><span class="std std-ref">Here</span></a> we trained a simple linear regression with a single feature (<code class="docutils literal notranslate"><span class="pre">lstat</span></code>). Now add one more feature: <code class="docutils literal notranslate"><span class="pre">age</span></code>.</p>
@@ -632,14 +633,14 @@ MSE: 37.88167709241267
 <h2>Analytical solution for best fit<a class="headerlink" href="#analytical-solution-for-best-fit" title="Permalink to this heading">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The intercept <span class="math notranslate nohighlight">\(w_0\)</span> is a bit annoying since it has to be written separately all the time. For notational convenience introduce a fake feature <span class="math notranslate nohighlight">\(x_0 =1 \)</span> for all samples. Than <a class="reference internal" href="#equation-multiple-lin-reg">(16)</a> can be rewritten as</p>
+<p>The intercept <span class="math notranslate nohighlight">\(w_0\)</span> is a bit annoying since it has to be written separately all the time. For notational convenience introduce a fake feature <span class="math notranslate nohighlight">\(x_0 =1 \)</span> for all samples. Than <a class="reference internal" href="#equation-multiple-lin-reg">(18)</a> can be rewritten as</p>
 <div class="math notranslate nohighlight" id="equation-multiple-lin-reg-inner">
-<span class="eqno">(18)<a class="headerlink" href="#equation-multiple-lin-reg-inner" title="Permalink to this equation">#</a></span>\[    \sum\limits_{j=0}^d w_j x_j = \boldsymbol x^\mathsf{T} \boldsymbol w,\]</div>
+<span class="eqno">(20)<a class="headerlink" href="#equation-multiple-lin-reg-inner" title="Permalink to this equation">#</a></span>\[    \sum\limits_{j=0}^d w_j x_j = \boldsymbol x^\mathsf{T} \boldsymbol w,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\boldsymbol w\)</span> is the vector of weights of the linear regression.</p>
 </div>
-<p>Taking into account this note, write the optimization task <a class="reference internal" href="#equation-multiple-lin-reg-rss">(17)</a> as</p>
+<p>Taking into account this note, write the optimization task <a class="reference internal" href="#equation-multiple-lin-reg-rss">(19)</a> as</p>
 <div class="math notranslate nohighlight" id="equation-lin-reg-loss-opt">
-<span class="eqno">(19)<a class="headerlink" href="#equation-lin-reg-loss-opt" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol w) = \sum\limits_{i=1}^n(y_i - \boldsymbol x_i^\mathsf{T} \boldsymbol w)^2 \to \min\limits_{\boldsymbol w},\]</div>
+<span class="eqno">(21)<a class="headerlink" href="#equation-lin-reg-loss-opt" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol w) = \sum\limits_{i=1}^n(y_i - \boldsymbol x_i^\mathsf{T} \boldsymbol w)^2 \to \min\limits_{\boldsymbol w},\]</div>
 <p>or</p>
 <div class="math notranslate nohighlight">
 \[
@@ -657,10 +658,10 @@ MSE: 37.88167709241267
 </ul>
 <p>That’s why the condition <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol w}\mathcal L(\boldsymbol w)=\boldsymbol 0\)</span> implies that</p>
 <div class="math notranslate nohighlight" id="equation-lin-reg-grad">
-<span class="eqno">(20)<a class="headerlink" href="#equation-lin-reg-grad" title="Permalink to this equation">#</a></span>\[    \boldsymbol X^\mathsf{T} \boldsymbol X\boldsymbol w - \boldsymbol X^\mathsf{T} \boldsymbol y = \boldsymbol 0\]</div>
-<p>If the matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> has full column rank, then the square matrix <span class="math notranslate nohighlight">\(\boldsymbol X^\mathsf{T} \boldsymbol X\)</span> is invertible, and from <a class="reference internal" href="#equation-lin-reg-grad">(20)</a> we obtain that the optimal weights are</p>
+<span class="eqno">(22)<a class="headerlink" href="#equation-lin-reg-grad" title="Permalink to this equation">#</a></span>\[    \boldsymbol X^\mathsf{T} \boldsymbol X\boldsymbol w - \boldsymbol X^\mathsf{T} \boldsymbol y = \boldsymbol 0\]</div>
+<p>If the matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> has full column rank, then the square matrix <span class="math notranslate nohighlight">\(\boldsymbol X^\mathsf{T} \boldsymbol X\)</span> is invertible, and from <a class="reference internal" href="#equation-lin-reg-grad">(22)</a> we obtain that the optimal weights are</p>
 <div class="math notranslate nohighlight" id="equation-lin-reg-solution">
-<span class="eqno">(21)<a class="headerlink" href="#equation-lin-reg-solution" title="Permalink to this equation">#</a></span>\[    \widehat{\boldsymbol w} = (\boldsymbol X^\mathsf{T} \boldsymbol X)^{-1} \boldsymbol X^\mathsf{T} \boldsymbol y.\]</div>
+<span class="eqno">(23)<a class="headerlink" href="#equation-lin-reg-solution" title="Permalink to this equation">#</a></span>\[    \widehat{\boldsymbol w} = (\boldsymbol X^\mathsf{T} \boldsymbol X)^{-1} \boldsymbol X^\mathsf{T} \boldsymbol y.\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The matrix <span class="math notranslate nohighlight">\(\boldsymbol X^\dagger = (\boldsymbol X^\mathsf{T} \boldsymbol X)^{-1} \boldsymbol X^\mathsf{T}\)</span> is called <strong>Moore-Penrose</strong> <a class="reference internal" href="../math/lin_alg/rank.html#pseudo-inverse"><span class="std std-ref">pseudo inverse</span></a>.</p>
@@ -1624,8 +1625,8 @@ if (typeof version == 'undefined') {
 <span id="id1"></span><h2>Computational issues<a class="headerlink" href="#computational-issues" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Multicollinearity</strong>. if there are highly correlated or even linearly dependent features in the design matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span>, then the matrix <span class="math notranslate nohighlight">\(\boldsymbol X^\mathsf{T} \boldsymbol X\)</span> is nearly singular. One can cope with multicollinearity by feature selection.</p></li>
-<li><p><strong>Curse of dimensionality</strong>. If <span class="math notranslate nohighlight">\(d \gg 1\)</span>, it is too computationally expensive to invert <span class="math notranslate nohighlight">\(\boldsymbol X^\mathsf{T} \boldsymbol X\)</span>. In this case instead analytical solution <a class="reference internal" href="#equation-lin-reg-solution">(21)</a> numerical methods such as gradient descent are used.</p></li>
-<li><p><strong>Ill-conditioning</strong>. In practice the matrix <span class="math notranslate nohighlight">\(\boldsymbol X^\mathsf{T} \boldsymbol X\)</span> has large <a class="reference internal" href="../math/lin_alg/matrix_norms.html#condition-number"><span class="std std-ref">Condition number</span></a>. This implies the numerical instability of the  solution <a class="reference internal" href="#equation-lin-reg-solution">(21)</a>.</p></li>
+<li><p><strong>Curse of dimensionality</strong>. If <span class="math notranslate nohighlight">\(d \gg 1\)</span>, it is too computationally expensive to invert <span class="math notranslate nohighlight">\(\boldsymbol X^\mathsf{T} \boldsymbol X\)</span>. In this case instead analytical solution <a class="reference internal" href="#equation-lin-reg-solution">(23)</a> numerical methods such as gradient descent are used.</p></li>
+<li><p><strong>Ill-conditioning</strong>. In practice the matrix <span class="math notranslate nohighlight">\(\boldsymbol X^\mathsf{T} \boldsymbol X\)</span> has large <a class="reference internal" href="../math/lin_alg/matrix_norms.html#condition-number"><span class="std std-ref">Condition number</span></a>. This implies the numerical instability of the  solution <a class="reference internal" href="#equation-lin-reg-solution">(23)</a>.</p></li>
 </ul>
 </section>
 <section id="id2">
@@ -1683,9 +1684,9 @@ MSE: 22.429681439489933
 </section>
 <section id="connection-to-polynomial-regression">
 <h2>Connection to polynomial regression<a class="headerlink" href="#connection-to-polynomial-regression" title="Permalink to this heading">#</a></h2>
-<p>Note that the polynomial regression <a class="reference internal" href="polynomial.html#equation-poly-reg">(14)</a> is a special case of multiple regression. If the polynomial degree is <span class="math notranslate nohighlight">\(m\)</span>, then <a class="reference internal" href="polynomial.html#equation-poly-reg">(14)</a> can be written in the form <a class="reference internal" href="#equation-multiple-lin-reg-inner">(18)</a> with feature matrix</p>
+<p>Note that the polynomial regression <a class="reference internal" href="polynomial.html#equation-poly-reg">(16)</a> is a special case of multiple regression. If the polynomial degree is <span class="math notranslate nohighlight">\(m\)</span>, then <a class="reference internal" href="polynomial.html#equation-poly-reg">(16)</a> can be written in the form <a class="reference internal" href="#equation-multiple-lin-reg-inner">(20)</a> with feature matrix</p>
 <div class="math notranslate nohighlight" id="equation-poly-feature-matrix">
-<span class="eqno">(22)<a class="headerlink" href="#equation-poly-feature-matrix" title="Permalink to this equation">#</a></span>\[\begin{split}    \boldsymbol X = [\boldsymbol 1 \;\boldsymbol x\;\boldsymbol x^2 \; \ldots\;\boldsymbol x^m] = \begin{pmatrix}
+<span class="eqno">(24)<a class="headerlink" href="#equation-poly-feature-matrix" title="Permalink to this equation">#</a></span>\[\begin{split}    \boldsymbol X = [\boldsymbol 1 \;\boldsymbol x\;\boldsymbol x^2 \; \ldots\;\boldsymbol x^m] = \begin{pmatrix}
         1 &amp; x_1 &amp; x_1^2 &amp; \ldots &amp; x_1^m \\
         1 &amp; x_2 &amp; x_2^2 &amp; \ldots &amp; x_2^m \\
         \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
@@ -1695,7 +1696,7 @@ MSE: 22.429681439489933
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Prove that matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> from <a class="reference internal" href="#equation-poly-feature-matrix">(22)</a> has full column rank if <span class="math notranslate nohighlight">\(m \leqslant n\)</span> and <span class="math notranslate nohighlight">\(x_i \ne x_j\)</span> when <span class="math notranslate nohighlight">\(i\ne j\)</span>.</p></li>
+<li><p>Prove that matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> from <a class="reference internal" href="#equation-poly-feature-matrix">(24)</a> has full column rank if <span class="math notranslate nohighlight">\(m \leqslant n\)</span> and <span class="math notranslate nohighlight">\(x_i \ne x_j\)</span> when <span class="math notranslate nohighlight">\(i\ne j\)</span>.</p></li>
 </ol>
 <div class="warning admonition">
 <p class="admonition-title">TODO</p>

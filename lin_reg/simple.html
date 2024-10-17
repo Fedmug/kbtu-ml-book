@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -526,7 +527,7 @@ document.write(`
 <span id="id1"></span><h1>Simple linear regression<a class="headerlink" href="#simple-linear-regression" title="Permalink to this heading">#</a></h1>
 <p>In case of one feature (<span class="math notranslate nohighlight">\(d=1\)</span>) linear regression is written as</p>
 <div class="math notranslate nohighlight" id="equation-simple-lin-reg">
-<span class="eqno">(7)<a class="headerlink" href="#equation-simple-lin-reg" title="Permalink to this equation">#</a></span>\[    y = a x + b.\]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-simple-lin-reg" title="Permalink to this equation">#</a></span>\[    y = a x + b.\]</div>
 <p>The parameters of this model <span class="math notranslate nohighlight">\(\boldsymbol \theta = (a, b)\)</span>, where
 <span class="math notranslate nohighlight">\(b\)</span> is <strong>intercept</strong> (or <strong>bias</strong>), <span class="math notranslate nohighlight">\(a\)</span> is <strong>slope</strong>.</p>
 <p>The <a class="reference internal" href="../data/datasets.html#feature-matrix"><span class="std std-ref">feature matrix</span></a> here has only one column, denote it <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> be the vector of corresponding labels. Also denote</p>
@@ -538,7 +539,7 @@ document.write(`
 <h2>MSE fit<a class="headerlink" href="#mse-fit" title="Permalink to this heading">#</a></h2>
 <p>Use MSE to fit parameters <span class="math notranslate nohighlight">\(\boldsymbol \theta = (a, b)\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-1-d-mse">
-<span class="eqno">(8)<a class="headerlink" href="#equation-1-d-mse" title="Permalink to this equation">#</a></span>\[\mathcal L(a, b) =  \frac 1n\sum\limits_{i=1}^n (y_i - ax_i - b)^2 \to \min\limits_{a, b}.\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-1-d-mse" title="Permalink to this equation">#</a></span>\[\mathcal L(a, b) =  \frac 1n\sum\limits_{i=1}^n (y_i - ax_i - b)^2 \to \min\limits_{a, b}.\]</div>
 <div class="dropdown admonition">
 <p class="admonition-title">What about some calculus?</p>
 <p>We have</p>
@@ -559,24 +560,24 @@ document.write(`
 </div>
 <p>The optimal parameters are</p>
 <div class="math notranslate nohighlight" id="equation-1-d-weights">
-<span class="eqno">(9)<a class="headerlink" href="#equation-1-d-weights" title="Permalink to this equation">#</a></span>\[    \widehat a = \frac{\sum\limits_{i=1}^n (x_i - \overline {\boldsymbol x})(y_i - \overline {\boldsymbol y})}{\sum\limits_{i=1}^n (x_i - \overline {\boldsymbol x})^2}, \quad 
+<span class="eqno">(11)<a class="headerlink" href="#equation-1-d-weights" title="Permalink to this equation">#</a></span>\[    \widehat a = \frac{\sum\limits_{i=1}^n (x_i - \overline {\boldsymbol x})(y_i - \overline {\boldsymbol y})}{\sum\limits_{i=1}^n (x_i - \overline {\boldsymbol x})^2}, \quad 
     \widehat b = \overline {\boldsymbol y} - \widehat a \overline {\boldsymbol x}.\]</div>
 <p>Note that the slope is equal to the ratio of sample correlation between <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> to the sample variance of <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>.</p>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
-<p>Does <a class="reference internal" href="#equation-1-d-weights">(9)</a> work for all possible values of <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>?</p>
+<p>Does <a class="reference internal" href="#equation-1-d-weights">(11)</a> work for all possible values of <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>?</p>
 </div>
 </section>
 <section id="dummy-model">
 <h2>Dummy model<a class="headerlink" href="#dummy-model" title="Permalink to this heading">#</a></h2>
-<p>The model <a class="reference internal" href="#equation-simple-lin-reg">(7)</a> is simple but we can do even simpler! Let <span class="math notranslate nohighlight">\(a=0\)</span> and predict labels by a <strong>constant</strong> (or <strong>dummy</strong>) model <span class="math notranslate nohighlight">\(\widehat y = b\)</span>. In fact, for constant predictions you don’t need any features, only labels do the job.</p>
+<p>The model <a class="reference internal" href="#equation-simple-lin-reg">(9)</a> is simple but we can do even simpler! Let <span class="math notranslate nohighlight">\(a=0\)</span> and predict labels by a <strong>constant</strong> (or <strong>dummy</strong>) model <span class="math notranslate nohighlight">\(\widehat y = b\)</span>. In fact, for constant predictions you don’t need any features, only labels do the job.</p>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
-<p>Which value of <span class="math notranslate nohighlight">\(b\)</span> minimizes the MSE <a class="reference internal" href="#equation-1-d-mse">(8)</a>?</p>
+<p>Which value of <span class="math notranslate nohighlight">\(b\)</span> minimizes the MSE <a class="reference internal" href="#equation-1-d-mse">(10)</a>?</p>
 </div>
 <p>Linear regression can be used with different loss functions. For example, we can choose mean absolute error (MAE) instead of MSE:</p>
 <div class="math notranslate nohighlight" id="equation-1-d-mae">
-<span class="eqno">(10)<a class="headerlink" href="#equation-1-d-mae" title="Permalink to this equation">#</a></span>\[\mathcal L(a, b) =  \frac 1n\sum\limits_{i=1}^n \vert y_i - ax_i - b\vert \to \min\limits_{a, b}.\]</div>
+<span class="eqno">(12)<a class="headerlink" href="#equation-1-d-mae" title="Permalink to this equation">#</a></span>\[\mathcal L(a, b) =  \frac 1n\sum\limits_{i=1}^n \vert y_i - ax_i - b\vert \to \min\limits_{a, b}.\]</div>
 <p>This time it is unlikely that we can find the analytical solution. But maybe it can be done for the dummy model?</p>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
@@ -594,7 +595,7 @@ document.write(`
 </section>
 <section id="rss-and-r-2-score">
 <h2>RSS and <span class="math notranslate nohighlight">\(R^2\)</span>-score<a class="headerlink" href="#rss-and-r-2-score" title="Permalink to this heading">#</a></h2>
-<p>Putting the optimal weights <span class="math notranslate nohighlight">\(\widehat a\)</span> and <span class="math notranslate nohighlight">\(\widehat b\)</span> into the loss function <a class="reference internal" href="#equation-1-d-mse">(8)</a>, we obtain <strong>residual square error</strong> (RSE). Multiplying by <span class="math notranslate nohighlight">\(n\)</span> we get <strong>residual sum of squares</strong></p>
+<p>Putting the optimal weights <span class="math notranslate nohighlight">\(\widehat a\)</span> and <span class="math notranslate nohighlight">\(\widehat b\)</span> into the loss function <a class="reference internal" href="#equation-1-d-mse">(10)</a>, we obtain <strong>residual square error</strong> (RSE). Multiplying by <span class="math notranslate nohighlight">\(n\)</span> we get <strong>residual sum of squares</strong></p>
 <div class="math notranslate nohighlight">
 \[
     RSS = \sum\limits_{i=1}^n(y_i - \widehat a x_i - \widehat b)^2.
@@ -606,7 +607,7 @@ TSS = \sum\limits_{i=1}^n(y_i - \overline {\boldsymbol y})^2.
 \]</div>
 <p>A popular metric called <strong>coefficient of determination</strong> (or <strong><span class="math notranslate nohighlight">\(R^2\)</span>-score</strong>) is defined as</p>
 <div class="math notranslate nohighlight" id="equation-r2-score">
-<span class="eqno">(11)<a class="headerlink" href="#equation-r2-score" title="Permalink to this equation">#</a></span>\[R^2 = 1 - \frac{RSS}{TSS} = 1 - \frac{\sum\limits_{i=1}^n(y_i - \widehat y_i)^2}{\sum\limits_{i=1}^n(y_i - \overline {\boldsymbol y})^2}.\]</div>
+<span class="eqno">(13)<a class="headerlink" href="#equation-r2-score" title="Permalink to this equation">#</a></span>\[R^2 = 1 - \frac{RSS}{TSS} = 1 - \frac{\sum\limits_{i=1}^n(y_i - \widehat y_i)^2}{\sum\limits_{i=1}^n(y_i - \overline {\boldsymbol y})^2}.\]</div>
 <p>The coefficient of determination shows proportion of variance explained. <span class="math notranslate nohighlight">\(R^2\)</span>-score does not exceed <span class="math notranslate nohighlight">\(1\)</span> (the greater —  the better).</p>
 <p><span style="display:none" id="R2_dummy">W3sicXVlc3Rpb24iOiAiV2hhdCBpcyB0aGUgJFJeMiQtc2NvcmUgb2YgdGhlIGR1bW15IG1vZGVsICRcXHdpZGVoYXQgeSA9IFxcb3ZlcmxpbmUge1xcYm9sZHN5bWJvbCB5fSQ/IiwgInR5cGUiOiAibnVtZXJpYyIsICJhbnN3ZXJzIjogW3sidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDAsICJjb3JyZWN0IjogdHJ1ZSwgImZlZWRiYWNrIjogIllvdSBuYWlsZWQgaXQhICRSXjIgPSAxIC0gMSA9IDAkIn0sIHsidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDEsICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJObywgaXQgc2hvdWxkIGJlIHN1YnRyYWN0ZWQgZnJvbSAkMSQifSwgeyJ0eXBlIjogInJhbmdlIiwgInJhbmdlIjogWy0xMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCwgMF0sICJmZWVkYmFjayI6ICIkUl4yJC1zY29yZSBtdXN0IGJlIGJldHdlZW4gMCBhbmQgMSJ9LCB7InR5cGUiOiAicmFuZ2UiLCAicmFuZ2UiOiBbMS4wMDAwMDAwMDAxLCAxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMF0sICJmZWVkYmFjayI6ICIkUl4yJC1zY29yZSBtdXN0IGJlIGJldHdlZW4gMCBhbmQgMSJ9LCB7InR5cGUiOiAiZGVmYXVsdCIsICJmZWVkYmFjayI6ICJUaGlzIHZhbHVlIGxvb2tzIGluY29ycmVjdCJ9XX1d</span></p>
 <div class="cell tag_remove-input docutils container">
@@ -1692,7 +1693,7 @@ if (typeof version == 'undefined') {
 </table>
 </div></div></div>
 </div>
-<p>Let predictors be <code class="docutils literal notranslate"><span class="pre">lstat</span></code>, target — <code class="docutils literal notranslate"><span class="pre">medv</span></code>. Let’s calculate the regression coefficients using <a class="reference internal" href="#equation-1-d-weights">(9)</a>:</p>
+<p>Let predictors be <code class="docutils literal notranslate"><span class="pre">lstat</span></code>, target — <code class="docutils literal notranslate"><span class="pre">medv</span></code>. Let’s calculate the regression coefficients using <a class="reference internal" href="#equation-1-d-weights">(11)</a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>

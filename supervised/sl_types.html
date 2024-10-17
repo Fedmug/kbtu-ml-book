@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -535,7 +536,7 @@ document.write(`
 <h1>Types of supervised learning<a class="headerlink" href="#types-of-supervised-learning" title="Permalink to this heading">#</a></h1>
 <p>Given a labeled training dataset</p>
 <div class="math notranslate nohighlight" id="equation-sl-dataset">
-<span class="eqno">(2)<a class="headerlink" href="#equation-sl-dataset" title="Permalink to this equation">#</a></span>\[\mathcal D = \{(\boldsymbol x_i, y_i)\}_{i=1}^n, \quad \boldsymbol x_i \in \mathbb R^d, \quad y_i \in \mathcal Y,\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-sl-dataset" title="Permalink to this equation">#</a></span>\[\mathcal D = \{(\boldsymbol x_i, y_i)\}_{i=1}^n, \quad \boldsymbol x_i \in \mathbb R^d, \quad y_i \in \mathcal Y,\]</div>
 <p>we want to build a <strong>predictive model</strong> <span class="math notranslate nohighlight">\(f_{\boldsymbol \theta}\colon \mathbb R^d\to \mathcal Y\)</span> which is usually taken from some parametric family</p>
 <div class="math notranslate nohighlight">
 \[
@@ -582,10 +583,10 @@ document.write(`
 <p>Let <span class="math notranslate nohighlight">\(\widehat y_i = f_{\boldsymbol \theta}(\boldsymbol x_i)\)</span> be the prediction of the model on the <span class="math notranslate nohighlight">\(i\)</span>-th sample.
 A typical loss function for binary classification is <strong>misclassification rate</strong> (or <strong>error rate</strong>) — the fraction of incorrect predictions (misclassifications):</p>
 <div class="math notranslate nohighlight" id="equation-mis-rate">
-<span class="eqno">(3)<a class="headerlink" href="#equation-mis-rate" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = \frac 1n \sum\limits_{i=1}^n \mathbb I\big[y_i \ne \hat y_i\big]\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-mis-rate" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = \frac 1n \sum\limits_{i=1}^n \mathbb I\big[y_i \ne \hat y_i\big]\]</div>
 <p>The error rate is not a smooth function, that’s why a binary classifier often predicts a number <span class="math notranslate nohighlight">\(\tilde y \in (0, 1)\)</span> which is treated as probability of positive class. In such case <strong>binary cross-entropy loss</strong> is used:</p>
 <div class="math notranslate nohighlight" id="equation-binary-cross-entropy">
-<span class="eqno">(4)<a class="headerlink" href="#equation-binary-cross-entropy" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = -\frac 1n \sum\limits_{i=1}^n \big(y_i \log(\tilde y_i) + (1-y_i) \log(1 - \tilde y_i)\big)\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-binary-cross-entropy" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = -\frac 1n \sum\limits_{i=1}^n \big(y_i \log(\tilde y_i) + (1-y_i) \log(1 - \tilde y_i)\big)\]</div>
 <div class="important admonition">
 <p class="admonition-title">Notation</p>
 <ol class="arabic simple">
@@ -635,7 +636,7 @@ A typical loss function for binary classification is <strong>misclassification r
 </tr>
 </tbody>
 </table>
-<p>Calculate the missclassification rate <a class="reference internal" href="#equation-mis-rate">(3)</a> and the binary cross-entropy loss <a class="reference internal" href="#equation-binary-cross-entropy">(4)</a>.</p>
+<p>Calculate the missclassification rate <a class="reference internal" href="#equation-mis-rate">(5)</a> and the binary cross-entropy loss <a class="reference internal" href="#equation-binary-cross-entropy">(6)</a>.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Solution</p>
 <p>There are <span class="math notranslate nohighlight">\(2\)</span> misclassifications, hence, the error rate equals <span class="math notranslate nohighlight">\(\frac 25 = 0.4\)</span>. For the cross entropy loss we have</p>
@@ -659,7 +660,7 @@ A typical loss function for binary classification is <strong>misclassification r
 <li><p>language identification</p></li>
 <li><p>music genre detection</p></li>
 </ul>
-<p>The error rate <a class="reference internal" href="#equation-mis-rate">(3)</a> is still valid if we have more than two classes <span class="math notranslate nohighlight">\(\mathcal Y = \{1, 2, \ldots, K\}\)</span>. More often, a multiclass variant of <a class="reference internal" href="#equation-binary-cross-entropy">(4)</a> is used.</p>
+<p>The error rate <a class="reference internal" href="#equation-mis-rate">(5)</a> is still valid if we have more than two classes <span class="math notranslate nohighlight">\(\mathcal Y = \{1, 2, \ldots, K\}\)</span>. More often, a multiclass variant of <a class="reference internal" href="#equation-binary-cross-entropy">(6)</a> is used.</p>
 <p>After applying one-hot encoding targets become <span class="math notranslate nohighlight">\(K\)</span>-dimensional vectors:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -673,7 +674,7 @@ A typical loss function for binary classification is <strong>misclassification r
 \]</div>
 <p>The <strong>cross-entropy loss</strong> is calculated as</p>
 <div class="math notranslate nohighlight" id="equation-cross-entropy">
-<span class="eqno">(5)<a class="headerlink" href="#equation-cross-entropy" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol \theta) = -\frac 1n \sum\limits_{i=1}^n \sum\limits_{k=1}^Ky_{ik} \log(\hat y_{ik}).\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-cross-entropy" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol \theta) = -\frac 1n \sum\limits_{i=1}^n \sum\limits_{k=1}^Ky_{ik} \log(\hat y_{ik}).\]</div>
 <div class="admonition-example admonition">
 <p class="admonition-title">Example</p>
 <p>Classifying into <span class="math notranslate nohighlight">\(3\)</span> classes, model produces the following outputs:</p>
@@ -698,7 +699,7 @@ A typical loss function for binary classification is <strong>misclassification r
 </tr>
 </tbody>
 </table>
-<p>Calculate the cross-entropy loss <a class="reference internal" href="#equation-cross-entropy">(5)</a>. Assume that log base is <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<p>Calculate the cross-entropy loss <a class="reference internal" href="#equation-cross-entropy">(7)</a>. Assume that log base is <span class="math notranslate nohighlight">\(2\)</span>.</p>
 </div>
 <p><span style="display:none" id="cross_entropy_loss">W3sicXVlc3Rpb24iOiAiQ2FsY3VsYXRlIHRoZSBjcm9zcyBlbnRyb3B5IGZyb20gdGhlIHByZXZpb3VzIGV4YW1wbGUiLCAidHlwZSI6ICJudW1lcmljIiwgImFuc3dlcnMiOiBbeyJ0eXBlIjogInZhbHVlIiwgInZhbHVlIjogMC44NzUsICJjb3JyZWN0IjogdHJ1ZSwgImZlZWRiYWNrIjogIkV4YWN0bHkhIn0sIHsidHlwZSI6ICJkZWZhdWx0IiwgImZlZWRiYWNrIjogIkluY29ycmVjdCJ9XX1d</span></p>
 <div class="cell tag_remove-input docutils container">
@@ -1663,7 +1664,7 @@ if (typeof version == 'undefined') {
 \[
     \ell_2(\widehat y, y) = (y - \widehat y)^2
 \]</div>
-<p>The overall loss function is obtained by averaging over the training dataset <a class="reference internal" href="#equation-sl-dataset">(2)</a>:</p>
+<p>The overall loss function is obtained by averaging over the training dataset <a class="reference internal" href="#equation-sl-dataset">(4)</a>:</p>
 <div class="math notranslate nohighlight">
 \[
     \mathcal L(\boldsymbol \theta) = \mathrm{MSE}(\boldsymbol \theta) = \frac 1n\sum\limits_{i=1}^n \ell_2(\widehat y_i, y_i) = \frac 1n\sum\limits_{i=1}^n (y_i - f_{\boldsymbol \theta}(\boldsymbol x_i))^2
@@ -1730,16 +1731,16 @@ if (outputEl) {{
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <ol class="arabic">
-<li><p>Suppose we have a dataset <a class="reference internal" href="#equation-sl-dataset">(2)</a> with categorical targets <span class="math notranslate nohighlight">\(\mathcal Y = \{1 ,\ldots, K\}\)</span>.
+<li><p>Suppose we have a dataset <a class="reference internal" href="#equation-sl-dataset">(4)</a> with categorical targets <span class="math notranslate nohighlight">\(\mathcal Y = \{1 ,\ldots, K\}\)</span>.
 Let <span class="math notranslate nohighlight">\(n_k\)</span> be the size of the <span class="math notranslate nohighlight">\(k\)</span>-th category:</p>
 <div class="math notranslate nohighlight">
 \[
         n_k = \sum\limits_{i=1}^n \mathbb I[y_i = k], \quad
         \sum\limits_{k=1}^K n_k = n.
     \]</div>
-<p>Consider a dummy model which always predicts category <span class="math notranslate nohighlight">\(\ell\)</span>, <span class="math notranslate nohighlight">\(1\leqslant \ell \leqslant K\)</span>. What is the value of the error rate <a class="reference internal" href="#equation-mis-rate">(3)</a>? For which <span class="math notranslate nohighlight">\(\ell\)</span> it is minimal?</p>
+<p>Consider a dummy model which always predicts category <span class="math notranslate nohighlight">\(\ell\)</span>, <span class="math notranslate nohighlight">\(1\leqslant \ell \leqslant K\)</span>. What is the value of the error rate <a class="reference internal" href="#equation-mis-rate">(5)</a>? For which <span class="math notranslate nohighlight">\(\ell\)</span> it is minimal?</p>
 </li>
-<li><p>Show that cross-entropy loss <a class="reference internal" href="#equation-cross-entropy">(5)</a> turns into <a class="reference internal" href="#equation-binary-cross-entropy">(4)</a> if <span class="math notranslate nohighlight">\(K=2\)</span>.</p></li>
+<li><p>Show that cross-entropy loss <a class="reference internal" href="#equation-cross-entropy">(7)</a> turns into <a class="reference internal" href="#equation-binary-cross-entropy">(6)</a> if <span class="math notranslate nohighlight">\(K=2\)</span>.</p></li>
 <li><p>The MSE for a constant model <span class="math notranslate nohighlight">\(f_{\boldsymbol \theta}(\boldsymbol x_i) = c\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[

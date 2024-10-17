@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
@@ -531,7 +532,7 @@ document.write(`
 <h2>Projection onto a line<a class="headerlink" href="#projection-onto-a-line" title="Permalink to this heading">#</a></h2>
 <p>Пусть прямая в <span class="math notranslate nohighlight">\(\mathbb R^n\)</span> задана ненулевым вектором <span class="math notranslate nohighlight">\(\boldsymbol a = (a_1, \ldots, a_n)^\mathsf{T}\)</span>, и мы хотим найти на этой прямой точку <span class="math notranslate nohighlight">\(\boldsymbol p\)</span>, ближайшую к заданной точке <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>. Для этого вектор <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> надо спроектировать на прямую <span class="math notranslate nohighlight">\(\mathrm{span}(\boldsymbol a)\)</span>; результатом проекции и будет вектор <span class="math notranslate nohighlight">\(\boldsymbol p = c \boldsymbol a\)</span>. Проекция <span class="math notranslate nohighlight">\(\boldsymbol p\)</span> характеризуется свойством <span class="math notranslate nohighlight">\(\boldsymbol x - \boldsymbol p \perp \boldsymbol a\)</span>, из которого мы и найдём число <span class="math notranslate nohighlight">\(c\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-1d-projection">
-<span class="eqno">(47)<a class="headerlink" href="#equation-1d-projection" title="Permalink to this equation">#</a></span>\[    \boldsymbol a^\mathsf{T}(\boldsymbol x - \boldsymbol p) = 0 \iff 
+<span class="eqno">(49)<a class="headerlink" href="#equation-1d-projection" title="Permalink to this equation">#</a></span>\[    \boldsymbol a^\mathsf{T}(\boldsymbol x - \boldsymbol p) = 0 \iff 
     \boldsymbol a^\mathsf{T}\boldsymbol x - c\boldsymbol a^\mathsf{T}\boldsymbol a = 0 \iff
     c = \frac{\boldsymbol a^\mathsf{T}\boldsymbol x}{\boldsymbol a^\mathsf{T}\boldsymbol a}. \]</div>
 <p>Итак, наша проекция равна <span class="math notranslate nohighlight">\(\boldsymbol p = \frac{\boldsymbol a^\mathsf{T}\boldsymbol x}{\boldsymbol a^\mathsf{T}\boldsymbol a} \boldsymbol a\)</span>.
@@ -561,12 +562,12 @@ document.write(`
 <div class="cell_output docutils container">
 <img alt="../../_images/fe5ba4c9397c3c03d54e74808fc8fa3faafa6423d12ad327059f4f699ffc82b8.svg" src="../../_images/fe5ba4c9397c3c03d54e74808fc8fa3faafa6423d12ad327059f4f699ffc82b8.svg" /></div>
 </div>
-<p>In linear regression we minimize the distance from the target vector <span class="math notranslate nohighlight">\(\boldsymbol y = (y_1, \ldots, y_n)\)</span> and the line specified by the feature vector <span class="math notranslate nohighlight">\(\boldsymbol x = (x_1, \ldots, x_n)\)</span>. According <a class="reference internal" href="#equation-1d-projection">(47)</a> we can achieve this by putting</p>
+<p>In linear regression we minimize the distance from the target vector <span class="math notranslate nohighlight">\(\boldsymbol y = (y_1, \ldots, y_n)\)</span> and the line specified by the feature vector <span class="math notranslate nohighlight">\(\boldsymbol x = (x_1, \ldots, x_n)\)</span>. According <a class="reference internal" href="#equation-1d-projection">(49)</a> we can achieve this by putting</p>
 <div class="math notranslate nohighlight" id="equation-best-slope-lr-no-bias">
-<span class="eqno">(48)<a class="headerlink" href="#equation-best-slope-lr-no-bias" title="Permalink to this equation">#</a></span>\[    \widehat a = \frac{\boldsymbol x^\mathsf{T} \boldsymbol y}{\boldsymbol x^\mathsf{T} \boldsymbol x} = \frac{\sum\limits_{i=1}^n x_i y_i}{\sum\limits_{i=1}^n x_i^2}\]</div>
+<span class="eqno">(50)<a class="headerlink" href="#equation-best-slope-lr-no-bias" title="Permalink to this equation">#</a></span>\[    \widehat a = \frac{\boldsymbol x^\mathsf{T} \boldsymbol y}{\boldsymbol x^\mathsf{T} \boldsymbol x} = \frac{\sum\limits_{i=1}^n x_i y_i}{\sum\limits_{i=1}^n x_i^2}\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Linear regression with bias <span class="math notranslate nohighlight">\(y = ax + b\)</span> is described <a class="reference internal" href="../../lin_reg/simple.html#simple-linear-regression"><span class="std std-ref">here</span></a>. The optimal parameters are given by <a class="reference internal" href="../../lin_reg/simple.html#equation-1-d-weights">(9)</a>. See also <a class="reference internal" href="../../supervised/sl_types.html#lr-1d-plot"><span class="std std-ref">this</span></a> plot.</p>
+<p>Linear regression with bias <span class="math notranslate nohighlight">\(y = ax + b\)</span> is described <a class="reference internal" href="../../lin_reg/simple.html#simple-linear-regression"><span class="std std-ref">here</span></a>. The optimal parameters are given by <a class="reference internal" href="../../lin_reg/simple.html#equation-1-d-weights">(11)</a>. See also <a class="reference internal" href="../../supervised/sl_types.html#lr-1d-plot"><span class="std std-ref">this</span></a> plot.</p>
 </div>
 </section>
 <section id="projection-onto-a-subspace">
@@ -611,7 +612,7 @@ $$
 -->
 <p>В результате получаем, что</p>
 <div class="math notranslate nohighlight" id="equation-projection-coef">
-<span class="eqno">(49)<a class="headerlink" href="#equation-projection-coef" title="Permalink to this equation">#</a></span>\[\boldsymbol c = (\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T} \boldsymbol x,\]</div>
+<span class="eqno">(51)<a class="headerlink" href="#equation-projection-coef" title="Permalink to this equation">#</a></span>\[\boldsymbol c = (\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T} \boldsymbol x,\]</div>
 <p>а сама проекция равна</p>
 <div class="math notranslate nohighlight">
 \[
@@ -619,10 +620,10 @@ $$
 \]</div>
 <p>Отметим, что проекция на прямую является частным случаем проекции на подпространство, когда матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> состоит из одного столбца <span class="math notranslate nohighlight">\(\boldsymbol a\)</span>. Проекция на подпространство записывается в виде <span class="math notranslate nohighlight">\(\boldsymbol p = \boldsymbol {Px}\)</span> с помощью матрицы проекции</p>
 <div class="math notranslate nohighlight" id="equation-proj-matrix">
-<span class="eqno">(50)<a class="headerlink" href="#equation-proj-matrix" title="Permalink to this equation">#</a></span>\[    \boldsymbol P = \boldsymbol A (\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T}. \]</div>
+<span class="eqno">(52)<a class="headerlink" href="#equation-proj-matrix" title="Permalink to this equation">#</a></span>\[    \boldsymbol P = \boldsymbol A (\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T}. \]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The matrix <span class="math notranslate nohighlight">\((\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T}\)</span> is also called <strong>Moore–Penrose pseudo inverse</strong> matrix and denotes as <span class="math notranslate nohighlight">\(\boldsymbol A^\dagger\)</span>. Thus, <a class="reference internal" href="#equation-projection-coef">(49)</a> can be rewritten as <span class="math notranslate nohighlight">\(\boldsymbol c = \boldsymbol A^\dagger \boldsymbol x\)</span>.</p>
+<p>The matrix <span class="math notranslate nohighlight">\((\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T}\)</span> is also called <strong>Moore–Penrose pseudo inverse</strong> matrix and denotes as <span class="math notranslate nohighlight">\(\boldsymbol A^\dagger\)</span>. Thus, <a class="reference internal" href="#equation-projection-coef">(51)</a> can be rewritten as <span class="math notranslate nohighlight">\(\boldsymbol c = \boldsymbol A^\dagger \boldsymbol x\)</span>.</p>
 </div>
 <!--
 Поиск проекции основан на геометрических соображениях, имеющих связь с основной теоремой линейной алгебры. Проектируя вектор $\boldsymbol x$ на $C(\boldsymbol A)$, мы «опускаем перепендикуляр» из $\boldsymbol x$ на $C(\boldsymbol A)$, т.е. ищем такой вектор $\boldsymbol p$, $\boldsymbol x - \boldsymbol p \perp C(\boldsymbol A)$. Но мы знаем, что $C(\boldsymbol A)^\perp = N(\boldsymbol A^\mathsf{T})$, следовательно, вектор $\boldsymbol x - \boldsymbol p$ лежит в левом ядре матрицы $\boldsymbol A$ и $\boldsymbol A^\mathsf{T}(\boldsymbol x - \boldsymbol p) = \boldsymbol 0$.
@@ -724,13 +725,13 @@ $$
 -->
 <p>Цель задачи регрессии — смоделировать зависимость целевой переменной <span class="math notranslate nohighlight">\(y \in \mathbb R\)</span> от признаков объекта <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^d\)</span> (<span class="math notranslate nohighlight">\(d\)</span> — число признаков). Линейная регрессия строит линейную модель, которая предполагает линейную зависимость <span class="math notranslate nohighlight">\(y\)</span> от <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>. Как мы знаем, всякий линейный функционал из <span class="math notranslate nohighlight">\(\mathbb R^d\)</span> в <span class="math notranslate nohighlight">\(\mathbb R\)</span> может быть записан в виде скалярного произведения</p>
 <div class="math notranslate nohighlight" id="equation-lin-reg-lsa">
-<span class="eqno">(51)<a class="headerlink" href="#equation-lin-reg-lsa" title="Permalink to this equation">#</a></span>\[    y = \boldsymbol x^\mathsf{T} \boldsymbol w\]</div>
-<p>для некоторого фиксированного вектора весов <span class="math notranslate nohighlight">\(\boldsymbol w \in \mathbb R^d\)</span>. Правда, в таком случае <span class="math notranslate nohighlight">\(y = 0\)</span> при <span class="math notranslate nohighlight">\(\boldsymbol x = \boldsymbol 0\)</span>, что может не соответствовать нашим данным. Поэтому к линейному функционалу добавляют ещё один параметр — свободный член (bias) <span class="math notranslate nohighlight">\(w_0\)</span>, и тогда линейная модель <a class="reference internal" href="#equation-lin-reg-lsa">(51)</a> приобретает вид</p>
+<span class="eqno">(53)<a class="headerlink" href="#equation-lin-reg-lsa" title="Permalink to this equation">#</a></span>\[    y = \boldsymbol x^\mathsf{T} \boldsymbol w\]</div>
+<p>для некоторого фиксированного вектора весов <span class="math notranslate nohighlight">\(\boldsymbol w \in \mathbb R^d\)</span>. Правда, в таком случае <span class="math notranslate nohighlight">\(y = 0\)</span> при <span class="math notranslate nohighlight">\(\boldsymbol x = \boldsymbol 0\)</span>, что может не соответствовать нашим данным. Поэтому к линейному функционалу добавляют ещё один параметр — свободный член (bias) <span class="math notranslate nohighlight">\(w_0\)</span>, и тогда линейная модель <a class="reference internal" href="#equation-lin-reg-lsa">(53)</a> приобретает вид</p>
 <div class="math notranslate nohighlight">
 \[
     y = \boldsymbol x^\mathsf{T} \boldsymbol w  + w_0.
 \]</div>
-<p>Записывать в таком виде линейную регрессию не очень удобно, но свободный член можно учесть в первоначальной записи <a class="reference internal" href="#equation-lin-reg-lsa">(51)</a>, если добавить ещё один (нулевой) признак, всегда равный единице:</p>
+<p>Записывать в таком виде линейную регрессию не очень удобно, но свободный член можно учесть в первоначальной записи <a class="reference internal" href="#equation-lin-reg-lsa">(53)</a>, если добавить ещё один (нулевой) признак, всегда равный единице:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \boldsymbol x = \begin{pmatrix}
@@ -749,7 +750,7 @@ $$
     \quad
     y = \boldsymbol x^\mathsf{T} \boldsymbol w.
 \end{split}\]</div>
-<p>Далее будем считать, что этот фиктивный принак уже добавлен, и всякая линейная зависимость между признаками объекта <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> и таргетом <span class="math notranslate nohighlight">\(y\)</span> имеет вид <a class="reference internal" href="#equation-lin-reg-lsa">(51)</a>.</p>
+<p>Далее будем считать, что этот фиктивный принак уже добавлен, и всякая линейная зависимость между признаками объекта <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> и таргетом <span class="math notranslate nohighlight">\(y\)</span> имеет вид <a class="reference internal" href="#equation-lin-reg-lsa">(53)</a>.</p>
 <p>Для решения задачи регрессии (в том числе линейной) нам, разумеется, нужна обучающая выборка — датасет</p>
 <div class="math notranslate nohighlight">
 \[
@@ -771,12 +772,12 @@ $$
     y_n
     \end{pmatrix}.
 \end{split}\]</div>
-<p>Такие обозначения позволяют линейную модель <a class="reference internal" href="#equation-lin-reg-lsa">(51)</a> записать единой формулой сразу для всего датасета <span class="math notranslate nohighlight">\(\mathcal D\)</span> как</p>
+<p>Такие обозначения позволяют линейную модель <a class="reference internal" href="#equation-lin-reg-lsa">(53)</a> записать единой формулой сразу для всего датасета <span class="math notranslate nohighlight">\(\mathcal D\)</span> как</p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol y = \boldsymbol{Xw}.
 \]</div>
-<p>Задача линейной регрессии состоит в подборе весов <span class="math notranslate nohighlight">\(\boldsymbol w\)</span> таким образом, чтобы <span class="math notranslate nohighlight">\(\boldsymbol{Xw}\)</span> был как можно ближе к вектору <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>. Для этого надо спроектировать вектор <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> на <span class="math notranslate nohighlight">\(C(\boldsymbol X)\)</span>. Согласно <a class="reference internal" href="#equation-projection-coef">(49)</a> оптимальный вектор весов <span class="math notranslate nohighlight">\(\widehat {\boldsymbol w}\)</span> равен</p>
+<p>Задача линейной регрессии состоит в подборе весов <span class="math notranslate nohighlight">\(\boldsymbol w\)</span> таким образом, чтобы <span class="math notranslate nohighlight">\(\boldsymbol{Xw}\)</span> был как можно ближе к вектору <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>. Для этого надо спроектировать вектор <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> на <span class="math notranslate nohighlight">\(C(\boldsymbol X)\)</span>. Согласно <a class="reference internal" href="#equation-projection-coef">(51)</a> оптимальный вектор весов <span class="math notranslate nohighlight">\(\widehat {\boldsymbol w}\)</span> равен</p>
 <!--
 В качестве меры близости можно взять, например, евклидову норму (или её квадрат):
 
@@ -786,7 +787,7 @@ $$
 ```
 -->
 <div class="math notranslate nohighlight" id="equation-lin-reg-solution-lsa">
-<span class="eqno">(52)<a class="headerlink" href="#equation-lin-reg-solution-lsa" title="Permalink to this equation">#</a></span>\[    \widehat {\boldsymbol w} = (\boldsymbol X^\mathsf{T} \boldsymbol X)^{-1} \boldsymbol X^\mathsf{T} \boldsymbol y \]</div>
+<span class="eqno">(54)<a class="headerlink" href="#equation-lin-reg-solution-lsa" title="Permalink to this equation">#</a></span>\[    \widehat {\boldsymbol w} = (\boldsymbol X^\mathsf{T} \boldsymbol X)^{-1} \boldsymbol X^\mathsf{T} \boldsymbol y \]</div>
 <p>Чтобы веса линейной регрессии можно было найти по этой формуле, матрица объект-признак <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> должна иметь линейно независимые столбцы. Если это не так, то между признаками в датасете <span class="math notranslate nohighlight">\(\mathcal D\)</span> есть линейная зависимость (её также называют <strong>мультиколлинеарностью</strong>). Мультиколлинеарность ломает линейную регрессию, поэтому от неё следует избавляться, например, проредив количество признаков.</p>
 <!--
 Вычислительная сложность нахождения весов линейной регрессии по формуле {eq}`lin-reg-solution-lsa` составляет $O(ND^2 + D^3)$. Таким образом, при большом количестве признаков точное аналитическое вычисление весов — весьма дорогое удовольствие. Вычисления можно ускорить, используя продвинутые алгоритмы перемножения матриц или итерационные методы поиска обратной матрицы. Или же можно вообще не использовать формулу {eq}`lin-reg-solution-lsa`, а искать приближённое решения задачи оптимизации {eq}`lin-reg-opt-lsa` методом градиентного спуска, например.
@@ -828,9 +829,9 @@ C(\boldsymbol A^\mathsf{T})^\perp = N(\boldsymbol A).
 <ol class="arabic">
 <li><p>Find the projection matrix onto the line <span class="math notranslate nohighlight">\(x + y = 0\)</span>.</p></li>
 <li><p>Prove that <span class="math notranslate nohighlight">\(\boldsymbol P = \frac{\boldsymbol a \boldsymbol a^\mathsf{T}}{\boldsymbol a^\mathsf{T} \boldsymbol a}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol a \ne \boldsymbol 0\)</span>, is a projection matrix, i.e., <span class="math notranslate nohighlight">\(\boldsymbol P^2 = \boldsymbol P\)</span>.</p></li>
-<li><p>Show that matrix <a class="reference internal" href="#equation-proj-matrix">(50)</a> is a projection matrix.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol X \in \mathbb R^{n\times d}\)</span>. Estimate the complexity of calculations by formula <a class="reference internal" href="#equation-lin-reg-solution-lsa">(52)</a> in terms of big-O.</p></li>
-<li><p>Find the feature matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> for simple linear regression <span class="math notranslate nohighlight">\(y = ax + b\)</span>. Applying <a class="reference internal" href="#equation-lin-reg-solution-lsa">(52)</a> show that the equalities <a class="reference internal" href="../../lin_reg/simple.html#equation-1-d-weights">(9)</a> hold.</p></li>
+<li><p>Show that matrix <a class="reference internal" href="#equation-proj-matrix">(52)</a> is a projection matrix.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol X \in \mathbb R^{n\times d}\)</span>. Estimate the complexity of calculations by formula <a class="reference internal" href="#equation-lin-reg-solution-lsa">(54)</a> in terms of big-O.</p></li>
+<li><p>Find the feature matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> for simple linear regression <span class="math notranslate nohighlight">\(y = ax + b\)</span>. Applying <a class="reference internal" href="#equation-lin-reg-solution-lsa">(54)</a> show that the equalities <a class="reference internal" href="../../lin_reg/simple.html#equation-1-d-weights">(11)</a> hold.</p></li>
 <li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> be a projection matrix. Show that <span class="math notranslate nohighlight">\(\boldsymbol I - \boldsymbol P\)</span> is also a projection matrix.</p></li>
 <li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> be the projection matrix onto <span class="math notranslate nohighlight">\(C(\boldsymbol A)\)</span>. On which subspace will project the matrix <span class="math notranslate nohighlight">\(\boldsymbol I - \boldsymbol P\)</span>?</p>
 <div class="dropdown tip admonition">

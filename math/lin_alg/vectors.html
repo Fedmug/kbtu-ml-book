@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
@@ -855,14 +856,14 @@ infinite norm = 2.0
 <h2>Inner product<a class="headerlink" href="#inner-product" title="Permalink to this heading">#</a></h2>
 <p><strong>Inner product</strong> (aka <strong>dot product</strong>) of vectors <span class="math notranslate nohighlight">\(\boldsymbol x, \boldsymbol y \in \mathbb R^n\)</span> equals</p>
 <div class="math notranslate nohighlight" id="equation-inner">
-<span class="eqno">(40)<a class="headerlink" href="#equation-inner" title="Permalink to this equation">#</a></span>\[    \langle \boldsymbol x, \boldsymbol y \rangle = \sum\limits_{k=1}^n x_k y_k.\]</div>
+<span class="eqno">(42)<a class="headerlink" href="#equation-inner" title="Permalink to this equation">#</a></span>\[    \langle \boldsymbol x, \boldsymbol y \rangle = \sum\limits_{k=1}^n x_k y_k.\]</div>
 <p>Alternative notation: <span class="math notranslate nohighlight">\(\boldsymbol x^\mathsf{T} \boldsymbol y\)</span>.</p>
 <p>Inner product generates Euclidean norm: if <span class="math notranslate nohighlight">\(\boldsymbol x  \in \mathbb R^n\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[
 \sqrt{\langle \boldsymbol x, \boldsymbol x \rangle} = \Vert \boldsymbol x \Vert_2.
 \]</div>
-<p>The Cauchy-Schwarz inequality <a class="reference internal" href="#equation-cauchy-schwarz">(42)</a> can be written as</p>
+<p>The Cauchy-Schwarz inequality <a class="reference internal" href="#equation-cauchy-schwarz">(44)</a> can be written as</p>
 <div class="math notranslate nohighlight">
 \[
     \vert\langle \boldsymbol x, \boldsymbol y \rangle\vert \leqslant \Vert \boldsymbol x \Vert_2 \cdot \Vert \boldsymbol y \Vert_2.
@@ -870,9 +871,9 @@ infinite norm = 2.0
 <p>This inequality turns into equality iff vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> are collinear.</p>
 <p>The vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> are called <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(\langle\boldsymbol x, \boldsymbol y \rangle = 0\)</span>. <strong>Angle</strong> <span class="math notranslate nohighlight">\(\theta\)</span> between two nonzero vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> is defined from equality</p>
 <div class="math notranslate nohighlight" id="equation-cos-angle">
-<span class="eqno">(41)<a class="headerlink" href="#equation-cos-angle" title="Permalink to this equation">#</a></span>\[    \cos \theta = \frac{\langle \boldsymbol x, \boldsymbol y \rangle}{\Vert \boldsymbol x\Vert_2 \cdot \Vert \boldsymbol y\Vert_2}.\]</div>
+<span class="eqno">(43)<a class="headerlink" href="#equation-cos-angle" title="Permalink to this equation">#</a></span>\[    \cos \theta = \frac{\langle \boldsymbol x, \boldsymbol y \rangle}{\Vert \boldsymbol x\Vert_2 \cdot \Vert \boldsymbol y\Vert_2}.\]</div>
 <p>The angle is well-defined since this fraction is always between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span> due to the Cauchy-Schwarz inequality. If <span class="math notranslate nohighlight">\(\langle \boldsymbol x, \boldsymbol y \rangle = 0\)</span>, then <span class="math notranslate nohighlight">\(\cos\theta = 0\)</span> and <span class="math notranslate nohighlight">\(\theta = \frac \pi 2\)</span>. Hence, the angle between orhogonal vectors equals to <span class="math notranslate nohighlight">\(90°\)</span>.</p>
-<p>In data analysis and machine learning the formula <a class="reference internal" href="#equation-cos-angle">(41)</a> is often used to measure similarity between vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>: the closer <span class="math notranslate nohighlight">\(\cos \theta\)</span> to <span class="math notranslate nohighlight">\(1\)</span>, the more similar the vectors are. By the same reason the quantity <span class="math notranslate nohighlight">\(1-\cos\theta\)</span> is called <strong>cosine distance</strong> between <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>.</p>
+<p>In data analysis and machine learning the formula <a class="reference internal" href="#equation-cos-angle">(43)</a> is often used to measure similarity between vectors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>: the closer <span class="math notranslate nohighlight">\(\cos \theta\)</span> to <span class="math notranslate nohighlight">\(1\)</span>, the more similar the vectors are. By the same reason the quantity <span class="math notranslate nohighlight">\(1-\cos\theta\)</span> is called <strong>cosine distance</strong> between <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>.</p>
 <!--
 **Скалярным произведением** векторов $\boldsymbol x, \boldsymbol y \in \mathbb R^n$ называется величина
 
@@ -1021,10 +1022,10 @@ $$
 <li><p>Prove the Cauchy-Schwarz inequality</p></li>
 </ol>
 <div class="math notranslate nohighlight" id="equation-cauchy-schwarz">
-<span class="eqno">(42)<a class="headerlink" href="#equation-cauchy-schwarz" title="Permalink to this equation">#</a></span>\[    \bigg(\sum\limits_{k=1}^n x_k y_k\bigg)^2 \leqslant \sum\limits_{k=1}^n x_k^2 \sum\limits_{k=1}^n y_k^2, \]</div>
+<span class="eqno">(44)<a class="headerlink" href="#equation-cauchy-schwarz" title="Permalink to this equation">#</a></span>\[    \bigg(\sum\limits_{k=1}^n x_k y_k\bigg)^2 \leqslant \sum\limits_{k=1}^n x_k^2 \sum\limits_{k=1}^n y_k^2, \]</div>
 <ol class="arabic simple" start="5">
 <li><p>Show that cosine distance between two vectors is always between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2\)</span>.</p></li>
-<li><p>How many arithmetic operations are required to calculate the dot product by formula <a class="reference internal" href="#equation-inner">(40)</a>?</p></li>
+<li><p>How many arithmetic operations are required to calculate the dot product by formula <a class="reference internal" href="#equation-inner">(42)</a>?</p></li>
 </ol>
 </section>
 

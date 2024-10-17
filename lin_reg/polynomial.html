@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -522,12 +523,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="polynomial-regression">
 <h1>Polynomial regression<a class="headerlink" href="#polynomial-regression" title="Permalink to this heading">#</a></h1>
-<p>An obious way to enhance the simple regression model <a class="reference internal" href="simple.html#equation-simple-lin-reg">(7)</a> is to add more powers of predictor <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>. For example, consider <strong>quadratic regression</strong></p>
+<p>An obious way to enhance the simple regression model <a class="reference internal" href="simple.html#equation-simple-lin-reg">(9)</a> is to add more powers of predictor <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>. For example, consider <strong>quadratic regression</strong></p>
 <div class="math notranslate nohighlight" id="equation-quad-reg">
-<span class="eqno">(12)<a class="headerlink" href="#equation-quad-reg" title="Permalink to this equation">#</a></span>\[    y = w_0 + w_1 x + w_2 x^2.\]</div>
+<span class="eqno">(14)<a class="headerlink" href="#equation-quad-reg" title="Permalink to this equation">#</a></span>\[    y = w_0 + w_1 x + w_2 x^2.\]</div>
 <p>Now the model has three parameters <span class="math notranslate nohighlight">\(\boldsymbol w = (w_0, w_1, w_2)\)</span>, which could be also fitted by optimizing of MSE:</p>
 <div class="math notranslate nohighlight" id="equation-quad-mse">
-<span class="eqno">(13)<a class="headerlink" href="#equation-quad-mse" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol w) =  \frac 1n\sum\limits_{i=1}^n (y_i  - w_0 - w_1x_i - w_2x_i^2)^2 \to \min\limits_{\boldsymbol w}.\]</div>
+<span class="eqno">(15)<a class="headerlink" href="#equation-quad-mse" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol w) =  \frac 1n\sum\limits_{i=1}^n (y_i  - w_0 - w_1x_i - w_2x_i^2)^2 \to \min\limits_{\boldsymbol w}.\]</div>
 <section id="revisit-boston-dataset">
 <span id="boston-quadratic"></span><h2>Revisit Boston dataset<a class="headerlink" href="#revisit-boston-dataset" title="Permalink to this heading">#</a></h2>
 <p>The data look quite suitable for a quadratic regression. Let’s do a simple feature engineering and add new feature of squares. Now the design matrix has two columns:</p>
@@ -595,17 +596,17 @@ MSE: 30.330520075853713
 <h2>General case<a class="headerlink" href="#general-case" title="Permalink to this heading">#</a></h2>
 <p>Of course, the degree of the polynomial can be any number <span class="math notranslate nohighlight">\(m\in\mathbb N\)</span>. The model of the polynomial regression is</p>
 <div class="math notranslate nohighlight" id="equation-poly-reg">
-<span class="eqno">(14)<a class="headerlink" href="#equation-poly-reg" title="Permalink to this equation">#</a></span>\[    y = w_0 + w_1 x + w_2 x^2 + \ldots + w_m x^m = \sum\limits_{k=0}^m w_k x^k.\]</div>
+<span class="eqno">(16)<a class="headerlink" href="#equation-poly-reg" title="Permalink to this equation">#</a></span>\[    y = w_0 + w_1 x + w_2 x^2 + \ldots + w_m x^m = \sum\limits_{k=0}^m w_k x^k.\]</div>
 <p><strong>Q.</strong> How many parameters does this model have?</p>
 <p>In case of MSE loss the model is fitted via minimizing the function</p>
 <div class="math notranslate nohighlight" id="equation-poly-mse">
-<span class="eqno">(15)<a class="headerlink" href="#equation-poly-mse" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol w) =  \frac 1n\sum\limits_{i=1}^n \Big(y_i  - \sum\limits_{k=0}^m w_k x^k\Big)^2 \to \min\limits_{\boldsymbol w}.\]</div>
+<span class="eqno">(17)<a class="headerlink" href="#equation-poly-mse" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol w) =  \frac 1n\sum\limits_{i=1}^n \Big(y_i  - \sum\limits_{k=0}^m w_k x^k\Big)^2 \to \min\limits_{\boldsymbol w}.\]</div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Find the analytical solution of the optimization task <a class="reference internal" href="#equation-quad-mse">(13)</a>.</p></li>
-<li><p>Find the feature matrix of the polynomial regression model <a class="reference internal" href="#equation-poly-reg">(14)</a>.</p></li>
+<li><p>Find the analytical solution of the optimization task <a class="reference internal" href="#equation-quad-mse">(15)</a>.</p></li>
+<li><p>Find the feature matrix of the polynomial regression model <a class="reference internal" href="#equation-poly-reg">(16)</a>.</p></li>
 </ol>
 <div class="warning admonition">
 <p class="admonition-title">TODO</p>
