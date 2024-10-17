@@ -9,11 +9,11 @@ parts:
       - file: courses/Intro2ML.md
         sections:
           - file: HW/HW1_2024
+          - file: HW/HW2_2024
         #   - file: HW/HW2
         #   - file: HW/HW3
         #   - file: HW/HW4
         #   - file: HW/HW5
-        #   - file: HW/HW6
         #   - file: HW/HW7
       - file: courses/DL.md
       - file: courses/ML_2024
