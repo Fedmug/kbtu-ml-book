@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -529,7 +530,7 @@ document.write(`
 </figure>
 <div class="admonition-see-also admonition">
 <p class="admonition-title">See also</p>
-<p>A decision tree chapter in <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/reshayushchiye-derevya.">ML Handbook</a></p>
+<p>A decision tree chapter in <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/reshayushchiye-derevya">ML Handbook</a></p>
 </div>
 <section id="binary-splitting">
 <h2>Binary splitting<a class="headerlink" href="#binary-splitting" title="Permalink to this heading">#</a></h2>
@@ -600,7 +601,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5e4daa2fd57cea3b6d75088e9f3883a63a7ca942a30799e57ddaa3c7f101874b.png" src="../_images/5e4daa2fd57cea3b6d75088e9f3883a63a7ca942a30799e57ddaa3c7f101874b.png" />
+<img alt="../_images/5a7944d6f154f0a6e0b1297e04cbd68d63a23e8978340875bd4afc9f252e7c2d.png" src="../_images/5a7944d6f154f0a6e0b1297e04cbd68d63a23e8978340875bd4afc9f252e7c2d.png" />
 </div>
 </div>
 <p>A prettier tree can be drawn by <code class="docutils literal notranslate"><span class="pre">graphviz</span></code>:</p>
@@ -619,7 +620,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/93981868a25877f3fa1d3fd88a3371b874b0852793e0ece92cf0d00768d76a5a.svg" src="../_images/93981868a25877f3fa1d3fd88a3371b874b0852793e0ece92cf0d00768d76a5a.svg" /></div>
+<img alt="../_images/3077fbcd329137d40793a6c460cd2504b90100577ea7048df627e84f74082e70.svg" src="../_images/3077fbcd329137d40793a6c460cd2504b90100577ea7048df627e84f74082e70.svg" /></div>
 </div>
 <p>To reduce overfitting, tree depth is usually limited. Depth <span class="math notranslate nohighlight">\(2\)</span> is enough for this toy dataset:</p>
 <div class="cell docutils container">
@@ -665,7 +666,7 @@ document.write(`
 <p>Visualize data:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/a5405f0ec7da6cfce228209da71386f6be20a64c86e950dd463c6198e1104828.svg" src="../_images/a5405f0ec7da6cfce228209da71386f6be20a64c86e950dd463c6198e1104828.svg" /></div>
+<img alt="../_images/f98815f1c420550e94ea5c533b434a1d23c99649d787d9a3c98e91bd6f6291b1.svg" src="../_images/f98815f1c420550e94ea5c533b434a1d23c99649d787d9a3c98e91bd6f6291b1.svg" /></div>
 </div>
 <p>Split into train and test:</p>
 <div class="cell docutils container">
@@ -718,7 +719,7 @@ Test accuracy: 0.8735
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/67856600e603ab041aa16c109d65f19eb66d44109dcb8cd0ee24eb8d4bff421c.svg" src="../_images/67856600e603ab041aa16c109d65f19eb66d44109dcb8cd0ee24eb8d4bff421c.svg" /></div>
+<img alt="../_images/16cf373c4e335a45bbc770b145cbce03d401a441c10ea96d7c131f135ed369c8.svg" src="../_images/16cf373c4e335a45bbc770b145cbce03d401a441c10ea96d7c131f135ed369c8.svg" /></div>
 </div>
 <p>Limit the tree depth and size of leaves:</p>
 <div class="cell docutils container">
@@ -747,7 +748,7 @@ Test accuracy: 0.8776
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/7d6cd285f20da82ffc1bfe0ceed36bbdaa36a0eaf8748113066e40a1ffebd3e0.svg" src="../_images/7d6cd285f20da82ffc1bfe0ceed36bbdaa36a0eaf8748113066e40a1ffebd3e0.svg" /></div>
+<img alt="../_images/e15b7bade60dbcec1a9e2ed6b960bd55d3793fa4e6851001f0e8eab56eff2205.svg" src="../_images/e15b7bade60dbcec1a9e2ed6b960bd55d3793fa4e6851001f0e8eab56eff2205.svg" /></div>
 </div>
 </section>
 <section id="boston-dataset">
@@ -926,7 +927,7 @@ Test R-score: 0.7221625063841336
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/329cb38706b381fd2ba282dbdd2a54955d16f49cd2ef4582a888f76c7f55f1e4.svg" src="../_images/329cb38706b381fd2ba282dbdd2a54955d16f49cd2ef4582a888f76c7f55f1e4.svg" /></div>
+<img alt="../_images/6c5abf5999deb22cb310f7f0a551b9057256b1fca7ac4ac201a596978e18d20f.svg" src="../_images/6c5abf5999deb22cb310f7f0a551b9057256b1fca7ac4ac201a596978e18d20f.svg" /></div>
 </div>
 <p>Let’s limit its depth:</p>
 <div class="cell docutils container">
@@ -952,7 +953,7 @@ Test R-score: 0.7005887273107992
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bdd74c905e3bb965f8ac8d5a2b48e85349bc2896a7d9e58028d1d1971235265c.svg" src="../_images/bdd74c905e3bb965f8ac8d5a2b48e85349bc2896a7d9e58028d1d1971235265c.svg" /></div>
+<img alt="../_images/42cda31114d9328458d8e547e224529fdc79bd739053395b5a63d5a663399302.svg" src="../_images/42cda31114d9328458d8e547e224529fdc79bd739053395b5a63d5a663399302.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

@@ -600,7 +600,7 @@ document.write(`
 <section id="gradient-of-determinant">
 <h3>Gradient of determinant<a class="headerlink" href="#gradient-of-determinant" title="Permalink to this heading">#</a></h3>
 <p>Вычислим градиент определителя: <span class="math notranslate nohighlight">\(f(\boldsymbol X) = \det(\boldsymbol X)\)</span>, где <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> — квадратная матрица.</p>
-<p>В предыдущих примерах мы изо всех сил старались не писать матричных элементов, но сейчас, увы, придётся. Попробуем вычислить <span class="math notranslate nohighlight">\(\frac{\partial f}{\partial{X_{ij}}}\)</span>. Для этого разложим определитель по <span class="math notranslate nohighlight">\(i\)</span>-й строке:</p>
+<p>Попробуем вычислить <span class="math notranslate nohighlight">\(\frac{\partial f}{\partial{X_{ij}}}\)</span>. Для этого разложим определитель по <span class="math notranslate nohighlight">\(i\)</span>-й строке:</p>
 <div class="math notranslate nohighlight">
 \[
 \det(\boldsymbol X) = \sum_{j}X_{ij}\cdot(-1)^{i + j}M_{ij},
@@ -635,7 +635,8 @@ f(\boldsymbol X + \boldsymbol H) - f(\boldsymbol X) = (\boldsymbol X + \boldsymb
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
-<ol class="arabic">
+<ol class="arabic" start="0">
+<li><p>Calculate <span class="math notranslate nohighlight">\(\nabla f\)</span> if <span class="math notranslate nohighlight">\(f(\boldsymbol X) = \mathrm{tr}(\boldsymbol X)\)</span>.</p></li>
 <li><p>Calculate <span class="math notranslate nohighlight">\(\nabla f\)</span> if <span class="math notranslate nohighlight">\(f(\boldsymbol X) = \boldsymbol a^\mathsf{T} \boldsymbol X \boldsymbol b\)</span>.</p></li>
 <li><p>Calculate <span class="math notranslate nohighlight">\(\nabla f\)</span> if <span class="math notranslate nohighlight">\(f(\boldsymbol X) = \log(\det(\boldsymbol X))\)</span>.</p></li>
 <li><p>Calculate <span class="math notranslate nohighlight">\(\nabla f\)</span> if <span class="math notranslate nohighlight">\(f(\boldsymbol X) = \mathrm{tr}(\boldsymbol{AX}^{\mathsf T}\boldsymbol X)\)</span>.</p></li>
