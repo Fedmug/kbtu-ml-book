@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -512,15 +513,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mnist">Example: MNIST</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-naive-bayes-classifiers">Types of Naive Bayes Classifiers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-implementations-of-the-models">Python implementations of the models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial-naive-bayes">Multinomial Naive Bayes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-classifier">Gaussian Naive Bayes classifier</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-naive-bayes-classifier">Bernoulli Naive Bayes classifier</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -540,8 +532,8 @@ document.write(`
 <p>A <strong>discriminative model</strong> learns posterior distribution <span class="math notranslate nohighlight">\(p(y \vert \boldsymbol x, \boldsymbol w)\)</span>. Example: logistic regression model</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbb P(y=1  \vert \boldsymbol x, \boldsymbol w) = \sigma(\boldsymbol x^\intercal \boldsymbol w), \quad 
-\mathbb P(y=0  \vert \boldsymbol x, \boldsymbol w) =  1 - \sigma(\boldsymbol x^\intercal \boldsymbol w)
+\mathbb P(y=1  \vert \boldsymbol x, \boldsymbol w) = \sigma(\boldsymbol x^\mathsf{T} \boldsymbol w), \quad 
+\mathbb P(y=0  \vert \boldsymbol x, \boldsymbol w) =  1 - \sigma(\boldsymbol x^\mathsf{T} \boldsymbol w)
 \]</div>
 <p>A <strong>generative model</strong> estimates joint distribution</p>
 <div class="math notranslate nohighlight">
@@ -583,13 +575,13 @@ p(\boldsymbol x, y) = p(\boldsymbol x \vert y) p(y).
 <li><p><strong>Quadratic discriminant analysis</strong> (QDA):</p>
 <div class="math notranslate nohighlight">
 \[
-        p(\boldsymbol x \vert y = k) = \mathcal N(\boldsymbol x \vert \boldsymbol \mu_k, \boldsymbol \Sigma_k) = \frac {\exp\big(-\frac 12(\boldsymbol x - \boldsymbol \mu_k)^\intercal \boldsymbol \Sigma_k^{-1} (\boldsymbol x - \boldsymbol \mu_k)\big)}{\sqrt{(2\pi)^n \det \boldsymbol \Sigma_k}}
+        p(\boldsymbol x \vert y = k) = \mathcal N(\boldsymbol x \vert \boldsymbol \mu_k, \boldsymbol \Sigma_k) = \frac {\exp\big(-\frac 12(\boldsymbol x - \boldsymbol \mu_k)^\mathsf{T} \boldsymbol \Sigma_k^{-1} (\boldsymbol x - \boldsymbol \mu_k)\big)}{\sqrt{(2\pi)^n \det \boldsymbol \Sigma_k}}
     \]</div>
 </li>
 <li><p><strong>Linear discriminant analysis</strong> (LDA): the covariance matrix <span class="math notranslate nohighlight">\(\boldsymbol \Sigma\)</span> is the same for all classes, and it’s MLE estimation is</p>
 <div class="math notranslate nohighlight">
 \[
-        \widehat \Sigma = \frac 1n\sum\limits_{i=1}^n (\boldsymbol x_i - \boldsymbol{\widehat \mu}_{y_i})(\boldsymbol x_i - \boldsymbol{\widehat \mu}_{y_i})^\intercal 
+        \widehat \Sigma = \frac 1n\sum\limits_{i=1}^n (\boldsymbol x_i - \boldsymbol{\widehat \mu}_{y_i})(\boldsymbol x_i - \boldsymbol{\widehat \mu}_{y_i})^\mathsf{T}
     \]</div>
 </li>
 </ul>
@@ -953,6 +945,12 @@ p(\boldsymbol x, y) = p(\boldsymbol x \vert y) p(y).
 </section>
 <section id="example-mnist">
 <h2>Example: MNIST<a class="headerlink" href="#example-mnist" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://scikit-learn.org/1.5/modules/naive_bayes.html">sklearn</a> has several types of Naive Bayes models depending on <span class="math notranslate nohighlight">\(p(\boldsymbol x_i \vert y)\)</span>, e.g.</p>
+<ul class="simple">
+<li><p>Gaussian Naive Bayes</p></li>
+<li><p>Multinomial Naive Bayes</p></li>
+<li><p>Bernoulli Naive Bayes</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -974,7 +972,7 @@ p(\boldsymbol x, y) = p(\boldsymbol x \vert y) p(y).
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/e407f397e4526a6060326b7527f38e9c8846174dbf5836bbaf19e41f719252f6.svg" src="../_images/e407f397e4526a6060326b7527f38e9c8846174dbf5836bbaf19e41f719252f6.svg" /></div>
+<img alt="../_images/9f499c0314e250402a7da2b8c6c8699a34a053f957743d3034c055bd97e766c5.svg" src="../_images/9f499c0314e250402a7da2b8c6c8699a34a053f957743d3034c055bd97e766c5.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -989,39 +987,20 @@ p(\boldsymbol x, y) = p(\boldsymbol x \vert y) p(y).
 </div>
 </div>
 </div>
+<p>Try Gaussian Naive Bayes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span><span class="p">,</span> <span class="n">BernoulliNB</span>
 
 <span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
 <span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_hat</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gaussian accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">GaussianNB</label><div class="sk-toggleable__content"><pre>GaussianNB()</pre></div></div></div></div></div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_hat</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">y_hat</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([8, 9, 4, ..., 6, 8, 3])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.5627
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gaussian accuracy: 0.5627
 </pre></div>
 </div>
 </div>
@@ -1035,212 +1014,83 @@ p(\boldsymbol x, y) = p(\boldsymbol x \vert y) p(y).
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4022c28a28367f4a72471dce652d9f02ad3e4078e037d6c8b6cd955bace0ef3c.svg" src="../_images/4022c28a28367f4a72471dce652d9f02ad3e4078e037d6c8b6cd955bace0ef3c.svg" /></div>
+<img alt="../_images/04565868c2cc1160032212e0a71efdc2521d6ca8ea31820b096778f98463f66a.svg" src="../_images/04565868c2cc1160032212e0a71efdc2521d6ca8ea31820b096778f98463f66a.svg" /></div>
 </div>
-<ol class="arabic simple">
-<li><p><strong>Bayes’ Theorem.</strong></p></li>
-</ol>
-<p>Naive Bayes is based on Bayes’ theorem, which is a fundamental theorem in probability theory. It relates the conditional probability of an event A given an event B to the conditional probability of event B given event A. In the context of classification:</p>
-<div class="math notranslate nohighlight">
-\[P(y|X) = \frac{P(X)}{P(X|y) \cdot P(y)}\]</div>
-<p>Where:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(P(y|X)\)</span> is the probability of class y given the features X;</p></li>
-<li><p><span class="math notranslate nohighlight">\(P(X|y)\)</span> is the likelihood, the probability of observing features X given class y;</p></li>
-<li><p><span class="math notranslate nohighlight">\(P(y)\)</span> is the prior probability of class y;</p></li>
-<li><p><span class="math notranslate nohighlight">\(P(X)\)</span> is the evidence, the probability of observing the features X.</p></li>
-</ul>
-<ol class="arabic simple" start="2">
-<li><p><strong>Conditional Independence</strong></p></li>
-</ol>
-<p>The “naive” assumption made by Naive Bayes is that all features are conditionally independent given the class label. In other words, the presence or absence of one feature does not affect the presence or absence of any other feature. This simplifies the calculation of the likelihood, making the model computationally tractable.</p>
-</section>
-<section id="types-of-naive-bayes-classifiers">
-<h2>Types of Naive Bayes Classifiers<a class="headerlink" href="#types-of-naive-bayes-classifiers" title="Permalink to this heading">#</a></h2>
-<ol class="arabic">
-<li><h4>Multinomial Naive Bayes. </h4>
-</li>
-</ol>
-<p>This variant is commonly used for text classification, where features represent word counts or frequencies. It’s suitable for tasks like document classification and spam detection.</p>
-<ol class="arabic" start="2">
-<li><h4>Gaussian Naive Bayes. </h4>
-</li>
-</ol>
-<p>It assumes that features follow a Gaussian (normal) distribution. It’s used for continuous data, such as numerical measurements.</p>
-<ol class="arabic" start="3">
-<li><h4>Bernoulli Naive Bayes. </h4>
-</li>
-</ol>
-<p>This variant is designed for binary feature data, where features are either present (1) or absent (0). It’s suitable for text data represented as binary vectors.</p>
-<h4>Advantages</h4>
-<ul class="simple">
-<li><p>Simplicity and speed: Naive Bayes is computationally efficient and can handle high-dimensional data;</p></li>
-<li><p>Works well with small datasets;</p></li>
-<li><p>Often performs surprisingly well, especially in text classification tasks;</p></li>
-<li><p>Provides probabilities, allowing for probabilistic predictions.</p></li>
-</ul>
-<h4>Limitations</h4>
-<ul class="simple">
-<li><p>The “naive” assumption of feature independence may not hold in many real-world scenarios;</p></li>
-<li><p>It can be sensitive to irrelevant features;</p></li>
-<li><p>It doesn’t handle missing data well.</p></li>
-</ul>
-<p>Naive Bayes classifiers are widely used as a baseline model in many classification problems due to their simplicity and effectiveness, especially when working with text data. However, they may not be the best choice for every problem, and more complex models like decision trees, random forests, or neural networks may provide better accuracy in some cases.</p>
-</section>
-<section id="python-implementations-of-the-models">
-<h2>Python implementations of the models<a class="headerlink" href="#python-implementations-of-the-models" title="Permalink to this heading">#</a></h2>
-<section id="multinomial-naive-bayes">
-<h3>Multinomial Naive Bayes<a class="headerlink" href="#multinomial-naive-bayes" title="Permalink to this heading">#</a></h3>
-<p>Here’s an example of how to implement a Multinomial Naive Bayes classifier in Python using scikit-learn. In this example, we’ll use the famous “20 Newsgroups” dataset for text classification, where the task is to classify news articles into one of 20 different categories.</p>
+<p>Looks not very good. Now try Bernoulli Naive Bayes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_20newsgroups</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span><span class="p">,</span> <span class="n">TfidfTransformer</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
-
-<span class="c1"># Load the 20 Newsgroups dataset</span>
-<span class="n">newsgroups</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">remove</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;headers&#39;</span><span class="p">,</span> <span class="s1">&#39;footers&#39;</span><span class="p">,</span> <span class="s1">&#39;quotes&#39;</span><span class="p">))</span>
-
-<span class="c1"># Split the dataset into training and testing sets</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">newsgroups</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">newsgroups</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># Create a pipeline for text classification with Multinomial Naive Bayes</span>
-<span class="n">text_clf</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;vect&#39;</span><span class="p">,</span> <span class="n">CountVectorizer</span><span class="p">()),</span>  <span class="c1"># Convert text to a bag-of-words representation</span>
-    <span class="p">(</span><span class="s1">&#39;tfidf&#39;</span><span class="p">,</span> <span class="n">TfidfTransformer</span><span class="p">()),</span>  <span class="c1"># Convert raw frequency counts to TF-IDF values</span>
-    <span class="p">(</span><span class="s1">&#39;clf&#39;</span><span class="p">,</span> <span class="n">MultinomialNB</span><span class="p">())</span>  <span class="c1"># Multinomial Naive Bayes classifier</span>
-<span class="p">])</span>
-
-<span class="c1"># Fit the model on the training data</span>
-<span class="n">text_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="c1"># Make predictions on the test data</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">text_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="c1"># Evaluate the model</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.65
-</pre></div>
-</div>
-</div>
-</div>
-<p>In this code:</p>
-<ol class="arabic simple">
-<li><p>We load the 20 Newsgroups dataset and split it into training and testing sets.</p></li>
-<li><p>We create a pipeline for text classification, which includes text preprocessing steps like converting text to a bag-of-words representation and then to TF-IDF (Term Frequency-Inverse Document Frequency) values.</p></li>
-<li><p>We use the Multinomial Naive Bayes classifier from scikit-learn (MultinomialNB) as the final step in the pipeline.</p></li>
-<li><p>We fit the model on the training data and make predictions on the test data.</p></li>
-<li><p>Finally, we evaluate the model’s accuracy on the test data.</p></li>
-</ol>
-<p>You can adapt this code to your own text classification problem by replacing the dataset and making any necessary adjustments to the text preprocessing steps.</p>
-<section id="gaussian-naive-bayes-classifier">
-<h4>Gaussian Naive Bayes classifier<a class="headerlink" href="#gaussian-naive-bayes-classifier" title="Permalink to this heading">#</a></h4>
-<p>Here’s an example of how to implement a Gaussian Naive Bayes classifier in Python using scikit-learn. Gaussian Naive Bayes is typically used for classification problems where the features are continuous and assumed to follow a Gaussian (normal) distribution.</p>
-<p>In this example, we’ll use the Iris dataset, which is a commonly used dataset for classification tasks:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
-
-<span class="c1"># Load the Iris dataset</span>
-<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
-
-<span class="c1"># Split the dataset into training and testing sets</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># Create a Gaussian Naive Bayes classifier</span>
-<span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-
-<span class="c1"># Fit the model on the training data</span>
-<span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="c1"># Make predictions on the test data</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="c1"># Evaluate the model</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.98
-</pre></div>
-</div>
-</div>
-</div>
-<p>In this code:</p>
-<ol class="arabic simple">
-<li><p>We load the Iris dataset using load_iris from scikit-learn.</p></li>
-<li><p>We split the dataset into training and testing sets.</p></li>
-<li><p>We create a Gaussian Naive Bayes classifier using GaussianNB.</p></li>
-<li><p>We fit the model on the training data.</p></li>
-<li><p>We make predictions on the test data and evaluate the model’s accuracy.</p></li>
-</ol>
-<p>This example demonstrates how to use Gaussian Naive Bayes for a simple classification problem. You can adapt this code to your own classification tasks with continuous features that are assumed to follow a Gaussian distribution.</p>
-</section>
-<section id="bernoulli-naive-bayes-classifier">
-<h4>Bernoulli Naive Bayes classifier<a class="headerlink" href="#bernoulli-naive-bayes-classifier" title="Permalink to this heading">#</a></h4>
-<p>Here’s an example of how to implement a Bernoulli Naive Bayes classifier in Python using scikit-learn. Bernoulli Naive Bayes is typically used for binary classification tasks where features are binary, representing the presence or absence of certain attributes.</p>
-<p>In this example, we’ll use a synthetic dataset for binary classification:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">BernoulliNB</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
-
-<span class="c1"># Generate a synthetic binary classification dataset</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># Split the dataset into training and testing sets</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># Create a Bernoulli Naive Bayes classifier</span>
-<span class="n">bnb</span> <span class="o">=</span> <span class="n">BernoulliNB</span><span class="p">()</span>
-
-<span class="c1"># Fit the model on the training data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bnb</span> <span class="o">=</span> <span class="n">BernoulliNB</span><span class="p">()</span>
 <span class="n">bnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="c1"># Make predictions on the test data</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">bnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="c1"># Evaluate the model</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">y_hat</span> <span class="o">=</span> <span class="n">bnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bernoulli accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.80
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bernoulli accuracy: 0.8324
 </pre></div>
 </div>
 </div>
 </div>
-<p>In this code:</p>
-<ol class="arabic simple">
-<li><p>We generate a synthetic binary classification dataset using make_classification from scikit-learn. You can replace this with your own dataset.</p></li>
-<li><p>We split the dataset into training and testing sets.</p></li>
-<li><p>We create a Bernoulli Naive Bayes classifier using BernoulliNB.</p></li>
-<li><p>We fit the model on the training data.</p></li>
-<li><p>We make predictions on the test data and evaluate the model’s accuracy.</p></li>
-</ol>
-<p>This example demonstrates how to use Bernoulli Naive Bayes for a binary classification problem with binary features. You can adapt this code to your own binary classification tasks.</p>
-</section>
-</section>
-</section>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Naive Bayes on MNIST&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e49b28f6aa3e6f17f4f4f2df3a2dc19662052b77bb7438d25c56aec8af9a676f.svg" src="../_images/e49b28f6aa3e6f17f4f4f2df3a2dc19662052b77bb7438d25c56aec8af9a676f.svg" /></div>
+</div>
+<p><strong>Q.</strong> Bernoulli accuracy looks much higher than Gaussian. How do you think — why?</p>
+<!--
+1. **Bayes' Theorem.**
+
+Naive Bayes is based on Bayes' theorem, which is a fundamental theorem in probability theory. It relates the conditional probability of an event A given an event B to the conditional probability of event B given event A. In the context of classification:
+
+$$P(y|X) = \frac{P(X)}{P(X|y) \cdot P(y)}$$
+
+Where: 
+
+* $P(y|X)$ is the probability of class y given the features X;
+* $P(X|y)$ is the likelihood, the probability of observing features X given class y;
+* $P(y)$ is the prior probability of class y;
+* $P(X)$ is the evidence, the probability of observing the features X.
+
+2. **Conditional Independence**
+
+The "naive" assumption made by Naive Bayes is that all features are conditionally independent given the class label. In other words, the presence or absence of one feature does not affect the presence or absence of any other feature. This simplifies the calculation of the likelihood, making the model computationally tractable.
+
+## Types of Naive Bayes Classifiers
+
+1. <h4>Multinomial Naive Bayes. </h4>
+This variant is commonly used for text classification, where features represent word counts or frequencies. It's suitable for tasks like document classification and spam detection.
+
+2. <h4>Gaussian Naive Bayes. </h4>
+It assumes that features follow a Gaussian (normal) distribution. It's used for continuous data, such as numerical measurements.
+
+3. <h4>Bernoulli Naive Bayes. </h4>
+This variant is designed for binary feature data, where features are either present (1) or absent (0). It's suitable for text data represented as binary vectors.
+
+
+<h4>Advantages</h4>
+
+* Simplicity and speed: Naive Bayes is computationally efficient and can handle high-dimensional data;
+* Works well with small datasets;
+* Often performs surprisingly well, especially in text classification tasks;
+* Provides probabilities, allowing for probabilistic predictions.
+
+<h4>Limitations</h4>
+
+* The "naive" assumption of feature independence may not hold in many real-world scenarios;
+* It can be sensitive to irrelevant features;
+* It doesn't handle missing data well.
+
+
+
+Naive Bayes classifiers are widely used as a baseline model in many classification problems due to their simplicity and effectiveness, especially when working with text data. However, they may not be the best choice for every problem, and more complex models like decision trees, random forests, or neural networks may provide better accuracy in some cases.
+--></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1316,15 +1166,6 @@ p(\boldsymbol x, y) = p(\boldsymbol x \vert y) p(y).
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mnist">Example: MNIST</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-naive-bayes-classifiers">Types of Naive Bayes Classifiers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-implementations-of-the-models">Python implementations of the models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial-naive-bayes">Multinomial Naive Bayes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes-classifier">Gaussian Naive Bayes classifier</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-naive-bayes-classifier">Bernoulli Naive Bayes classifier</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
   </nav></div>
 

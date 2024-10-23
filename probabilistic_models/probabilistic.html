@@ -522,7 +522,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="probabilistic-models">
 <h1>Probabilistic models<a class="headerlink" href="#probabilistic-models" title="Permalink to this heading">#</a></h1>
-<p>In probabilistic approach all quantities are considered as <strong>random variables</strong>. Each training sample <span class="math notranslate nohighlight">\((\boldsymbol x, y)\)</span> comes from a joint probability distribution with density <span class="math notranslate nohighlight">\(p(\boldsymbol x, y)\)</span>. If we are using some model of machine learning with parameters <span class="math notranslate nohighlight">\(\boldsymbol w\)</span>, then this density is conditioned on <span class="math notranslate nohighlight">\(\boldsymbol w\)</span>:</p>
+<p>In probabilistic approach all quantities are considered as <a class="reference internal" href="../math/proba/rvs.html#rv"><span class="std std-ref">random variables</span></a>. Each training sample <span class="math notranslate nohighlight">\((\boldsymbol x, y)\)</span> comes from a joint probability distribution with density <span class="math notranslate nohighlight">\(p(\boldsymbol x, y)\)</span>. If we are using some model of machine learning with parameters <span class="math notranslate nohighlight">\(\boldsymbol w\)</span>, then this density is conditioned on <span class="math notranslate nohighlight">\(\boldsymbol w\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
     (\boldsymbol x, y) \sim p(\boldsymbol x, y\vert \boldsymbol w).
@@ -555,7 +555,7 @@ document.write(`
 <h2>Bayesian approach<a class="headerlink" href="#bayesian-approach" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Thomas_Bayes.gif/274px-Thomas_Bayes.gif" /></p>
 <p>From <a class="reference internal" href="#equation-log-likelihood-max">(33)</a> we obtain a point estimation <span class="math notranslate nohighlight">\(\boldsymbol {\widehat w}_{\mathrm{MLE}}\)</span>. In Bayesian framework we estimate not points but distributions!</p>
-<p>Assume that parameters <span class="math notranslate nohighlight">\(\boldsymbol w\)</span> have <strong>prior</strong> distribution <span class="math notranslate nohighlight">\(p(\boldsymbol w)\)</span>. Observing the dataset <span class="math notranslate nohighlight">\(\mathcal D\)</span>, we can apply the Bayes formula and obtain <strong>posterior</strong> distribution</p>
+<p>Assume that parameters <span class="math notranslate nohighlight">\(\boldsymbol w\)</span> have <strong>prior</strong> distribution <span class="math notranslate nohighlight">\(p(\boldsymbol w)\)</span>. Observing the dataset <span class="math notranslate nohighlight">\(\mathcal D\)</span>, we can apply the <a class="reference internal" href="../math/proba/independence.html#bayes"><span class="std std-ref">Bayes formula</span></a> and obtain <strong>posterior</strong> distribution</p>
 <div class="math notranslate nohighlight">
 \[
     p(\boldsymbol w \vert \mathcal D) = \frac{p(\mathcal D \vert \boldsymbol w)p(\boldsymbol w)}{p(\mathcal D)}.

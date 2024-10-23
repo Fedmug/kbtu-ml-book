@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
@@ -538,7 +539,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="random-variables">
-<h1>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this heading">#</a></h1>
+<span id="rv"></span><h1>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this heading">#</a></h1>
 <p>A <strong>random variable</strong> is a function <span class="math notranslate nohighlight">\(\xi \colon \Omega \to \mathbb R\)</span> where <span class="math notranslate nohighlight">\(\Omega\)</span> is the set of <a class="reference external" href="https://en.wikipedia.org/wiki/Event_(probability_theory)">events</a> or outcomes. It is also called <strong>support</strong> of <span class="math notranslate nohighlight">\(\xi\)</span>.
 Depending on their support <span class="math notranslate nohighlight">\(\Omega\)</span> all random variables of practical interest are divided into two big groups: <strong>discrete</strong> and <strong>continuous</strong>.</p>
 <p>A lot of useful tools for working with discrete and continuous distributions can be found in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/stats.html">scipy.stats</a>.</p>
@@ -640,7 +641,7 @@ F_\xi(x) = \mathbb P(\xi \leqslant x) = \sum\limits_{k\leqslant x} p_k.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0])
 </pre></div>
 </div>
 </div>
@@ -649,7 +650,7 @@ F_\xi(x) = \mathbb P(\xi \leqslant x) = \sum\limits_{k\leqslant x} p_k.
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/0cd84ac7aca74e55bff27dff44ccfd4ee52918ccece4165ddf41c37fc4457003.svg" src="../../_images/0cd84ac7aca74e55bff27dff44ccfd4ee52918ccece4165ddf41c37fc4457003.svg" /></div>
+<img alt="../../_images/e9f71a35f6f7ce94809fabfc61c06263cb366419d1d30400626ff120132be720.svg" src="../../_images/e9f71a35f6f7ce94809fabfc61c06263cb366419d1d30400626ff120132be720.svg" /></div>
 </div>
 </section>
 <section id="binomial-distribution">
@@ -682,14 +683,14 @@ F_\xi(x) = \mathbb P(\xi \leqslant x) = \sum\limits_{k\leqslant x} p_k.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6, 4, 5, 5, 6, 5, 3, 3, 7, 3, 7, 5, 7, 4, 4])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([8, 4, 5, 9, 7, 6, 4, 4, 8, 7, 4, 7, 6, 4, 8])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/cab3a86a35c1bc183be80792ecddf195832dbb0652fab4e2c882e454ed28b2bd.svg" src="../../_images/cab3a86a35c1bc183be80792ecddf195832dbb0652fab4e2c882e454ed28b2bd.svg" /></div>
+<img alt="../../_images/4696934f6c1dd9430504ed6464beb7378d2fccb72009f60525a36c0da7f50529.svg" src="../../_images/4696934f6c1dd9430504ed6464beb7378d2fccb72009f60525a36c0da7f50529.svg" /></div>
 </div>
 </section>
 <section id="geometric-distribution">
@@ -717,16 +718,16 @@ F_\xi(x) = \mathbb P(\xi \leqslant x) = \sum\limits_{k\leqslant x} p_k.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>High success probability:
-[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+[1 2 3 1 1 1 1 1 1 1 1 1 1 1 1]
 Low success probability:
-[18  5  1  3  8  1  4  6  7 13  9  1  7  5 14]
+[22  7 18  4  1 15  1  1  7 16  3  1 16  5 36]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/df37bbc55332a5e1f56c0a297f96948559ca692f91538f4c7a04cea3d089faa1.svg" src="../../_images/df37bbc55332a5e1f56c0a297f96948559ca692f91538f4c7a04cea3d089faa1.svg" /></div>
+<img alt="../../_images/6bc33971f9f794dcfe81780b471d08cca00a054e642b2f5e79c6858db19f214b.svg" src="../../_images/6bc33971f9f794dcfe81780b471d08cca00a054e642b2f5e79c6858db19f214b.svg" /></div>
 </div>
 </section>
 <section id="poisson-distribution">
@@ -749,14 +750,14 @@ Low success probability:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([16,  5, 10, 14, 13,  9, 13,  8, 13,  9, 17,  9, 11, 12, 10])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([18, 13, 14, 10, 11, 17, 16, 12, 11, 10,  9, 10,  8,  8, 10])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/e4fe44f3676f8743876fe18bf9ee89ab22fa6d22b93aace9cd20f14e9fe07c8e.svg" src="../../_images/e4fe44f3676f8743876fe18bf9ee89ab22fa6d22b93aace9cd20f14e9fe07c8e.svg" /></div>
+<img alt="../../_images/55bf87e8e3fd3e66532631b4967fde511522ede85f2cc52126949d54abd57aae.svg" src="../../_images/55bf87e8e3fd3e66532631b4967fde511522ede85f2cc52126949d54abd57aae.svg" /></div>
 </div>
 <p>In some cases Poisson distribution can serve as an approximation to binomial one.</p>
 <div class="proof theorem admonition" id="poisson-approx">
@@ -833,8 +834,8 @@ Low success probability:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 9.35461174,  0.80963003,  4.67411766,  2.52038515, -2.40617895,
-        8.98779007, -3.29345812, -2.92257422,  3.39014048,  9.30118922])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 5.95669289,  8.04042844,  0.62189991,  2.932723  ,  5.57757851,
+       -2.71963029, -0.70541985, -1.08725481,  0.05470618, -1.24717582])
 </pre></div>
 </div>
 </div>
@@ -867,11 +868,11 @@ p_\xi(x) = \frac 1{\sqrt{2\pi}\sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Samples from N(0,1):
-[ 0.60465915 -0.89202197 -1.06980494 -0.11416536 -0.1162029 ]
+[ 0.0254245   0.68419732 -1.22441651 -1.53255758  1.49522143]
 Samples from N(5, 10):
-[ 2.74112948  0.072278   22.54944977 -2.8224781  -0.59044997]
+[-1.51184291 19.41202153 15.07731635 13.929449   35.10618916]
 Samples from N(0, 0.1):
-[-0.13764775 -0.25513036 -0.05890472  0.05199397  0.11546598]
+[-0.16031454 -0.10894271  0.09082604  0.04462137 -0.07375292]
 </pre></div>
 </div>
 </div>
@@ -898,8 +899,8 @@ p_\xi(x) = \lambda e^{-\lambda x}, \quad x\geqslant 0.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 9.41185031,  5.98532174,  5.19024455,  6.73243893,  5.89727181,
-        5.73750657, 12.43845818,  8.23534924,  8.96893379,  5.31003977])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 6.03049534,  9.09066452, 17.70208294,  7.15973386, 22.85907814,
+       18.58724243,  6.32880795, 10.19770321,  9.89259891, 12.37547068])
 </pre></div>
 </div>
 </div>
@@ -931,8 +932,8 @@ p_\xi(x) = \lambda e^{-\lambda x}, \quad x\geqslant 0.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.25013586, 1.26762655, 0.47119764, 0.81687689, 0.61657962,
-       3.37958472, 1.57362966, 0.61977465, 2.31720451, 0.21101661])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.26994047, 0.36136452, 0.312262  , 3.06476627, 0.71606681,
+       1.6231479 , 0.76093062, 0.52033725, 1.03421763, 0.12198197])
 </pre></div>
 </div>
 </div>
@@ -941,7 +942,7 @@ p_\xi(x) = \lambda e^{-\lambda x}, \quad x\geqslant 0.
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/dabec9dd5839008ad393e4a0e9ed5942ae59ad261432b967fd746332c91843bb.svg" src="../../_images/dabec9dd5839008ad393e4a0e9ed5942ae59ad261432b967fd746332c91843bb.svg" /></div>
+<img alt="../../_images/5754fff0acb70bfbc2894ee173b936dfc0d91f18b27693b04712e1f029fddff7.svg" src="../../_images/5754fff0acb70bfbc2894ee173b936dfc0d91f18b27693b04712e1f029fddff7.svg" /></div>
 </div>
 </section>
 <section id="beta-distribution">
@@ -960,7 +961,7 @@ p_\xi(x) = \lambda e^{-\lambda x}, \quad x\geqslant 0.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.01591268, 0.0469541 , 0.00126391, 0.17481706, 0.02154362])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.08740702, 0.01807511, 0.04588582, 0.22521112, 0.02088537])
 </pre></div>
 </div>
 </div>
@@ -969,7 +970,7 @@ p_\xi(x) = \lambda e^{-\lambda x}, \quad x\geqslant 0.
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/9eb893e0921fa323af13844a92bb5358783a2aea4266c0b539efc40af8ce4279.svg" src="../../_images/9eb893e0921fa323af13844a92bb5358783a2aea4266c0b539efc40af8ce4279.svg" /></div>
+<img alt="../../_images/7bef095ffba904e963f8f736c21428d6cd67241205170821ca707304a86f3268.svg" src="../../_images/7bef095ffba904e963f8f736c21428d6cd67241205170821ca707304a86f3268.svg" /></div>
 </div>
 </section>
 <section id="student-t-distribution">
@@ -998,14 +999,13 @@ p_\xi(x) = \lambda e^{-\lambda x}, \quad x\geqslant 0.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Light tails:
-[-0.19074311  0.2469781  -0.90655395  0.52359204  0.32839526 -0.20448576
- -0.96020948 -0.92659337]
+[-1.23686291 -0.84772412 -0.93670315 -0.23754823  0.30810428  0.72296976
+  0.59835874 -1.25916306]
 Heavy tails:
-[ 3.22606422e-01  1.53951302e+00 -2.07331141e-02  6.57073087e+00
- -3.76838937e-01 -1.11748567e-01 -5.39165012e+00 -2.35865243e+01
-  1.23968722e+01  4.61878948e-01]
+[ 2.9316514  -1.11497281  0.84275435  4.17414666  1.00237218  1.20060456
+  1.03694396  0.26556532 -7.15106063 -0.40368105]
 Extremely heavy tails:
-[248.30275865  -0.41503512   2.22189629   7.52981533]
+[ 3.28162115e+00  1.42431189e+00  1.64140233e+03 -1.09167798e+02]
 </pre></div>
 </div>
 </div>

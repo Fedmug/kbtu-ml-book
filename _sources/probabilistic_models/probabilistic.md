@@ -1,6 +1,6 @@
 # Probabilistic models
 
-In probabilistic approach all quantities are considered as **random variables**. Each training sample $(\boldsymbol x, y)$ comes from a joint probability distribution with density $p(\boldsymbol x, y)$. If we are using some model of machine learning with parameters $\boldsymbol w$, then this density is conditioned on $\boldsymbol w$:
+In probabilistic approach all quantities are considered as {ref}`random variables <RV>`. Each training sample $(\boldsymbol x, y)$ comes from a joint probability distribution with density $p(\boldsymbol x, y)$. If we are using some model of machine learning with parameters $\boldsymbol w$, then this density is conditioned on $\boldsymbol w$:
 
 $$
     (\boldsymbol x, y) \sim p(\boldsymbol x, y\vert \boldsymbol w).
@@ -44,7 +44,7 @@ The optimal estimation of weights $\boldsymbol{\widehat w}$ maximizing log-likel
 
 From {eq}`log-likelihood-max` we obtain a point estimation $\boldsymbol {\widehat w}_{\mathrm{MLE}}$. In Bayesian framework we estimate not points but distributions!
 
-Assume that parameters $\boldsymbol w$ have **prior** distribution $p(\boldsymbol w)$. Observing the dataset $\mathcal D$, we can apply the Bayes formula and obtain **posterior** distribution
+Assume that parameters $\boldsymbol w$ have **prior** distribution $p(\boldsymbol w)$. Observing the dataset $\mathcal D$, we can apply the {ref}`Bayes formula <bayes>` and obtain **posterior** distribution
 
 $$
     p(\boldsymbol w \vert \mathcal D) = \frac{p(\mathcal D \vert \boldsymbol w)p(\boldsymbol w)}{p(\mathcal D)}.
