@@ -87,7 +87,6 @@ parts:
       - file: ensembling/ensemble
         sections:
           - file: ensembling/bias_variance
-          - file: ensembling/voting_stacking_blending
           - file: ensembling/bagging
           - file: ensembling/random_forest
 
