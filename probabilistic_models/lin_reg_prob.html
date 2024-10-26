@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -540,7 +541,7 @@ document.write(`
     p(y_i \vert \boldsymbol x_i, \boldsymbol w) = \mathcal N(y_i \vert \boldsymbol x_i^{\mathsf T} \boldsymbol w, \sigma^2) = \frac 1{\sqrt{2\pi} \sigma} \exp\Big(-\frac{(\boldsymbol x_i^{\mathsf T} \boldsymbol w - y_i)^2}{2\sigma^2}\Big).
 \]</div>
 <p><strong>Q</strong>. What is <span class="math notranslate nohighlight">\(\mathbb E y_i\)</span>? <span class="math notranslate nohighlight">\(\mathbb V y_i\)</span>?</p>
-<p>A picture from <a class="reference external" href="https://academy.yandex.ru/handbook/ml/article/beta-pervoe-znakomstvo-s-veroyatnostnymi-modelyami#sluchajnost-kak-istochnik-nesovershenstva-modeli">ML Handbook</a>:</p>
+<p>A picture from <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/veroyatnostnyj-podhod-v-ml">ML Handbook</a>:</p>
 <figure class="align-center">
 <img alt="../_images/lin_reg_gaussians.png" src="../_images/lin_reg_gaussians.png" />
 </figure>
@@ -556,8 +557,8 @@ document.write(`
     \mathrm{NLL}(\boldsymbol w) = -\log p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w)=
     \frac 1{2\sigma^2} \sum\limits_{i=1}^n (\boldsymbol x_i^{\mathsf T} \boldsymbol w - y_i)^2 + \frac n2\log(2\pi\sigma^2).
 \]</div>
-<p><strong>Q.</strong> How does this NLL relates to the loss function <a class="reference internal" href="../lin_reg/multiple.html#equation-lin-reg-loss-opt">(19)</a> of the linear regression model?</p>
-<p>Thus, the optimal weights <a class="reference internal" href="../lin_reg/multiple.html#equation-lin-reg-solution">(21)</a> of the linear regression with MSE loss coincide with MLE:</p>
+<p><strong>Q.</strong> How does this NLL relates to the loss function <a class="reference internal" href="../lin_reg/multiple.html#equation-lin-reg-loss-opt">(21)</a> of the linear regression model?</p>
+<p>Thus, the optimal weights <a class="reference internal" href="../lin_reg/multiple.html#equation-lin-reg-solution">(23)</a> of the linear regression with MSE loss coincide with MLE:</p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol{\widehat w} = \arg\max\limits_{\boldsymbol w} p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = \arg\min\limits_{\boldsymbol w} \mathrm{NLL}(\boldsymbol w).
@@ -625,7 +626,7 @@ Find posterior <span class="math notranslate nohighlight">\(p(a \vert \boldsymbo
 \[
     -\log p(\boldsymbol w \vert \boldsymbol X, \boldsymbol y) = -\log p( \boldsymbol y \vert  \boldsymbol X, \boldsymbol w) - \log p(\boldsymbol w) + \mathrm{const}.
 \]</div>
-<p>Recall that <span class="math notranslate nohighlight">\(p( \boldsymbol y \vert  \boldsymbol X, \boldsymbol w) = \mathcal N(\boldsymbol y \vert \boldsymbol{Xw}, \sigma^2 \boldsymbol I)\)</span>. According to calculations from <a class="reference external" href="https://academy.yandex.ru/handbook/ml/article/beta-bajesovskij-podhod-k-ocenivaniyu#primer-linejnaya-regressiya-s-l-2-regulyarizacziej-kak-model-s-gaussovskim-apriornym-raspredeleniem-na-vesa">ML Handbook</a></p>
+<p>Recall that <span class="math notranslate nohighlight">\(p( \boldsymbol y \vert  \boldsymbol X, \boldsymbol w) = \mathcal N(\boldsymbol y \vert \boldsymbol{Xw}, \sigma^2 \boldsymbol I)\)</span>. According to calculations from <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/bajesovskij-podhod-k-ocenivaniyu#primer-linejnaya-regressiya-s-regulyarizaciej-kak-model-s-gaussovskim-apriornym-raspredeleniem-na-vesa">ML Handbook</a></p>
 <div class="math notranslate nohighlight">
 \[
     -\log p( \boldsymbol y \vert  \boldsymbol X, \boldsymbol w) - \log p(\boldsymbol w)

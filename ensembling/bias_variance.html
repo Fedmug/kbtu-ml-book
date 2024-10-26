@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -522,69 +523,9 @@ document.write(`
 <h1>Bias-variance decomposition<a class="headerlink" href="#bias-variance-decomposition" title="Permalink to this heading">#</a></h1>
 <p>Resources:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://academy.yandex.ru/handbook/ml/article/beta-bias-variance-decomposition">ML Handbook</a></p></li>
+<li><p><a class="reference external" href="https://education.yandex.ru/handbook/ml/article/bias-variance-decomposition">ML Handbook</a></p></li>
 <li><p><span id="id1">[<a class="reference internal" href="../bibliography.html#id2" title="T. Hastie, R. Tibshirani, and J.H. Friedman. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer series in statistics. Springer, 2009. ISBN 9780387848846. URL: https://books.google.kz/books?id=eBSgoAEACAAJ.">Hastie <em>et al.</em>, 2009</a>]</span> (pp. 219-228)</p></li>
 </ul>
-<div class="important dropdown admonition">
-<p class="admonition-title">ChatGPT stuff</p>
-<p>Bias-variance decomposition is a concept that is closely related to ensembling methods in machine learning. Ensembling methods, such as bagging and boosting, are designed to address the bias-variance trade-off and can help reduce both bias and variance in predictive models. Here’s how bias-variance decomposition and ensembling are connected:</p>
-<ol class="arabic">
-<li><h3>Bias-Variance Trade-Off:</h3>
-</li>
-</ol>
-<ul class="simple">
-<li><p>Bias-variance decomposition explains the trade-off between bias and variance in predictive models. High bias results in underfitting (oversimplification), while high variance leads to overfitting (capturing noise).</p></li>
-<li><p>Ensembling methods aim to strike a balance between bias and variance by combining multiple base models, each with its own bias and variance characteristics.</p></li>
-</ul>
-<ol class="arabic" start="2">
-<li><h3>Ensemble Methods and Bias-Variance Decomposition:</h3>
-</li>
-</ol>
-<ul>
-<li><h6>Bagging (Bootstrap Aggregating):</h6>
-<ul class="simple">
-<li><p>Bagging reduces variance by training multiple base models independently on bootstrapped subsets of the training data and then averaging their predictions (for regression) or taking a majority vote (for classification).</p></li>
-<li><p>By averaging or voting over multiple models, bagging tends to reduce the overall variance of the ensemble.</p></li>
-<li><p>The base models in a bagging ensemble may have varying biases, but their combined predictions tend to have lower variance.</p></li>
-</ul>
-</li>
-<li><h6>Boosting:</h6>
-<ul class="simple">
-<li><p>Boosting reduces bias by iteratively training base models to focus on data points that were misclassified by previous models. This process reduces the overall bias of the ensemble.</p></li>
-<li><p>Boosting can also reduce variance to some extent by combining the predictions of multiple base models.</p></li>
-<li><p>The iterative nature of boosting allows the ensemble to improve its overall performance by reducing bias while maintaining or even reducing variance.</p></li>
-</ul>
-</li>
-</ul>
-<ol class="arabic" start="3">
-<li><h3>Ensemble Models as a Solution:</h3>
-</li>
-</ol>
-<ul class="simple">
-<li><p>Ensemble methods, such as Random Forest (a bagging ensemble) and Gradient Boosting (a boosting ensemble), are popular solutions to the bias-variance trade-off.</p></li>
-<li><p>These ensemble models combine multiple decision trees (base models) to create a more accurate and robust final model.</p></li>
-<li><p>Random Forest, for example, reduces variance by averaging over decision trees while maintaining a controlled level of bias.
-<br></p></li>
-</ul>
-<ol class="arabic" start="4">
-<li><h3>Hyperparameter Tuning:</h3>
-</li>
-</ol>
-<ul class="simple">
-<li><p>Hyperparameter tuning in ensembling methods, such as selecting the number of base models or adjusting their weights, can help control the balance between bias and variance.</p></li>
-<li><p>Properly tuned ensembles can achieve lower overall bias and variance compared to individual models.
-<br></p></li>
-</ul>
-<ol class="arabic" start="5">
-<li><h3>Ensemble Diversity:</h3>
-</li>
-</ol>
-<ul class="simple">
-<li><p>The diversity of base models within an ensemble is essential for effectively reducing bias and variance. Diverse models are less likely to make the same errors.</p></li>
-<li><p>Techniques like feature bagging (random feature selection) in Random Forests and adaptive boosting in boosting methods promote diversity among base models.</p></li>
-</ul>
-<p>In summary, ensembling methods like bagging and boosting are powerful tools for addressing the bias-variance trade-off in machine learning. By combining multiple base models with varying bias and variance characteristics, ensembles can reduce both sources of error and improve overall predictive performance on a wide range of tasks. Properly designed and tuned ensemble models can achieve better generalization while mitigating the overfitting problem associated with high-variance models.</p>
-</div>
 <section id="biasvariance-decomposition-for-mse">
 <h2>Bias—variance decomposition for MSE<a class="headerlink" href="#biasvariance-decomposition-for-mse" title="Permalink to this heading">#</a></h2>
 <p>Consider a regression model</p>
@@ -605,6 +546,10 @@ y = f(\boldsymbol x) + \varepsilon, \quad \mathbb E \varepsilon = 0,\quad \mathb
 \mathbb E\big[(f(\boldsymbol x) - \mathbb E\widehat y + \mathbb E\widehat y - \widehat y)^2 \big] = \mathbb E\big(\underbrace{f(\boldsymbol x) - \mathbb E\widehat y}_{\mathrm{bias}}\big)^2 + \underbrace{\mathbb E\big[(\mathbb E\widehat y - \widehat y)^2\big]}_{\mathrm{variance}}.
 \]</div>
 <p>The bias-variance decomposition:</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathrm{MSE} = \mathrm{bias}^2 + \mathrm{variance} + \sigma^2.
+\]</div>
 </section>
 </section>
 

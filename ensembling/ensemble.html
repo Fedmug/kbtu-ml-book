@@ -163,6 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -235,7 +236,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Ensembling</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias-variance decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="voting_stacking_blending.html">Voting, stacking and blending</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bagging.html">Bagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="random_forest.html">Random forests</a></li>
 </ul>
@@ -481,7 +481,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -497,6 +499,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-bootstrap-aggregating">Bagging (Bootstrap Aggregating)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting">Boosting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking">Stacking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voting">Voting</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -508,18 +521,35 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ensembling">
 <h1>Ensembling<a class="headerlink" href="#ensembling" title="Permalink to this heading">#</a></h1>
-<p>Ensembling is a machine learning technique that involves combining the predictions of multiple individual models (often referred to as “base models” or “weak learners”) to produce a single, more robust and accurate prediction. The idea behind ensembling is to leverage the diversity of different models to collectively make better predictions than any individual model.</p>
-<p>Ensembling is widely used in machine learning for both classification and regression tasks. Common ensemble methods include:</p>
-<ol class="arabic simple">
-<li><p>Bagging (Bootstrap Aggregating):
-Bagging involves training multiple base models independently on bootstrapped subsets of the training data and then combining their predictions through averaging (for regression) or voting (for classification). Random Forests are a popular example of a bagging ensemble.</p></li>
-<li><p>Boosting:
-Boosting algorithms iteratively train base models to focus on data points that were misclassified by previous models. Examples include AdaBoost, Gradient Boosting, and XGBoost.</p></li>
-<li><p>Stacking (Stacked Generalization):
-Stacking combines the predictions of multiple base models by training a “meta-model” (often called a “meta-learner”) on their predictions. Stacking can capture higher-level patterns and relationships in the data.</p></li>
-<li><p>Voting: Voting ensembles combine the predictions of multiple base models by allowing them to “vote” on the final prediction. There are three types of voting ensembles: hard voting (majority vote), soft voting (weighted average of probabilities), and stacking-based voting.</p></li>
-</ol>
-<p>Ensembling is a powerful technique that can significantly enhance the performance of machine learning models. When building an ensemble, it’s important to choose diverse base models, optimize hyperparameters, and consider the trade-offs between accuracy and interpretability. Different ensemble methods may be more suitable for different types of data and problems.</p>
+<p><strong>Ensembling</strong> in machine learning refers to the technique of combining multiple models to improve overall performance, accuracy, and robustness compared to using a single model. The idea is that individual models may make different errors, and by aggregating their predictions, the overall prediction can become more accurate.</p>
+<section id="bagging-bootstrap-aggregating">
+<h2>Bagging (Bootstrap Aggregating)<a class="headerlink" href="#bagging-bootstrap-aggregating" title="Permalink to this heading">#</a></h2>
+<figure class="align-center">
+<img alt="https://payload-cms.code-b.dev/media/Bagging.png" src="https://payload-cms.code-b.dev/media/Bagging.png" />
+</figure>
+<p>Multiple instances of the same model are trained on different subsets of the training data (usually created by random sampling with replacement).</p>
+</section>
+<section id="boosting">
+<h2>Boosting<a class="headerlink" href="#boosting" title="Permalink to this heading">#</a></h2>
+<figure class="align-center">
+<img alt="https://miro.medium.com/v2/resize:fit:1050/1*4XuD6oRrgVqtaSwH-cu6SA.png" src="https://miro.medium.com/v2/resize:fit:1050/1*4XuD6oRrgVqtaSwH-cu6SA.png" />
+</figure>
+<p>Models are trained sequentially, where each new model tries to correct the errors of the previous ones. This leads to an improvement in performance as weaker models are gradually refined.</p>
+</section>
+<section id="stacking">
+<h2>Stacking<a class="headerlink" href="#stacking" title="Permalink to this heading">#</a></h2>
+<figure class="align-center">
+<img alt="https://miro.medium.com/v2/resize:fit:1050/1*DM1DhgvG3UCEZTF-Ev5Q-A.png" src="https://miro.medium.com/v2/resize:fit:1050/1*DM1DhgvG3UCEZTF-Ev5Q-A.png" />
+</figure>
+<p>In stacking, multiple models are trained, and then their predictions are used as input to another model (often called a “meta-model”) which makes the final prediction.</p>
+</section>
+<section id="voting">
+<h2>Voting<a class="headerlink" href="#voting" title="Permalink to this heading">#</a></h2>
+<figure class="align-center">
+<img alt="https://www.researchgate.net/publication/338409197/figure/fig3/AS:844344101711875&#64;1578318729741/Ensemble-Learning-or-Voting-Classifier-Architecture.png" src="https://www.researchgate.net/publication/338409197/figure/fig3/AS:844344101711875&#64;1578318729741/Ensemble-Learning-or-Voting-Classifier-Architecture.png" />
+</figure>
+<p>Simple ensembling method where multiple models make predictions, and the final prediction is made based on majority voting (for classification tasks) or averaging (for regression tasks).</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -582,6 +612,23 @@ Stacking combines the predictions of multiple base models by training a “meta-
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-bootstrap-aggregating">Bagging (Bootstrap Aggregating)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting">Boosting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking">Stacking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voting">Voting</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
