@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -237,7 +238,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ensembling/ensemble.html">Ensembling</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ensembling/voting_stacking_blending.html">Voting, stacking and blending</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/bagging.html">Bagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/random_forest.html">Random forests</a></li>
 </ul>
@@ -585,8 +585,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Explained variance: [5.16209074 3.77201983]
-Explained variance ratio: 0.16938792566748243
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Explained variance: [5.16209074 3.77201984]
+Explained variance ratio: 0.1693879257542866
 </pre></div>
 </div>
 </div>
@@ -605,7 +605,7 @@ Explained variance ratio: 0.16938792566748243
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2be51c509ed8db66105b7ef08bbf42aab500010264ebd2391cbcb43a659691d0.svg" src="../_images/2be51c509ed8db66105b7ef08bbf42aab500010264ebd2391cbcb43a659691d0.svg" /></div>
+<img alt="../_images/6751c1f9f53182cd595479feda844f02ef8c785deff80b9d0a9ab55c65dfe5ed.svg" src="../_images/6751c1f9f53182cd595479feda844f02ef8c785deff80b9d0a9ab55c65dfe5ed.svg" /></div>
 </div>
 </section>
 </section>
@@ -617,98 +617,6 @@ Explained variance ratio: 0.16938792566748243
 
 <span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">X_tsne</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_vis</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">X_tsne</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_vis</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/sklearn/utils/_set_output.py:140,</span> in <span class="ni">_wrap_method_output.&lt;locals&gt;.wrapped</span><span class="nt">(self, X, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">140</span>     <span class="n">data_to_wrap</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_to_wrap</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span>         <span class="c1"># only wrap the first output for cross decomposition</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span>         <span class="n">return_tuple</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">144</span>             <span class="n">_wrap_data_with_container</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">data_to_wrap</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>             <span class="o">*</span><span class="n">data_to_wrap</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span>         <span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/sklearn/base.py:1151,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1144</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1146</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1147</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1148</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
-<span class="g g-Whitespace">   </span><span class="mi">1149</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1150</span> <span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1151</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/sklearn/manifold/_t_sne.py:1111,</span> in <span class="ni">TSNE.fit_transform</span><span class="nt">(self, X, y)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1090</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Fit X into an embedded space and return that transformed output.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1091</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1092</span><span class="sd"> Parameters</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1108</span><span class="sd">     Embedding of the training data in low-dimensional space.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1109</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1110</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_params_vs_input</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1111</span> <span class="n">embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1112</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_</span> <span class="o">=</span> <span class="n">embedding</span>
-<span class="g g-Whitespace">   </span><span class="mi">1113</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/sklearn/manifold/_t_sne.py:1001,</span> in <span class="ni">TSNE._fit</span><span class="nt">(self, X, skip_num_points)</span>
-<span class="g g-Whitespace">    </span><span class="mi">995</span> <span class="c1"># Degrees of freedom of the Student&#39;s t-distribution. The suggestion</span>
-<span class="g g-Whitespace">    </span><span class="mi">996</span> <span class="c1"># degrees_of_freedom = n_components - 1 comes from</span>
-<span class="g g-Whitespace">    </span><span class="mi">997</span> <span class="c1"># &quot;Learning a Parametric Embedding by Preserving Local Structure&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">998</span> <span class="c1"># Laurens van der Maaten, 2009.</span>
-<span class="g g-Whitespace">    </span><span class="mi">999</span> <span class="n">degrees_of_freedom</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_components</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1001</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tsne</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1002</span>     <span class="n">P</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1003</span>     <span class="n">degrees_of_freedom</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1004</span>     <span class="n">n_samples</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1005</span>     <span class="n">X_embedded</span><span class="o">=</span><span class="n">X_embedded</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1006</span>     <span class="n">neighbors</span><span class="o">=</span><span class="n">neighbors_nn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1007</span>     <span class="n">skip_num_points</span><span class="o">=</span><span class="n">skip_num_points</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1008</span> <span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/sklearn/manifold/_t_sne.py:1069,</span> in <span class="ni">TSNE._tsne</span><span class="nt">(self, P, degrees_of_freedom, n_samples, X_embedded, neighbors, skip_num_points)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1067</span>     <span class="n">opt_args</span><span class="p">[</span><span class="s2">&quot;momentum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.8</span>
-<span class="g g-Whitespace">   </span><span class="mi">1068</span>     <span class="n">opt_args</span><span class="p">[</span><span class="s2">&quot;n_iter_without_progress&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_iter_without_progress</span>
-<span class="ne">-&gt; </span><span class="mi">1069</span>     <span class="n">params</span><span class="p">,</span> <span class="n">kl_divergence</span><span class="p">,</span> <span class="n">it</span> <span class="o">=</span> <span class="n">_gradient_descent</span><span class="p">(</span><span class="n">obj_func</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">opt_args</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1071</span> <span class="c1"># Save the final number of iterations</span>
-<span class="g g-Whitespace">   </span><span class="mi">1072</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_iter_</span> <span class="o">=</span> <span class="n">it</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/sklearn/manifold/_t_sne.py:402,</span> in <span class="ni">_gradient_descent</span><span class="nt">(objective, p0, it, n_iter, n_iter_check, n_iter_without_progress, momentum, learning_rate, min_gain, min_grad_norm, verbose, args, kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">399</span> <span class="c1"># only compute the error when needed</span>
-<span class="g g-Whitespace">    </span><span class="mi">400</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;compute_error&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_convergence</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">==</span> <span class="n">n_iter</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="ne">--&gt; </span><span class="mi">402</span> <span class="n">error</span><span class="p">,</span> <span class="n">grad</span> <span class="o">=</span> <span class="n">objective</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">404</span> <span class="n">inc</span> <span class="o">=</span> <span class="n">update</span> <span class="o">*</span> <span class="n">grad</span> <span class="o">&lt;</span> <span class="mf">0.0</span>
-<span class="g g-Whitespace">    </span><span class="mi">405</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">inc</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/sklearn/manifold/_t_sne.py:283,</span> in <span class="ni">_kl_divergence_bh</span><span class="nt">(params, P, degrees_of_freedom, n_samples, n_components, angle, skip_num_points, verbose, compute_error, num_threads)</span>
-<span class="g g-Whitespace">    </span><span class="mi">280</span> <span class="n">indptr</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">indptr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">282</span> <span class="n">grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X_embedded</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">283</span> <span class="n">error</span> <span class="o">=</span> <span class="n">_barnes_hut_tsne</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">284</span>     <span class="n">val_P</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">285</span>     <span class="n">X_embedded</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">286</span>     <span class="n">neighbors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">287</span>     <span class="n">indptr</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">288</span>     <span class="n">grad</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">289</span>     <span class="n">angle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">290</span>     <span class="n">n_components</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">291</span>     <span class="n">verbose</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">292</span>     <span class="n">dof</span><span class="o">=</span><span class="n">degrees_of_freedom</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">293</span>     <span class="n">compute_error</span><span class="o">=</span><span class="n">compute_error</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">294</span>     <span class="n">num_threads</span><span class="o">=</span><span class="n">num_threads</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">295</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span> <span class="n">c</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">degrees_of_freedom</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">degrees_of_freedom</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span> <span class="n">grad</span> <span class="o">=</span> <span class="n">grad</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -726,7 +634,7 @@ Explained variance ratio: 0.16938792566748243
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f4864e42ad23d6f99106b36ddb8ce6e465d0b7693f705405999f1a0e8df11d55.svg" src="../_images/f4864e42ad23d6f99106b36ddb8ce6e465d0b7693f705405999f1a0e8df11d55.svg" /></div>
+<img alt="../_images/b4faceb3333b39db6861f22d04cf6c6c422f72c657424836727df6b2de5dafcf.svg" src="../_images/b4faceb3333b39db6861f22d04cf6c6c422f72c657424836727df6b2de5dafcf.svg" /></div>
 </div>
 </section>
 

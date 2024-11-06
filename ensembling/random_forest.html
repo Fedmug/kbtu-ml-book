@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Random forests &#8212; ML book</title>
+    <title>Random forest &#8212; ML book</title>
   
   
   
@@ -236,9 +236,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="ensemble.html">Ensembling</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias-variance decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="voting_stacking_blending.html">Voting, stacking and blending</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bagging.html">Bagging</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Random forests</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Random forest</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../gradient_boosting/gradient_boosting.html">Gradient boosting</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -495,7 +494,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Random forests</h1>
+    <h1>Random forest</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -507,7 +506,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boston-dataset">Boston dataset</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging">Bagging</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-dataset">Default dataset</a></li>
 </ul>
 </li>
 </ul>
@@ -521,74 +520,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="random-forests">
-<h1>Random forests<a class="headerlink" href="#random-forests" title="Permalink to this heading">#</a></h1>
-<div class="important dropdown admonition">
-<p class="admonition-title">ChatGPT stuff</p>
-<p>Bagging (Bootstrap Aggregating) and Random Forests are ensemble learning techniques that improve the predictive performance and robustness of decision tree models. Both methods leverage the power of combining multiple decision trees to reduce overfitting and improve generalization. However, they differ in some key aspects. Let’s explore Bagging and Random Forests in more detail:</p>
-<ol class="arabic simple">
-<li><p>Bagging (Bootstrap Aggregating)</p></li>
-</ol>
-<ul>
-<li><h6>Basic Idea:</h6> Bagging is an ensemble technique that involves training multiple decision trees independently on different bootstrap samples (randomly sampled subsets with replacement) from the training data and then aggregating their predictions.
-</li>
-</ul>
-<br>
-<ul>
-<li><h6>Base Models:</h6> In a Bagging ensemble, the base models are typically decision trees. Each decision tree is trained on a different subset of the training data, which introduces diversity among the base models.
-</li>
-</ul>
-<br>
-<ul>
-<li><h6>Aggregation:</h6> For regression tasks, the predictions of individual trees are averaged to obtain the ensemble prediction. For classification tasks, the majority vote (mode) of the individual tree predictions is taken as the final prediction.
-</li>
-</ul>
-<br>
-<ul>
-<li><h6>Variance Reduction:</h6> Bagging primarily aims to reduce variance. By averaging or voting over multiple models, it reduces the impact of random noise and fluctuations in the training data. This makes the ensemble more robust and less prone to overfitting.
-</li>
-</ul>
-<br>
-<ul>
-<li><h6>Randomness:</h6> While bagging introduces randomness through bootstrap sampling, it does not introduce additional randomness when growing individual trees. Each tree is trained using the same set of features as the original dataset.
-</li>
-</ul>
-<ol class="arabic simple" start="2">
-<li><p>Random Forests</p></li>
-</ol>
-<ul>
-<li><h6>Basic Idea:</h6> Random Forests is an extension of Bagging that introduces additional randomness during the construction of individual decision trees. It combines the concept of bagging with feature selection randomness.
-</li>
-</ul>
-<br>
-<ul>
-<li><h6>Base Models:</h6> The base models in Random Forests are also decision trees, but they are constructed using a random subset of features at each node (typically the square root of the total number of features). This feature selection randomness introduces diversity among the base models.
-</li>
-</ul>
-<br>
-<ul>
-<li><h6>Aggregation:</h6> Similar to Bagging, Random Forests aggregate the predictions of individual trees by averaging (for regression) or majority vote (for classification) to obtain the final prediction.
-</li>
-</ul>
-<br>
-<ul>
-<li><h6>Variance Reduction:</h6> Random Forests aim to reduce both bias and variance. The feature selection randomness during tree construction helps decorrelate the trees and further reduce the risk of overfitting.
-</li>
-</ul>
-<br>
-<ul>
-<li><h6>Randomness:</h6> In addition to the bootstrap sampling, Random Forests introduce randomness by selecting a random subset of features at each node when growing decision trees. This increases diversity among the trees.
-</li>
-</ul>
-<br>
-<ul>
-<li><h6>Out-of-Bag (OOB) Error:</h6> Random Forests have a built-in mechanism for estimating the generalization error without the need for a separate validation set. The OOB error is calculated based on the samples not included in the bootstrap sample for each tree.
-</li>
-</ul>
-</div>
-<p>In summary, both Bagging and Random Forests are ensemble methods that reduce overfitting and improve predictive performance by combining multiple decision trees. However, Random Forests go a step further by introducing feature selection randomness during tree construction, making them more robust and less prone to overfitting. As a result, Random Forests are often preferred when working with decision tree-based ensembles for a wide range of tasks.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="random-forest">
+<h1>Random forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h1>
+<p><strong>Random forest</strong> is an enhancement of bagging specifically tailored for decision trees, adding feature randomness to boost ensemble diversity and decorelate base algorithms. This makes the ensemble model more robust and less prone to overfitting. See <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/ansambli-v-mashinnom-obuchenii#random-forest">ML Handbook</a> for details.</p>
 <section id="boston-dataset">
 <h2>Boston dataset<a class="headerlink" href="#boston-dataset" title="Permalink to this heading">#</a></h2>
+<p>Apply random forest to Boston dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -607,126 +544,186 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
 
-<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">()</span>
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train score:&quot;</span><span class="p">,</span> <span class="n">rf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train score:&quot;</span><span class="p">,</span> <span class="n">rf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train RF R2-score:&quot;</span><span class="p">,</span> <span class="n">rf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test RF R2-score:&quot;</span><span class="p">,</span> <span class="n">rf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train score: 0.9847946887553806
-Train score: 0.8149116469105755
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train RF R2-score: 0.9826817129099186
+Test RF R2-score: 0.8896941842251395
 </pre></div>
 </div>
 </div>
 </div>
 <section id="bagging">
 <h3>Bagging<a class="headerlink" href="#bagging" title="Permalink to this heading">#</a></h3>
+<p>Now use bagging upon decision trees:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_california_housing</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingRegressor</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 
-<span class="c1"># Load the California Housing dataset as an example</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">()</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span>
-
-<span class="c1"># Split the data into training and testing sets</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># Create a base decision tree regressor</span>
 <span class="n">base_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># Create a Bagging Regressor with 100 base models (decision trees)</span>
 <span class="n">bagging_model</span> <span class="o">=</span> <span class="n">BaggingRegressor</span><span class="p">(</span><span class="n">base_model</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># Train the Bagging Regressor on the training data</span>
 <span class="n">bagging_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="c1"># Make predictions on the test data</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">bagging_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="c1"># Evaluate the model&#39;s performance</span>
-<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error: </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train bagging R2-score:&quot;</span><span class="p">,</span> <span class="n">bagging_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test bagging R2-score:&quot;</span><span class="p">,</span> <span class="n">bagging_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error: 0.26
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train bagging R2-score: 0.9824645880169679
+Test bagging R2-score: 0.8870116086741119
 </pre></div>
 </div>
 </div>
 </div>
-<p>In this code:</p>
-<ul class="simple">
-<li><p>We load the California Housing dataset from scikit-learn as an example regression dataset.</p></li>
-<li><p>The dataset is split into training and testing sets using train_test_split.</p></li>
-<li><p>We create a base model, which is a decision tree regressor.</p></li>
-<li><p>We create a Bagging Regressor with 100 base models (decision trees) using BaggingRegressor.</p></li>
-<li><p>The Bagging Regressor is trained on the training data using fit.</p></li>
-<li><p>We make predictions on the test data using predict.</p></li>
-<li><p>Finally, we evaluate the model’s performance using the mean squared error (MSE).</p></li>
-</ul>
-<p>You can modify this code to work with your own dataset and adjust hyperparameters as needed. Bagging can also be applied to classification tasks using BaggingClassifier in scikit-learn.</p>
+<p>Train and test coefficients of determination are very close for these two models.</p>
 </section>
-<section id="random-forest">
-<h3>Random forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h3>
+<section id="default-dataset">
+<h3>Default dataset<a class="headerlink" href="#default-dataset" title="Permalink to this heading">#</a></h3>
+<p>A synthetic dataset with binary target <code class="docutils literal notranslate"><span class="pre">default</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_california_housing</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
-
-<span class="c1"># Load the California Housing dataset as an example</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">()</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span>
-
-<span class="c1"># Split the data into training and testing sets</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># Create a Random Forest Regressor with 100 trees (estimators)</span>
-<span class="n">rf_regressor</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="c1"># Train the Random Forest Regressor on the training data</span>
-<span class="n">rf_regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="c1"># Make predictions on the test data</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">rf_regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="c1"># Evaluate the model&#39;s performance</span>
-<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error: </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R-squared (R2) Score: </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">default</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../datasets/ISLP/Default.csv&quot;</span><span class="p">)</span>
+<span class="n">default</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error: 0.26
-R-squared (R2) Score: 0.81
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>default</th>
+      <th>student</th>
+      <th>balance</th>
+      <th>income</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>No</td>
+      <td>No</td>
+      <td>729.526495</td>
+      <td>44361.625074</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>No</td>
+      <td>Yes</td>
+      <td>817.180407</td>
+      <td>12106.134700</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>No</td>
+      <td>No</td>
+      <td>1073.549164</td>
+      <td>31767.138947</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>No</td>
+      <td>No</td>
+      <td>529.250605</td>
+      <td>35704.493935</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>No</td>
+      <td>No</td>
+      <td>785.655883</td>
+      <td>38463.495879</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">default</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10000, 4)
 </pre></div>
 </div>
 </div>
 </div>
-<p>In this code:</p>
-<ul class="simple">
-<li><p>We load the California Housing dataset from scikit-learn as an example regression dataset.</p></li>
-<li><p>The dataset is split into training and testing sets using train_test_split.</p></li>
-<li><p>We create a Random Forest Regressor with 100 decision trees (estimators) using RandomForestRegressor. You can adjust the n_estimators parameter to change the number of trees in the forest.</p></li>
-<li><p>The Random Forest Regressor is trained on the training data using fit.</p></li>
-<li><p>We make predictions on the test data using predict.</p></li>
-<li><p>Finally, we evaluate the model’s performance using metrics such as mean squared error (MSE) and R-squared (R2) score.</p></li>
-</ul>
-<p>You can modify this code to work with your own dataset and adjust hyperparameters as needed. Random Forest Regression is a powerful technique for solving regression tasks, as it combines the strengths of multiple decision trees while mitigating their weaknesses, such as overfitting.</p>
+<p>Split into train and test:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">default</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">default</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X</span><span class="p">[</span><span class="s1">&#39;student_ohe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;student&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;student&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fit random forest classifier:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train RF accuracy:&quot;</span><span class="p">,</span> <span class="n">rf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test RF accuracy:&quot;</span><span class="p">,</span> <span class="n">rf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train RF accuracy: 1.0
+Test RF accuracy: 0.9705
+</pre></div>
+</div>
+</div>
+</div>
+<p>Apply bagging with decision tree as base classifier:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingClassifier</span>
+
+<span class="n">base_model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">bagging_model</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">base_model</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">bagging_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train bagging accuracy:&quot;</span><span class="p">,</span> <span class="n">bagging_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test bagging accuracy:&quot;</span><span class="p">,</span> <span class="n">bagging_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train bagging accuracy: 1.0
+Test bagging accuracy: 0.97
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -800,7 +797,7 @@ R-squared (R2) Score: 0.81
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boston-dataset">Boston dataset</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging">Bagging</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-dataset">Default dataset</a></li>
 </ul>
 </li>
 </ul>

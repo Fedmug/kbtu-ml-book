@@ -238,7 +238,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ensembling/ensemble.html">Ensembling</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ensembling/voting_stacking_blending.html">Voting, stacking and blending</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/bagging.html">Bagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/random_forest.html">Random forests</a></li>
 </ul>
@@ -659,10 +658,10 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([[ 0.0335,  0.1072,  0.3231],
-        [ 0.4182,  0.0999,  0.1484],
-        [ 0.0907,  0.5471,  0.0028],
-        [-0.5180, -0.0414, -0.1994]], requires_grad=True)
+tensor([[-0.1269, -0.0540,  0.0685],
+        [-0.3884, -0.4050,  0.4625],
+        [-0.2294, -0.0297,  0.3940],
+        [ 0.1334, -0.3394, -0.2724]], requires_grad=True)
 </pre></div>
 </div>
 </div>
@@ -675,7 +674,7 @@ tensor([[ 0.0335,  0.1072,  0.3231],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.4638,  0.6665,  0.6405, -0.7588], grad_fn=&lt;SqueezeBackward4&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.1124, -0.3309,  0.1349, -0.4784], grad_fn=&lt;SqueezeBackward4&gt;)
 </pre></div>
 </div>
 </div>
@@ -722,7 +721,7 @@ tensor([[ 0.0335,  0.1072,  0.3231],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/63aaf1f86c65d5db4d51824be1ea206c6388c9073d454a200c25770212bcac2e.svg" src="../_images/63aaf1f86c65d5db4d51824be1ea206c6388c9073d454a200c25770212bcac2e.svg" /></div>
+<img alt="../_images/988a3063f4df9593f4f6c42d90d54c63beaa521e8870dbd519a079c495b44968.svg" src="../_images/988a3063f4df9593f4f6c42d90d54c63beaa521e8870dbd519a079c495b44968.svg" /></div>
 </div>
 <p>You can read about advantages and disadvantages of different activation functions <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/beta-pervoe-znakomstvo-s-polnosvyaznymi-nejrosetyami#populyarnye-funkczii-aktivaczii">here</a>.</p>
 </section>
@@ -738,8 +737,8 @@ tensor([[ 0.0335,  0.1072,  0.3231],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.5072, -0.9227, -0.0659,  0.0417, -0.3719],
-        [ 0.1586, -0.0013, -0.0449, -0.9647,  0.3729]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.6204, -0.2137,  0.0742,  0.7516,  0.8109],
+        [ 0.4311,  0.0800,  0.5634, -0.5882, -0.5527]])
 </pre></div>
 </div>
 </div>
@@ -752,10 +751,10 @@ tensor([[ 0.0335,  0.1072,  0.3231],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[0.5072, 0.0000, 0.0000, 0.0417, 0.0000],
-         [0.1586, 0.0000, 0.0000, 0.0000, 0.3729]]),
- tensor([[ 5.0718e-01, -9.2269e-03, -6.5878e-04,  4.1679e-02, -3.7189e-03],
-         [ 1.5860e-01, -1.2759e-05, -4.4871e-04, -9.6471e-03,  3.7292e-01]]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[0.0000, 0.0000, 0.0742, 0.7516, 0.8109],
+         [0.4311, 0.0800, 0.5634, 0.0000, 0.0000]]),
+ tensor([[-0.0062, -0.0021,  0.0742,  0.7516,  0.8109],
+         [ 0.4311,  0.0800,  0.5634, -0.0059, -0.0055]]))
 </pre></div>
 </div>
 </div>

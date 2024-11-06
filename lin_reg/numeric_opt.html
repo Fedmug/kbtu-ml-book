@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -237,7 +238,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ensembling/ensemble.html">Ensembling</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ensembling/voting_stacking_blending.html">Voting, stacking and blending</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/bagging.html">Bagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/random_forest.html">Random forests</a></li>
 </ul>
@@ -521,7 +521,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="numeric-optimization">
 <span id="num-opt-lin-reg"></span><h1>Numeric optimization<a class="headerlink" href="#numeric-optimization" title="Permalink to this heading">#</a></h1>
-<p>Due to some <a class="reference internal" href="multiple.html#computational-issues"><span class="std std-ref">computational issues</span></a> it could be inpractical to calculate <span class="math notranslate nohighlight">\(\widehat{\boldsymbol w}\)</span> by the formula <a class="reference internal" href="multiple.html#equation-lin-reg-solution">(21)</a>. If so, a numerical optimization method can be used. The most common one is <a class="reference internal" href="../math/calculus/optimization.html#GD">gradient descent</a> algorithm.</p>
+<p>Due to some <a class="reference internal" href="multiple.html#computational-issues"><span class="std std-ref">computational issues</span></a> it could be inpractical to calculate <span class="math notranslate nohighlight">\(\widehat{\boldsymbol w}\)</span> by the formula <a class="reference internal" href="multiple.html#equation-lin-reg-solution">(23)</a>. If so, a numerical optimization method can be used. The most common one is <a class="reference internal" href="../math/calculus/optimization.html#GD">gradient descent</a> algorithm.</p>
 <p>For ordinary linear regression the loss function is proportional to</p>
 <div class="math notranslate nohighlight">
 \[
@@ -560,7 +560,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 15.308721545567392
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 15.3087215455674
 </pre></div>
 </div>
 </div>
@@ -580,7 +580,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r-score: 0.9995298145938111
 MSE: 15.308721545567236
-Difference from w: 5.390227513571422e-07
+Difference from w: 5.39008675221966e-07
 </pre></div>
 </div>
 </div>
@@ -608,7 +608,7 @@ Difference from w: 5.390227513571422e-07
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max_iter exceeded
-MSE: 23.031660931590803
+MSE: 23.031660361639574
 </pre></div>
 </div>
 </div>
@@ -627,7 +627,7 @@ MSE: 23.031660931590803
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r-score: 0.7272525819160474
 MSE: 23.025215977387404
-Difference from w: 2.0548135811050003
+Difference from w: 2.054722721699466
 </pre></div>
 </div>
 </div>

@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -237,7 +238,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ensembling/ensemble.html">Ensembling</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ensembling/voting_stacking_blending.html">Voting, stacking and blending</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/bagging.html">Bagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/random_forest.html">Random forests</a></li>
 </ul>
@@ -603,18 +603,18 @@ This is a partition of space which associates a region <span class="math notrans
 \]</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/f5bb95e9052f0a008bf79ec28b68d8e1f32b451c9bf06a7c15f187b34fe4d30a.svg" src="../_images/f5bb95e9052f0a008bf79ec28b68d8e1f32b451c9bf06a7c15f187b34fe4d30a.svg" /></div>
+<img alt="../_images/12ef836a33766adeb107a458a4e10c3bfae9eab4219c06488da5b1345befbb88.svg" src="../_images/12ef836a33766adeb107a458a4e10c3bfae9eab4219c06488da5b1345befbb88.svg" /></div>
 </div>
 <p><span style="display:none" id="q_1nn_train_loss">W3sicXVlc3Rpb24iOiAiU3VwcG9zZSB3ZSBhcmUgdHJhaW5pbmcgJDEkLU5OIGFsZ29yaXRobSB1c2luZyBtaXNjbGFzc2lmaWNhdGlvbiByYXRlIGFzIHRoZSBsb3NzIGZ1bmN0aW9uLiBXaGF0IHdpbGwgYmUgdGhlIHRyYWluIGVycm9yPyIsICJ0eXBlIjogIm51bWVyaWMiLCAiYW5zd2VycyI6IFt7InR5cGUiOiAidmFsdWUiLCAidmFsdWUiOiAwLCAiY29ycmVjdCI6IHRydWUsICJmZWVkYmFjayI6ICJSaWdodCBvbiEgQWxsIHRyYWluaW5nIHBvaW50cyB3aWxsIGJlIGNsYXNzaWZpZWQgY29ycmVjdGx5In0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFstMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCwgMF0sICJmZWVkYmFjayI6ICJNaXNjbGFzc2lmaWNhdGlvbiByYXRlIG11c3QgYmUgYmV0d2VlbiAwIGFuZCAxIn0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFsxLjAwMDAwMDAwMDEsIDEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBdLCAiZmVlZGJhY2siOiAiTWlzY2xhc3NpZmljYXRpb24gcmF0ZSBtdXN0IGJlIGJldHdlZW4gMCBhbmQgMSJ9LCB7InR5cGUiOiAiZGVmYXVsdCIsICJmZWVkYmFjayI6ICJObywgdGhpcyBpcyBub3QgdHJ1ZSJ9XX1d</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="tpahZpbXQbXM" data-shufflequestions="False"
+<div class="output text_html"><div id="FGBfdQcCWGCz" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#tpahZpbXQbXM {
+#FGBfdQcCWGCz {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -785,14 +785,14 @@ This is a partition of space which associates a region <span class="math notrans
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("q_1nn_train_loss");
-            var questionstpahZpbXQbXM;
+            var questionsFGBfdQcCWGCz;
             try {
-               questionstpahZpbXQbXM=JSON.parse(window.atob(element.innerHTML));
+               questionsFGBfdQcCWGCz=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionstpahZpbXQbXM = JSON.parse(element.innerHTML);
+               questionsFGBfdQcCWGCz = JSON.parse(element.innerHTML);
             }
-            console.log(questionstpahZpbXQbXM);;
+            console.log(questionsFGBfdQcCWGCz);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -1541,8 +1541,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("tpahZpbXQbXM")) {
-            show_questions(questionstpahZpbXQbXM,  tpahZpbXQbXM); 
+          if(document.getElementById("FGBfdQcCWGCz")) {
+            show_questions(questionsFGBfdQcCWGCz,  FGBfdQcCWGCz); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -1551,8 +1551,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("tpahZpbXQbXM");
-        // console.log(document.getElementById("tpahZpbXQbXM"));
+        //console.log("FGBfdQcCWGCz");
+        // console.log(document.getElementById("FGBfdQcCWGCz"));
 
         try_show();
         }
@@ -1581,13 +1581,13 @@ if (typeof version == 'undefined') {
 <p><span style="display:none" id="watermelon">W3sicXVlc3Rpb24iOiAiV2hhdCBwZXJjZW50YWdlIG9mIHRoZSB3YXRlcm1lbG9uIGlzIGVhdGFibGU/IiwgInR5cGUiOiAibnVtZXJpYyIsICJhbnN3ZXJzIjogW3sidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDAuNzI5LCAiY29ycmVjdCI6IGZhbHNlLCAiZmVlZGJhY2siOiAiVGhpcyBpcyB0aGUgcGFydCB3cml0dGVuIGFzIGRlY2ltYWwgZnJhY3Rpb24ifSwgeyJ0eXBlIjogInZhbHVlIiwgInZhbHVlIjogNzIuOSwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiVGhhdCdzIGNvcnJlY3QhICQoMC45KV4zXFx0aW1lcyAxMDBcXCUgPSA3Mi45XFwlJCJ9LCB7InR5cGUiOiAicmFuZ2UiLCAicmFuZ2UiOiBbLTEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwLCAwXSwgImZlZWRiYWNrIjogIlBlcmNlbnRhZ2UgY2Fubm90IGJlIG5lZ2F0aXZlIn0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFsxMDAuMDAwMDAwMDAwMSwgMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBdLCAiZmVlZGJhY2siOiAiWW91IGNhbm5vdCBlYXQgbW9yZSB0aGF0ICQxMDBcXCUkIG9mIHRoZSB3YXRlcm1lbG9uIn0sIHsidHlwZSI6ICJkZWZhdWx0IiwgImZlZWRiYWNrIjogIk5vLCB0aGlzIGlzIG5vdCB0cnVlIn1dfSwgeyJxdWVzdGlvbiI6ICJIb3cgdGhlIGFuc3dlciB3b3VsZCBjaGFuZ2UgaWYgd2Ugd2VyZSBsaXZpbmcgaW4gJFxcbWF0aGJiIFJeezEwfSQ/IiwgInR5cGUiOiAibnVtZXJpYyIsICJhbnN3ZXJzIjogW3sidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFswLjM0OCwgMC4zNDkxXSwgImNvcnJlY3QiOiBmYWxzZSwgImZlZWRiYWNrIjogIlRoaXMgaXMgdGhlIHBhcnQgd3JpdHRlbiBhcyBkZWNpbWFsIGZyYWN0aW9uIn0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFszNC44LCAzNC45MV0sICJjb3JyZWN0IjogdHJ1ZSwgImZlZWRiYWNrIjogIlRoYXQncyBjb3JyZWN0ISAkKDAuOSleezEwfVxcdGltZXMgMTAwXFwlIFxcYXBwcm94IDM0LjlcXCUkIn0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFstMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAsIDBdLCAiY29ycmVjdCI6IGZhbHNlLCAiZmVlZGJhY2siOiAiUGVyY2VudGFnZSBjYW5ub3QgYmUgbmVnYXRpdmUifSwgeyJ0eXBlIjogInJhbmdlIiwgInJhbmdlIjogWzEwMC4wMDAwMDAwMDAxLCAxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMF0sICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJZb3UgY2Fubm90IGVhdCBtb3JlIHRoYXQgJDEwMFxcJSQgb2YgdGhlIHdhdGVybWVsb24ifSwgeyJ0eXBlIjogImRlZmF1bHQiLCAiZmVlZGJhY2siOiAiRmFsc2UifV19XQ==</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="pGBwmwkFhAKH" data-shufflequestions="False"
+<div class="output text_html"><div id="xzZQzahiIhWs" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#pGBwmwkFhAKH {
+#xzZQzahiIhWs {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -1758,14 +1758,14 @@ if (typeof version == 'undefined') {
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("watermelon");
-            var questionspGBwmwkFhAKH;
+            var questionsxzZQzahiIhWs;
             try {
-               questionspGBwmwkFhAKH=JSON.parse(window.atob(element.innerHTML));
+               questionsxzZQzahiIhWs=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionspGBwmwkFhAKH = JSON.parse(element.innerHTML);
+               questionsxzZQzahiIhWs = JSON.parse(element.innerHTML);
             }
-            console.log(questionspGBwmwkFhAKH);;
+            console.log(questionsxzZQzahiIhWs);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -2514,8 +2514,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("pGBwmwkFhAKH")) {
-            show_questions(questionspGBwmwkFhAKH,  pGBwmwkFhAKH); 
+          if(document.getElementById("xzZQzahiIhWs")) {
+            show_questions(questionsxzZQzahiIhWs,  xzZQzahiIhWs); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -2524,8 +2524,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("pGBwmwkFhAKH");
-        // console.log(document.getElementById("pGBwmwkFhAKH"));
+        //console.log("xzZQzahiIhWs");
+        // console.log(document.getElementById("xzZQzahiIhWs"));
 
         try_show();
         }
@@ -2534,7 +2534,7 @@ if (typeof version == 'undefined') {
 <p>This is how the <strong>curse of dimensionality</strong> works. In <span class="math notranslate nohighlight">\(50\)</span>-dimensional space there is almost nothing to eat in a watermelon.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/72a55c2befc3175ff7a58dbf00bbbb6154a3f46146959a38180db7d9fd3e8577.svg" src="../_images/72a55c2befc3175ff7a58dbf00bbbb6154a3f46146959a38180db7d9fd3e8577.svg" /></div>
+<img alt="../_images/2b066655a236cde5a89208f8be0aeb284bac917cca2925b41c870786fc0fbe96.svg" src="../_images/2b066655a236cde5a89208f8be0aeb284bac917cca2925b41c870786fc0fbe96.svg" /></div>
 </div>
 <p>What are the consequenes of curse of the dimensionality for <span class="math notranslate nohighlight">\(k\)</span>-NN?</p>
 <div class="admonition-a-common-example-from-textbooks admonition">
@@ -2543,7 +2543,7 @@ if (typeof version == 'undefined') {
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/526c46b872de6f4b91732189ea666d7db2d44a78d1a102e34540017ba3296678.svg" src="../_images/526c46b872de6f4b91732189ea666d7db2d44a78d1a102e34540017ba3296678.svg" /></div>
+<img alt="../_images/cd48aa999ed1c6c1619bd3e0dc65de30d7c6c2eaea299da2479090bf7efe2d6a.svg" src="../_images/cd48aa999ed1c6c1619bd3e0dc65de30d7c6c2eaea299da2479090bf7efe2d6a.svg" /></div>
 </div>
 </section>
 <section id="k-nn-for-boston-dataset">
@@ -2793,7 +2793,7 @@ MSE loss for 10-NN: 27.524774703557313
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/284c2111817de14d01bab0678bcc748588145838a19da8f9fe9f1a0ca4e94f92.svg" src="../_images/284c2111817de14d01bab0678bcc748588145838a19da8f9fe9f1a0ca4e94f92.svg" /></div>
+<img alt="../_images/286516835e682c39e0fe27c5dcba0a644ffacb340827416b2501a632fd92c458.svg" src="../_images/286516835e682c39e0fe27c5dcba0a644ffacb340827416b2501a632fd92c458.svg" /></div>
 </div>
 </section>
 <section id="k-nn-for-classification">
@@ -2863,7 +2863,7 @@ MSE loss for 10-NN: 27.524774703557313
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fa3ced1a81657b5ab6648df8dd8922edbc9edfbee5793dd13364cb5255807ab0.svg" src="../_images/fa3ced1a81657b5ab6648df8dd8922edbc9edfbee5793dd13364cb5255807ab0.svg" /></div>
+<img alt="../_images/f2b0dd62691dd796a93c9499645015894aec1bbacf148a422430fb9d820af933.svg" src="../_images/f2b0dd62691dd796a93c9499645015894aec1bbacf148a422430fb9d820af933.svg" /></div>
 </div>
 </section>
 <section id="exercises">

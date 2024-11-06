@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
@@ -237,7 +238,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ensembling/ensemble.html">Ensembling</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ensembling/voting_stacking_blending.html">Voting, stacking and blending</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/bagging.html">Bagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/random_forest.html">Random forests</a></li>
 </ul>
@@ -525,7 +525,7 @@ document.write(`
 <p>To find the optimal weights of the logistic regression, we can use <a class="reference internal" href="../math/calculus/optimization.html#GD">gradient descent</a> algorithm. To apply this algorithm, one need to calculate the gradient of the loss function.</p>
 <section id="binary-logistic-regression">
 <h2>Binary logistic regression<a class="headerlink" href="#binary-logistic-regression" title="Permalink to this heading">#</a></h2>
-<p>Multiply the loss function <a class="reference internal" href="log_reg.html#equation-bin-log-reg-loss">(27)</a> by <span class="math notranslate nohighlight">\(n\)</span>:</p>
+<p>Multiply the loss function <a class="reference internal" href="log_reg.html#equation-bin-log-reg-loss">(29)</a> by <span class="math notranslate nohighlight">\(n\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \mathcal L(\boldsymbol w) = 
@@ -636,16 +636,16 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max_iter exceeded
-CPU times: user 1min 13s, sys: 8.86 s, total: 1min 22s
-Wall time: 1min 18s
+CPU times: user 57.2 s, sys: 4.75 s, total: 1min 1s
+Wall time: 34.1 s
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.11894182,  0.2695278 ,  1.20253379, -0.03525846, -1.58818873,
-       -0.75574778,  0.6821002 ,  0.31059122, -1.31636839,  1.1597611 ,
-        0.31553413, -0.19782373,  0.62397208, -0.20657669,  0.17254061,
-       -1.15882424, -1.10434707,  0.72741375,  0.72420554, -0.53025534,
-        1.93309288, -0.57467402, -0.75088204, -0.02681773,  0.59933665,
-       -0.10341292, -0.29743089, -0.34332296, -0.18055171,  0.93202734])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.95017256,  0.20093416,  0.95389464, -0.0472658 ,  0.47622005,
+        0.84587822, -0.41132275, -0.31228808,  0.08504519,  0.53761053,
+       -0.82640988,  0.58935115, -0.08576555, -0.16455134,  0.08608244,
+       -0.28015316, -1.08272513,  0.56933785, -0.1965725 ,  0.74017633,
+        1.31894747, -0.5814842 , -0.55305047, -0.02001289, -0.75746949,
+       -1.12086515, -2.09220646, -0.24091238, -0.9334001 , -1.08400614])
 </pre></div>
 </div>
 </div>
@@ -659,7 +659,7 @@ Wall time: 1min 18s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9191564147627417
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9490333919156415
 </pre></div>
 </div>
 </div>
@@ -699,7 +699,7 @@ Wall time: 1min 18s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.039212011944013
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.176761458282468
 </pre></div>
 </div>
 </div>
