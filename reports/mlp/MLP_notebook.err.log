@@ -37,8 +37,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['from IPython.display import clear_output', 'train_log = []', 'val_log = []', '', 'for epoch in range(15):']
+['# Train the Model', 'num_epochs = 15', '', 'for epoch in range(num_epochs):', '    # Training']
 ...
-["    plt.plot(train_log,label='train accuracy')", "    plt.plot(val_log,label='val accuracy')", "    plt.legend(loc='best')", '    plt.grid()', '    plt.show()']
+['            total_samples_val += labels.size(0)', '', '    val_accuracy = total_correct_val / total_samples_val', '', "    print('Epoch [{}/{}], Training Accuracy: {:.4f}, Validation Accuracy: {:.4f}'.format(epoch+1, num_epochs, train_accuracy, val_accuracy))"]
 -------------------
 
