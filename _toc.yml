@@ -115,7 +115,7 @@ parts:
           - file: mlp/weight_init
           - file: mlp/regularization
           - file: mlp/optimization_dl
-          - file: mlp/MLP_notebook
+          # - file: mlp/MLP_notebook
 
       - file: cnn/cnn
         sections:
