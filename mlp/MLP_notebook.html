@@ -625,7 +625,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9c5fab19e05a76794d6b0abc1bf07bd302511b052e5d6c5210ecaddc4877683f.svg" src="../_images/9c5fab19e05a76794d6b0abc1bf07bd302511b052e5d6c5210ecaddc4877683f.svg" /></div>
+<img alt="../_images/85fb2697a292029d2da0e466a982230a1fe56f0c69729ca7c9d37e01078eb46b.svg" src="../_images/85fb2697a292029d2da0e466a982230a1fe56f0c69729ca7c9d37e01078eb46b.svg" /></div>
 </div>
 </section>
 <section id="learning-objectives">
@@ -819,15 +819,12 @@ $<span class="math notranslate nohighlight">\(
     
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply elementwise ReLU to [batch, input_units] matrix&quot;&quot;&quot;</span>
-        
-        <span class="c1"># YOUR CODE HERE. Hint: try np.maximum</span>
-        <span class="k">pass</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute gradient of loss w.r.t. ReLU input&quot;&quot;&quot;</span>
         <span class="n">relu_grad</span> <span class="o">=</span> <span class="nb">input</span> <span class="o">&gt;</span> <span class="mi">0</span>
-
-        <span class="c1"># YOUR CODE HERE    </span>
+        <span class="k">return</span> <span class="n">grad_output</span> <span class="o">*</span> <span class="n">relu_grad</span>
 </pre></div>
 </div>
 </div>
@@ -842,37 +839,6 @@ $<span class="math notranslate nohighlight">\(
 <span class="n">numeric_grads</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">numeric_grads</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>\
     <span class="s2">&quot;gradient returned by your layer does not match the numerically computed gradient&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">l</span> <span class="o">=</span> <span class="n">ReLU</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">grads</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">32</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">32</span><span class="o">*</span><span class="mi">10</span><span class="p">))</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">numeric_grads</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">numeric_grads</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>\
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="s2">&quot;gradient returned by your layer does not match the numerically computed gradient&quot;</span>
-
-<span class="nn">File ~/Math4DS/ml-book/mlp/util.py:12,</span> in <span class="ni">eval_numerical_gradient</span><span class="nt">(f, x, verbose, h)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">def</span> <span class="nf">eval_numerical_gradient</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.00001</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Evaluates gradient df/dx via finite differences:</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="sd">     df/dx ~ (f(x+h) - f(x-h)) / 2h</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="sd">     Adopted from https://github.com/ddtm/dl-course/ (our ysda course).</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">12</span>     <span class="n">fx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># evaluate function value at original point</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="c1"># iterate over all indexes in x</span>
-
-<span class="nn">Cell In[5], line 6,</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(x)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">l</span> <span class="o">=</span> <span class="n">ReLU</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">grads</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">32</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">32</span><span class="o">*</span><span class="mi">10</span><span class="p">))</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">numeric_grads</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">numeric_grads</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>\
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="s2">&quot;gradient returned by your layer does not match the numerically computed gradient&quot;</span>
-
-<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;mean&#39;
 </pre></div>
 </div>
 </div>
@@ -916,17 +882,17 @@ $<span class="math notranslate nohighlight">\(
 <span class="sd">        input shape: [batch, input_units]</span>
 <span class="sd">        output shape: [batch, output units]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">return</span> <span class="nb">input</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">biases</span>
     
     <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">):</span>
         
         <span class="c1"># compute d f / d x = d f / d dense * d dense / d x</span>
         <span class="c1"># where d dense/ d x = weights transposed</span>
-        <span class="n">grad_input</span> <span class="o">=</span> <span class="c1"># YOUR CODE HERE</span>
+        <span class="n">grad_input</span> <span class="o">=</span> <span class="n">grad_output</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">T</span>
         
         <span class="c1"># compute gradient w.r.t. weights and biases</span>
-        <span class="n">grad_weights</span> <span class="o">=</span> <span class="c1"># YOUR CODE HERE</span>
-        <span class="n">grad_biases</span> <span class="o">=</span> <span class="c1"># YOUR CODE HERE</span>
+        <span class="n">grad_weights</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">grad_output</span>
+        <span class="n">grad_biases</span> <span class="o">=</span> <span class="n">grad_output</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         
         <span class="k">assert</span> <span class="n">grad_weights</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span> <span class="ow">and</span> <span class="n">grad_biases</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="o">.</span><span class="n">shape</span>
         <span class="c1"># Here we perform a stochastic gradient descent step. </span>
@@ -935,14 +901,6 @@ $<span class="math notranslate nohighlight">\(
         <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">grad_biases</span>
         
         <span class="k">return</span> <span class="n">grad_input</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">28</span>
-    <span class="n">grad_input</span> <span class="o">=</span> <span class="c1"># YOUR CODE HERE</span>
-                 <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
@@ -980,16 +938,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">l</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">assert</span> <span class="o">-</span><span class="mf">0.05</span> <span class="o">&lt;</span> <span class="n">l</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.05</span> <span class="ow">and</span> <span class="mf">1e-3</span> <span class="o">&lt;</span> <span class="n">l</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">1e-1</span><span class="p">,</span>\
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="s2">&quot;The initial weights must have zero mean and small variance. &quot;</span>\
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="s2">&quot;If you know what you&#39;re doing, remove this assertion.&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">assert</span> <span class="o">-</span><span class="mf">0.05</span> <span class="o">&lt;</span> <span class="n">l</span><span class="o">.</span><span class="n">biases</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s2">&quot;Biases must be zero mean. Ignore if you have a reason to do otherwise.&quot;</span>
-
-<span class="ne">NameError</span>: name &#39;Dense&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Well done!
 </pre></div>
 </div>
 </div>
@@ -1012,16 +961,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">eval_numerical_gradient</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="mi">32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">32</span><span class="p">])</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">l</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="n">learning_rate</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">numeric_grads</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">grads</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">64</span><span class="p">]))</span>
-
-<span class="ne">NameError</span>: name &#39;Dense&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Well done!
 </pre></div>
 </div>
 </div>
@@ -1057,39 +997,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">19</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">return</span> <span class="n">w</span> <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">b</span> <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">biases</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">w</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">64</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="n">numeric_dw</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">compute_out_given_wb</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">w</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">numeric_db</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">compute_out_given_wb</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">b</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">grad_w</span><span class="p">,</span><span class="n">grad_b</span> <span class="o">=</span> <span class="n">compute_grad_by_params</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-
-<span class="nn">File ~/Math4DS/ml-book/mlp/util.py:12,</span> in <span class="ni">eval_numerical_gradient</span><span class="nt">(f, x, verbose, h)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">def</span> <span class="nf">eval_numerical_gradient</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.00001</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Evaluates gradient df/dx via finite differences:</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="sd">     df/dx ~ (f(x+h) - f(x-h)) / 2h</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="sd">     Adopted from https://github.com/ddtm/dl-course/ (our ysda course).</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">12</span>     <span class="n">fx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># evaluate function value at original point</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="c1"># iterate over all indexes in x</span>
-
-<span class="nn">Cell In[9], line 19,</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(w)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">return</span> <span class="n">w</span> <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">b</span> <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">biases</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">w</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">64</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="n">numeric_dw</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">compute_out_given_wb</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">w</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">numeric_db</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">compute_out_given_wb</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">b</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">grad_w</span><span class="p">,</span><span class="n">grad_b</span> <span class="o">=</span> <span class="n">compute_grad_by_params</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-
-<span class="nn">Cell In[9], line 3,</span> in <span class="ni">compute_out_given_wb</span><span class="nt">(w, b)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">def</span> <span class="nf">compute_out_given_wb</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">l</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="n">learning_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">l</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">l</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;Dense&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Well done!
 </pre></div>
 </div>
 </div>
@@ -1196,7 +1104,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b7fcae6c49c6a7ad2b639f9174b490a31f365b25b305dbda8c87fc1bd9598676.svg" src="../_images/b7fcae6c49c6a7ad2b639f9174b490a31f365b25b305dbda8c87fc1bd9598676.svg" /></div>
+<img alt="../_images/ac1e6a74308ded509723b66208ee9ee69e56fde6ecb3d35aaf59c1dc167dc6da.svg" src="../_images/ac1e6a74308ded509723b66208ee9ee69e56fde6ecb3d35aaf59c1dc167dc6da.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1226,19 +1134,6 @@ $<span class="math notranslate nohighlight">\(
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">network</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">network</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">392</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">network</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ReLU</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">network</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">392</span><span class="p">,</span> <span class="mi">196</span><span class="p">))</span>
-
-<span class="ne">NameError</span>: name &#39;Dense&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1251,7 +1146,9 @@ $<span class="math notranslate nohighlight">\(
     <span class="n">activations</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="nb">input</span> <span class="o">=</span> <span class="n">X</span>
     
-    <span class="c1"># YOUR CODE HERE </span>
+    <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">network</span><span class="p">:</span>
+        <span class="nb">input</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="n">activations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
         
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">activations</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">network</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">activations</span>
@@ -1296,7 +1193,8 @@ $<span class="math notranslate nohighlight">\(
     <span class="c1"># propagate gradients through network layers using .backward</span>
     <span class="c1"># hint: start from last layer and move to earlier layers</span>
     
-    <span class="c1"># YOUR CODE HERE </span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">network</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">loss_grad</span> <span class="o">=</span> <span class="n">network</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">layer_inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">loss_grad</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
 </pre></div>
@@ -1354,17 +1252,100 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                         | 0/1562 [00:00&lt;?, ?it/s]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 4
+Train accuracy: 0.98834
+Val accuracy: 0.9727
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                         | 0/1562 [00:00&lt;?, ?it/s]
+<img alt="../_images/bd1c6498a7aa1b0cafc0e53f7885bc9d22ef0ba05779aff3b0112172aa467492.svg" src="../_images/bd1c6498a7aa1b0cafc0e53f7885bc9d22ef0ba05779aff3b0112172aa467492.svg" /><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                          | 0/1562 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1%|▍                                                               | 12/1562 [00:00&lt;00:13, 114.86it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2%|█                                                               | 27/1562 [00:00&lt;00:11, 130.41it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  3%|█▊                                                              | 45/1562 [00:00&lt;00:10, 148.69it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|██▌                                                             | 62/1562 [00:00&lt;00:09, 156.51it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5%|███▏                                                            | 78/1562 [00:00&lt;00:09, 156.42it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6%|███▉                                                            | 95/1562 [00:00&lt;00:09, 160.23it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|████▌                                                          | 113/1562 [00:00&lt;00:08, 164.72it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|█████▏                                                         | 130/1562 [00:00&lt;00:08, 161.70it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9%|█████▉                                                         | 147/1562 [00:00&lt;00:08, 158.75it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 11%|██████▋                                                        | 165/1562 [00:01&lt;00:08, 162.20it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|███████▎                                                       | 182/1562 [00:01&lt;00:08, 160.26it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|████████                                                       | 199/1562 [00:01&lt;00:08, 158.53it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14%|████████▋                                                      | 215/1562 [00:01&lt;00:09, 147.67it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15%|█████████▎                                                     | 230/1562 [00:01&lt;00:09, 136.98it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|█████████▉                                                     | 247/1562 [00:01&lt;00:09, 144.31it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 17%|██████████▌                                                    | 262/1562 [00:01&lt;00:10, 127.72it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 18%|███████████▏                                                   | 276/1562 [00:01&lt;00:10, 121.22it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|███████████▋                                                   | 289/1562 [00:02&lt;00:10, 118.93it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|████████████▏                                                  | 302/1562 [00:02&lt;00:11, 110.91it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20%|████████████▋                                                  | 314/1562 [00:02&lt;00:12, 100.35it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 21%|█████████████                                                  | 325/1562 [00:02&lt;00:12, 100.61it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 22%|█████████████▊                                                 | 342/1562 [00:02&lt;00:10, 117.52it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|██████████████▍                                                | 359/1562 [00:02&lt;00:09, 130.84it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 24%|███████████████                                                | 374/1562 [00:02&lt;00:08, 134.45it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|███████████████▋                                               | 388/1562 [00:02&lt;00:09, 119.35it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|████████████████▏                                              | 401/1562 [00:03&lt;00:10, 107.36it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|████████████████▍                                              | 408/1562 [00:03&lt;00:08, 132.18it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="k">for</span> <span class="n">x_batch</span><span class="p">,</span> <span class="n">y_batch</span> <span class="ow">in</span> <span class="n">iterate_minibatches</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batchsize</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -1372,14 +1353,26 @@ $<span class="math notranslate nohighlight">\(
 <span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">train_log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predict</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">))</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">val_log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predict</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X_val</span><span class="p">)</span> <span class="o">==</span> <span class="n">y_val</span><span class="p">))</span>
 
-<span class="nn">Cell In[18], line 15,</span> in <span class="ni">train</span><span class="nt">(network, X, y)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">layer_activations</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="nn">Cell In[18], line 13,</span> in <span class="ni">train</span><span class="nt">(network, X, y)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> Train your network on a given batch of X and y.</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd"> You first need to run forward to get all layer activations.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="sd"> After you called backward for all layers, all Dense layers have already made one gradient step.</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># Get the layer activations</span>
+<span class="ne">---&gt; </span><span class="mi">13</span> <span class="n">layer_activations</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">layer_inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="p">]</span> <span class="o">+</span> <span class="n">layer_activations</span>  <span class="c1">#layer_input[i] is an input for network[i]</span>
-<span class="ne">---&gt; </span><span class="mi">15</span> <span class="n">logits</span> <span class="o">=</span> <span class="n">layer_activations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="c1"># Compute the loss and the initial gradient</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">softmax_crossentropy_with_logits</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">logits</span> <span class="o">=</span> <span class="n">layer_activations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="ne">IndexError</span>: list index out of range
+<span class="nn">Cell In[17], line 12,</span> in <span class="ni">forward</span><span class="nt">(network, X)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">network</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="nb">input</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">12</span>     <span class="n">activations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">activations</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">network</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">return</span> <span class="n">activations</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -1391,20 +1384,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predict</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span>
-
-<span class="nn">Cell In[17], line 19,</span> in <span class="ni">predict</span><span class="nt">(network, X)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span><span class="sd">     Use network to predict the most likely class for each sample.</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">19</span>     <span class="n">logits</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="k">return</span> <span class="n">logits</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="ne">IndexError</span>: list index out of range
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9784
 </pre></div>
 </div>
 </div>
@@ -1546,184 +1526,66 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/15], Step [200/782], Loss: 0.3019
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/15], Step [400/782], Loss: 0.3038
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/15], Step [600/782], Loss: 0.2357
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/15], Training Accuracy: 0.9209, Validation Accuracy: 0.9603
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [2/15], Step [200/782], Loss: 0.1904
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [2/15], Step [400/782], Loss: 0.0903
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [2/15], Step [600/782], Loss: 0.1350
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [2/15], Training Accuracy: 0.9693, Validation Accuracy: 0.9667
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [3/15], Step [200/782], Loss: 0.0081
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [3/15], Step [400/782], Loss: 0.0689
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [3/15], Step [600/782], Loss: 0.0278
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [3/15], Training Accuracy: 0.9805, Validation Accuracy: 0.9711
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [4/15], Step [200/782], Loss: 0.0134
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [4/15], Step [400/782], Loss: 0.0157
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [4/15], Step [600/782], Loss: 0.0457
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [4/15], Training Accuracy: 0.9849, Validation Accuracy: 0.9747
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [5/15], Step [200/782], Loss: 0.1561
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [5/15], Step [400/782], Loss: 0.0763
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [5/15], Step [600/782], Loss: 0.0065
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [5/15], Training Accuracy: 0.9883, Validation Accuracy: 0.9754
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [6/15], Step [200/782], Loss: 0.0180
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [6/15], Step [400/782], Loss: 0.0142
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [6/15], Step [600/782], Loss: 0.0751
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [6/15], Training Accuracy: 0.9912, Validation Accuracy: 0.9751
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [7/15], Step [200/782], Loss: 0.0417
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [7/15], Step [400/782], Loss: 0.0016
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [7/15], Step [600/782], Loss: 0.0021
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [7/15], Training Accuracy: 0.9925, Validation Accuracy: 0.9759
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [8/15], Step [200/782], Loss: 0.0138
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [8/15], Step [400/782], Loss: 0.0207
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [8/15], Step [600/782], Loss: 0.0401
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [8/15], Training Accuracy: 0.9943, Validation Accuracy: 0.9755
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [9/15], Step [200/782], Loss: 0.0098
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [9/15], Step [400/782], Loss: 0.0031
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [9/15], Step [600/782], Loss: 0.0301
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [9/15], Training Accuracy: 0.9944, Validation Accuracy: 0.9767
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [10/15], Step [200/782], Loss: 0.0006
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [10/15], Step [400/782], Loss: 0.0006
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [10/15], Step [600/782], Loss: 0.0340
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [10/15], Training Accuracy: 0.9949, Validation Accuracy: 0.9786
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [11/15], Step [200/782], Loss: 0.0017
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [11/15], Step [400/782], Loss: 0.0129
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [11/15], Step [600/782], Loss: 0.0104
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [11/15], Training Accuracy: 0.9958, Validation Accuracy: 0.9779
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [12/15], Step [200/782], Loss: 0.0009
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [12/15], Step [400/782], Loss: 0.0016
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [12/15], Step [600/782], Loss: 0.0037
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [12/15], Training Accuracy: 0.9950, Validation Accuracy: 0.9785
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [13/15], Step [200/782], Loss: 0.0015
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [13/15], Step [400/782], Loss: 0.0044
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [13/15], Step [600/782], Loss: 0.0049
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [13/15], Training Accuracy: 0.9967, Validation Accuracy: 0.9775
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [14/15], Step [200/782], Loss: 0.0002
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [14/15], Step [400/782], Loss: 0.0003
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [14/15], Step [600/782], Loss: 0.0006
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [14/15], Training Accuracy: 0.9971, Validation Accuracy: 0.9801
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [15/15], Step [200/782], Loss: 0.0007
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [15/15], Step [400/782], Loss: 0.0018
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [15/15], Step [600/782], Loss: 0.1008
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [15/15], Training Accuracy: 0.9960, Validation Accuracy: 0.9776
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/15], Step [200/782], Loss: 0.2146
+Epoch [1/15], Step [400/782], Loss: 0.2053
+Epoch [1/15], Step [600/782], Loss: 0.1792
+Epoch [1/15], Training Accuracy: 0.9184, Validation Accuracy: 0.9582
+Epoch [2/15], Step [200/782], Loss: 0.0954
+Epoch [2/15], Step [400/782], Loss: 0.1306
+Epoch [2/15], Step [600/782], Loss: 0.1031
+Epoch [2/15], Training Accuracy: 0.9681, Validation Accuracy: 0.9681
+Epoch [3/15], Step [200/782], Loss: 0.2207
+Epoch [3/15], Step [400/782], Loss: 0.1965
+Epoch [3/15], Step [600/782], Loss: 0.3064
+Epoch [3/15], Training Accuracy: 0.9800, Validation Accuracy: 0.9706
+Epoch [4/15], Step [200/782], Loss: 0.0076
+Epoch [4/15], Step [400/782], Loss: 0.0350
+Epoch [4/15], Step [600/782], Loss: 0.0023
+Epoch [4/15], Training Accuracy: 0.9854, Validation Accuracy: 0.9768
+Epoch [5/15], Step [200/782], Loss: 0.0193
+Epoch [5/15], Step [400/782], Loss: 0.1142
+Epoch [5/15], Step [600/782], Loss: 0.0336
+Epoch [5/15], Training Accuracy: 0.9883, Validation Accuracy: 0.9756
+Epoch [6/15], Step [200/782], Loss: 0.0584
+Epoch [6/15], Step [400/782], Loss: 0.0012
+Epoch [6/15], Step [600/782], Loss: 0.0148
+Epoch [6/15], Training Accuracy: 0.9906, Validation Accuracy: 0.9755
+Epoch [7/15], Step [200/782], Loss: 0.0028
+Epoch [7/15], Step [400/782], Loss: 0.0130
+Epoch [7/15], Step [600/782], Loss: 0.0203
+Epoch [7/15], Training Accuracy: 0.9929, Validation Accuracy: 0.9747
+Epoch [8/15], Step [200/782], Loss: 0.0009
+Epoch [8/15], Step [400/782], Loss: 0.0006
+Epoch [8/15], Step [600/782], Loss: 0.0370
+Epoch [8/15], Training Accuracy: 0.9942, Validation Accuracy: 0.9782
+Epoch [9/15], Step [200/782], Loss: 0.0384
+Epoch [9/15], Step [400/782], Loss: 0.0012
+Epoch [9/15], Step [600/782], Loss: 0.0387
+Epoch [9/15], Training Accuracy: 0.9941, Validation Accuracy: 0.9769
+Epoch [10/15], Step [200/782], Loss: 0.0163
+Epoch [10/15], Step [400/782], Loss: 0.0030
+Epoch [10/15], Step [600/782], Loss: 0.0008
+Epoch [10/15], Training Accuracy: 0.9945, Validation Accuracy: 0.9717
+Epoch [11/15], Step [200/782], Loss: 0.0023
+Epoch [11/15], Step [400/782], Loss: 0.0024
+Epoch [11/15], Step [600/782], Loss: 0.0004
+Epoch [11/15], Training Accuracy: 0.9956, Validation Accuracy: 0.9776
+Epoch [12/15], Step [200/782], Loss: 0.0067
+Epoch [12/15], Step [400/782], Loss: 0.0220
+Epoch [12/15], Step [600/782], Loss: 0.0003
+Epoch [12/15], Training Accuracy: 0.9955, Validation Accuracy: 0.9772
+Epoch [13/15], Step [200/782], Loss: 0.0001
+Epoch [13/15], Step [400/782], Loss: 0.0001
+Epoch [13/15], Step [600/782], Loss: 0.0020
+Epoch [13/15], Training Accuracy: 0.9967, Validation Accuracy: 0.9768
+Epoch [14/15], Step [200/782], Loss: 0.0002
+Epoch [14/15], Step [400/782], Loss: 0.0002
+Epoch [14/15], Step [600/782], Loss: 0.0112
+Epoch [14/15], Training Accuracy: 0.9969, Validation Accuracy: 0.9776
+Epoch [15/15], Step [200/782], Loss: 0.0000
+Epoch [15/15], Step [400/782], Loss: 0.0080
+Epoch [15/15], Step [600/782], Loss: 0.0066
+Epoch [15/15], Training Accuracy: 0.9969, Validation Accuracy: 0.9770
 </pre></div>
 </div>
 </div>
@@ -1751,7 +1613,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test Accuracy: 0.9752
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test Accuracy: 0.9768
 </pre></div>
 </div>
 </div>
