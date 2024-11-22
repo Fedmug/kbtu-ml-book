@@ -1,4 +1,4 @@
-# CNN Architectures for Image Classification
+# CNN Architectures
 
 See [here](https://academy.yandex.ru/handbook/ml/article/beta-svyortochnye-nejroseti#znakovye-arhitektury-v-mire-svyortochnyh-nejronnyh-setej-dlya-zadachi-klassifikaczii-izobrazhenij) for a short list.
 
