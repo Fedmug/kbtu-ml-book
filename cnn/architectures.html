@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Architectures of CNN &#8212; ML book</title>
+    <title>CNN Architectures &#8212; ML book</title>
   
   
   
@@ -276,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="pooling.html">Pooling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="back_prop.html">Back propagation in CNN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="augmentation.html">Data augmentation</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Architectures of CNN</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">CNN Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rnn/sequential.html">Sequential NNs</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -413,7 +413,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/cnn/architectures.ipynb" target="_blank"
+      <li><a href="../_sources/cnn/architectures.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -423,7 +423,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -482,7 +482,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -493,11 +495,45 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Architectures of CNN</h1>
+    <h1>CNN Architectures</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lenet-5-1998">1. LeNet-5 (1998)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">Key Features:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alexnet-2012">2. AlexNet (2012)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-innovations">Key Innovations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-details">Architecture Details:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vgg16-vgg19-2014">3. VGG16/VGG19 (2014)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Key Features:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-pattern">Architecture Pattern:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#googlenet-inception-2014">4. GoogLeNet/Inception (2014)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Key Innovations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inception-module-structure">Inception Module Structure:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resnet-2015">5. ResNet (2015)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Key Innovations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Architecture Details:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-table">Comparison Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-trends">Modern Trends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -507,12 +543,223 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="architectures-of-cnn">
-<h1>Architectures of CNN<a class="headerlink" href="#architectures-of-cnn" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="cnn-architectures">
+<h1>CNN Architectures<a class="headerlink" href="#cnn-architectures" title="Permalink to this heading">#</a></h1>
+<p>See <a class="reference external" href="https://academy.yandex.ru/handbook/ml/article/beta-svyortochnye-nejroseti#znakovye-arhitektury-v-mire-svyortochnyh-nejronnyh-setej-dlya-zadachi-klassifikaczii-izobrazhenij">here</a> for a short list.</p>
+<p>This guide explores the most influential CNN architectures that revolutionized computer vision. We’ll cover their key innovations, architectures, and impacts on the field.</p>
+<section id="lenet-5-1998">
+<h2>1. LeNet-5 (1998)<a class="headerlink" href="#lenet-5-1998" title="Permalink to this heading">#</a></h2>
+<p><img alt="LeNet-5 Architecture" src="https://www.researchgate.net/publication/306056875/figure/fig1/AS:393921575309312&#64;1470929630835/Architecture-of-LeNet-5.png" /></p>
+<p>LeNet-5 was pioneered by Yann LeCun and was primarily used for digit recognition (MNIST dataset).</p>
+<section id="key-features">
+<h3>Key Features:<a class="headerlink" href="#key-features" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>An <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/svyortochnye-nejroseti#bonus-%E2%84%961-znakovye-arhitektury-v-mire-svyortochnyh-nejronnyh-setej-dlya-zadachi-klassifikacii-izobrazhenij">old list</a> from ML Handbook</p></li>
-<li><p>Image classification <a class="reference external" href="https://paperswithcode.com/sota/image-classification-on-imagenet">benchmark</a></p></li>
+<li><p>7 layers (not counting input)</p></li>
+<li><p>Convolutional layers followed by average pooling</p></li>
+<li><p>Approximately 60K parameters</p></li>
+<li><p>First successful application of CNNs</p></li>
+<li><p>Input size: 32×32 pixels</p></li>
 </ul>
+</section>
+</section>
+<section id="alexnet-2012">
+<h2>2. AlexNet (2012)<a class="headerlink" href="#alexnet-2012" title="Permalink to this heading">#</a></h2>
+<p><img alt="AlexNet Architecture" src="https://neurohive.io/wp-content/uploads/2018/10/AlexNet-1.png" /></p>
+<p>AlexNet marked the beginning of the deep learning revolution by winning the 2012 ImageNet competition.</p>
+<section id="key-innovations">
+<h3>Key Innovations:<a class="headerlink" href="#key-innovations" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>First use of ReLU activation function in CNNs</p></li>
+<li><p>Dropout for regularization (0.5)</p></li>
+<li><p>Data augmentation techniques</p></li>
+<li><p>Local Response Normalization (LRN)</p></li>
+<li><p>Training on multiple GPUs</p></li>
+</ul>
+</section>
+<section id="architecture-details">
+<h3>Architecture Details:<a class="headerlink" href="#architecture-details" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>8 layers (5 convolutional, 3 fully connected)</p></li>
+<li><p>60 million parameters</p></li>
+<li><p>Input size: 227×227×3</p></li>
+<li><p>Max pooling layers</p></li>
+<li><p>Final 1000-way softmax</p></li>
+</ul>
+</section>
+</section>
+<section id="vgg16-vgg19-2014">
+<h2>3. VGG16/VGG19 (2014)<a class="headerlink" href="#vgg16-vgg19-2014" title="Permalink to this heading">#</a></h2>
+<p><img alt="VGG Architecture" src="https://neurohive.io/wp-content/uploads/2018/11/vgg16-1-e1542731207177.png" /></p>
+<p>VGG networks demonstrated that depth is crucial for good performance. They used a very uniform architecture with small 3×3 filters throughout.</p>
+<section id="id1">
+<h3>Key Features:<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Uniform architecture with 3×3 convolutions</p></li>
+<li><p>Deep network (16-19 layers)</p></li>
+<li><p>2×2 max pooling</p></li>
+<li><p>Three fully connected layers at the end</p></li>
+<li><p>138M parameters (VGG16)</p></li>
+</ul>
+</section>
+<section id="architecture-pattern">
+<h3>Architecture Pattern:<a class="headerlink" href="#architecture-pattern" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Multiple 3×3 conv layers + ReLU</p></li>
+<li><p>Max pooling to reduce spatial dimensions</p></li>
+<li><p>Double the number of filters after pooling</p></li>
+<li><p>Final dense layers: 4096 → 4096 → 1000</p></li>
+</ul>
+</section>
+</section>
+<section id="googlenet-inception-2014">
+<h2>4. GoogLeNet/Inception (2014)<a class="headerlink" href="#googlenet-inception-2014" title="Permalink to this heading">#</a></h2>
+<p><img alt="Inception Module" src="https://miro.medium.com/max/1400/1*gqKM5V-uo2sMFFPDS84yJw.png" /></p>
+<p>GoogLeNet introduced the Inception module, which processes input in parallel through different filter sizes.</p>
+<section id="id2">
+<h3>Key Innovations:<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Inception modules with parallel convolutions</p></li>
+<li><p>1×1 convolutions for dimension reduction</p></li>
+<li><p>Global average pooling instead of dense layers</p></li>
+<li><p>Auxiliary classifiers during training</p></li>
+<li><p>Only 6.8M parameters (much less than VGG)</p></li>
+</ul>
+</section>
+<section id="inception-module-structure">
+<h3>Inception Module Structure:<a class="headerlink" href="#inception-module-structure" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>1×1 convolutions</p></li>
+<li><p>1×1 followed by 3×3 convolutions</p></li>
+<li><p>1×1 followed by 5×5 convolutions</p></li>
+<li><p>3×3 max pooling followed by 1×1 convolutions</p></li>
+</ol>
+</section>
+</section>
+<section id="resnet-2015">
+<h2>5. ResNet (2015)<a class="headerlink" href="#resnet-2015" title="Permalink to this heading">#</a></h2>
+<p><img alt="ResNet Block" src="https://production-media.paperswithcode.com/methods/resnet-e1548261477164.png" /></p>
+<p>ResNet solved the degradation problem in very deep networks using skip connections (residual learning).</p>
+<section id="id3">
+<h3>Key Innovations:<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Residual connections (skip connections)</p></li>
+<li><p>Batch normalization after each convolution</p></li>
+<li><p>No fully connected layers except final classifier</p></li>
+<li><p>Deep architectures (up to 152 layers)</p></li>
+<li><p>Identity mappings in deep residual networks</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Architecture Details:<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Multiple variants (ResNet-18, 34, 50, 101, 152)</p></li>
+<li><p>Bottleneck blocks in deeper networks</p></li>
+<li><p>25.6 million parameters (ResNet-50)</p></li>
+</ul>
+</section>
+</section>
+<section id="comparison-table">
+<h2>Comparison Table<a class="headerlink" href="#comparison-table" title="Permalink to this heading">#</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Architecture</p></th>
+<th class="head"><p>Year</p></th>
+<th class="head"><p>Layers</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Top-1 Accuracy (ImageNet)</p></th>
+<th class="head"><p>Top-5 Accuracy (ImageNet)</p></th>
+<th class="head"><p>Key Innovation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LeNet-5</p></td>
+<td><p>1998</p></td>
+<td><p>7</p></td>
+<td><p>60K</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+<td><p>First successful CNN</p></td>
+</tr>
+<tr class="row-odd"><td><p>AlexNet</p></td>
+<td><p>2012</p></td>
+<td><p>8</p></td>
+<td><p>60M</p></td>
+<td><p>63.3%</p></td>
+<td><p>84.7%</p></td>
+<td><p>ReLU, Dropout</p></td>
+</tr>
+<tr class="row-even"><td><p>VGG16</p></td>
+<td><p>2014</p></td>
+<td><p>16</p></td>
+<td><p>138M</p></td>
+<td><p>71.5%</p></td>
+<td><p>92.7%</p></td>
+<td><p>Uniform 3×3 conv</p></td>
+</tr>
+<tr class="row-odd"><td><p>GoogLeNet</p></td>
+<td><p>2014</p></td>
+<td><p>22</p></td>
+<td><p>6.8M</p></td>
+<td><p>74.8%</p></td>
+<td><p>93.3%</p></td>
+<td><p>Inception modules</p></td>
+</tr>
+<tr class="row-even"><td><p>ResNet-50</p></td>
+<td><p>2015</p></td>
+<td><p>50</p></td>
+<td><p>25.6M</p></td>
+<td><p>76.0%</p></td>
+<td><p>96.4%</p></td>
+<td><p>Residual connections</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="modern-trends">
+<h2>Modern Trends<a class="headerlink" href="#modern-trends" title="Permalink to this heading">#</a></h2>
+<p>Recent developments in CNN architectures:</p>
+<ol class="arabic simple">
+<li><p><strong>EfficientNet (2019)</strong></p>
+<ul class="simple">
+<li><p>Compound scaling of depth/width/resolution</p></li>
+<li><p>Better accuracy with fewer parameters</p></li>
+<li><p>Systematic network scaling</p></li>
+</ul>
+</li>
+<li><p><strong>Vision Transformers (2020)</strong></p>
+<ul class="simple">
+<li><p>Adapting transformer architecture to vision</p></li>
+<li><p>Competitive with CNNs on large datasets</p></li>
+<li><p>Potential to replace CNNs in some tasks</p></li>
+</ul>
+</li>
+<li><p><strong>MobileNet (2017-2019)</strong></p>
+<ul class="simple">
+<li><p>Depthwise separable convolutions</p></li>
+<li><p>Designed for mobile devices</p></li>
+<li><p>Efficient inference on edge devices</p></li>
+</ul>
+</li>
+<li><p><strong>RegNet (2020)</strong></p>
+<ul class="simple">
+<li><p>Systematic network design</p></li>
+<li><p>Optimized performance-computation trade-off</p></li>
+<li><p>Data-driven design decisions</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>LeCun, Y., et al. (1998). Gradient-based learning applied to document recognition</p></li>
+<li><p>Krizhevsky, A., et al. (2012). ImageNet Classification with Deep CNNs</p></li>
+<li><p>Simonyan, K., &amp; Zisserman, A. (2014). Very Deep Convolutional Networks</p></li>
+<li><p>Szegedy, C., et al. (2015). Going Deeper with Convolutions</p></li>
+<li><p>He, K., et al. (2016). Deep Residual Learning for Image Recognition
+&lt;/rewritten_file&gt;</p></li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -573,6 +820,46 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lenet-5-1998">1. LeNet-5 (1998)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">Key Features:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alexnet-2012">2. AlexNet (2012)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-innovations">Key Innovations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-details">Architecture Details:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vgg16-vgg19-2014">3. VGG16/VGG19 (2014)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Key Features:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-pattern">Architecture Pattern:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#googlenet-inception-2014">4. GoogLeNet/Inception (2014)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Key Innovations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inception-module-structure">Inception Module Structure:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resnet-2015">5. ResNet (2015)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Key Innovations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Architecture Details:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-table">Comparison Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-trends">Modern Trends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
