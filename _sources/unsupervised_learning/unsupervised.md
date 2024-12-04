@@ -29,6 +29,7 @@ Common techniques include:
 ```{figure} https://media.licdn.com/dms/image/D4D12AQFdOCmVd8QVow/article-cover_image-shrink_720_1280/0/1680696595611?e=2147483647&v=beta&t=_BnRUyAeG4dxyHALQ0E48cL8pfvmGh7sUDxETG6LRoQ
 ---
 align: center
+height: 500px
 ---
 ```
 
