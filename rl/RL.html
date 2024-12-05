@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'rl/RL';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -164,11 +166,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024.html">HW2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW3_2024.html">HW3</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/ML_2024.html">ML 2024 (MS)</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1_2024_MS.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2_2024_MS.html">HW2</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
@@ -237,7 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ensembling/ensemble.html">Ensembling</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/bias_variance.html">Bias-variance decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensembling/bagging.html">Bagging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ensembling/random_forest.html">Random forests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ensembling/random_forest.html">Random forest</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../gradient_boosting/gradient_boosting.html">Gradient boosting</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -266,7 +270,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/regularization.html">Regularization in MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/optimization_dl.html">Optimization in DL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mlp/MLP_notebook.html">Multilayer Perceptron (MLP)</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cnn/cnn.html">CNN</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -275,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../cnn/pooling.html">Pooling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cnn/back_prop.html">Back propagation in CNN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cnn/augmentation.html">Data augmentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cnn/architectures.html">Architectures of CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cnn/architectures.html">CNN Architectures</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rnn/sequential.html">Sequential NNs</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -481,7 +484,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -497,6 +502,20 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-components">Core Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#states">States</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#actions">Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rewards">Rewards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount-factor-gamma">Discount Factor <span class="math notranslate nohighlight">\(\gamma\)</span></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -509,6 +528,96 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="reinforcement-learning">
 <h1>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this heading">#</a></h1>
 <p>A lot of RL resources are collected <a class="reference external" href="https://purrfect-tamarillo-de4.notion.site/RL-44c324a905e74d20865c43b51a5383d4?pvs=4">here</a>.</p>
+<figure class="align-center">
+<img alt="https://deepanshut041.github.io/Reinforcement-Learning/notes/00_Introduction_to_rl/images/intro_to_rl.png" src="https://deepanshut041.github.io/Reinforcement-Learning/notes/00_Introduction_to_rl/images/intro_to_rl.png" />
+</figure>
+<p>Reinforcement Learning (RL) is a type of machine learning where an agent learns to make decisions by interacting with an environment. The agent learns through trial and error, receiving rewards or penalties for its actions.</p>
+<section id="core-components">
+<h2>Core Components<a class="headerlink" href="#core-components" title="Permalink to this heading">#</a></h2>
+<section id="states">
+<h3>States<a class="headerlink" href="#states" title="Permalink to this heading">#</a></h3>
+<p>The <strong>state</strong> <span class="math notranslate nohighlight">\(s \in \mathcal{S}\)</span> represents the current situation of the environment. It contains all relevant information the agent needs to make decisions.</p>
+<p><strong>Examples:</strong></p>
+<ul class="simple">
+<li><p>Chess: Current position of all pieces on the board</p></li>
+<li><p>Self-driving car: Position, speed, direction, and sensor readings</p></li>
+<li><p>Stock trading: Current prices, market indicators, and portfolio status</p></li>
+</ul>
+</section>
+<section id="actions">
+<h3>Actions<a class="headerlink" href="#actions" title="Permalink to this heading">#</a></h3>
+<p><strong>Actions</strong> <span class="math notranslate nohighlight">\(a \in \mathcal{A}\)</span> are the possible moves or decisions an agent can make in a given state.</p>
+<p><strong>Examples:</strong></p>
+<ul class="simple">
+<li><p>Robot navigation: {move_forward, turn_left, turn_right, stop}</p></li>
+<li><p>Game of Pong: {move_up, move_down, stay}</p></li>
+<li><p>Thermostat control: {increase_temp, decrease_temp, maintain}</p></li>
+</ul>
+</section>
+<section id="rewards">
+<h3>Rewards<a class="headerlink" href="#rewards" title="Permalink to this heading">#</a></h3>
+<p>The <strong>reward</strong> <span class="math notranslate nohighlight">\(r\)</span> is a scalar feedback signal that indicates how good or bad the agent’s action was. It’s the primary learning signal in RL.</p>
+<p>The <strong>cumulative reward</strong> (<strong>return</strong>) <span class="math notranslate nohighlight">\(G_t\)</span> from timestep <span class="math notranslate nohighlight">\(t\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+G_t = R_t + \gamma R_{t+1} + \gamma^2 R_{t+2} + ... = \sum_{k=0}^{\infty} \gamma^k R_{t+k}
+\]</div>
+<p><strong>Examples:</strong></p>
+<ul class="simple">
+<li><p>Game scoring: +1 for winning, -1 for losing, 0 for other moves</p></li>
+<li><p>Energy optimization: -<span class="math notranslate nohighlight">\((\text{energy_cost} + \text{comfort_deviation})\)</span></p></li>
+<li><p>Robot navigation: -1 for collisions, +10 for reaching goal, -0.1 per step</p></li>
+</ul>
+</section>
+<section id="discount-factor-gamma">
+<h3>Discount Factor <span class="math notranslate nohighlight">\(\gamma\)</span><a class="headerlink" href="#discount-factor-gamma" title="Permalink to this heading">#</a></h3>
+<p>The discount factor γ (gamma) determines how much the agent values future rewards compared to immediate ones:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\gamma = 0\)</span>: “Myopic” agent only considers immediate rewards</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma = 1\)</span>: “Far-sighted” agent values future rewards almost as much as immediate ones</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>A robot is navigating through a maze and receives the following sequence of rewards:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Time Step</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(t_0\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(t_1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(t_2\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(t_3\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(t_4\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Reward</p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(+10\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Calculate the cumulative reward <span class="math notranslate nohighlight">\(G_0\)</span> starting from <span class="math notranslate nohighlight">\(t_0\)</span> for the following discount factors:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\gamma = 0\)</span> (Only immediate rewards)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma = 0.5\)</span> (Moderate discounting)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma = 0.9\)</span> (Small discounting)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma = 1.0\)</span> (No discounting)</p></li>
+</ol>
+</div>
+<div class="important admonition">
+<p class="admonition-title">Main goal of RL</p>
+<p>The main goal of reinforcement learning is to learn a <strong>policy</strong> <span class="math notranslate nohighlight">\(\pi: \mathcal{S} \to \mathcal{A}\)</span> that maximizes the expected cumulative reward over time:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi_* = \arg\max_{\pi} \mathbb{E}_{\pi}[G_t]
+\]</div>
+</div>
+<p>Note that a policy can be deterministic or stochastic. In the latter case, the policy is a distribution over actions: <span class="math notranslate nohighlight">\(\pi(a|s) = \mathbb{P}[A_t = a | S_t = s]\)</span>.</p>
+</section>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -571,6 +680,26 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-components">Core Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#states">States</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#actions">Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rewards">Rewards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discount-factor-gamma">Discount Factor <span class="math notranslate nohighlight">\(\gamma\)</span></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
