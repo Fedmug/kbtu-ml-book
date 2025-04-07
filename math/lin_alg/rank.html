@@ -587,12 +587,23 @@ Also, both <span class="math notranslate nohighlight">\(N(\boldsymbol A)\)</span
 </div>
 <div class="dropdown tip admonition">
 <p class="admonition-title">Proof of Rank Theorem</p>
-<p>Let <span class="math notranslate nohighlight">\(\boldsymbol R\)</span> be reduced echelon form of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>. To establish the equality <span class="math notranslate nohighlight">\(\dim C(\boldsymbol A) = \dim C(\boldsymbol A^\mathsf{T})\)</span> it is enough to show that</p>
+<p>Permute the columns of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> in such a way that its reduced echelon form is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol R = \begin{pmatrix}
+        \boldsymbol I_r &amp; \boldsymbol F \\
+        \boldsymbol 0 &amp; \boldsymbol 0
+        \end{pmatrix}.
+\end{split}\]</div>
+<p>To establish the equality <span class="math notranslate nohighlight">\(\dim C(\boldsymbol A) = \dim C(\boldsymbol A^\mathsf{T}) = r\)</span> it is enough to show that</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(\dim C(\boldsymbol A) = \dim C(\boldsymbol R)\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(\dim C(\boldsymbol A^\mathsf{T}) = \dim C(\boldsymbol R^\mathsf{T})\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(\dim C(\boldsymbol R) = \dim C(\boldsymbol R^\mathsf^{T})\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\dim C(\boldsymbol R) = \dim C(\boldsymbol R^\mathsf{T}) = r\)</span>.</p></li>
 </ol>
+<p>The equality <span class="math notranslate nohighlight">\(\dim C(\boldsymbol R^\mathsf{T}) = r\)</span> holds since the first <span class="math notranslate nohighlight">\(r\)</span> rows of <span class="math notranslate nohighlight">\(\boldsymbol R\)</span> are linearly independent (why?), whereas adding any of other <span class="math notranslate nohighlight">\(m-r\)</span> zero rows would make them linearly dependent. On the other hand, each of the last <span class="math notranslate nohighlight">\(n-r\)</span> columns of <span class="math notranslate nohighlight">\(\boldsymbol R\)</span> is a linear combination of the first <span class="math notranslate nohighlight">\(r\)</span> columns (why?), consequently, they form a basis in <span class="math notranslate nohighlight">\(C(\boldsymbol R)\)</span>. Hence, the third claim is proved.</p>
+<p>The statement 2 holds because elemetary operations using in Gaussian elimination do not change the row space: <span class="math notranslate nohighlight">\(C(\boldsymbol A^\mathsf{T}) = C(\boldsymbol R^\mathsf{T})\)</span>.</p>
+<p>The first proposition follows from the observation <span class="math notranslate nohighlight">\(N(\boldsymbol A) = N(\boldsymbol R)\)</span>, i.e., <span class="math notranslate nohighlight">\(\boldsymbol{Ax} = \boldsymbol 0\)</span> iff <span class="math notranslate nohighlight">\(\boldsymbol{Rx} = \boldsymbol 0\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span>. Hence, linear combinations of columns of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol R\)</span> with same indices are either both zero or both nonzero. Therefore, any two bases of <span class="math notranslate nohighlight">\(C(\boldsymbol A)\)</span> and <span class="math notranslate nohighlight">\(C(\boldsymbol R)\)</span> must be of equal size.</p>
 </div>
 <section id="full-column-rank-matrices">
 <h3>Full column rank matrices<a class="headerlink" href="#full-column-rank-matrices" title="Permalink to this heading">#</a></h3>
